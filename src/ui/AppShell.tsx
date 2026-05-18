@@ -7,6 +7,7 @@ import { LibraryPanel } from './components/LibraryPanel';
 import { WikiEditor } from '../editor/WikiEditor';
 import { WikiPreview } from '../preview/components/WikiPreview';
 import { initializePokemonIndex } from '../pokemon/pokemon-service';
+import { PokedexBuilder } from '../pokedex/builder/PokedexBuilder';
 
 export function AppShell() {
   const {
@@ -141,6 +142,9 @@ export function AppShell() {
           <span style={{ fontSize: 13, color: 'var(--text-primary)' }}>{toast.message}</span>
         </div>
       )}
+
+      {/* Pokédex Builder Modal */}
+      <PokedexBuilder />
     </div>
   );
 }

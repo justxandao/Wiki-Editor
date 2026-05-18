@@ -1,0 +1,170 @@
+[
+  {
+    "name": "Tackle",
+    "type": "Normal",
+    "cooldown": "5s",
+    "level": 10,
+    "categories": ["Damage"]
+  },
+  {
+    "name": "Scratch",
+    "type": "Normal",
+    "cooldown": "4s",
+    "level": 5,
+    "categories": ["Damage"]
+  },
+  {
+    "name": "Quick Attack",
+    "type": "Normal",
+    "cooldown": "6s",
+    "level": 15,
+    "categories": ["Damage", "Target"]
+  },
+  {
+    "name": "Water Ball",
+    "type": "Water",
+    "cooldown": "6s",
+    "level": 20,
+    "categories": ["Damage", "Target"]
+  },
+  {
+    "name": "Bubble",
+    "type": "Water",
+    "cooldown": "8s",
+    "level": 15,
+    "categories": ["Damage", "AOE"]
+  },
+  {
+    "name": "Hydro Pump",
+    "type": "Water",
+    "cooldown": "45s",
+    "level": 80,
+    "categories": ["Damage", "AOE"]
+  },
+  {
+    "name": "Razor Leaf",
+    "type": "Grass",
+    "cooldown": "7s",
+    "level": 25,
+    "categories": ["Damage", "AOE"]
+  },
+  {
+    "name": "Seed Bomb",
+    "type": "Grass",
+    "cooldown": "12s",
+    "level": 30,
+    "categories": ["Damage"]
+  },
+  {
+    "name": "Solar Beam",
+    "type": "Grass",
+    "cooldown": "40s",
+    "level": 85,
+    "categories": ["Damage", "AOE", "Focus Blocked"]
+  },
+  {
+    "name": "Ember",
+    "type": "Fire",
+    "cooldown": "6s",
+    "level": 20,
+    "categories": ["Damage"]
+  },
+  {
+    "name": "Flamethrower",
+    "type": "Fire",
+    "cooldown": "15s",
+    "level": 50,
+    "categories": ["Damage", "AOE"]
+  },
+  {
+    "name": "Fire Blast",
+    "type": "Fire",
+    "cooldown": "50s",
+    "level": 85,
+    "categories": ["Damage", "AOE", "Burn"]
+  },
+  {
+    "name": "Thunder Shock",
+    "type": "Electric",
+    "cooldown": "5s",
+    "level": 10,
+    "categories": ["Damage"]
+  },
+  {
+    "name": "Thunderbolt",
+    "type": "Electric",
+    "cooldown": "20s",
+    "level": 60,
+    "categories": ["Damage", "Paralyze"]
+  },
+  {
+    "name": "Thunder",
+    "type": "Electric",
+    "cooldown": "45s",
+    "level": 85,
+    "categories": ["Damage", "AOE", "Stun"]
+  },
+  {
+    "name": "Ice Shard",
+    "type": "Ice",
+    "cooldown": "6s",
+    "level": 20,
+    "categories": ["Damage"]
+  },
+  {
+    "name": "Blizzard",
+    "type": "Ice",
+    "cooldown": "50s",
+    "level": 90,
+    "categories": ["Damage", "AOE", "Paralyze"]
+  },
+  {
+    "name": "Psychic",
+    "type": "Psychic",
+    "cooldown": "30s",
+    "level": 70,
+    "categories": ["Damage", "AOE", "Debuff"]
+  },
+  {
+    "name": "Shadow Ball",
+    "type": "Ghost",
+    "cooldown": "12s",
+    "level": 40,
+    "categories": ["Damage", "Target"]
+  },
+  {
+    "name": "Bite",
+    "type": "Dark",
+    "cooldown": "8s",
+    "level": 20,
+    "categories": ["Damage"]
+  },
+  {
+    "name": "Earth Power",
+    "type": "Ground",
+    "cooldown": "25s",
+    "level": 55,
+    "categories": ["Damage", "AOE"]
+  },
+  {
+    "name": "Wing Attack",
+    "type": "Flying",
+    "cooldown": "10s",
+    "level": 30,
+    "categories": ["Damage"]
+  },
+  {
+    "name": "Iron Tail",
+    "type": "Steel",
+    "cooldown": "12s",
+    "level": 35,
+    "categories": ["Damage"]
+  },
+  {
+    "name": "Dragon Pulse",
+    "type": "Dragon",
+    "cooldown": "35s",
+    "level": 75,
+    "categories": ["Damage"]
+  }
+]

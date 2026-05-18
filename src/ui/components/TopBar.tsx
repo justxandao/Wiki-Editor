@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useEditorStore } from '../../state/editorStore';
+import { usePokedexStore } from '../../pokedex/store/pokedexStore';
 import {
   LayoutTemplate,
   Moon,
@@ -20,6 +21,7 @@ export function TopBar() {
   const tabs = useEditorStore(s => s.tabs);
   const activeTabId = useEditorStore(s => s.activeTabId);
   const activeTab = tabs.find(t => t.id === activeTabId);
+  const { setOpen: openPokedexBuilder } = usePokedexStore();
 
   return (
     <header style={{
@@ -108,6 +110,32 @@ export function TopBar() {
 
       {/* Spacer */}
       <div style={{ flex: 1 }} />
+
+      {/* Pokédex Builder button */}
+      <button
+        onClick={() => openPokedexBuilder(true)}
+        title="Criar Pokédex"
+        style={{
+          display: 'flex', alignItems: 'center', gap: 6,
+          background: 'linear-gradient(135deg, #f78166 0%, #bc8cff 100%)',
+          border: 'none',
+          borderRadius: 'var(--radius-md)',
+          padding: '5px 12px',
+          color: '#fff',
+          fontSize: 12, fontWeight: 700,
+          cursor: 'pointer',
+          fontFamily: 'Outfit, sans-serif',
+          letterSpacing: '0.03em',
+          boxShadow: '0 2px 12px rgba(188, 140, 255, 0.3)',
+          transition: 'all 0.15s',
+          flexShrink: 0,
+        }}
+        onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.transform = 'scale(1.04)'; }}
+        onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.transform = 'scale(1)'; }}
+      >
+        <LayoutTemplate size={13} />
+        Pokédex Builder
+      </button>
 
       {/* Pokémon badge */}
       <div style={{
