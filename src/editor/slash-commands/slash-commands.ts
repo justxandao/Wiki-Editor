@@ -54,7 +54,7 @@ export const BUILTIN_COMMANDS: SlashCommand[] = [
     description: 'Insere link de imagem wiki',
     icon: '🖼️',
     category: 'template',
-    keywords: ['sprite', 'image', 'arquivo', 'imagem'],
+    keywords: ['sprite', 'image', 'banner', 'imagem'],
     execute: (view) => insertSnippet(view, SNIPPETS.sprite),
   },
   {
@@ -161,7 +161,7 @@ export function detectSlashCommand(state: EditorState): { from: number; to: numb
   // If there are spaces, only allow it if it starts with a command that accepts arguments
   if (spaceCount > 0) {
     const qLower = query.toLowerCase();
-    if (!qLower.startsWith('arquivo ') && !qLower.startsWith('file ')) {
+    if (!qLower.startsWith('banner ')) {
       return null;
     }
   }

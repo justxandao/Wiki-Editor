@@ -34,7 +34,7 @@ const CATEGORY_LABELS: Record<string, string> = {
   template: '📋 Templates',
   structure: '🏗️ Estruturas',
   format: '✏️ Formatação',
-  file: '🖼️ Arquivo da Wiki',
+  file: '🖼️ Banner da Wiki',
 };
 
 export function SlashCommandPopup({ view, query, from, to, position, onClose }: SlashCommandPopupProps) {
@@ -46,11 +46,11 @@ export function SlashCommandPopup({ view, query, from, to, position, onClose }: 
   // Live File Search
   useEffect(() => {
     const q = query.toLowerCase();
-    if (q.startsWith('arquivo ') || q.startsWith('file ')) {
+    if (q.startsWith('banner ')) {
       const searchTerm = query.substring(q.indexOf(' ') + 1).trim();
       if (searchTerm.length >= 2) {
         setIsSearchingFiles(true);
-        const url = `https://wiki.pokexgames.com/api.php?action=query&list=search&srsearch=File:${encodeURIComponent(searchTerm)}&srnamespace=6&format=json&origin=*`;
+        const url = `https://wiki.pokexgames.com/api.php?action=query&list=search&srsearch=File:${encodeURIComponent('banner ' + searchTerm)}&srnamespace=6&format=json&origin=*`;
         fetch(url)
           .then(r => r.json())
           .then(data => {
@@ -79,7 +79,7 @@ export function SlashCommandPopup({ view, query, from, to, position, onClose }: 
       fileItems.push({
         id: `file-${filename}`,
         label: filename,
-        description: `Importar arquivo da wiki`,
+        description: `Importar banner da wiki`,
         spriteUrl: `https://wiki.pokexgames.com/index.php?title=Special:FilePath/${encodeURIComponent(filename)}`,
         category: 'file',
         onSelect: () => {

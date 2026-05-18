@@ -1,5 +1,6 @@
 import Fuse from 'fuse.js';
 import { normalizeName, buildNormalizedIndex } from './pokemon-normalizer';
+import defaultPokemonData from './pokemon.json';
 
 export interface PokemonEntry {
   dex?: number;
@@ -26,10 +27,10 @@ export const WIKI_ICONS: Record<string, string> = {};
 
 export type PokemonIndex = Record<string, PokemonEntry>;
 
-// Mutable state, starts empty
+// Estado mutável, começa vazio
 export let pokemonIndex: PokemonIndex = {};
 
-// Fuse.js for fuzzy search
+// Fuse.js para busca difusa (aproximada)
 export let fuse = new Fuse<any>([], {
   keys: ['name', 'key', 'aliases'],
   threshold: 0.4,
@@ -40,7 +41,7 @@ export let isPokemonIndexLoaded = false;
 export let normalizedIndex = new Map<string, string>();
 
 /**
- * Update the internal search indexes after changing the pokemonIndex.
+ * Atualiza os índices de busca internos após alterar o pokemonIndex.
  */
 function rebuildIndexes() {
   normalizedIndex = buildNormalizedIndex(pokemonIndex);
@@ -52,7 +53,7 @@ function rebuildIndexes() {
     aliases: entry.aliases ?? [],
   }));
 
-  // Inject elements and clans as searchable entries
+  // Injeta elementos e clãs como entradas pesquisáveis
   [...WIKI_ELEMENTS, ...WIKI_CLANS].forEach(name => {
     const key = normalizeName(name);
     if (!pokemonIndex[key]) {
@@ -70,33 +71,68 @@ function rebuildIndexes() {
 }
 
 /**
- * Initializes the Pokemon index by fetching directly from the WikiPokexGames API.
- * Uses localStorage caching to ensure fast consecutive loads.
+ * Inicializa o índice de Pokémon buscando diretamente da API da WikiPokexGames.
+ * Usa cache no localStorage e compara IDs de revisão para evitar downloads redundantes.
  */
 export async function initializePokemonIndex() {
   if (isPokemonIndexLoaded) return;
 
   try {
-    // 1. Try loading from cache first for instantaneous UI
+    // 1. Tenta carregar do cache primeiro ou recorre ao pokemon.json embutido para uma UI instantânea
+    let currentLastRevId = 0;
     const cached = localStorage.getItem('wikipxg_pokemon_cache');
     if (cached) {
-      pokemonIndex = JSON.parse(cached);
-      rebuildIndexes();
-      isPokemonIndexLoaded = true;
+      try {
+        const parsed = JSON.parse(cached);
+        if (parsed && typeof parsed === 'object' && 'lastrevid' in parsed && 'index' in parsed) {
+          pokemonIndex = parsed.index;
+          currentLastRevId = parsed.lastrevid;
+        } else {
+          // Formato de cache antigo (legado)
+          pokemonIndex = parsed;
+          currentLastRevId = 0;
+        }
+      } catch (e) {
+        console.warn('[PokemonService] Falha ao analisar o índice de Pokémon em cache, recorrendo ao JSON embutido', e);
+        pokemonIndex = (defaultPokemonData as any).index;
+        currentLastRevId = (defaultPokemonData as any).lastrevid;
+      }
+    } else {
+      pokemonIndex = (defaultPokemonData as any).index;
+      currentLastRevId = (defaultPokemonData as any).lastrevid;
     }
 
-    // 2. Fetch fresh data from the wiki API asynchronously
+    rebuildIndexes();
+    isPokemonIndexLoaded = true;
+
+    // 2. Busca o ID da última revisão assincronamente a partir da API da wiki (checagem leve)
+    const revApiUrl = 'https://wiki.pokexgames.com/api.php?action=query&prop=revisions&titles=Pok%C3%A9mon&rvprop=ids&format=json&origin=*';
+    const revResponse = await fetch(revApiUrl);
+    const revData = await revResponse.json();
+
+    const pages = revData.query.pages;
+    const page = pages[Object.keys(pages)[0]];
+    const latestRevId = page.revisions?.[0]?.revid;
+
+    if (latestRevId && latestRevId === currentLastRevId) {
+      console.log(`[PokemonService] O índice de Pokémon está atualizado (Revisão: ${latestRevId}).`);
+      return;
+    }
+
+    console.log(`[PokemonService] Nova revisão encontrada: ${latestRevId} (Atual: ${currentLastRevId}). Buscando atualizações...`);
+
+    // 3. Busca dados novos na API da wiki assincronamente, já que a revisão mudou
     const apiUrl = 'https://wiki.pokexgames.com/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&titles=Pok%C3%A9mon&format=json&origin=*';
     const response = await fetch(apiUrl);
     const data = await response.json();
     
-    const pages = data.query.pages;
-    const page = pages[Object.keys(pages)[0]];
-    const text = page.revisions[0].slots.main['*'];
+    const fullPages = data.query.pages;
+    const fullPage = fullPages[Object.keys(fullPages)[0]];
+    const text = fullPage.revisions[0].slots.main['*'];
 
     const newIndex: PokemonIndex = {};
     
-    // Parses patterns like: [[Arquivo:001-Bulbasaur.png|link=Bulbasaur]]
+    // Analisa padrões como: [[Arquivo:001-Bulbasaur.png|link=Bulbasaur]]
     const linkRegex = /\[\[(?:Arquivo|File):([^|\]]+\.(?:png|gif))[^\]]*?link=([^\]|]+)\]\]/gi;
     let match;
     
@@ -119,7 +155,7 @@ export async function initializePokemonIndex() {
       }
     }
 
-    // Parses patterns without link= but followed by [[Name]]
+    // Analisa padrões sem link= mas seguidos por [[Nome]]
     const noLinkRegex = /\[\[(?:Arquivo|File):([^|\]]+\.(?:png|gif))\]\]\s*\|\s*(?:#\d+|###)?\s*\|\s*(?:'''?)?\[\[([^\]|]+)\]\]/gi;
     let match2;
     while ((match2 = noLinkRegex.exec(text)) !== null) {
@@ -141,31 +177,31 @@ export async function initializePokemonIndex() {
       }
     }
 
-    // 3. Update active index and cache
+    // 4. Atualiza o índice ativo e o cache
     pokemonIndex = newIndex;
     rebuildIndexes();
     isPokemonIndexLoaded = true;
-    localStorage.setItem('wikipxg_pokemon_cache', JSON.stringify(newIndex));
+    localStorage.setItem('wikipxg_pokemon_cache', JSON.stringify({ lastrevid: latestRevId || currentLastRevId, index: newIndex }));
 
-    console.log(`Loaded ${Object.keys(newIndex).length} Pokémon from Wiki API.`);
+    console.log(`[PokemonService] Atualizado com sucesso para a revisão ${latestRevId}. Carregados ${Object.keys(newIndex).length} Pokémon.`);
   } catch (error) {
-    console.error('Failed to load Pokémon index from Wiki API:', error);
+    console.error('[PokemonService] Falha ao carregar o índice de Pokémon da API da Wiki:', error);
   }
 }
 
 /**
- * Resolve a slash command input like "ursaluna", "mr mime", "mrmime" to a PokemonEntry.
+ * Resolve a entrada de um comando barra como "ursaluna", "mr mime", "mrmime" para um PokemonEntry.
  */
 export function resolvePokemon(input: string): PokemonEntry | null {
   const norm = normalizeName(input);
 
-  // Direct normalized match first
+  // Primeiro tenta a correspondência direta normalizada
   const directKey = normalizedIndex.get(norm);
   if (directKey && pokemonIndex[directKey]) {
     return pokemonIndex[directKey];
   }
 
-  // Fuzzy search fallback
+  // Busca difusa (aproximada) como alternativa secundária
   const results = fuse.search(input);
   if (results.length > 0) {
     const bestKey = results[0].item.key;
@@ -176,11 +212,11 @@ export function resolvePokemon(input: string): PokemonEntry | null {
 }
 
 /**
- * Search pokémon by partial name - returns top N results.
+ * Pesquisa pokémon por nome parcial - retorna os N melhores resultados.
  */
 export function searchPokemon(query: string, limit = 10): Array<{ key: string; entry: PokemonEntry }> {
   if (!query.trim()) {
-    // Return first `limit` entries sorted by dex
+    // Retorna as primeiras entradas (até o limite) ordenadas pela dex
     return Object.entries(pokemonIndex)
       .sort(([, a], [, b]) => (a.dex ?? 9999) - (b.dex ?? 9999))
       .slice(0, limit)
@@ -192,15 +228,15 @@ export function searchPokemon(query: string, limit = 10): Array<{ key: string; e
 }
 
 /**
- * Build WikiText syntax from a PokemonEntry.
+ * Constrói a sintaxe WikiText a partir de um PokemonEntry.
  */
 export function buildPokemonWikiText(entry: PokemonEntry): string {
   return `[[Arquivo:${entry.image}|link=${entry.wikilink}]] '''[[${entry.wikilink}]]'''`;
 }
 
 /**
- * Get sprite URL for a pokemon using the Wiki's native Special:FilePath redirector.
- * This guarantees we get the exact image (Shiny, Mega, Alolan) without needing MD5 hashes.
+ * Obtém a URL do sprite de um pokémon usando o redirecionador nativo Special:FilePath da Wiki.
+ * Isso garante a imagem exata (Shiny, Mega, Alolan) sem a necessidade de hashes MD5.
  */
 export function getPokemonSpriteUrl(entry: PokemonEntry): string {
   if (!entry.image) return '';
