@@ -40,6 +40,7 @@ export interface Token {
   col: number;
   level?: number; // for headings
   depth?: number; // for templates
+  prefix?: string; // for lists
 }
 
 export function tokenize(input: string): Token[] {
@@ -89,7 +90,10 @@ export function tokenize(input: string): Token[] {
       continue;
     }
     if (line.startsWith('!')) {
-      tokens.push({ type: 'table_header', value: line.slice(1).trim(), raw: line, line: lineIdx, col: 0 });
+      const parts = splitTableLine(line.slice(1), '!!');
+      for (const p of parts) {
+        tokens.push({ type: 'table_header', value: p.trim(), raw: p, line: lineIdx, col: 0 });
+      }
       tokens.push({ type: 'newline', value: '\n', raw: '\n', line: lineIdx, col: line.length });
       continue;
     }
@@ -99,14 +103,27 @@ export function tokenize(input: string): Token[] {
       continue;
     }
     if (line.startsWith('|') && !line.startsWith('|-') && !line.startsWith('|+') && !line.startsWith('|}')) {
-      tokens.push({ type: 'table_cell', value: line.slice(1).trim(), raw: line, line: lineIdx, col: 0 });
+      const parts = splitTableLine(line.slice(1), '||');
+      for (const p of parts) {
+        tokens.push({ type: 'table_cell', value: p.trim(), raw: p, line: lineIdx, col: 0 });
+      }
       tokens.push({ type: 'newline', value: '\n', raw: '\n', line: lineIdx, col: line.length });
       continue;
     }
 
     // List items
-    if (/^[*#;:]/.test(line)) {
-      tokens.push({ type: 'list_item', value: line, raw: line, line: lineIdx, col: 0 });
+    const listMatch = line.match(/^([*#;:]+)(.*)$/);
+    if (listMatch) {
+      const prefix = listMatch[1];
+      const contentText = listMatch[2];
+      tokens.push({
+        type: 'list_item',
+        value: contentText,
+        raw: line,
+        line: lineIdx,
+        col: 0,
+        prefix,
+      });
       tokens.push({ type: 'newline', value: '\n', raw: '\n', line: lineIdx, col: line.length });
       continue;
     }
@@ -143,6 +160,17 @@ export function tokenizeInline(text: string, lineIdx: number): Token[] {
   };
 
   while (i < text.length) {
+    // HTML tags like <br>, <center>, </center>
+    const tagMatch = text.slice(i).match(/^<\/?(br|center|code|span|div)[^>]*>/i);
+    if (tagMatch) {
+      flush();
+      const raw = tagMatch[0];
+      tokens.push({ type: 'html_tag', value: raw, raw, line: lineIdx, col: i });
+      col = i + raw.length;
+      i += raw.length;
+      continue;
+    }
+
     // File / Category links [[Arquivo:...]] [[Categoria:...]]
     if (text.startsWith('[[', i)) {
       flush();
@@ -225,4 +253,35 @@ export function tokenizeInline(text: string, lineIdx: number): Token[] {
 
   flush();
   return tokens;
+}
+
+function splitTableLine(line: string, separator: string): string[] {
+  const parts: string[] = [];
+  let startIdx = 0;
+  let bracketDepth = 0;
+  let braceDepth = 0;
+  const sepLen = separator.length;
+
+  for (let i = 0; i <= line.length - sepLen; i++) {
+    const char = line[i];
+    if (char === '[' && line[i+1] === '[') {
+      bracketDepth++;
+      i++;
+    } else if (char === ']' && line[i+1] === ']') {
+      bracketDepth = Math.max(0, bracketDepth - 1);
+      i++;
+    } else if (char === '{' && line[i+1] === '{') {
+      braceDepth++;
+      i++;
+    } else if (char === '}' && line[i+1] === '}') {
+      braceDepth = Math.max(0, braceDepth - 1);
+      i++;
+    } else if (bracketDepth === 0 && braceDepth === 0 && line.substring(i, i + sepLen) === separator) {
+      parts.push(line.slice(startIdx, i));
+      startIdx = i + sepLen;
+      i += sepLen - 1;
+    }
+  }
+  parts.push(line.slice(startIdx));
+  return parts;
 }

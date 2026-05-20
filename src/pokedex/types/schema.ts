@@ -25,6 +25,7 @@ export interface MoveEntry {
   element: string;
   clan: string;
   isDifferentPvE: boolean;
+  wildOnly?: boolean;
 }
 
 export interface EffectivenessData {
@@ -33,6 +34,7 @@ export interface EffectivenessData {
   normal: string;
   ineffective: string;
   veryIneffective: string;
+  nulo: string;
 }
 
 export interface AltVersionEntry {

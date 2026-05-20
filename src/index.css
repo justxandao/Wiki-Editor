@@ -508,21 +508,25 @@ body {
 
 .wiki-preview table {
   border-collapse: collapse;
-  width: 100%;
-  margin: 16px 0;
+  margin: 16px auto;
+}
+.wiki-preview table.wikitable {
+  border: 1px solid rgba(188, 140, 255, 0.25);
+  background-color: var(--bg-secondary);
 }
 .wiki-preview table.wikitable th,
 .wiki-preview table.wikitable td {
-  border: 1px solid var(--border-default);
-  padding: 8px 12px;
-  text-align: left;
+  border: 1px solid rgba(188, 140, 255, 0.2);
+  padding: 6px 12px;
+  vertical-align: middle;
 }
 .wiki-preview table.wikitable th {
-  background: var(--bg-tertiary);
+  background-color: rgba(188, 140, 255, 0.15);
+  color: var(--accent-purple);
   font-weight: 600;
 }
 .wiki-preview table.wikitable tr:nth-child(even) td {
-  background: var(--bg-secondary);
+  background-color: rgba(255, 255, 255, 0.01);
 }
 
 .wiki-preview .template-box {

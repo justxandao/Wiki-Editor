@@ -1,18 +1,30 @@
-import { create } from 'zustand';
 import { PokedexSchema, MoveEntry, EvolutionEntry, AltVersionEntry } from '../types/schema';
 import { INITIAL_POKEDEX_SCHEMA } from '../schema/schema';
 
-interface PokedexState {
+interface PokedexUIState {
   isOpen: boolean;
-  activeTab: string; // 'builder' | 'json'
-  schema: PokedexSchema;
+  activeTab: string; // 'general' | 'moves' | 'evolutions' | 'altVersions' | 'effectiveness'
+  focusMode: boolean;
+  focusedItemIndex: number | null; // e.g. which move or evolution is currently being edited
+  previewMode: boolean; // For toggling PvP/PvE in preview
+  
   setOpen: (isOpen: boolean) => void;
   setActiveTab: (tab: string) => void;
+  setFocusMode: (isFocused: boolean) => void;
+  setFocusedItem: (index: number | null) => void;
+  setPreviewMode: (isPvP: boolean) => void;
+}
+
+interface PokedexDomainState {
+  schema: PokedexSchema;
   updateGeneralInfo: (field: keyof PokedexSchema['generalInfo'], value: string) => void;
   updateEffectiveness: (field: keyof PokedexSchema['effectiveness'], value: string) => void;
+  setEffectiveness: (data: PokedexSchema['effectiveness']) => void;
   
   // Moves
   setMoves: (moves: MoveEntry[]) => void;
+  addMove: () => void;
+  removeMove: (index: number) => void;
   updateMove: (index: number, field: keyof MoveEntry, value: any) => void;
   toggleMoveIcon: (moveIndex: number, icon: string) => void;
 
@@ -30,12 +42,25 @@ interface PokedexState {
   resetSchema: () => void;
 }
 
-export const usePokedexStore = create<PokedexState>((set) => ({
+import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
+
+export const usePokedexUIStore = create<PokedexUIState>((set) => ({
   isOpen: false,
-  activeTab: 'builder',
-  schema: JSON.parse(JSON.stringify(INITIAL_POKEDEX_SCHEMA)),
+  activeTab: 'general',
+  focusMode: false,
+  focusedItemIndex: null,
+  previewMode: false,
+  
   setOpen: (isOpen) => set({ isOpen }),
-  setActiveTab: (activeTab) => set({ activeTab }),
+  setActiveTab: (activeTab) => set({ activeTab, focusedItemIndex: null }),
+  setFocusMode: (focusMode) => set({ focusMode }),
+  setFocusedItem: (focusedItemIndex) => set({ focusedItemIndex }),
+  setPreviewMode: (previewMode) => set({ previewMode }),
+}));
+
+export const usePokedexStore = create<PokedexDomainState>()(persist((set) => ({
+  schema: JSON.parse(JSON.stringify(INITIAL_POKEDEX_SCHEMA)),
   
   updateGeneralInfo: (field, value) => set((s) => ({
     schema: {
@@ -57,12 +82,45 @@ export const usePokedexStore = create<PokedexState>((set) => ({
     }
   })),
 
+  setEffectiveness: (data) => set((s) => ({
+    schema: {
+      ...s.schema,
+      effectiveness: data
+    }
+  })),
+
   setMoves: (moves) => set((s) => ({
     schema: {
       ...s.schema,
       moves
     }
   })),
+
+  addMove: () => set((s) => {
+    const moves = s.schema.moves;
+    const lastId = moves.length > 0 ? Math.max(...moves.map(m => m.id)) : 0;
+    const slots = ['M1','M2','M3','M4','M5','M6','M7','M8','M9','M10','P'];
+    const nextSlot = slots[moves.length] ?? `M${moves.length + 1}`;
+    const newMove: MoveEntry = {
+      id: lastId + 1,
+      slot: nextSlot,
+      name: '',
+      cooldownPvP: '',
+      cooldownPvE: '',
+      level: '100',
+      icons: [],
+      element: 'Normal1',
+      clan: 'Gardestrike',
+      isDifferentPvE: false,
+    };
+    return { schema: { ...s.schema, moves: [...moves, newMove] } };
+  }),
+
+  removeMove: (index) => set((s) => {
+    const nextMoves = [...s.schema.moves];
+    nextMoves.splice(index, 1);
+    return { schema: { ...s.schema, moves: nextMoves } };
+  }),
 
   updateMove: (index, field, value) => set((s) => {
     const nextMoves = [...s.schema.moves];
@@ -140,4 +198,6 @@ export const usePokedexStore = create<PokedexState>((set) => ({
 
   importSchema: (schema) => set({ schema }),
   resetSchema: () => set({ schema: JSON.parse(JSON.stringify(INITIAL_POKEDEX_SCHEMA)) }),
+}), {
+  name: 'wikipxg-pokedex-builder-storage', // saves to localStorage automatically
 }));

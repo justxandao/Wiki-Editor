@@ -52,12 +52,20 @@ export function renderPokedexWikitext(schema: PokedexSchema): string {
     row += `| rowspan="2" align="right" | ${iconsStr} \n`;
     
     // Element/Clan
-    row += `| rowspan="2" | [[Arquivo:${move.element}.png|${move.element.replace('1', '')}|link=${move.clan}]]\n`;
+    let elemFile = move.element || 'Normal1';
+    if (elemFile === 'Poison') elemFile = 'Poison1';
+    if (elemFile === 'Ghost') elemFile = 'Ghost1';
+    if (elemFile === 'Dark') elemFile = 'Dark1';
+    row += `| rowspan="2" | [[Arquivo:${elemFile}.png|${elemFile.replace('1', '')}|link=${move.clan}]]\n`;
     
-    // Level row
+    // Second row: wild-only label OR level
     row += `|- align="center"${bgColor}\n`;
     row += `| width="10px" |\n`;
-    row += `| align="left" | Level ${move.level}\n\n`;
+    if (move.wildOnly) {
+      row += `| align="left" | '''(Usado apenas por Pokémon selvagem)'''\n\n`;
+    } else {
+      row += `| align="left" | Level ${move.level}\n\n`;
+    }
     
     return row;
   };
@@ -84,7 +92,11 @@ export function renderPokedexWikitext(schema: PokedexSchema): string {
   code += `'''Efetivo:''' ${effectiveness.effective}<br />\n`;
   code += `'''Normal:''' ${effectiveness.normal}<br />\n`;
   code += `'''Inefetivo:''' ${effectiveness.ineffective}<br />\n`;
-  code += `'''Muito Inefetivo:''' ${effectiveness.veryIneffective}<br />\n\n`;
+  code += `'''Muito Inefetivo:''' ${effectiveness.veryIneffective}<br />\n`;
+  if (effectiveness.nulo) {
+    code += `'''Nulo:''' ${effectiveness.nulo}<br />\n`;
+  }
+  code += `\n`;
 
   // Alternate Versions
   code += `== '''Outras Versões''' ==\n\n`;

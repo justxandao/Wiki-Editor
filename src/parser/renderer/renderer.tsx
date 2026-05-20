@@ -40,7 +40,7 @@ function groupParagraphs(nodes: ASTNode[]): ASTNode[] {
       continue;
     }
 
-    const isBlock = ['Heading', 'Table', 'HorizontalRule', 'ListItem', 'Comment', 'Category'].includes(node.type);
+    const isBlock = ['Heading', 'Table', 'HorizontalRule', 'ListItem', 'Comment', 'Category', 'Center'].includes(node.type);
     if (isBlock) {
       flushPara();
       result.push(node);
@@ -61,7 +61,25 @@ function renderNode(node: ASTNode, key: number | string, ctx: RenderContext): Re
     case 'Heading': {
       const tag = `h${node.level ?? 2}` as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
       const id = node.value?.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
-      return React.createElement(tag, { key, id }, node.value);
+      const isEditable = node.level === 2 || node.level === 3;
+      const editEl = isEditable
+        ? React.createElement(
+            'span',
+            { 
+              style: { 
+                fontSize: '11px', 
+                fontWeight: 'normal', 
+                marginLeft: '8px', 
+                color: 'var(--text-muted)',
+                userSelect: 'none'
+              } 
+            },
+            '[',
+            React.createElement('a', { href: '#', style: { color: 'var(--accent-secondary)', textDecoration: 'none' } }, 'editar'),
+            ']'
+          )
+        : null;
+      return React.createElement(tag, { key, id }, node.value, editEl);
     }
 
     case 'Bold':
@@ -69,7 +87,7 @@ function renderNode(node: ASTNode, key: number | string, ctx: RenderContext): Re
         'strong', 
         { key }, 
         node.children && node.children.length > 0 
-          ? node.children.map((child, i) => renderNode(child, `${key}-${i}`)) 
+          ? node.children.map((child, i) => renderNode(child, `${key}-${i}`, ctx)) 
           : node.value
       );
 
@@ -78,7 +96,7 @@ function renderNode(node: ASTNode, key: number | string, ctx: RenderContext): Re
         'em', 
         { key }, 
         node.children && node.children.length > 0 
-          ? node.children.map((child, i) => renderNode(child, `${key}-${i}`)) 
+          ? node.children.map((child, i) => renderNode(child, `${key}-${i}`, ctx)) 
           : node.value
       );
 
@@ -90,7 +108,7 @@ function renderNode(node: ASTNode, key: number | string, ctx: RenderContext): Re
           'em', 
           {}, 
           node.children && node.children.length > 0 
-            ? node.children.map((child, i) => renderNode(child, `${key}-${i}`)) 
+            ? node.children.map((child, i) => renderNode(child, `${key}-${i}`, ctx)) 
             : node.value
         )
       );
@@ -100,35 +118,6 @@ function renderNode(node: ASTNode, key: number | string, ctx: RenderContext): Re
       const display = node.attrs?.display ?? target;
       const href = `https://wiki.pokexgames.com/index.php/${encodeURIComponent(target)}`;
       
-      const normTargetRaw = normalizeName(target);
-      const normTarget = normalizedIndex.get(normTargetRaw) || normTargetRaw;
-      const pokemon = pokemonIndex[normTarget];
-      const iconFile = WIKI_ICONS[normTargetRaw];
-
-      if (pokemon || iconFile) {
-        const imageUrl = pokemon 
-          ? `https://wiki.pokexgames.com/index.php?title=Special:FilePath/${encodeURIComponent(pokemon.image)}`
-          : `https://wiki.pokexgames.com/index.php?title=Special:FilePath/${encodeURIComponent(iconFile)}`;
-
-        return React.createElement(
-          'a',
-          { 
-            key, 
-            href, 
-            target: '_blank', 
-            rel: 'noopener noreferrer', 
-            title: target,
-            style: { fontWeight: 'bold', color: 'var(--accent-primary)', textDecoration: 'none' }
-          },
-          React.createElement('img', { 
-            src: imageUrl, 
-            alt: target, 
-            style: { width: 20, height: 20, verticalAlign: 'middle', marginRight: 4, imageRendering: 'pixelated' } 
-          }),
-          display
-        );
-      }
-
       return React.createElement(
         'a',
         { 
@@ -137,7 +126,7 @@ function renderNode(node: ASTNode, key: number | string, ctx: RenderContext): Re
           target: '_blank', 
           rel: 'noopener noreferrer', 
           title: target,
-          style: { color: 'var(--accent-primary)', textDecoration: 'none' }
+          style: { fontWeight: 'bold', color: 'var(--accent-primary)', textDecoration: 'none' }
         },
         display
       );
@@ -147,6 +136,7 @@ function renderNode(node: ASTNode, key: number | string, ctx: RenderContext): Re
       const filename = node.attrs?.filename ?? '';
       const link = node.attrs?.link;
       const caption = node.attrs?.caption;
+      const width = node.attrs?.width;
 
       // Try to find pokemon sprite via filename
       const spriteUrl = resolveImageUrl(filename);
@@ -155,17 +145,25 @@ function renderNode(node: ASTNode, key: number | string, ctx: RenderContext): Re
         src: spriteUrl,
         alt: caption ?? filename,
         title: caption ?? filename,
-        style: { maxWidth: '100%', imageRendering: 'pixelated' },
+        style: { 
+          width: width ?? 'auto',
+          height: 'auto',
+          maxWidth: width ? '100%' : 'none', 
+          imageRendering: 'pixelated',
+          verticalAlign: 'middle',
+          display: 'inline-block',
+          margin: '2px 4px'
+        },
         onError: (e: React.SyntheticEvent<HTMLImageElement>) => {
           (e.target as HTMLImageElement).style.display = 'none';
         },
       });
 
       if (link) {
-        const href = `https://wiki.pokexgames.com/index.php/${encodeURIComponent(link)}`;
-        return React.createElement('a', { key, href, target: '_blank', rel: 'noopener noreferrer' }, img);
+        const href = link.startsWith('http') ? link : `https://wiki.pokexgames.com/index.php/${encodeURIComponent(link)}`;
+        return React.createElement('a', { key, href, target: '_blank', rel: 'noopener noreferrer', style: { display: 'inline-block', verticalAlign: 'middle' } }, img);
       }
-      return React.createElement('span', { key, style: { display: 'inline-block' } }, img);
+      return React.createElement('span', { key, style: { display: 'inline-block', verticalAlign: 'middle' } }, img);
     }
 
     case 'Template': {
@@ -191,7 +189,20 @@ function renderNode(node: ASTNode, key: number | string, ctx: RenderContext): Re
       return React.createElement('code', { key, style: { color: 'var(--accent-purple)', fontSize: 12 } }, `{{${node.value}}}`);
 
     case 'Table': {
-      const tableClass = `wikitable ${node.attrs?.class ?? ''}`.trim();
+      const rawAttrs = node.attrs?.raw ?? '';
+      const parsedAttrs = parseAttributes(rawAttrs);
+      
+      const tableClass = `wikitable ${parsedAttrs.class ?? ''}`.trim();
+      const width = parsedAttrs.width;
+      const customStyle = parseStyleString(parsedAttrs.style ?? '');
+      
+      const tableStyle: React.CSSProperties = {
+        width: width ?? undefined,
+        borderCollapse: 'collapse',
+        margin: '16px auto',
+        ...customStyle
+      };
+
       const rows: React.ReactNode[] = [];
       let currentRow: ASTNode[] = [];
       let headers: ASTNode[] = [];
@@ -202,7 +213,7 @@ function renderNode(node: ASTNode, key: number | string, ctx: RenderContext): Re
           caption = child;
         } else if (child.type === 'TableRow') {
           if (currentRow.length > 0 || headers.length > 0) {
-            rows.push(buildTableRow(headers, currentRow, rows.length));
+            rows.push(buildTableRow(headers, currentRow, rows.length, ctx));
             currentRow = [];
             headers = [];
           }
@@ -213,24 +224,26 @@ function renderNode(node: ASTNode, key: number | string, ctx: RenderContext): Re
         }
       }
       if (currentRow.length > 0 || headers.length > 0) {
-        rows.push(buildTableRow(headers, currentRow, rows.length));
+        rows.push(buildTableRow(headers, currentRow, rows.length, ctx));
       }
 
       return React.createElement(
         'table',
-        { key, className: tableClass },
+        { key, className: tableClass, style: tableStyle },
         caption ? React.createElement('caption', {}, caption.value) : null,
         React.createElement('tbody', {}, ...rows)
       );
     }
 
     case 'ListItem': {
-      const val = node.value ?? '';
-      const isOrdered = val.startsWith('#');
-      const isDefinition = val.startsWith(';') || val.startsWith(':');
-      const text = val.replace(/^[*#;:]+/, '').trim();
+      const prefix = node.attrs?.prefix ?? '*';
+      const isOrdered = prefix.includes('#');
+      const childrenEls = node.children && node.children.length > 0 
+        ? node.children.map((c, i) => renderNode(c, `${key}-${i}`, ctx))
+        : [node.value ?? ''];
+        
       return React.createElement(isOrdered ? 'ol' : 'ul', { key, style: { margin: '4px 0 4px 24px' } },
-        React.createElement('li', {}, text)
+        React.createElement('li', {}, ...childrenEls)
       );
     }
 
@@ -246,6 +259,30 @@ function renderNode(node: ASTNode, key: number | string, ctx: RenderContext): Re
       );
     }
 
+    case 'Center':
+      return React.createElement(
+        'div',
+        { 
+          key, 
+          style: { 
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: '100%',
+            margin: '16px 0',
+            textAlign: 'center'
+          } 
+        },
+        ...(node.children ?? []).map((c, i) => renderNode(c, `${key}-${i}`, ctx))
+      );
+
+    case 'HTMLTag':
+      if (node.value === 'br') {
+        return React.createElement('br', { key });
+      }
+      return null;
+
     case 'Comment':
       return null; // Don't render HTML comments
 
@@ -257,17 +294,81 @@ function renderNode(node: ASTNode, key: number | string, ctx: RenderContext): Re
   }
 }
 
-function buildTableRow(headers: ASTNode[], cells: ASTNode[], rowKey: number): React.ReactNode {
-  const headerEls = headers.map((h, i) =>
-    React.createElement('th', { key: `h${i}` }, h.value ?? '')
-  );
-  const cellEls = cells.map((c, i) =>
-    React.createElement('td', { key: `c${i}` }, c.value ?? '')
-  );
+function buildTableRow(headers: ASTNode[], cells: ASTNode[], rowKey: number, ctx: RenderContext): React.ReactNode {
+  const headerEls = headers.map((h, i) => {
+    const rawAttrs = h.attrs?.raw ?? '';
+    const parsedAttrs = parseAttributes(rawAttrs);
+    const customStyle = parseStyleString(parsedAttrs.style ?? '');
+    
+    return React.createElement('th', { 
+      key: `h${i}`,
+      colSpan: parsedAttrs.colspan ? parseInt(parsedAttrs.colspan) : undefined,
+      rowSpan: parsedAttrs.rowspan ? parseInt(parsedAttrs.rowspan) : undefined,
+      style: {
+        width: parsedAttrs.width ?? undefined,
+        ...customStyle
+      }
+    }, 
+      h.children && h.children.length > 0 
+        ? h.children.map((child, j) => renderNode(child, `h${i}-${j}`, ctx)) 
+        : h.value ?? ''
+    );
+  });
+  
+  const cellEls = cells.map((c, i) => {
+    const rawAttrs = c.attrs?.raw ?? '';
+    const parsedAttrs = parseAttributes(rawAttrs);
+    const customStyle = parseStyleString(parsedAttrs.style ?? '');
+    
+    return React.createElement('td', { 
+      key: `c${i}`,
+      colSpan: parsedAttrs.colspan ? parseInt(parsedAttrs.colspan) : undefined,
+      rowSpan: parsedAttrs.rowspan ? parseInt(parsedAttrs.rowspan) : undefined,
+      style: {
+        width: parsedAttrs.width ?? undefined,
+        ...customStyle
+      }
+    }, 
+      c.children && c.children.length > 0 
+        ? c.children.map((child, j) => renderNode(child, `c${i}-${j}`, ctx)) 
+        : c.value ?? ''
+    );
+  });
+  
   return React.createElement('tr', { key: rowKey }, ...headerEls, ...cellEls);
 }
 
 function resolveImageUrl(filename: string): string {
   const encoded = encodeURIComponent(filename.trim().replace(/ /g, '_'));
   return `https://wiki.pokexgames.com/index.php?title=Special:FilePath/${encoded}`;
+}
+
+function parseAttributes(attrStr: string): Record<string, string> {
+  const attrs: Record<string, string> = {};
+  if (!attrStr) return attrs;
+
+  const regex = /([a-zA-Z0-9_-]+)(?:=\s*(?:"([^"]*)"|'([^']*)'|([^\s'"]+)))?/g;
+  let match;
+  while ((match = regex.exec(attrStr)) !== null) {
+    const key = match[1].toLowerCase();
+    const val = match[2] ?? match[3] ?? match[4] ?? 'true';
+    attrs[key] = val;
+  }
+  return attrs;
+}
+
+function parseStyleString(styleStr: string): React.CSSProperties {
+  const styles: Record<string, string> = {};
+  if (!styleStr) return styles;
+
+  const declarations = styleStr.split(';');
+  for (const dec of declarations) {
+    const parts = dec.split(':');
+    if (parts.length === 2) {
+      const key = parts[0].trim().replace(/-([a-z])/g, (g) => g[1].toUpperCase());
+      const val = parts[1].trim();
+      styles[key] = val;
+    }
+  }
+  return styles as React.CSSProperties;
 }

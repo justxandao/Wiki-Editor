@@ -2,7 +2,7 @@
 
 Uma IDE online moderna e especializada, construída do zero para facilitar e acelerar a criação e edição de páginas para a [Wiki da PokeXGames](https://wiki.pokexgames.com/). 
 
-Desenvolvido com inspiração em ferramentas modernas como Notion, Obsidian e VSCode, este editor traz produtividade extrema para editores e colaboradores da wiki, abandonando caixas de texto simples em favor de uma experiência rica, preditiva e dinâmica.
+Desenvolvido com inspiração em ferramentas modernas como Notion, Obsidian, VSCode e Linear, este editor traz produtividade extrema para editores e colaboradores da wiki, abandonando caixas de texto simples em favor de uma experiência rica, preditiva e dinâmica.
 
 ---
 
@@ -10,6 +10,20 @@ Desenvolvido com inspiração em ferramentas modernas como Notion, Obsidian e VS
 
 ### 🔮 Live Visual Preview
 Visualize as mudanças em tempo real! O editor possui um parser embutido de WikiText que renderiza tabelas, formatações de texto, listas e, o mais importante, hiperlinks de imagens diretamente na tela de preview.
+
+### 🦖 Pokédex Builder (Visual & Premium Editor)
+Um gerador de tabelas de Pokémon totalmente reformulado com uma interface moderna estilo SaaS (inspirada em Figma, Linear e Vercel):
+*   **Informações Gerais Facilitadas:** Campos intuitivos para nome, descrição, elementos e habilidades de uso do Pokémon.
+*   **Busca Inteligente de Ícones:** Campo integrado que pesquisa na base de dados de Pokémon local e resolve automaticamente a imagem oficial na wiki via `Special:FilePath`.
+*   **Seletor de Tiers:** Dropdown único que pré-configura o nível ideal e a matéria padrão do Pokémon baseado no tier escolhido (Tier 4, Tier 3, Tier 2, Tier 1 ou Tier Lendário).
+*   **Gerenciador de Matéria de Clã:** Sistema com dropdown duplo para selecionar o Clã (Volcanic, Seavell, etc.) e o tipo da matéria (Mastered, Enhanced ou Superior) de forma ágil.
+*   **Controle de Boost:** Escolha de pedras de evolução específicas e definição rápida do tier de boost (`Boost (2)` até `Boost (50)`).
+*   **Lista Dinâmica de Golpes (Moveset):**
+    *   Auto-complete com mais de 1.000 golpes conhecidos, diferenciando versões de golpes colidentes em `AoE` e `Target`.
+    *   Ao definir o nível do Pokémon, todos os seus golpes herdam esse valor automaticamente.
+    *   Ordenação interativa de golpes por meio de controles deslizantes (slider), sem a necessidade de recriar os elementos.
+    *   **Golpes Selvagens:** Opção "Pokémon Selvagem" que substitui a exibição do nível requerido pelo aviso padrão `(Usado apenas por Pokémon selvagem)` na wiki.
+*   **Painel Inspetor Lateral (Live Preview):** Renderizador contextual lateral em tempo real simulando o layout final da wiki em modo PvP ou PvE.
 
 ### 🌐 Integração Dinâmica com a Wiki (Source of Truth)
 O editor abandona bases de dados estáticas. Sempre que é iniciado, ele faz a leitura da [página principal de Pokémon](https://wiki.pokexgames.com/index.php/Pok%C3%A9mon) para mapear todos os Pokémon (incluindo Megas e Alolas) e indexá-los automaticamente.
@@ -67,7 +81,7 @@ A stack foi cuidadosamente escolhida para maximizar performance e modularidade:
    npm run dev
    ```
 
-4. Acesse pelo navegador na porta indicada.
+4. Acesse pelo navegador na porta indicada (`http://localhost:5173`).
 
 ---
 
@@ -78,3 +92,4 @@ A stack foi cuidadosamente escolhida para maximizar performance e modularidade:
 *   `/src/pokemon/`: Serviços que interagem via API com o site oficial da PokéXGames (sincronização de Dex, elementos, arquivos).
 *   `/src/ui/`: Layout da aplicação, painéis (Sidebar, Library) e sistema de abas.
 *   `/src/state/`: Stores (Zustand) que controlam o estado atual do editor.
+*   `/src/pokedex/`: Componentes, tipos, renderizadores e estilos específicos do Pokédex Builder visual.

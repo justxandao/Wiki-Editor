@@ -24,7 +24,7 @@ export function SidebarPanel({ onScrollToBlock }: SidebarPanelProps) {
     const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(schema, null, 2));
     const downloadAnchor = document.createElement('a');
     downloadAnchor.setAttribute("href", dataStr);
-    downloadAnchor.setAttribute("download", `${schema.pokemon || 'pokemon'}-pokedex.json`);
+    downloadAnchor.setAttribute("download", `${schema.generalInfo?.name || 'pokemon'}-pokedex.json`);
     document.body.appendChild(downloadAnchor);
     downloadAnchor.click();
     downloadAnchor.remove();
@@ -42,7 +42,7 @@ export function SidebarPanel({ onScrollToBlock }: SidebarPanelProps) {
     reader.onload = (event) => {
       try {
         const parsed = JSON.parse(event.target?.result as string);
-        if (parsed.pokemon && parsed.general) {
+        if (parsed.generalInfo && parsed.moves) {
           importSchema(parsed);
         } else {
           alert('JSON inválido ou incompatível.');

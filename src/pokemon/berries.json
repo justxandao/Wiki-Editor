@@ -1,0 +1,219 @@
+[
+  {
+    "name": "Passho Berry",
+    "image": "Berrie 1.png",
+    "wikilink": "Passho Berry",
+    "category": "redução de dano",
+    "description": "Reduz o dano sofrido por golpes do tipo Water (Água)"
+  },
+  {
+    "name": "Charti Berry",
+    "image": "Berrie 2.png",
+    "wikilink": "Charti Berry",
+    "category": "redução de dano",
+    "description": "Reduz o dano sofrido por golpes do tipo Rock (Pedra)"
+  },
+  {
+    "name": "Yache Berry",
+    "image": "Berrie 3.png",
+    "wikilink": "Yache Berry",
+    "category": "redução de dano",
+    "description": "Reduz o dano sofrido por golpes do tipo Ice (Gelo)"
+  },
+  {
+    "name": "Tanga Berry",
+    "image": "Berrie 4.png",
+    "wikilink": "Tanga Berry",
+    "category": "redução de dano",
+    "description": "Reduz o dano sofrido por golpes do tipo Bug (Inseto)"
+  },
+  {
+    "name": "Colbur Berry",
+    "image": "Berrie 5.png",
+    "wikilink": "Colbur Berry",
+    "category": "redução de dano",
+    "description": "Reduz o dano sofrido por golpes do tipo Dark (Noturno)"
+  },
+  {
+    "name": "Rindo Berry",
+    "image": "Berrie 6.png",
+    "wikilink": "Rindo Berry",
+    "category": "redução de dano",
+    "description": "Reduz o dano sofrido por golpes do tipo Grass (Planta)"
+  },
+  {
+    "name": "Shuca Berry",
+    "image": "Berrie 7.png",
+    "wikilink": "Shuca Berry",
+    "category": "redução de dano",
+    "description": "Reduz o dano sofrido por golpes do tipo Ground (Terra)"
+  },
+  {
+    "name": "Babiri Berry",
+    "image": "Berrie 8.png",
+    "wikilink": "Babiri Berry",
+    "category": "redução de dano",
+    "description": "Reduz o dano sofrido por golpes do tipo Steel (Aço)"
+  },
+  {
+    "name": "Chople Berry",
+    "image": "Berrie 9.png",
+    "wikilink": "Chople Berry",
+    "category": "redução de dano",
+    "description": "Reduz o dano sofrido por golpes do tipo Fighting (Lutador)"
+  },
+  {
+    "name": "Kasib Berry",
+    "image": "Berrie 10.png",
+    "wikilink": "Kasib Berry",
+    "category": "redução de dano",
+    "description": "Reduz o dano sofrido por golpes do tipo Ghost (Fantasma)"
+  },
+  {
+    "name": "Chilan Berry",
+    "image": "Berrie 11.png",
+    "wikilink": "Chilan Berry",
+    "category": "redução de dano",
+    "description": "Reduz o dano sofrido por golpes do tipo Normal (Normal)"
+  },
+  {
+    "name": "Payapa Berry",
+    "image": "Berrie 12.png",
+    "wikilink": "Payapa Berry",
+    "category": "redução de dano",
+    "description": "Reduz o dano sofrido por golpes do tipo Psychic (Psíquico)"
+  },
+  {
+    "name": "Coba Berry",
+    "image": "Berrie 13.png",
+    "wikilink": "Coba Berry",
+    "category": "redução de dano",
+    "description": "Reduz o dano sofrido por golpes do tipo Flying (Voador)"
+  },
+  {
+    "name": "Wacan Berry",
+    "image": "Berrie 14.png",
+    "wikilink": "Wacan Berry",
+    "category": "redução de dano",
+    "description": "Reduz o dano sofrido por golpes do tipo Electric (Elétrico)"
+  },
+  {
+    "name": "Kebia Berry",
+    "image": "Berrie 15.png",
+    "wikilink": "Kebia Berry",
+    "category": "redução de dano",
+    "description": "Reduz o dano sofrido por golpes do tipo Poison (Veneno)"
+  },
+  {
+    "name": "Haban Berry",
+    "image": "Berrie 25.png",
+    "wikilink": "Haban Berry",
+    "category": "redução de dano",
+    "description": "Reduz o dano sofrido por golpes do tipo Dragon (Dragão)"
+  },
+  {
+    "name": "Occa Berry",
+    "image": "Berrie 16.png",
+    "wikilink": "Occa Berry",
+    "category": "redução de dano",
+    "description": "Reduz o dano sofrido por golpes do tipo Fire (Fogo)"
+  },
+  {
+    "name": "Roseli Berry",
+    "image": "Roseli Berry.png",
+    "wikilink": "Roseli Berry",
+    "category": "redução de dano",
+    "description": "Reduz o dano sofrido por golpes do tipo Fairy (Fada)"
+  },
+  {
+    "name": "Kee Berry",
+    "image": "Kee_berry.png",
+    "wikilink": "Kee Berry",
+    "category": "redução de dano",
+    "description": "Reduz o dano sofrido por golpes do tipo Neutral (Neutro)"
+  },
+  {
+    "name": "Cheri Berry",
+    "image": "Berrie 17.png",
+    "wikilink": "Cheri Berry",
+    "category": "imunidade a status",
+    "description": "Garante imunidade ao status Paralysis (Paralisia)"
+  },
+  {
+    "name": "Aspear Berry",
+    "image": "Berrie 18.png",
+    "wikilink": "Aspear Berry",
+    "category": "imunidade a status",
+    "description": "Garante imunidade ao status Slow (Lentidão) e permite que seu pokémon ande mais rápido embaixo d'água"
+  },
+  {
+    "name": "Pecha Berry",
+    "image": "Berrie 19.png",
+    "wikilink": "Pecha Berry",
+    "category": "imunidade a status",
+    "description": "Garante imunidade ao status Poison (Envenenamento)"
+  },
+  {
+    "name": "Rawst Berry",
+    "image": "Berrie 20.png",
+    "wikilink": "Rawst Berry",
+    "category": "imunidade a status",
+    "description": "Garante imunidade ao status Burn (Queimadura)"
+  },
+  {
+    "name": "Chesto Berry",
+    "image": "Berrie 21.png",
+    "wikilink": "Chesto Berry",
+    "category": "imunidade a status",
+    "description": "Garante imunidade ao status Stun (Atordoamento)"
+  },
+  {
+    "name": "Persim Berry",
+    "image": "Berrie 22.png",
+    "wikilink": "Persim Berry",
+    "category": "imunidade a status",
+    "description": "Garante imunidade ao status Confusion (Confusão)"
+  },
+  {
+    "name": "Nomel Berry",
+    "image": "Nomel berry.png",
+    "wikilink": "Nomel Berry",
+    "category": "imunidade a status",
+    "description": "Garante imunidade ao status Blind (Cegueira)"
+  },
+  {
+    "name": "Lum Berry",
+    "image": "Berrie 23.png",
+    "wikilink": "Lum Berry",
+    "category": "imunidade a status",
+    "description": "Garante imunidade a todos os status negativos"
+  },
+  {
+    "name": "Sitrus Berry",
+    "image": "Berrie 24.png",
+    "wikilink": "Sitrus Berry",
+    "category": "especial",
+    "description": "Ressuscita automaticamente o Pokémon com 50% de HP se derrotado (27h duration, single use)"
+  },
+  {
+    "name": "Red Sitrus Berry",
+    "image": "Red_Sitrus_berry.png",
+    "wikilink": "Red Sitrus Berry",
+    "category": "especial",
+    "description": "Ressuscita automaticamente o Pokémon com 100% de HP se derrotado (27h duration, single use)"
+  },
+  {
+    "name": "Salac Berry",
+    "image": "Salacberry.png",
+    "wikilink": "Salac Berry",
+    "category": "especial",
+    "description": "Aumenta a velocidade do Pokémon em 50 MS (limite máximo de 300 MS)"
+  },
+  {
+    "name": "Ganlon Berry",
+    "image": "Ganlon_berry.png",
+    "wikilink": "Ganlon Berry",
+    "category": "especial",
+    "description": "Reduz o dano recebido conforme a vida do Pokémon diminui (máx 30% HP)"
+  }
+]

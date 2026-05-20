@@ -143,6 +143,33 @@ export function WikiEditor({ content, onChange, tabId }: WikiEditorProps) {
           ...searchKeymap,
           ...completionKeymap,
           indentWithTab,
+          // Custom formatting keybindings
+          {
+            key: 'Mod-b',
+            run: (view) => {
+              const { from, to } = view.state.selection.main;
+              const selText = view.state.doc.sliceString(from, to);
+              const formatted = `'''${selText || 'texto'}'''`;
+              view.dispatch({
+                changes: { from, to, insert: formatted },
+                selection: { anchor: from + formatted.length }
+              });
+              return true;
+            }
+          },
+          {
+            key: 'Mod-i',
+            run: (view) => {
+              const { from, to } = view.state.selection.main;
+              const selText = view.state.doc.sliceString(from, to);
+              const formatted = `''${selText || 'texto'}''`;
+              view.dispatch({
+                changes: { from, to, insert: formatted },
+                selection: { anchor: from + formatted.length }
+              });
+              return true;
+            }
+          },
           // Escape closes slash popup
           {
             key: 'Escape',
@@ -158,10 +185,14 @@ export function WikiEditor({ content, onChange, tabId }: WikiEditorProps) {
 
     const view = new EditorView({ state, parent: containerRef.current });
     viewRef.current = view;
+    (window as any).activeEditorView = view;
 
     return () => {
       view.destroy();
       viewRef.current = null;
+      if ((window as any).activeEditorView === view) {
+        (window as any).activeEditorView = null;
+      }
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tabId]); // Recreate editor when tab changes

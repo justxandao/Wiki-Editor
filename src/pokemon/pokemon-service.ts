@@ -22,7 +22,9 @@ export const WIKI_CLANS = [
 
 export const WIKI_ICONS: Record<string, string> = {};
 [...WIKI_ELEMENTS, ...WIKI_CLANS].forEach(name => {
-  WIKI_ICONS[normalizeName(name)] = `${name}.png`;
+  let fileName = `${name}.png`;
+  if (name === 'Normal') fileName = 'Normal1.png';
+  WIKI_ICONS[normalizeName(name)] = fileName;
 });
 
 export type PokemonIndex = Record<string, PokemonEntry>;

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useEditorStore } from '../../state/editorStore';
 import { searchPokemon, getPokemonSpriteUrl } from '../../pokemon/pokemon-service';
+import { searchBerries, getBerrySpriteUrl, buildBerryWikiText } from '../../pokemon/berry-service';
 
 const LIBRARY_SNIPPETS = [
   { id: 'wikitable', label: 'Wikitable', icon: '📊', category: 'Estruturas',
@@ -19,12 +20,13 @@ const LIBRARY_SNIPPETS = [
     code: '<ref>Fonte aqui</ref>' },
 ];
 
-const TABS = ['Biblioteca', 'Pokémon', 'Outline'] as const;
+const TABS = ['Biblioteca', 'Pokémon', 'Berries', 'Outline'] as const;
 type LibTab = typeof TABS[number];
 
 export function LibraryPanel() {
   const [activeTab, setActiveTab] = useState<LibTab>('Biblioteca');
   const [pokemonQuery, setPokemonQuery] = useState('');
+  const [berryQuery, setBerryQuery] = useState('');
   const activeTabId = useEditorStore(s => s.activeTabId);
   const tabs = useEditorStore(s => s.tabs);
   const updateTabContent = useEditorStore(s => s.updateTabContent);
@@ -32,11 +34,55 @@ export function LibraryPanel() {
   const activeContent = tabs.find(t => t.id === activeTabId)?.content ?? '';
 
   const insertSnippet = (code: string) => {
-    if (!activeTabId) return;
-    updateTabContent(activeTabId, activeContent + '\n' + code);
+    const view = (window as any).activeEditorView;
+    if (view) {
+      const { from, to } = view.state.selection.main;
+      view.dispatch({
+        changes: { from, to, insert: code },
+        selection: { anchor: from + code.length }
+      });
+      view.focus();
+    } else {
+      if (!activeTabId) return;
+      updateTabContent(activeTabId, activeContent + '\n' + code);
+    }
+  };
+
+  const handleSnippetClick = (item: typeof LIBRARY_SNIPPETS[number]) => {
+    const view = (window as any).activeEditorView;
+    if (view) {
+      const { from, to } = view.state.selection.main;
+      const selectedText = view.state.doc.sliceString(from, to);
+      let textToInsert = item.code;
+
+      if (selectedText.length > 0) {
+        if (item.id === 'bold') {
+          textToInsert = `'''${selectedText}'''`;
+        } else if (item.id === 'italic') {
+          textToInsert = `''${selectedText}''`;
+        } else if (item.id === 'link') {
+          textToInsert = `[[${selectedText}]]`;
+        } else if (item.id === 'h2') {
+          textToInsert = `== ${selectedText} ==\n`;
+        } else if (item.id === 'h3') {
+          textToInsert = `=== ${selectedText} ===\n`;
+        } else if (item.id === 'ref') {
+          textToInsert = `<ref>${selectedText}</ref>`;
+        }
+      }
+
+      view.dispatch({
+        changes: { from, to, insert: textToInsert },
+        selection: { anchor: from + textToInsert.length }
+      });
+      view.focus();
+    } else {
+      insertSnippet(item.code);
+    }
   };
 
   const pokeResults = searchPokemon(pokemonQuery, 20);
+  const berryResults = searchBerries(berryQuery, 20);
 
   // Build outline from content
   const outline = React.useMemo(() => {
@@ -99,7 +145,7 @@ export function LibraryPanel() {
                   <div
                     key={item.id}
                     className="library-item"
-                    onClick={() => insertSnippet(item.code)}
+                    onClick={() => handleSnippetClick(item)}
                     title={item.code}
                   >
                     <div className="library-item-icon">
@@ -148,6 +194,49 @@ export function LibraryPanel() {
                   <div style={{ minWidth: 0 }}>
                     <div style={{ fontSize: 13, fontWeight: 500, color: 'var(--text-primary)' }}>{entry.name}</div>
                     <div style={{ fontSize: 11, color: 'var(--text-muted)' }}>#{String(entry.dex).padStart(3, '0')} · {entry.types.join('/')}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {activeTab === 'Berries' && (
+          <div style={{ padding: 8, display: 'flex', flexDirection: 'column', gap: 6 }}>
+            <input
+              value={berryQuery}
+              onChange={e => setBerryQuery(e.target.value)}
+              placeholder="Buscar Berries..."
+              style={{
+                width: '100%',
+                padding: '7px 10px',
+                background: 'var(--bg-primary)',
+                border: '1px solid var(--border-default)',
+                borderRadius: 'var(--radius-md)',
+                color: 'var(--text-primary)',
+                fontSize: 13,
+                fontFamily: 'Inter, sans-serif',
+                outline: 'none',
+              }}
+            />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+              {berryResults.map(entry => (
+                <div
+                  key={entry.name}
+                  className="library-item"
+                  onClick={() => insertSnippet(buildBerryWikiText(entry))}
+                  style={{ display: 'flex', alignItems: 'center', gap: 8 }}
+                >
+                  <img
+                    src={getBerrySpriteUrl(entry)}
+                    alt={entry.name}
+                    style={{ width: 28, height: 28, objectFit: 'contain', imageRendering: 'pixelated', flexShrink: 0 }}
+                  />
+                  <div style={{ minWidth: 0 }}>
+                    <div style={{ fontSize: 13, fontWeight: 500, color: 'var(--text-primary)' }}>{entry.name}</div>
+                    <div style={{ fontSize: 11, color: 'var(--text-muted)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      {entry.category} · {entry.description}
+                    </div>
                   </div>
                 </div>
               ))}

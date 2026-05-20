@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useEditorStore } from '../../state/editorStore';
-import { usePokedexStore } from '../../pokedex/store/pokedexStore';
+import { usePokedexUIStore } from '../../pokedex/store/pokedexStore';
 import {
   LayoutTemplate,
   Moon,
@@ -21,7 +21,7 @@ export function TopBar() {
   const tabs = useEditorStore(s => s.tabs);
   const activeTabId = useEditorStore(s => s.activeTabId);
   const activeTab = tabs.find(t => t.id === activeTabId);
-  const { setOpen: openPokedexBuilder } = usePokedexStore();
+  const { setOpen: openPokedexBuilder } = usePokedexUIStore();
 
   return (
     <header style={{

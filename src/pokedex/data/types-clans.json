@@ -1,0 +1,222 @@
+{
+  "elements": [
+    { "id": "Normal1", "label": "Normal", "file": "Normal1.png" },
+    { "id": "Fire", "label": "Fire", "file": "Fire.png" },
+    { "id": "Water", "label": "Water", "file": "Water.png" },
+    { "id": "Grass", "label": "Grass", "file": "Grass.png" },
+    { "id": "Electric", "label": "Electric", "file": "Electric.png" },
+    { "id": "Ice", "label": "Ice", "file": "Ice.png" },
+    { "id": "Fighting", "label": "Fighting", "file": "Fighting.png" },
+    { "id": "Poison1", "label": "Poison", "file": "Poison1.png" },
+    { "id": "Ground", "label": "Ground", "file": "Ground.png" },
+    { "id": "Flying", "label": "Flying", "file": "Flying.png" },
+    { "id": "Psychic", "label": "Psychic", "file": "Psychic.png" },
+    { "id": "Bug", "label": "Bug", "file": "Bug.png" },
+    { "id": "Rock", "label": "Rock", "file": "Rock.png" },
+    { "id": "Ghost1", "label": "Ghost", "file": "Ghost1.png" },
+    { "id": "Dragon", "label": "Dragon", "file": "Dragon.png" },
+    { "id": "Dark1", "label": "Dark", "file": "Dark1.png" },
+    { "id": "Steel", "label": "Steel", "file": "Steel.png" },
+    { "id": "Fairy", "label": "Fairy", "file": "Fairy.png" },
+    { "id": "Crystal", "label": "Crystal", "file": "Crystal.png" }
+  ],
+  "clans": [
+    {
+      "id": "Volcanic",
+      "label": "Volcanic",
+      "file": "Volcanic1.png",
+      "associatedElement": "Fire",
+      "materiaLevels": {
+        "T4": "Volcanic Mastered",
+        "T3": "Volcanic Enhanced",
+        "T2": "Volcanic Superior",
+        "T1": "Volcanic Mastered",
+        "Lendario": "Volcanic Mastered"
+      }
+    },
+    {
+      "id": "Seavell",
+      "label": "Seavell",
+      "file": "Seavell1.png",
+      "associatedElement": "Water",
+      "materiaLevels": {
+        "T4": "Seavell Mastered",
+        "T3": "Seavell Enhanced",
+        "T2": "Seavell Superior",
+        "T1": "Seavell Mastered",
+        "Lendario": "Seavell Mastered"
+      }
+    },
+    {
+      "id": "Naturia",
+      "label": "Naturia",
+      "file": "Naturia1.png",
+      "associatedElement": "Grass",
+      "materiaLevels": {
+        "T4": "Naturia Mastered",
+        "T3": "Naturia Enhanced",
+        "T2": "Naturia Superior",
+        "T1": "Naturia Mastered",
+        "Lendario": "Naturia Mastered"
+      }
+    },
+    {
+      "id": "Raibolt",
+      "label": "Raibolt",
+      "file": "Raibol1t.png",
+      "associatedElement": "Electric",
+      "materiaLevels": {
+        "T4": "Raibolt Mastered",
+        "T3": "Raibolt Enhanced",
+        "T2": "Raibolt Superior",
+        "T1": "Raibolt Mastered",
+        "Lendario": "Raibolt Mastered"
+      }
+    },
+    {
+      "id": "Orebound",
+      "label": "Orebound",
+      "file": "Orebound1.png",
+      "associatedElement": "Rock",
+      "materiaLevels": {
+        "T4": "Orebound Mastered",
+        "T3": "Orebound Enhanced",
+        "T2": "Orebound Superior",
+        "T1": "Orebound Mastered",
+        "Lendario": "Orebound Mastered"
+      }
+    },
+    {
+      "id": "Wingeon",
+      "label": "Wingeon",
+      "file": "Wingeon1.png",
+      "associatedElement": "Dragon",
+      "materiaLevels": {
+        "T4": "Wingeon Mastered",
+        "T3": "Wingeon Enhanced",
+        "T2": "Wingeon Superior",
+        "T1": "Wingeon Mastered",
+        "Lendario": "Wingeon Mastered"
+      }
+    },
+    {
+      "id": "Malefic",
+      "label": "Malefic",
+      "file": "Malefic1.png",
+      "associatedElement": "Ghost1",
+      "materiaLevels": {
+        "T4": "Malefic Mastered",
+        "T3": "Malefic Enhanced",
+        "T2": "Malefic Superior",
+        "T1": "Malefic Mastered",
+        "Lendario": "Malefic Mastered"
+      }
+    },
+    {
+      "id": "Gardestrike",
+      "label": "Gardestrike",
+      "file": "Gardestrike1.png",
+      "associatedElement": "Fairy",
+      "materiaLevels": {
+        "T4": "Gardestrike Mastered",
+        "T3": "Gardestrike Enhanced",
+        "T2": "Gardestrike Superior",
+        "T1": "Gardestrike Mastered",
+        "Lendario": "Gardestrike Mastered"
+      }
+    },
+    {
+      "id": "Psycraft",
+      "label": "Psycraft",
+      "file": "Psycraft1.png",
+      "associatedElement": "Psychic",
+      "materiaLevels": {
+        "T4": "Psycraft Mastered",
+        "T3": "Psycraft Enhanced",
+        "T2": "Psycraft Superior",
+        "T1": "Psycraft Mastered",
+        "Lendario": "Psycraft Mastered"
+      }
+    },
+    {
+      "id": "Ironhard",
+      "label": "Ironhard",
+      "file": "Ironhard1.png",
+      "associatedElement": "Steel",
+      "materiaLevels": {
+        "T4": "Ironhard Mastered",
+        "T3": "Ironhard Enhanced",
+        "T2": "Ironhard Superior",
+        "T1": "Ironhard Mastered",
+        "Lendario": "Ironhard Mastered"
+      }
+    }
+  ],
+  "materiaTypes": [
+    {
+      "id": "Materia",
+      "label": "Materia",
+      "file": "Materias.gif",
+      "description": "Material utilizado para boostar Pokémon de nível inferior a 80 (Tier 4) ou Tier Lendário.",
+      "usedFor": ["T4", "Lendario"]
+    },
+    {
+      "id": "Enhanced",
+      "label": "Enhanced Materia",
+      "file": "enhanced-materia.gif",
+      "description": "Material utilizado para boostar Pokémon de nível 80 (Tier 3).",
+      "usedFor": ["T3"]
+    },
+    {
+      "id": "Superior",
+      "label": "Superior Materia",
+      "file": "Superior-Materia.gif",
+      "description": "Material usado para boostar Pokémon de nível 100 (Tier 2).",
+      "usedFor": ["T2"]
+    },
+    {
+      "id": "Mastered",
+      "label": "Mastered Materia",
+      "file": "mastered.gif",
+      "description": "Material utilizado para boostar Pokémon de nível 100 (Tier 1).",
+      "usedFor": ["T1"]
+    }
+  ],
+  "tiers": [
+    {
+      "id": "T4",
+      "label": "Tier 4",
+      "level": "80",
+      "materiaType": "Mastered",
+      "description": "Pokémon de nível inferior a 80."
+    },
+    {
+      "id": "T3",
+      "label": "Tier 3",
+      "level": "100",
+      "materiaType": "Enhanced",
+      "description": "Pokémon de nível 80."
+    },
+    {
+      "id": "T2",
+      "label": "Tier 2",
+      "level": "100",
+      "materiaType": "Superior",
+      "description": "Pokémon de nível 100."
+    },
+    {
+      "id": "T1",
+      "label": "Tier 1",
+      "level": "100",
+      "materiaType": "Mastered",
+      "description": "Pokémon de nível 100 (mais forte)."
+    },
+    {
+      "id": "Lendario",
+      "label": "Lendário",
+      "level": "100",
+      "materiaType": "Mastered",
+      "description": "Pokémon lendário."
+    }
+  ]
+}

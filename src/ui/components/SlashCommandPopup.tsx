@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { EditorView } from '@codemirror/view';
 import { searchPokemon, buildPokemonWikiText, getPokemonSpriteUrl, PokemonEntry } from '../../pokemon/pokemon-service';
+import { searchBerries, buildBerryWikiText, getBerrySpriteUrl, BerryEntry } from '../../pokemon/berry-service';
 import { BUILTIN_COMMANDS, SlashCommand, replaceSlashCommand } from '../../editor/slash-commands/slash-commands';
 import Fuse from 'fuse.js';
 
@@ -11,7 +12,7 @@ interface SlashItem {
   icon?: string;
   spriteUrl?: string;
   dex?: number;
-  category: 'pokemon' | 'template' | 'structure' | 'format';
+  category: 'pokemon' | 'berry' | 'template' | 'structure' | 'format' | 'file';
   onSelect: () => void;
 }
 
@@ -31,11 +32,33 @@ const fuse = new Fuse(BUILTIN_COMMANDS, {
 
 const CATEGORY_LABELS: Record<string, string> = {
   pokemon: '⚡ Pokémon',
+  berry: '🍓 Berries',
   template: '📋 Templates',
   structure: '🏗️ Estruturas',
   format: '✏️ Formatação',
   file: '🖼️ Banner da Wiki',
 };
+
+function getRelevanceScore(label: string, query: string): number {
+  const normLabel = label.toLowerCase();
+  const normQuery = query.toLowerCase();
+
+  // 1. Exact match
+  if (normLabel === normQuery) return 0;
+  
+  // 2. Starts with query (prefix match)
+  if (normLabel.startsWith(normQuery)) return 1;
+
+  // 3. One of the words in the label starts with query
+  const words = normLabel.split(/\s+/);
+  if (words.some(w => w.startsWith(normQuery))) return 2;
+
+  // 4. Contains query
+  if (normLabel.includes(normQuery)) return 3;
+
+  // 5. Fallback fuzzy
+  return 4;
+}
 
 export function SlashCommandPopup({ view, query, from, to, position, onClose }: SlashCommandPopupProps) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -106,6 +129,23 @@ export function SlashCommandPopup({ view, query, from, to, position, onClose }: 
       });
     }
 
+    // Berry results (always search)
+    const berryItems: SlashItem[] = [];
+    const berryResults = searchBerries(query, 8);
+    for (const entry of berryResults) {
+      berryItems.push({
+        id: `berry-${entry.name}`,
+        label: entry.name,
+        description: `${entry.category} · ${entry.description}`,
+        spriteUrl: getBerrySpriteUrl(entry),
+        category: 'berry',
+        onSelect: () => {
+          replaceSlashCommand(view, from, to, buildBerryWikiText(entry));
+          onClose();
+        },
+      });
+    }
+
     // Built-in commands - filter by query
     let cmds: SlashCommand[];
     if (!query.trim()) {
@@ -130,8 +170,27 @@ export function SlashCommandPopup({ view, query, from, to, position, onClose }: 
       });
     }
 
-    // Always put specific files first if searching
-    return [...fileItems, ...pokemonItems, ...commandItems];
+    // Sort suggestions by relevance using getRelevanceScore
+    const merged = [...fileItems, ...pokemonItems, ...berryItems, ...commandItems];
+    if (query.trim()) {
+      return merged.sort((a, b) => {
+        const scoreA = getRelevanceScore(a.label, query);
+        const scoreB = getRelevanceScore(b.label, query);
+        if (scoreA !== scoreB) {
+          return scoreA - scoreB;
+        }
+        
+        // Consistent category grouping when similarity score is identical
+        const catOrder: Record<string, number> = { file: 1, pokemon: 2, berry: 3, template: 4, structure: 5, format: 6 };
+        const orderA = catOrder[a.category] ?? 99;
+        const orderB = catOrder[b.category] ?? 99;
+        if (orderA !== orderB) {
+          return orderA - orderB;
+        }
+        return a.label.localeCompare(b.label);
+      });
+    }
+    return merged;
   }, [query, from, to, view, onClose, fileResults]);
 
   // Keyboard navigation
