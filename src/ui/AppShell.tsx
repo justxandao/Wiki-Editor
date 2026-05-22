@@ -8,6 +8,7 @@ import { WikiEditor } from '../editor/WikiEditor';
 import { WikiPreview } from '../preview/components/WikiPreview';
 import { initializePokemonIndex } from '../pokemon/pokemon-service';
 import { PokedexBuilder } from '../pokedex/builder/PokedexBuilder';
+import { TableBuilderModal } from '../saas-table/components/TableBuilderModal';
 
 export function AppShell() {
   const {
@@ -80,11 +81,8 @@ export function AppShell() {
         {showSidebar && (
           <div
             className="sidebar-panel"
-            style={{ width: sidebarWidth, minWidth: 200, maxWidth: 400 }}
+            style={{ width: sidebarWidth, minWidth: 200, maxWidth: 400, display: 'flex', flexDirection: 'column', background: '#111118', borderRight: '1px solid #1e1e2e' }}
           >
-            <div className="sidebar-panel-header">
-              {sidebarPanel === 'library' ? '📚 Biblioteca Wiki' : '🔍 Busca'}
-            </div>
             {sidebarPanel === 'library' && <LibraryPanel />}
             {sidebarPanel === 'search' && <SearchPanel />}
           </div>
@@ -145,6 +143,7 @@ export function AppShell() {
 
       {/* Pokédex Builder Modal */}
       <PokedexBuilder />
+      <TableBuilderModal />
     </div>
   );
 }

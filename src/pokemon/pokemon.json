@@ -6,7 +6,10 @@
       "name": "Bulbasaur",
       "image": "001-Bulbasaur.png",
       "wikilink": "Bulbasaur",
-      "types": [],
+      "types": [
+        "Grass",
+        "Poison"
+      ],
       "aliases": []
     },
     "dugtrio": {
@@ -14,7 +17,9 @@
       "name": "Dugtrio",
       "image": "051-Dugtrio.png",
       "wikilink": "Dugtrio",
-      "types": [],
+      "types": [
+        "Ground"
+      ],
       "aliases": []
     },
     "electrode": {
@@ -22,7 +27,9 @@
       "name": "Electrode",
       "image": "101-Electrode.png",
       "wikilink": "Electrode",
-      "types": [],
+      "types": [
+        "Electric"
+      ],
       "aliases": []
     },
     "ivysaur": {
@@ -30,7 +37,10 @@
       "name": "Ivysaur",
       "image": "002-Ivysaur.png",
       "wikilink": "Ivysaur",
-      "types": [],
+      "types": [
+        "Grass",
+        "Poison"
+      ],
       "aliases": []
     },
     "meowth": {
@@ -38,7 +48,9 @@
       "name": "Meowth",
       "image": "052-Meowth.png",
       "wikilink": "Meowth",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "exeggcute": {
@@ -46,7 +58,10 @@
       "name": "Exeggcute",
       "image": "102-Exeggcute.png",
       "wikilink": "Exeggcute",
-      "types": [],
+      "types": [
+        "Grass",
+        "Psychic"
+      ],
       "aliases": []
     },
     "venusaur": {
@@ -54,7 +69,10 @@
       "name": "Venusaur",
       "image": "003-Venusaur.png",
       "wikilink": "Venusaur",
-      "types": [],
+      "types": [
+        "Grass",
+        "Poison"
+      ],
       "aliases": []
     },
     "persian": {
@@ -62,7 +80,9 @@
       "name": "Persian",
       "image": "053-Persian.png",
       "wikilink": "Persian",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "exeggutor": {
@@ -70,7 +90,10 @@
       "name": "Exeggutor",
       "image": "103-Exeggutor.png",
       "wikilink": "Exeggutor",
-      "types": [],
+      "types": [
+        "Grass",
+        "Psychic"
+      ],
       "aliases": []
     },
     "charmander": {
@@ -78,7 +101,9 @@
       "name": "Charmander",
       "image": "004-Charmander.png",
       "wikilink": "Charmander",
-      "types": [],
+      "types": [
+        "Fire"
+      ],
       "aliases": []
     },
     "psyduck": {
@@ -86,7 +111,9 @@
       "name": "Psyduck",
       "image": "054-Psyduck.png",
       "wikilink": "Psyduck",
-      "types": [],
+      "types": [
+        "Water"
+      ],
       "aliases": []
     },
     "cubone": {
@@ -94,7 +121,9 @@
       "name": "Cubone",
       "image": "104-Cubone.png",
       "wikilink": "Cubone",
-      "types": [],
+      "types": [
+        "Ground"
+      ],
       "aliases": []
     },
     "charmeleon": {
@@ -102,7 +131,9 @@
       "name": "Charmeleon",
       "image": "005-Charmeleon.png",
       "wikilink": "Charmeleon",
-      "types": [],
+      "types": [
+        "Fire"
+      ],
       "aliases": []
     },
     "golduck": {
@@ -110,7 +141,9 @@
       "name": "Golduck",
       "image": "055-Golduck.png",
       "wikilink": "Golduck",
-      "types": [],
+      "types": [
+        "Water"
+      ],
       "aliases": []
     },
     "marowak": {
@@ -118,7 +151,9 @@
       "name": "Marowak",
       "image": "105-Marowak.png",
       "wikilink": "Marowak",
-      "types": [],
+      "types": [
+        "Ground"
+      ],
       "aliases": []
     },
     "charizard": {
@@ -126,7 +161,10 @@
       "name": "Charizard",
       "image": "006-Charizard.png",
       "wikilink": "Charizard",
-      "types": [],
+      "types": [
+        "Fire",
+        "Flying"
+      ],
       "aliases": []
     },
     "mankey": {
@@ -134,7 +172,9 @@
       "name": "Mankey",
       "image": "056-Mankey.png",
       "wikilink": "Mankey",
-      "types": [],
+      "types": [
+        "Fighting"
+      ],
       "aliases": []
     },
     "hitmonlee": {
@@ -142,7 +182,9 @@
       "name": "Hitmonlee",
       "image": "106-HitmonleeNormal.png",
       "wikilink": "Hitmonlee",
-      "types": [],
+      "types": [
+        "Fighting"
+      ],
       "aliases": []
     },
     "squirtle": {
@@ -150,7 +192,9 @@
       "name": "Squirtle",
       "image": "007-Squirtle.png",
       "wikilink": "Squirtle",
-      "types": [],
+      "types": [
+        "Water"
+      ],
       "aliases": []
     },
     "primeape": {
@@ -158,7 +202,9 @@
       "name": "Primeape",
       "image": "057-Primeape.png",
       "wikilink": "Primeape",
-      "types": [],
+      "types": [
+        "Fighting"
+      ],
       "aliases": []
     },
     "hitmonchan": {
@@ -166,7 +212,9 @@
       "name": "Hitmonchan",
       "image": "107-HitmonchanNormal.png",
       "wikilink": "Hitmonchan",
-      "types": [],
+      "types": [
+        "Fighting"
+      ],
       "aliases": []
     },
     "wartortle": {
@@ -174,7 +222,9 @@
       "name": "Wartortle",
       "image": "008-Wartortle.png",
       "wikilink": "Wartortle",
-      "types": [],
+      "types": [
+        "Water"
+      ],
       "aliases": []
     },
     "growlithe": {
@@ -182,7 +232,9 @@
       "name": "Growlithe",
       "image": "058-Growlithe.png",
       "wikilink": "Growlithe",
-      "types": [],
+      "types": [
+        "Fire"
+      ],
       "aliases": []
     },
     "lickitung": {
@@ -190,7 +242,9 @@
       "name": "Lickitung",
       "image": "108-Lickitung.png",
       "wikilink": "Lickitung",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "blastoise": {
@@ -198,7 +252,9 @@
       "name": "Blastoise",
       "image": "0009-Blastoise.png",
       "wikilink": "Blastoise",
-      "types": [],
+      "types": [
+        "Water"
+      ],
       "aliases": []
     },
     "arcanine": {
@@ -206,7 +262,9 @@
       "name": "Arcanine",
       "image": "059-Arcanine.png",
       "wikilink": "Arcanine",
-      "types": [],
+      "types": [
+        "Fire"
+      ],
       "aliases": []
     },
     "koffing": {
@@ -214,7 +272,9 @@
       "name": "Koffing",
       "image": "109-Koffing.png",
       "wikilink": "Koffing",
-      "types": [],
+      "types": [
+        "Poison"
+      ],
       "aliases": []
     },
     "caterpie": {
@@ -222,7 +282,9 @@
       "name": "Caterpie",
       "image": "010-Caterpie.png",
       "wikilink": "Caterpie",
-      "types": [],
+      "types": [
+        "Bug"
+      ],
       "aliases": []
     },
     "poliwag": {
@@ -230,7 +292,9 @@
       "name": "Poliwag",
       "image": "060-Poliwag.png",
       "wikilink": "Poliwag",
-      "types": [],
+      "types": [
+        "Water"
+      ],
       "aliases": []
     },
     "weezing": {
@@ -238,7 +302,9 @@
       "name": "Weezing",
       "image": "110-Weezing.png",
       "wikilink": "Weezing",
-      "types": [],
+      "types": [
+        "Poison"
+      ],
       "aliases": []
     },
     "metapod": {
@@ -246,7 +312,9 @@
       "name": "Metapod",
       "image": "011-Metapod.png",
       "wikilink": "Metapod",
-      "types": [],
+      "types": [
+        "Bug"
+      ],
       "aliases": []
     },
     "poliwhirl": {
@@ -254,7 +322,9 @@
       "name": "Poliwhirl",
       "image": "061-Poliwhirl.png",
       "wikilink": "Poliwhirl",
-      "types": [],
+      "types": [
+        "Water"
+      ],
       "aliases": []
     },
     "rhyhorn": {
@@ -262,7 +332,10 @@
       "name": "Rhyhorn",
       "image": "111-Rhyhorn.png",
       "wikilink": "Rhyhorn",
-      "types": [],
+      "types": [
+        "Ground",
+        "Rock"
+      ],
       "aliases": []
     },
     "butterfree": {
@@ -270,7 +343,10 @@
       "name": "Butterfree",
       "image": "012-Butterfree.png",
       "wikilink": "Butterfree",
-      "types": [],
+      "types": [
+        "Bug",
+        "Flying"
+      ],
       "aliases": []
     },
     "poliwrath": {
@@ -278,7 +354,10 @@
       "name": "Poliwrath",
       "image": "062-Poliwrath.png",
       "wikilink": "Poliwrath",
-      "types": [],
+      "types": [
+        "Water",
+        "Fighting"
+      ],
       "aliases": []
     },
     "rhydon": {
@@ -286,7 +365,10 @@
       "name": "Rhydon",
       "image": "112-Rhydon.png",
       "wikilink": "Rhydon",
-      "types": [],
+      "types": [
+        "Ground",
+        "Rock"
+      ],
       "aliases": []
     },
     "weedle": {
@@ -294,7 +376,10 @@
       "name": "Weedle",
       "image": "013-Weedle.png",
       "wikilink": "Weedle",
-      "types": [],
+      "types": [
+        "Bug",
+        "Poison"
+      ],
       "aliases": []
     },
     "abra": {
@@ -302,7 +387,9 @@
       "name": "Abra",
       "image": "063-Abra.png",
       "wikilink": "Abra",
-      "types": [],
+      "types": [
+        "Psychic"
+      ],
       "aliases": []
     },
     "chansey": {
@@ -310,7 +397,9 @@
       "name": "Chansey",
       "image": "113-Chansey.png",
       "wikilink": "Chansey",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "kakuna": {
@@ -318,7 +407,10 @@
       "name": "Kakuna",
       "image": "014-Kakuna.png",
       "wikilink": "Kakuna",
-      "types": [],
+      "types": [
+        "Bug",
+        "Poison"
+      ],
       "aliases": []
     },
     "kadabra": {
@@ -326,7 +418,9 @@
       "name": "Kadabra",
       "image": "064-Kadabra.png",
       "wikilink": "Kadabra",
-      "types": [],
+      "types": [
+        "Psychic"
+      ],
       "aliases": []
     },
     "tangela": {
@@ -334,7 +428,9 @@
       "name": "Tangela",
       "image": "114-Tangela.png",
       "wikilink": "Tangela",
-      "types": [],
+      "types": [
+        "Grass"
+      ],
       "aliases": []
     },
     "beedrill": {
@@ -342,7 +438,10 @@
       "name": "Beedrill",
       "image": "015-Beedrill.png",
       "wikilink": "Beedrill",
-      "types": [],
+      "types": [
+        "Bug",
+        "Poison"
+      ],
       "aliases": []
     },
     "alakazam": {
@@ -350,7 +449,9 @@
       "name": "Alakazam",
       "image": "065-Alakazam.png",
       "wikilink": "Alakazam",
-      "types": [],
+      "types": [
+        "Psychic"
+      ],
       "aliases": []
     },
     "kangaskhan": {
@@ -358,7 +459,9 @@
       "name": "Kangaskhan",
       "image": "115-Kangaskhan.png",
       "wikilink": "Kangaskhan",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "pidgey": {
@@ -366,7 +469,10 @@
       "name": "Pidgey",
       "image": "016-Pidgey.png",
       "wikilink": "Pidgey",
-      "types": [],
+      "types": [
+        "Normal",
+        "Flying"
+      ],
       "aliases": []
     },
     "machop": {
@@ -374,7 +480,9 @@
       "name": "Machop",
       "image": "066-Machop.png",
       "wikilink": "Machop",
-      "types": [],
+      "types": [
+        "Fighting"
+      ],
       "aliases": []
     },
     "horsea": {
@@ -382,7 +490,9 @@
       "name": "Horsea",
       "image": "116-Horsea.png",
       "wikilink": "Horsea",
-      "types": [],
+      "types": [
+        "Water"
+      ],
       "aliases": []
     },
     "pidgeotto": {
@@ -390,7 +500,10 @@
       "name": "Pidgeotto",
       "image": "017-Pidgeotto.png",
       "wikilink": "Pidgeotto",
-      "types": [],
+      "types": [
+        "Normal",
+        "Flying"
+      ],
       "aliases": []
     },
     "machoke": {
@@ -398,7 +511,9 @@
       "name": "Machoke",
       "image": "067-Machoke.png",
       "wikilink": "Machoke",
-      "types": [],
+      "types": [
+        "Fighting"
+      ],
       "aliases": []
     },
     "seadra": {
@@ -406,7 +521,9 @@
       "name": "Seadra",
       "image": "117-Seadra.png",
       "wikilink": "Seadra",
-      "types": [],
+      "types": [
+        "Water"
+      ],
       "aliases": []
     },
     "pidgeot": {
@@ -414,7 +531,10 @@
       "name": "Pidgeot",
       "image": "018-Pidgeot.png",
       "wikilink": "Pidgeot",
-      "types": [],
+      "types": [
+        "Normal",
+        "Flying"
+      ],
       "aliases": []
     },
     "machamp": {
@@ -422,7 +542,9 @@
       "name": "Machamp",
       "image": "068-Machamp.png",
       "wikilink": "Machamp",
-      "types": [],
+      "types": [
+        "Fighting"
+      ],
       "aliases": []
     },
     "goldeen": {
@@ -430,7 +552,9 @@
       "name": "Goldeen",
       "image": "118-Goldeen.png",
       "wikilink": "Goldeen",
-      "types": [],
+      "types": [
+        "Water"
+      ],
       "aliases": []
     },
     "rattata": {
@@ -438,7 +562,9 @@
       "name": "Rattata",
       "image": "019-Rattata.png",
       "wikilink": "Rattata",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "bellsprout": {
@@ -446,7 +572,10 @@
       "name": "Bellsprout",
       "image": "069-Bellsprout.png",
       "wikilink": "Bellsprout",
-      "types": [],
+      "types": [
+        "Grass",
+        "Poison"
+      ],
       "aliases": []
     },
     "seaking": {
@@ -454,7 +583,9 @@
       "name": "Seaking",
       "image": "119-Seaking.png",
       "wikilink": "Seaking",
-      "types": [],
+      "types": [
+        "Water"
+      ],
       "aliases": []
     },
     "raticate": {
@@ -462,7 +593,9 @@
       "name": "Raticate",
       "image": "020-Raticate.png",
       "wikilink": "Raticate",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "weepinbell": {
@@ -470,7 +603,10 @@
       "name": "Weepinbell",
       "image": "070-Weepinbell.png",
       "wikilink": "Weepinbell",
-      "types": [],
+      "types": [
+        "Grass",
+        "Poison"
+      ],
       "aliases": []
     },
     "staryu": {
@@ -478,7 +614,9 @@
       "name": "Staryu",
       "image": "120-Staryu.png",
       "wikilink": "Staryu",
-      "types": [],
+      "types": [
+        "Water"
+      ],
       "aliases": []
     },
     "spearow": {
@@ -486,7 +624,10 @@
       "name": "Spearow",
       "image": "021-Spearow.png",
       "wikilink": "Spearow",
-      "types": [],
+      "types": [
+        "Normal",
+        "Flying"
+      ],
       "aliases": []
     },
     "victreebel": {
@@ -494,7 +635,10 @@
       "name": "Victreebel",
       "image": "071-Victreebel.png",
       "wikilink": "Victreebel",
-      "types": [],
+      "types": [
+        "Grass",
+        "Poison"
+      ],
       "aliases": []
     },
     "starmie": {
@@ -502,7 +646,10 @@
       "name": "Starmie",
       "image": "121-Starmie.png",
       "wikilink": "Starmie",
-      "types": [],
+      "types": [
+        "Water",
+        "Psychic"
+      ],
       "aliases": []
     },
     "fearow": {
@@ -510,7 +657,10 @@
       "name": "Fearow",
       "image": "022-Fearow.png",
       "wikilink": "Fearow",
-      "types": [],
+      "types": [
+        "Normal",
+        "Flying"
+      ],
       "aliases": []
     },
     "tentacool": {
@@ -518,7 +668,10 @@
       "name": "Tentacool",
       "image": "072-Tentacool.png",
       "wikilink": "Tentacool",
-      "types": [],
+      "types": [
+        "Water",
+        "Poison"
+      ],
       "aliases": []
     },
     "mrmime": {
@@ -526,7 +679,10 @@
       "name": "Mr.Mime",
       "image": "122-Mr.Mime.png",
       "wikilink": "Mr.Mime",
-      "types": [],
+      "types": [
+        "Psychic",
+        "Fairy"
+      ],
       "aliases": []
     },
     "ekans": {
@@ -534,7 +690,9 @@
       "name": "Ekans",
       "image": "023-Ekans.png",
       "wikilink": "Ekans",
-      "types": [],
+      "types": [
+        "Poison"
+      ],
       "aliases": []
     },
     "tentacruel": {
@@ -542,7 +700,10 @@
       "name": "Tentacruel",
       "image": "073-Tentacruel.png",
       "wikilink": "Tentacruel",
-      "types": [],
+      "types": [
+        "Water",
+        "Poison"
+      ],
       "aliases": []
     },
     "scyther": {
@@ -550,7 +711,10 @@
       "name": "Scyther",
       "image": "123-Scyther.png",
       "wikilink": "Scyther",
-      "types": [],
+      "types": [
+        "Bug",
+        "Flying"
+      ],
       "aliases": []
     },
     "arbok": {
@@ -558,7 +722,9 @@
       "name": "Arbok",
       "image": "024-Arbok.png",
       "wikilink": "Arbok",
-      "types": [],
+      "types": [
+        "Poison"
+      ],
       "aliases": []
     },
     "geodude": {
@@ -566,7 +732,10 @@
       "name": "Geodude",
       "image": "074-Geodude.png",
       "wikilink": "Geodude",
-      "types": [],
+      "types": [
+        "Rock",
+        "Ground"
+      ],
       "aliases": []
     },
     "jynx": {
@@ -574,7 +743,10 @@
       "name": "Jynx",
       "image": "124-Jynx.png",
       "wikilink": "Jynx",
-      "types": [],
+      "types": [
+        "Ice",
+        "Psychic"
+      ],
       "aliases": []
     },
     "pikachu": {
@@ -582,7 +754,9 @@
       "name": "Pikachu",
       "image": "025-Pikachu.png",
       "wikilink": "Pikachu",
-      "types": [],
+      "types": [
+        "Electric"
+      ],
       "aliases": []
     },
     "graveler": {
@@ -590,7 +764,10 @@
       "name": "Graveler",
       "image": "075-Graveler.png",
       "wikilink": "Graveler",
-      "types": [],
+      "types": [
+        "Rock",
+        "Ground"
+      ],
       "aliases": []
     },
     "electabuzz": {
@@ -598,7 +775,9 @@
       "name": "Electabuzz",
       "image": "125-Electabuzz.png",
       "wikilink": "Electabuzz",
-      "types": [],
+      "types": [
+        "Electric"
+      ],
       "aliases": []
     },
     "raichu": {
@@ -606,7 +785,9 @@
       "name": "Raichu",
       "image": "026-Raichu.png",
       "wikilink": "Raichu",
-      "types": [],
+      "types": [
+        "Electric"
+      ],
       "aliases": []
     },
     "golem": {
@@ -614,7 +795,10 @@
       "name": "Golem",
       "image": "076-Golem.png",
       "wikilink": "Golem",
-      "types": [],
+      "types": [
+        "Rock",
+        "Ground"
+      ],
       "aliases": []
     },
     "magmar": {
@@ -622,7 +806,9 @@
       "name": "Magmar",
       "image": "126-Magmar.png",
       "wikilink": "Magmar",
-      "types": [],
+      "types": [
+        "Fire"
+      ],
       "aliases": []
     },
     "sandshrew": {
@@ -630,7 +816,9 @@
       "name": "Sandshrew",
       "image": "027-Sandshrew.png",
       "wikilink": "Sandshrew",
-      "types": [],
+      "types": [
+        "Ground"
+      ],
       "aliases": []
     },
     "ponyta": {
@@ -638,7 +826,9 @@
       "name": "Ponyta",
       "image": "077-Ponyta.png",
       "wikilink": "Ponyta",
-      "types": [],
+      "types": [
+        "Fire"
+      ],
       "aliases": []
     },
     "pinsir": {
@@ -646,7 +836,9 @@
       "name": "Pinsir",
       "image": "127-Pinsir.png",
       "wikilink": "Pinsir",
-      "types": [],
+      "types": [
+        "Bug"
+      ],
       "aliases": []
     },
     "sandslash": {
@@ -654,7 +846,9 @@
       "name": "Sandslash",
       "image": "028-Sandslash.png",
       "wikilink": "Sandslash",
-      "types": [],
+      "types": [
+        "Ground"
+      ],
       "aliases": []
     },
     "rapidash": {
@@ -662,7 +856,9 @@
       "name": "Rapidash",
       "image": "078-Rapidash.png",
       "wikilink": "Rapidash",
-      "types": [],
+      "types": [
+        "Fire"
+      ],
       "aliases": []
     },
     "tauros": {
@@ -670,7 +866,9 @@
       "name": "Tauros",
       "image": "128-Tauros.png",
       "wikilink": "Tauros",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "nidoranfe": {
@@ -686,7 +884,10 @@
       "name": "Slowpoke",
       "image": "079-Slowpoke.png",
       "wikilink": "Slowpoke",
-      "types": [],
+      "types": [
+        "Water",
+        "Psychic"
+      ],
       "aliases": []
     },
     "magikarp": {
@@ -694,7 +895,9 @@
       "name": "Magikarp",
       "image": "129-Magikarp.png",
       "wikilink": "Magikarp",
-      "types": [],
+      "types": [
+        "Water"
+      ],
       "aliases": []
     },
     "nidorina": {
@@ -702,7 +905,9 @@
       "name": "Nidorina",
       "image": "030-Nidorina.png",
       "wikilink": "Nidorina",
-      "types": [],
+      "types": [
+        "Poison"
+      ],
       "aliases": []
     },
     "slowbro": {
@@ -710,7 +915,10 @@
       "name": "Slowbro",
       "image": "080-Slowbro.png",
       "wikilink": "Slowbro",
-      "types": [],
+      "types": [
+        "Water",
+        "Psychic"
+      ],
       "aliases": []
     },
     "gyarados": {
@@ -718,7 +926,10 @@
       "name": "Gyarados",
       "image": "130-Gyarados.png",
       "wikilink": "Gyarados",
-      "types": [],
+      "types": [
+        "Water",
+        "Flying"
+      ],
       "aliases": []
     },
     "nidoqueen": {
@@ -726,7 +937,10 @@
       "name": "Nidoqueen",
       "image": "031-Nidoqueen.png",
       "wikilink": "Nidoqueen",
-      "types": [],
+      "types": [
+        "Poison",
+        "Ground"
+      ],
       "aliases": []
     },
     "magnemite": {
@@ -734,7 +948,10 @@
       "name": "Magnemite",
       "image": "081-Magnemite.png",
       "wikilink": "Magnemite",
-      "types": [],
+      "types": [
+        "Electric",
+        "Steel"
+      ],
       "aliases": []
     },
     "lapras": {
@@ -742,7 +959,10 @@
       "name": "Lapras",
       "image": "131-Lapras.png",
       "wikilink": "Lapras",
-      "types": [],
+      "types": [
+        "Water",
+        "Ice"
+      ],
       "aliases": []
     },
     "nidoranma": {
@@ -758,7 +978,10 @@
       "name": "Magneton",
       "image": "082-Magneton.png",
       "wikilink": "Magneton",
-      "types": [],
+      "types": [
+        "Electric",
+        "Steel"
+      ],
       "aliases": []
     },
     "ditto": {
@@ -766,7 +989,9 @@
       "name": "Ditto",
       "image": "132-Ditto.png",
       "wikilink": "Ditto",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "nidorino": {
@@ -774,7 +999,9 @@
       "name": "Nidorino",
       "image": "033-Nidorino.png",
       "wikilink": "Nidorino",
-      "types": [],
+      "types": [
+        "Poison"
+      ],
       "aliases": []
     },
     "farfetchd": {
@@ -782,7 +1009,10 @@
       "name": "Farfetch'D",
       "image": "083-Farfetch-D.png",
       "wikilink": "Farfetch'D",
-      "types": [],
+      "types": [
+        "Normal",
+        "Flying"
+      ],
       "aliases": []
     },
     "eevee": {
@@ -790,7 +1020,9 @@
       "name": "Eevee",
       "image": "133-Eevee.png",
       "wikilink": "Eevee",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "nidoking": {
@@ -798,7 +1030,10 @@
       "name": "Nidoking",
       "image": "034-Nidoking.png",
       "wikilink": "Nidoking",
-      "types": [],
+      "types": [
+        "Poison",
+        "Ground"
+      ],
       "aliases": []
     },
     "doduo": {
@@ -806,7 +1041,10 @@
       "name": "Doduo",
       "image": "084-Doduo.png",
       "wikilink": "Doduo",
-      "types": [],
+      "types": [
+        "Normal",
+        "Flying"
+      ],
       "aliases": []
     },
     "vaporeon": {
@@ -814,7 +1052,9 @@
       "name": "Vaporeon",
       "image": "134-Vaporeon.png",
       "wikilink": "Vaporeon",
-      "types": [],
+      "types": [
+        "Water"
+      ],
       "aliases": []
     },
     "clefairy": {
@@ -822,7 +1062,9 @@
       "name": "Clefairy",
       "image": "035-Clefairy.png",
       "wikilink": "Clefairy",
-      "types": [],
+      "types": [
+        "Fairy"
+      ],
       "aliases": []
     },
     "dodrio": {
@@ -830,7 +1072,10 @@
       "name": "Dodrio",
       "image": "085-Dodrio.png",
       "wikilink": "Dodrio",
-      "types": [],
+      "types": [
+        "Normal",
+        "Flying"
+      ],
       "aliases": []
     },
     "jolteon": {
@@ -838,7 +1083,9 @@
       "name": "Jolteon",
       "image": "135-Jolteon.png",
       "wikilink": "Jolteon",
-      "types": [],
+      "types": [
+        "Electric"
+      ],
       "aliases": []
     },
     "clefable": {
@@ -846,7 +1093,9 @@
       "name": "Clefable",
       "image": "036-Clefable.png",
       "wikilink": "Clefable",
-      "types": [],
+      "types": [
+        "Fairy"
+      ],
       "aliases": []
     },
     "seel": {
@@ -854,7 +1103,9 @@
       "name": "Seel",
       "image": "086-Seel.png",
       "wikilink": "Seel",
-      "types": [],
+      "types": [
+        "Water"
+      ],
       "aliases": []
     },
     "flareon": {
@@ -862,7 +1113,9 @@
       "name": "Flareon",
       "image": "136-Flareon.png",
       "wikilink": "Flareon",
-      "types": [],
+      "types": [
+        "Fire"
+      ],
       "aliases": []
     },
     "vulpix": {
@@ -870,7 +1123,9 @@
       "name": "Vulpix",
       "image": "037-Vulpix.png",
       "wikilink": "Vulpix",
-      "types": [],
+      "types": [
+        "Fire"
+      ],
       "aliases": []
     },
     "dewgong": {
@@ -878,7 +1133,10 @@
       "name": "Dewgong",
       "image": "087-Dewgong.png",
       "wikilink": "Dewgong",
-      "types": [],
+      "types": [
+        "Water",
+        "Ice"
+      ],
       "aliases": []
     },
     "porygon": {
@@ -886,7 +1144,9 @@
       "name": "Porygon",
       "image": "137-Porygon.png",
       "wikilink": "Porygon",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "ninetales": {
@@ -894,7 +1154,9 @@
       "name": "Ninetales",
       "image": "038-Ninetales.png",
       "wikilink": "Ninetales",
-      "types": [],
+      "types": [
+        "Fire"
+      ],
       "aliases": []
     },
     "grimer": {
@@ -902,7 +1164,9 @@
       "name": "Grimer",
       "image": "088-Grimer.png",
       "wikilink": "Grimer",
-      "types": [],
+      "types": [
+        "Poison"
+      ],
       "aliases": []
     },
     "omanyte": {
@@ -910,7 +1174,10 @@
       "name": "Omanyte",
       "image": "138-Omanyte.png",
       "wikilink": "Omanyte",
-      "types": [],
+      "types": [
+        "Rock",
+        "Water"
+      ],
       "aliases": []
     },
     "jigglypuff": {
@@ -918,7 +1185,10 @@
       "name": "Jigglypuff",
       "image": "039-Jigglypuff.png",
       "wikilink": "Jigglypuff",
-      "types": [],
+      "types": [
+        "Normal",
+        "Fairy"
+      ],
       "aliases": []
     },
     "muk": {
@@ -926,7 +1196,9 @@
       "name": "Muk",
       "image": "089-Muk.png",
       "wikilink": "Muk",
-      "types": [],
+      "types": [
+        "Poison"
+      ],
       "aliases": []
     },
     "omastar": {
@@ -934,7 +1206,10 @@
       "name": "Omastar",
       "image": "139-Omastar.png",
       "wikilink": "Omastar",
-      "types": [],
+      "types": [
+        "Rock",
+        "Water"
+      ],
       "aliases": []
     },
     "wigglytuff": {
@@ -942,7 +1217,10 @@
       "name": "Wigglytuff",
       "image": "040-Wigglytuff.png",
       "wikilink": "Wigglytuff",
-      "types": [],
+      "types": [
+        "Normal",
+        "Fairy"
+      ],
       "aliases": []
     },
     "shellder": {
@@ -950,7 +1228,9 @@
       "name": "Shellder",
       "image": "090-Shellder.png",
       "wikilink": "Shellder",
-      "types": [],
+      "types": [
+        "Water"
+      ],
       "aliases": []
     },
     "kabuto": {
@@ -958,7 +1238,10 @@
       "name": "Kabuto",
       "image": "140-Kabuto.png",
       "wikilink": "Kabuto",
-      "types": [],
+      "types": [
+        "Rock",
+        "Water"
+      ],
       "aliases": []
     },
     "zubat": {
@@ -966,7 +1249,10 @@
       "name": "Zubat",
       "image": "041-Zubat.png",
       "wikilink": "Zubat",
-      "types": [],
+      "types": [
+        "Poison",
+        "Flying"
+      ],
       "aliases": []
     },
     "cloyster": {
@@ -974,7 +1260,10 @@
       "name": "Cloyster",
       "image": "091-Cloyster.png",
       "wikilink": "Cloyster",
-      "types": [],
+      "types": [
+        "Water",
+        "Ice"
+      ],
       "aliases": []
     },
     "kabutops": {
@@ -982,7 +1271,10 @@
       "name": "Kabutops",
       "image": "141-Kabutops.png",
       "wikilink": "Kabutops",
-      "types": [],
+      "types": [
+        "Rock",
+        "Water"
+      ],
       "aliases": []
     },
     "golbat": {
@@ -990,7 +1282,10 @@
       "name": "Golbat",
       "image": "042-Golbat.png",
       "wikilink": "Golbat",
-      "types": [],
+      "types": [
+        "Poison",
+        "Flying"
+      ],
       "aliases": []
     },
     "gastly": {
@@ -998,7 +1293,10 @@
       "name": "Gastly",
       "image": "092-Gastly.png",
       "wikilink": "Gastly",
-      "types": [],
+      "types": [
+        "Ghost",
+        "Poison"
+      ],
       "aliases": []
     },
     "aerodactyl": {
@@ -1006,7 +1304,10 @@
       "name": "Aerodactyl",
       "image": "142-Aerodactyl.png",
       "wikilink": "Aerodactyl",
-      "types": [],
+      "types": [
+        "Rock",
+        "Flying"
+      ],
       "aliases": []
     },
     "oddish": {
@@ -1014,7 +1315,10 @@
       "name": "Oddish",
       "image": "043-Oddish.png",
       "wikilink": "Oddish",
-      "types": [],
+      "types": [
+        "Grass",
+        "Poison"
+      ],
       "aliases": []
     },
     "haunter": {
@@ -1022,7 +1326,10 @@
       "name": "Haunter",
       "image": "093-Haunter.png",
       "wikilink": "Haunter",
-      "types": [],
+      "types": [
+        "Ghost",
+        "Poison"
+      ],
       "aliases": []
     },
     "snorlax": {
@@ -1030,7 +1337,9 @@
       "name": "Snorlax",
       "image": "143-Snorlax.png",
       "wikilink": "Snorlax",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "gloom": {
@@ -1038,7 +1347,10 @@
       "name": "Gloom",
       "image": "044-Gloom.png",
       "wikilink": "Gloom",
-      "types": [],
+      "types": [
+        "Grass",
+        "Poison"
+      ],
       "aliases": []
     },
     "gengar": {
@@ -1046,7 +1358,10 @@
       "name": "Gengar",
       "image": "094-Gengar.png",
       "wikilink": "Gengar",
-      "types": [],
+      "types": [
+        "Ghost",
+        "Poison"
+      ],
       "aliases": []
     },
     "articuno": {
@@ -1054,7 +1369,10 @@
       "name": "Articuno",
       "image": "144-Articuno.png",
       "wikilink": "Articuno",
-      "types": [],
+      "types": [
+        "Ice",
+        "Flying"
+      ],
       "aliases": []
     },
     "vileplume": {
@@ -1062,7 +1380,10 @@
       "name": "Vileplume",
       "image": "045-Vileplume.png",
       "wikilink": "Vileplume",
-      "types": [],
+      "types": [
+        "Grass",
+        "Poison"
+      ],
       "aliases": []
     },
     "onix": {
@@ -1070,7 +1391,10 @@
       "name": "Onix",
       "image": "095-Onix.png",
       "wikilink": "Onix",
-      "types": [],
+      "types": [
+        "Rock",
+        "Ground"
+      ],
       "aliases": []
     },
     "zapdos": {
@@ -1078,7 +1402,10 @@
       "name": "Zapdos",
       "image": "145-Zapdos.png",
       "wikilink": "Zapdos",
-      "types": [],
+      "types": [
+        "Electric",
+        "Flying"
+      ],
       "aliases": []
     },
     "paras": {
@@ -1086,7 +1413,10 @@
       "name": "Paras",
       "image": "046-Paras.png",
       "wikilink": "Paras",
-      "types": [],
+      "types": [
+        "Bug",
+        "Grass"
+      ],
       "aliases": []
     },
     "drowzee": {
@@ -1094,7 +1424,9 @@
       "name": "Drowzee",
       "image": "096-Drowzee.png",
       "wikilink": "Drowzee",
-      "types": [],
+      "types": [
+        "Psychic"
+      ],
       "aliases": []
     },
     "moltres": {
@@ -1102,7 +1434,10 @@
       "name": "Moltres",
       "image": "146-Moltres.png",
       "wikilink": "Moltres",
-      "types": [],
+      "types": [
+        "Fire",
+        "Flying"
+      ],
       "aliases": []
     },
     "parasect": {
@@ -1110,7 +1445,10 @@
       "name": "Parasect",
       "image": "047-Parasect.png",
       "wikilink": "Parasect",
-      "types": [],
+      "types": [
+        "Bug",
+        "Grass"
+      ],
       "aliases": []
     },
     "hypno": {
@@ -1118,7 +1456,9 @@
       "name": "Hypno",
       "image": "097-Hypno.png",
       "wikilink": "Hypno",
-      "types": [],
+      "types": [
+        "Psychic"
+      ],
       "aliases": []
     },
     "dratini": {
@@ -1126,7 +1466,9 @@
       "name": "Dratini",
       "image": "147-Dratini.png",
       "wikilink": "Dratini",
-      "types": [],
+      "types": [
+        "Dragon"
+      ],
       "aliases": []
     },
     "venonat": {
@@ -1134,7 +1476,10 @@
       "name": "Venonat",
       "image": "048-Venonat.png",
       "wikilink": "Venonat",
-      "types": [],
+      "types": [
+        "Bug",
+        "Poison"
+      ],
       "aliases": []
     },
     "krabby": {
@@ -1142,7 +1487,9 @@
       "name": "Krabby",
       "image": "098-Krabby.png",
       "wikilink": "Krabby",
-      "types": [],
+      "types": [
+        "Water"
+      ],
       "aliases": []
     },
     "dragonair": {
@@ -1150,7 +1497,9 @@
       "name": "Dragonair",
       "image": "148-Dragonair.png",
       "wikilink": "Dragonair",
-      "types": [],
+      "types": [
+        "Dragon"
+      ],
       "aliases": []
     },
     "venomoth": {
@@ -1158,7 +1507,10 @@
       "name": "Venomoth",
       "image": "049-Venomoth.png",
       "wikilink": "Venomoth",
-      "types": [],
+      "types": [
+        "Bug",
+        "Poison"
+      ],
       "aliases": []
     },
     "kingler": {
@@ -1166,7 +1518,9 @@
       "name": "Kingler",
       "image": "099-Kingler.png",
       "wikilink": "Kingler",
-      "types": [],
+      "types": [
+        "Water"
+      ],
       "aliases": []
     },
     "dragonite": {
@@ -1174,7 +1528,10 @@
       "name": "Dragonite",
       "image": "149-Dragonite.png",
       "wikilink": "Dragonite",
-      "types": [],
+      "types": [
+        "Dragon",
+        "Flying"
+      ],
       "aliases": []
     },
     "diglett": {
@@ -1182,7 +1539,9 @@
       "name": "Diglett",
       "image": "050-Diglett.png",
       "wikilink": "Diglett",
-      "types": [],
+      "types": [
+        "Ground"
+      ],
       "aliases": []
     },
     "voltorb": {
@@ -1190,7 +1549,9 @@
       "name": "Voltorb",
       "image": "100-Voltorb.png",
       "wikilink": "Voltorb",
-      "types": [],
+      "types": [
+        "Electric"
+      ],
       "aliases": []
     },
     "mewtwo": {
@@ -1198,7 +1559,9 @@
       "name": "Mewtwo",
       "image": "150-Mewtwo.png",
       "wikilink": "Mewtwo",
-      "types": [],
+      "types": [
+        "Psychic"
+      ],
       "aliases": []
     },
     "chikorita": {
@@ -1206,7 +1569,9 @@
       "name": "Chikorita",
       "image": "152-Chikorita.png",
       "wikilink": "Chikorita",
-      "types": [],
+      "types": [
+        "Grass"
+      ],
       "aliases": []
     },
     "sudowoodo": {
@@ -1214,7 +1579,9 @@
       "name": "Sudowoodo",
       "image": "185-Sudowoodo.png",
       "wikilink": "Sudowoodo",
-      "types": [],
+      "types": [
+        "Rock"
+      ],
       "aliases": []
     },
     "slugma": {
@@ -1222,7 +1589,9 @@
       "name": "Slugma",
       "image": "218-Slugma.png",
       "wikilink": "Slugma",
-      "types": [],
+      "types": [
+        "Fire"
+      ],
       "aliases": []
     },
     "bayleef": {
@@ -1230,7 +1599,9 @@
       "name": "Bayleef",
       "image": "153-Bayleef.png",
       "wikilink": "Bayleef",
-      "types": [],
+      "types": [
+        "Grass"
+      ],
       "aliases": []
     },
     "politoed": {
@@ -1238,7 +1609,9 @@
       "name": "Politoed",
       "image": "186-Politoed.png",
       "wikilink": "Politoed",
-      "types": [],
+      "types": [
+        "Water"
+      ],
       "aliases": []
     },
     "magcargo": {
@@ -1246,7 +1619,10 @@
       "name": "Magcargo",
       "image": "219-Magcargo.png",
       "wikilink": "Magcargo",
-      "types": [],
+      "types": [
+        "Fire",
+        "Rock"
+      ],
       "aliases": []
     },
     "meganium": {
@@ -1254,7 +1630,9 @@
       "name": "Meganium",
       "image": "154-Meganium.png",
       "wikilink": "Meganium",
-      "types": [],
+      "types": [
+        "Grass"
+      ],
       "aliases": []
     },
     "hoppip": {
@@ -1262,7 +1640,10 @@
       "name": "Hoppip",
       "image": "187-Hoppip.png",
       "wikilink": "Hoppip",
-      "types": [],
+      "types": [
+        "Grass",
+        "Flying"
+      ],
       "aliases": []
     },
     "swinub": {
@@ -1270,7 +1651,10 @@
       "name": "Swinub",
       "image": "220-Swinub.png",
       "wikilink": "Swinub",
-      "types": [],
+      "types": [
+        "Ice",
+        "Ground"
+      ],
       "aliases": []
     },
     "cyndaquil": {
@@ -1278,7 +1662,9 @@
       "name": "Cyndaquil",
       "image": "155-Cyndaquil.png",
       "wikilink": "Cyndaquil",
-      "types": [],
+      "types": [
+        "Fire"
+      ],
       "aliases": []
     },
     "skiploom": {
@@ -1286,7 +1672,10 @@
       "name": "Skiploom",
       "image": "188-Skiploom.png",
       "wikilink": "Skiploom",
-      "types": [],
+      "types": [
+        "Grass",
+        "Flying"
+      ],
       "aliases": []
     },
     "piloswine": {
@@ -1294,7 +1683,10 @@
       "name": "Piloswine",
       "image": "221-Piloswine.png",
       "wikilink": "Piloswine",
-      "types": [],
+      "types": [
+        "Ice",
+        "Ground"
+      ],
       "aliases": []
     },
     "quilava": {
@@ -1302,7 +1694,9 @@
       "name": "Quilava",
       "image": "156-Quilava.png",
       "wikilink": "Quilava",
-      "types": [],
+      "types": [
+        "Fire"
+      ],
       "aliases": []
     },
     "jumpluff": {
@@ -1310,7 +1704,10 @@
       "name": "Jumpluff",
       "image": "189-Jumpluff.png",
       "wikilink": "Jumpluff",
-      "types": [],
+      "types": [
+        "Grass",
+        "Flying"
+      ],
       "aliases": []
     },
     "corsola": {
@@ -1318,7 +1715,10 @@
       "name": "Corsola",
       "image": "222-Corsola.png",
       "wikilink": "Corsola",
-      "types": [],
+      "types": [
+        "Water",
+        "Rock"
+      ],
       "aliases": []
     },
     "typhlosion": {
@@ -1326,7 +1726,9 @@
       "name": "Typhlosion",
       "image": "157-Typhlosion.png",
       "wikilink": "Typhlosion",
-      "types": [],
+      "types": [
+        "Fire"
+      ],
       "aliases": []
     },
     "aipom": {
@@ -1334,7 +1736,9 @@
       "name": "Aipom",
       "image": "190-Aipom.png",
       "wikilink": "Aipom",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "remoraid": {
@@ -1342,7 +1746,9 @@
       "name": "Remoraid",
       "image": "223-Remoraid.png",
       "wikilink": "Remoraid",
-      "types": [],
+      "types": [
+        "Water"
+      ],
       "aliases": []
     },
     "totodile": {
@@ -1350,7 +1756,9 @@
       "name": "Totodile",
       "image": "158-Totodile.png",
       "wikilink": "Totodile",
-      "types": [],
+      "types": [
+        "Water"
+      ],
       "aliases": []
     },
     "sunkern": {
@@ -1358,7 +1766,9 @@
       "name": "Sunkern",
       "image": "191-Sunkern.png",
       "wikilink": "Sunkern",
-      "types": [],
+      "types": [
+        "Grass"
+      ],
       "aliases": []
     },
     "octillery": {
@@ -1366,7 +1776,9 @@
       "name": "Octillery",
       "image": "224-Octillery.png",
       "wikilink": "Octillery",
-      "types": [],
+      "types": [
+        "Water"
+      ],
       "aliases": []
     },
     "croconaw": {
@@ -1374,7 +1786,9 @@
       "name": "Croconaw",
       "image": "159-Croconaw.png",
       "wikilink": "Croconaw",
-      "types": [],
+      "types": [
+        "Water"
+      ],
       "aliases": []
     },
     "sunflora": {
@@ -1382,7 +1796,9 @@
       "name": "Sunflora",
       "image": "192-Sunflora.png",
       "wikilink": "Sunflora",
-      "types": [],
+      "types": [
+        "Grass"
+      ],
       "aliases": []
     },
     "delibird": {
@@ -1390,7 +1806,10 @@
       "name": "Delibird",
       "image": "225-Delibird.png",
       "wikilink": "Delibird",
-      "types": [],
+      "types": [
+        "Ice",
+        "Flying"
+      ],
       "aliases": []
     },
     "feraligatr": {
@@ -1398,7 +1817,9 @@
       "name": "Feraligatr",
       "image": "160-Feraligatr.png",
       "wikilink": "Feraligatr",
-      "types": [],
+      "types": [
+        "Water"
+      ],
       "aliases": []
     },
     "yanma": {
@@ -1406,7 +1827,10 @@
       "name": "Yanma",
       "image": "193-Yanma.png",
       "wikilink": "Yanma",
-      "types": [],
+      "types": [
+        "Bug",
+        "Flying"
+      ],
       "aliases": []
     },
     "mantine": {
@@ -1414,7 +1838,10 @@
       "name": "Mantine",
       "image": "226-Mantine.png",
       "wikilink": "Mantine",
-      "types": [],
+      "types": [
+        "Water",
+        "Flying"
+      ],
       "aliases": []
     },
     "sentret": {
@@ -1422,7 +1849,9 @@
       "name": "Sentret",
       "image": "161-Sentret.png",
       "wikilink": "Sentret",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "wooper": {
@@ -1430,7 +1859,10 @@
       "name": "Wooper",
       "image": "194-Wooper.png",
       "wikilink": "Wooper",
-      "types": [],
+      "types": [
+        "Water",
+        "Ground"
+      ],
       "aliases": []
     },
     "skarmory": {
@@ -1438,7 +1870,10 @@
       "name": "Skarmory",
       "image": "227-Skarmory.png",
       "wikilink": "Skarmory",
-      "types": [],
+      "types": [
+        "Steel",
+        "Flying"
+      ],
       "aliases": []
     },
     "furret": {
@@ -1446,7 +1881,9 @@
       "name": "Furret",
       "image": "162-Furret.png",
       "wikilink": "Furret",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "quagsire": {
@@ -1454,7 +1891,10 @@
       "name": "Quagsire",
       "image": "195-Quagsire.png",
       "wikilink": "Quagsire",
-      "types": [],
+      "types": [
+        "Water",
+        "Ground"
+      ],
       "aliases": []
     },
     "houndour": {
@@ -1462,7 +1902,10 @@
       "name": "Houndour",
       "image": "228-Houndour.png",
       "wikilink": "Houndour",
-      "types": [],
+      "types": [
+        "Dark",
+        "Fire"
+      ],
       "aliases": []
     },
     "hoothoot": {
@@ -1470,7 +1913,10 @@
       "name": "Hoothoot",
       "image": "163-Hoothoot.png",
       "wikilink": "Hoothoot",
-      "types": [],
+      "types": [
+        "Normal",
+        "Flying"
+      ],
       "aliases": []
     },
     "espeon": {
@@ -1478,7 +1924,9 @@
       "name": "Espeon",
       "image": "196-Espeon.png",
       "wikilink": "Espeon",
-      "types": [],
+      "types": [
+        "Psychic"
+      ],
       "aliases": []
     },
     "houndoom": {
@@ -1486,7 +1934,10 @@
       "name": "Houndoom",
       "image": "229-Houndoom.png",
       "wikilink": "Houndoom",
-      "types": [],
+      "types": [
+        "Dark",
+        "Fire"
+      ],
       "aliases": []
     },
     "noctowl": {
@@ -1494,7 +1945,10 @@
       "name": "Noctowl",
       "image": "164-Noctowl.png",
       "wikilink": "Noctowl",
-      "types": [],
+      "types": [
+        "Normal",
+        "Flying"
+      ],
       "aliases": []
     },
     "umbreon": {
@@ -1502,7 +1956,9 @@
       "name": "Umbreon",
       "image": "197-Umbreon.png",
       "wikilink": "Umbreon",
-      "types": [],
+      "types": [
+        "Dark"
+      ],
       "aliases": []
     },
     "kingdra": {
@@ -1510,7 +1966,10 @@
       "name": "Kingdra",
       "image": "230-Kingdra.png",
       "wikilink": "Kingdra",
-      "types": [],
+      "types": [
+        "Water",
+        "Dragon"
+      ],
       "aliases": []
     },
     "ledyba": {
@@ -1518,7 +1977,10 @@
       "name": "Ledyba",
       "image": "165-Ledyba.png",
       "wikilink": "Ledyba",
-      "types": [],
+      "types": [
+        "Bug",
+        "Flying"
+      ],
       "aliases": []
     },
     "murkrow": {
@@ -1526,7 +1988,10 @@
       "name": "Murkrow",
       "image": "198-Murkrow.png",
       "wikilink": "Murkrow",
-      "types": [],
+      "types": [
+        "Dark",
+        "Flying"
+      ],
       "aliases": []
     },
     "phanpy": {
@@ -1534,7 +1999,9 @@
       "name": "Phanpy",
       "image": "231-Phanpy.png",
       "wikilink": "Phanpy",
-      "types": [],
+      "types": [
+        "Ground"
+      ],
       "aliases": []
     },
     "ledian": {
@@ -1542,7 +2009,10 @@
       "name": "Ledian",
       "image": "166-Ledian.png",
       "wikilink": "Ledian",
-      "types": [],
+      "types": [
+        "Bug",
+        "Flying"
+      ],
       "aliases": []
     },
     "slowking": {
@@ -1550,7 +2020,10 @@
       "name": "Slowking",
       "image": "199-Slowking.png",
       "wikilink": "Slowking",
-      "types": [],
+      "types": [
+        "Water",
+        "Psychic"
+      ],
       "aliases": []
     },
     "donphan": {
@@ -1558,7 +2031,9 @@
       "name": "Donphan",
       "image": "232-Donphan.png",
       "wikilink": "Donphan",
-      "types": [],
+      "types": [
+        "Ground"
+      ],
       "aliases": []
     },
     "spinarak": {
@@ -1566,7 +2041,10 @@
       "name": "Spinarak",
       "image": "167-Spinarak.png",
       "wikilink": "Spinarak",
-      "types": [],
+      "types": [
+        "Bug",
+        "Poison"
+      ],
       "aliases": []
     },
     "misdreavus": {
@@ -1574,7 +2052,9 @@
       "name": "Misdreavus",
       "image": "200-Misdreavus.png",
       "wikilink": "Misdreavus",
-      "types": [],
+      "types": [
+        "Ghost"
+      ],
       "aliases": []
     },
     "porygon2": {
@@ -1582,7 +2062,9 @@
       "name": "Porygon2",
       "image": "233-Porygon2.png",
       "wikilink": "Porygon2",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "ariados": {
@@ -1590,7 +2072,10 @@
       "name": "Ariados",
       "image": "168-Ariados.png",
       "wikilink": "Ariados",
-      "types": [],
+      "types": [
+        "Bug",
+        "Poison"
+      ],
       "aliases": []
     },
     "unown": {
@@ -1598,7 +2083,9 @@
       "name": "Unown",
       "image": "201-Unown.png",
       "wikilink": "Unown",
-      "types": [],
+      "types": [
+        "Psychic"
+      ],
       "aliases": []
     },
     "stantler": {
@@ -1606,7 +2093,9 @@
       "name": "Stantler",
       "image": "234-Stantler.png",
       "wikilink": "Stantler",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "crobat": {
@@ -1614,7 +2103,10 @@
       "name": "Crobat",
       "image": "169-Crobat.png",
       "wikilink": "Crobat",
-      "types": [],
+      "types": [
+        "Poison",
+        "Flying"
+      ],
       "aliases": []
     },
     "wobbuffet": {
@@ -1622,7 +2114,9 @@
       "name": "Wobbuffet",
       "image": "202-Wobbuffet.png",
       "wikilink": "Wobbuffet",
-      "types": [],
+      "types": [
+        "Psychic"
+      ],
       "aliases": []
     },
     "smeargle": {
@@ -1630,7 +2124,9 @@
       "name": "Smeargle",
       "image": "235-Smeargle.png",
       "wikilink": "Smeargle",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "chinchou": {
@@ -1638,7 +2134,10 @@
       "name": "Chinchou",
       "image": "170-Chinchou.png",
       "wikilink": "Chinchou",
-      "types": [],
+      "types": [
+        "Water",
+        "Electric"
+      ],
       "aliases": []
     },
     "girafarig": {
@@ -1646,7 +2145,10 @@
       "name": "Girafarig",
       "image": "203-Girafarig.png",
       "wikilink": "Girafarig",
-      "types": [],
+      "types": [
+        "Normal",
+        "Psychic"
+      ],
       "aliases": []
     },
     "tyrogue": {
@@ -1654,7 +2156,9 @@
       "name": "Tyrogue",
       "image": "236-Tyrogue.png",
       "wikilink": "Tyrogue",
-      "types": [],
+      "types": [
+        "Fighting"
+      ],
       "aliases": []
     },
     "lanturn": {
@@ -1662,7 +2166,10 @@
       "name": "Lanturn",
       "image": "171-Lanturn.png",
       "wikilink": "Lanturn",
-      "types": [],
+      "types": [
+        "Water",
+        "Electric"
+      ],
       "aliases": []
     },
     "pineco": {
@@ -1670,7 +2177,9 @@
       "name": "Pineco",
       "image": "204-Pineco.png",
       "wikilink": "Pineco",
-      "types": [],
+      "types": [
+        "Bug"
+      ],
       "aliases": []
     },
     "hitmontop": {
@@ -1678,7 +2187,9 @@
       "name": "Hitmontop",
       "image": "237-HitmontopNormal.png",
       "wikilink": "Hitmontop",
-      "types": [],
+      "types": [
+        "Fighting"
+      ],
       "aliases": []
     },
     "pichu": {
@@ -1686,7 +2197,9 @@
       "name": "Pichu",
       "image": "172-Pichu.png",
       "wikilink": "Pichu",
-      "types": [],
+      "types": [
+        "Electric"
+      ],
       "aliases": []
     },
     "forretress": {
@@ -1694,7 +2207,10 @@
       "name": "Forretress",
       "image": "205-Forretress.png",
       "wikilink": "Forretress",
-      "types": [],
+      "types": [
+        "Bug",
+        "Steel"
+      ],
       "aliases": []
     },
     "smoochum": {
@@ -1702,7 +2218,10 @@
       "name": "Smoochum",
       "image": "238-Smoochum.png",
       "wikilink": "Smoochum",
-      "types": [],
+      "types": [
+        "Ice",
+        "Psychic"
+      ],
       "aliases": []
     },
     "cleffa": {
@@ -1710,7 +2229,9 @@
       "name": "Cleffa",
       "image": "173-Cleffa.png",
       "wikilink": "Cleffa",
-      "types": [],
+      "types": [
+        "Fairy"
+      ],
       "aliases": []
     },
     "dunsparce": {
@@ -1718,7 +2239,9 @@
       "name": "Dunsparce",
       "image": "206-Dunsparce.png",
       "wikilink": "Dunsparce",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "elekid": {
@@ -1726,7 +2249,9 @@
       "name": "Elekid",
       "image": "239-Elekid.png",
       "wikilink": "Elekid",
-      "types": [],
+      "types": [
+        "Electric"
+      ],
       "aliases": []
     },
     "igglybuff": {
@@ -1734,7 +2259,10 @@
       "name": "Igglybuff",
       "image": "174-Igglybuff.png",
       "wikilink": "Igglybuff",
-      "types": [],
+      "types": [
+        "Normal",
+        "Fairy"
+      ],
       "aliases": []
     },
     "gligar": {
@@ -1742,7 +2270,10 @@
       "name": "Gligar",
       "image": "207-Gligar.png",
       "wikilink": "Gligar",
-      "types": [],
+      "types": [
+        "Ground",
+        "Flying"
+      ],
       "aliases": []
     },
     "magby": {
@@ -1750,7 +2281,9 @@
       "name": "Magby",
       "image": "240-Magby.png",
       "wikilink": "Magby",
-      "types": [],
+      "types": [
+        "Fire"
+      ],
       "aliases": []
     },
     "togepi": {
@@ -1758,7 +2291,9 @@
       "name": "Togepi",
       "image": "175-Togepi.png",
       "wikilink": "Togepi",
-      "types": [],
+      "types": [
+        "Fairy"
+      ],
       "aliases": []
     },
     "steelix": {
@@ -1766,7 +2301,10 @@
       "name": "Steelix",
       "image": "208-Steelix.png",
       "wikilink": "Steelix",
-      "types": [],
+      "types": [
+        "Steel",
+        "Ground"
+      ],
       "aliases": []
     },
     "miltank": {
@@ -1774,7 +2312,9 @@
       "name": "Miltank",
       "image": "241-Miltank.png",
       "wikilink": "Miltank",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "togetic": {
@@ -1782,7 +2322,10 @@
       "name": "Togetic",
       "image": "176-Togetic.png",
       "wikilink": "Togetic",
-      "types": [],
+      "types": [
+        "Fairy",
+        "Flying"
+      ],
       "aliases": []
     },
     "snubbull": {
@@ -1790,7 +2333,9 @@
       "name": "Snubbull",
       "image": "209-Snubbull.png",
       "wikilink": "Snubbull",
-      "types": [],
+      "types": [
+        "Fairy"
+      ],
       "aliases": []
     },
     "blissey": {
@@ -1798,7 +2343,9 @@
       "name": "Blissey",
       "image": "242-Blissey.png",
       "wikilink": "Blissey",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "natu": {
@@ -1806,7 +2353,10 @@
       "name": "Natu",
       "image": "177-Natu.png",
       "wikilink": "Natu",
-      "types": [],
+      "types": [
+        "Psychic",
+        "Flying"
+      ],
       "aliases": []
     },
     "granbull": {
@@ -1814,7 +2364,9 @@
       "name": "Granbull",
       "image": "210-Granbull.png",
       "wikilink": "Granbull",
-      "types": [],
+      "types": [
+        "Fairy"
+      ],
       "aliases": []
     },
     "raikou": {
@@ -1822,7 +2374,9 @@
       "name": "Raikou",
       "image": "243-Raikou.png",
       "wikilink": "Raikou",
-      "types": [],
+      "types": [
+        "Electric"
+      ],
       "aliases": []
     },
     "xatu": {
@@ -1830,7 +2384,10 @@
       "name": "Xatu",
       "image": "178-Xatu.png",
       "wikilink": "Xatu",
-      "types": [],
+      "types": [
+        "Psychic",
+        "Flying"
+      ],
       "aliases": []
     },
     "qwilfish": {
@@ -1838,7 +2395,10 @@
       "name": "Qwilfish",
       "image": "211-Qwilfish.png",
       "wikilink": "Qwilfish",
-      "types": [],
+      "types": [
+        "Water",
+        "Poison"
+      ],
       "aliases": []
     },
     "entei": {
@@ -1846,7 +2406,9 @@
       "name": "Entei",
       "image": "244-Entei.png",
       "wikilink": "Entei",
-      "types": [],
+      "types": [
+        "Fire"
+      ],
       "aliases": []
     },
     "mareep": {
@@ -1854,14 +2416,19 @@
       "name": "Mareep",
       "image": "179-Mareep.png",
       "wikilink": "Mareep",
-      "types": [],
+      "types": [
+        "Electric"
+      ],
       "aliases": []
     },
     "scizor": {
       "name": "Scizor",
       "image": "Scizor.png",
       "wikilink": "Scizor",
-      "types": [],
+      "types": [
+        "Bug",
+        "Steel"
+      ],
       "aliases": []
     },
     "suicune": {
@@ -1869,7 +2436,9 @@
       "name": "Suicune",
       "image": "245-Suicune.png",
       "wikilink": "Suicune",
-      "types": [],
+      "types": [
+        "Water"
+      ],
       "aliases": []
     },
     "flaaffy": {
@@ -1877,7 +2446,9 @@
       "name": "Flaaffy",
       "image": "180-Flaaffy.png",
       "wikilink": "Flaaffy",
-      "types": [],
+      "types": [
+        "Electric"
+      ],
       "aliases": []
     },
     "shuckle": {
@@ -1885,7 +2456,10 @@
       "name": "Shuckle",
       "image": "213-Shuckle.png",
       "wikilink": "Shuckle",
-      "types": [],
+      "types": [
+        "Bug",
+        "Rock"
+      ],
       "aliases": []
     },
     "larvitar": {
@@ -1893,7 +2467,10 @@
       "name": "Larvitar",
       "image": "246-Larvitar.png",
       "wikilink": "Larvitar",
-      "types": [],
+      "types": [
+        "Rock",
+        "Ground"
+      ],
       "aliases": []
     },
     "ampharos": {
@@ -1901,7 +2478,9 @@
       "name": "Ampharos",
       "image": "181-Ampharos.png",
       "wikilink": "Ampharos",
-      "types": [],
+      "types": [
+        "Electric"
+      ],
       "aliases": []
     },
     "heracross": {
@@ -1909,7 +2488,10 @@
       "name": "Heracross",
       "image": "214-Heracross.png",
       "wikilink": "Heracross",
-      "types": [],
+      "types": [
+        "Bug",
+        "Fighting"
+      ],
       "aliases": []
     },
     "pupitar": {
@@ -1917,7 +2499,10 @@
       "name": "Pupitar",
       "image": "247-Pupitar.png",
       "wikilink": "Pupitar",
-      "types": [],
+      "types": [
+        "Rock",
+        "Ground"
+      ],
       "aliases": []
     },
     "bellossom": {
@@ -1925,7 +2510,9 @@
       "name": "Bellossom",
       "image": "182-Bellossom.png",
       "wikilink": "Bellossom",
-      "types": [],
+      "types": [
+        "Grass"
+      ],
       "aliases": []
     },
     "sneasel": {
@@ -1933,7 +2520,10 @@
       "name": "Sneasel",
       "image": "215-Sneasel.png",
       "wikilink": "Sneasel",
-      "types": [],
+      "types": [
+        "Dark",
+        "Ice"
+      ],
       "aliases": []
     },
     "tyranitar": {
@@ -1941,7 +2531,10 @@
       "name": "Tyranitar",
       "image": "248-Tyranitar.png",
       "wikilink": "Tyranitar",
-      "types": [],
+      "types": [
+        "Rock",
+        "Dark"
+      ],
       "aliases": []
     },
     "marill": {
@@ -1949,7 +2542,10 @@
       "name": "Marill",
       "image": "183-Marill.png",
       "wikilink": "Marill",
-      "types": [],
+      "types": [
+        "Water",
+        "Fairy"
+      ],
       "aliases": []
     },
     "teddiursa": {
@@ -1957,7 +2553,9 @@
       "name": "Teddiursa",
       "image": "216-Teddiursa.png",
       "wikilink": "Teddiursa",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "lugia": {
@@ -1965,7 +2563,10 @@
       "name": "Lugia",
       "image": "249-Lugia.png",
       "wikilink": "Lugia",
-      "types": [],
+      "types": [
+        "Psychic",
+        "Flying"
+      ],
       "aliases": []
     },
     "azumarill": {
@@ -1973,7 +2574,10 @@
       "name": "Azumarill",
       "image": "184-Azumarill.png",
       "wikilink": "Azumarill",
-      "types": [],
+      "types": [
+        "Water",
+        "Fairy"
+      ],
       "aliases": []
     },
     "ursaring": {
@@ -1981,7 +2585,9 @@
       "name": "Ursaring",
       "image": "217-Ursaring.png",
       "wikilink": "Ursaring",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "hooh": {
@@ -1989,7 +2595,10 @@
       "name": "Ho-oh",
       "image": "250-Ho-Oh.png",
       "wikilink": "Ho-oh",
-      "types": [],
+      "types": [
+        "Fire",
+        "Flying"
+      ],
       "aliases": []
     },
     "celebi": {
@@ -1997,7 +2606,10 @@
       "name": "Celebi",
       "image": "251-Celebi.png",
       "wikilink": "Celebi",
-      "types": [],
+      "types": [
+        "Psychic",
+        "Grass"
+      ],
       "aliases": []
     },
     "treecko": {
@@ -2005,7 +2617,9 @@
       "name": "Treecko",
       "image": "252-Treecko.png",
       "wikilink": "Treecko",
-      "types": [],
+      "types": [
+        "Grass"
+      ],
       "aliases": []
     },
     "azurill": {
@@ -2013,7 +2627,10 @@
       "name": "Azurill",
       "image": "298 - Azurill.png",
       "wikilink": "Azurill",
-      "types": [],
+      "types": [
+        "Normal",
+        "Fairy"
+      ],
       "aliases": []
     },
     "claydol": {
@@ -2021,7 +2638,10 @@
       "name": "Claydol",
       "image": "344-Claydol.png",
       "wikilink": "Claydol",
-      "types": [],
+      "types": [
+        "Ground",
+        "Psychic"
+      ],
       "aliases": []
     },
     "grovyle": {
@@ -2029,7 +2649,9 @@
       "name": "Grovyle",
       "image": "253-Grovyle.png",
       "wikilink": "Grovyle",
-      "types": [],
+      "types": [
+        "Grass"
+      ],
       "aliases": []
     },
     "nosepass": {
@@ -2037,7 +2659,9 @@
       "name": "Nosepass",
       "image": "299-Nosepass.png",
       "wikilink": "Nosepass",
-      "types": [],
+      "types": [
+        "Rock"
+      ],
       "aliases": []
     },
     "lileep": {
@@ -2045,7 +2669,10 @@
       "name": "Lileep",
       "image": "345-Lileep.png",
       "wikilink": "Lileep",
-      "types": [],
+      "types": [
+        "Rock",
+        "Grass"
+      ],
       "aliases": []
     },
     "sceptile": {
@@ -2053,7 +2680,9 @@
       "name": "Sceptile",
       "image": "254-Sceptile.png",
       "wikilink": "Sceptile",
-      "types": [],
+      "types": [
+        "Grass"
+      ],
       "aliases": []
     },
     "cradily": {
@@ -2061,7 +2690,10 @@
       "name": "Cradily",
       "image": "346-Cradily.png",
       "wikilink": "Cradily",
-      "types": [],
+      "types": [
+        "Rock",
+        "Grass"
+      ],
       "aliases": []
     },
     "torchic": {
@@ -2069,7 +2701,9 @@
       "name": "Torchic",
       "image": "255-Torchic.png",
       "wikilink": "Torchic",
-      "types": [],
+      "types": [
+        "Fire"
+      ],
       "aliases": []
     },
     "anorith": {
@@ -2077,7 +2711,10 @@
       "name": "Anorith",
       "image": "347-Anorith.png",
       "wikilink": "Anorith",
-      "types": [],
+      "types": [
+        "Rock",
+        "Bug"
+      ],
       "aliases": []
     },
     "combusken": {
@@ -2085,7 +2722,10 @@
       "name": "Combusken",
       "image": "256-Combusken.png",
       "wikilink": "Combusken",
-      "types": [],
+      "types": [
+        "Fire",
+        "Fighting"
+      ],
       "aliases": []
     },
     "sableye": {
@@ -2093,7 +2733,10 @@
       "name": "Sableye",
       "image": "302-Sableye.png",
       "wikilink": "Sableye",
-      "types": [],
+      "types": [
+        "Dark",
+        "Ghost"
+      ],
       "aliases": []
     },
     "armaldo": {
@@ -2101,7 +2744,10 @@
       "name": "Armaldo",
       "image": "348-Armaldo.png",
       "wikilink": "Armaldo",
-      "types": [],
+      "types": [
+        "Rock",
+        "Bug"
+      ],
       "aliases": []
     },
     "blaziken": {
@@ -2109,7 +2755,10 @@
       "name": "Blaziken",
       "image": "257-Blaziken.png",
       "wikilink": "Blaziken",
-      "types": [],
+      "types": [
+        "Fire",
+        "Fighting"
+      ],
       "aliases": []
     },
     "mawile": {
@@ -2117,7 +2766,10 @@
       "name": "Mawile",
       "image": "303-Mawile.png",
       "wikilink": "Mawile",
-      "types": [],
+      "types": [
+        "Steel",
+        "Fairy"
+      ],
       "aliases": []
     },
     "feebas": {
@@ -2125,7 +2777,9 @@
       "name": "Feebas",
       "image": "349-Feebas.png",
       "wikilink": "Feebas",
-      "types": [],
+      "types": [
+        "Water"
+      ],
       "aliases": []
     },
     "mudkip": {
@@ -2133,7 +2787,9 @@
       "name": "Mudkip",
       "image": "258-Mudkip.png",
       "wikilink": "Mudkip",
-      "types": [],
+      "types": [
+        "Water"
+      ],
       "aliases": []
     },
     "aron": {
@@ -2141,7 +2797,10 @@
       "name": "Aron",
       "image": "304-Aron.png",
       "wikilink": "Aron",
-      "types": [],
+      "types": [
+        "Steel",
+        "Rock"
+      ],
       "aliases": []
     },
     "milotic": {
@@ -2149,7 +2808,9 @@
       "name": "Milotic",
       "image": "350-Milotic.png",
       "wikilink": "Milotic",
-      "types": [],
+      "types": [
+        "Water"
+      ],
       "aliases": []
     },
     "marshtomp": {
@@ -2157,7 +2818,10 @@
       "name": "Marshtomp",
       "image": "259-Marshtomp.png",
       "wikilink": "Marshtomp",
-      "types": [],
+      "types": [
+        "Water",
+        "Ground"
+      ],
       "aliases": []
     },
     "lairon": {
@@ -2165,7 +2829,10 @@
       "name": "Lairon",
       "image": "305-Lairon.png",
       "wikilink": "Lairon",
-      "types": [],
+      "types": [
+        "Steel",
+        "Rock"
+      ],
       "aliases": []
     },
     "castform": {
@@ -2173,7 +2840,9 @@
       "name": "Castform",
       "image": "351-Castform.png",
       "wikilink": "Castform",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "swampert": {
@@ -2181,7 +2850,10 @@
       "name": "Swampert",
       "image": "260-Swampert.png",
       "wikilink": "Swampert",
-      "types": [],
+      "types": [
+        "Water",
+        "Ground"
+      ],
       "aliases": []
     },
     "aggron": {
@@ -2189,7 +2861,10 @@
       "name": "Aggron",
       "image": "306-Aggron.png",
       "wikilink": "Aggron",
-      "types": [],
+      "types": [
+        "Steel",
+        "Rock"
+      ],
       "aliases": []
     },
     "kecleon": {
@@ -2197,7 +2872,9 @@
       "name": "Kecleon",
       "image": "352-Kecleon.png",
       "wikilink": "Kecleon",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "poochyena": {
@@ -2205,7 +2882,9 @@
       "name": "Poochyena",
       "image": "261-Poochyena.png",
       "wikilink": "Poochyena",
-      "types": [],
+      "types": [
+        "Dark"
+      ],
       "aliases": []
     },
     "meditite": {
@@ -2213,7 +2892,10 @@
       "name": "Meditite",
       "image": "307-Meditite.png",
       "wikilink": "Meditite",
-      "types": [],
+      "types": [
+        "Fighting",
+        "Psychic"
+      ],
       "aliases": []
     },
     "shuppet": {
@@ -2221,7 +2903,9 @@
       "name": "Shuppet",
       "image": "353-Shuppet.png",
       "wikilink": "Shuppet",
-      "types": [],
+      "types": [
+        "Ghost"
+      ],
       "aliases": []
     },
     "mightyena": {
@@ -2229,7 +2913,9 @@
       "name": "Mightyena",
       "image": "262-Mightyena.png",
       "wikilink": "Mightyena",
-      "types": [],
+      "types": [
+        "Dark"
+      ],
       "aliases": []
     },
     "medicham": {
@@ -2237,7 +2923,10 @@
       "name": "Medicham",
       "image": "308-Medicham.png",
       "wikilink": "Medicham",
-      "types": [],
+      "types": [
+        "Fighting",
+        "Psychic"
+      ],
       "aliases": []
     },
     "banette": {
@@ -2245,7 +2934,9 @@
       "name": "Banette",
       "image": "354-Banette.png",
       "wikilink": "Banette",
-      "types": [],
+      "types": [
+        "Ghost"
+      ],
       "aliases": []
     },
     "zigzagoon": {
@@ -2253,7 +2944,9 @@
       "name": "Zigzagoon",
       "image": "263_Zigzagoon_sp.png",
       "wikilink": "Zigzagoon",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "electrike": {
@@ -2261,7 +2954,9 @@
       "name": "Electrike",
       "image": "309-Electrike.png",
       "wikilink": "Electrike",
-      "types": [],
+      "types": [
+        "Electric"
+      ],
       "aliases": []
     },
     "duskull": {
@@ -2269,7 +2964,9 @@
       "name": "Duskull",
       "image": "355-Duskull.png",
       "wikilink": "Duskull",
-      "types": [],
+      "types": [
+        "Ghost"
+      ],
       "aliases": []
     },
     "linoone": {
@@ -2277,7 +2974,9 @@
       "name": "Linoone",
       "image": "264_Linoone_sp.png",
       "wikilink": "Linoone",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "manectric": {
@@ -2285,7 +2984,9 @@
       "name": "Manectric",
       "image": "310-Manectric.png",
       "wikilink": "Manectric",
-      "types": [],
+      "types": [
+        "Electric"
+      ],
       "aliases": []
     },
     "dusclops": {
@@ -2293,7 +2994,9 @@
       "name": "Dusclops",
       "image": "356-Dusclops.png",
       "wikilink": "Dusclops",
-      "types": [],
+      "types": [
+        "Ghost"
+      ],
       "aliases": []
     },
     "wurmple": {
@@ -2301,7 +3004,9 @@
       "name": "Wurmple",
       "image": "265_Wurmple_sp.png",
       "wikilink": "Wurmple",
-      "types": [],
+      "types": [
+        "Bug"
+      ],
       "aliases": []
     },
     "plusle": {
@@ -2309,7 +3014,9 @@
       "name": "Plusle",
       "image": "311-Plusle.png",
       "wikilink": "Plusle",
-      "types": [],
+      "types": [
+        "Electric"
+      ],
       "aliases": []
     },
     "tropius": {
@@ -2317,7 +3024,10 @@
       "name": "Tropius",
       "image": "357-Tropius.png",
       "wikilink": "Tropius",
-      "types": [],
+      "types": [
+        "Grass",
+        "Flying"
+      ],
       "aliases": []
     },
     "silcoon": {
@@ -2325,7 +3035,9 @@
       "name": "Silcoon",
       "image": "266_Silcoon_sp.png",
       "wikilink": "Silcoon",
-      "types": [],
+      "types": [
+        "Bug"
+      ],
       "aliases": []
     },
     "minun": {
@@ -2333,7 +3045,9 @@
       "name": "Minun",
       "image": "312-Minun.png",
       "wikilink": "Minun",
-      "types": [],
+      "types": [
+        "Electric"
+      ],
       "aliases": []
     },
     "beautifly": {
@@ -2341,7 +3055,10 @@
       "name": "Beautifly",
       "image": "267-Beautifly.png",
       "wikilink": "Beautifly",
-      "types": [],
+      "types": [
+        "Bug",
+        "Flying"
+      ],
       "aliases": []
     },
     "absol": {
@@ -2349,7 +3066,9 @@
       "name": "Absol",
       "image": "359-Absol.png",
       "wikilink": "Absol",
-      "types": [],
+      "types": [
+        "Dark"
+      ],
       "aliases": []
     },
     "cascoon": {
@@ -2357,7 +3076,9 @@
       "name": "Cascoon",
       "image": "268_Cascoon_sp.png",
       "wikilink": "Cascoon",
-      "types": [],
+      "types": [
+        "Bug"
+      ],
       "aliases": []
     },
     "wynaut": {
@@ -2365,7 +3086,9 @@
       "name": "Wynaut",
       "image": "360-Wynaut.png",
       "wikilink": "Wynaut",
-      "types": [],
+      "types": [
+        "Psychic"
+      ],
       "aliases": []
     },
     "dustox": {
@@ -2373,7 +3096,10 @@
       "name": "Dustox",
       "image": "269_Dustox_sp.png",
       "wikilink": "Dustox",
-      "types": [],
+      "types": [
+        "Bug",
+        "Poison"
+      ],
       "aliases": []
     },
     "roselia": {
@@ -2381,7 +3107,10 @@
       "name": "Roselia",
       "image": "315-Roselia.png",
       "wikilink": "Roselia",
-      "types": [],
+      "types": [
+        "Grass",
+        "Poison"
+      ],
       "aliases": []
     },
     "snorunt": {
@@ -2389,7 +3118,9 @@
       "name": "Snorunt",
       "image": "361-Snorut.png",
       "wikilink": "Snorunt",
-      "types": [],
+      "types": [
+        "Ice"
+      ],
       "aliases": []
     },
     "lotad": {
@@ -2397,7 +3128,10 @@
       "name": "Lotad",
       "image": "270-Lotad.png",
       "wikilink": "Lotad",
-      "types": [],
+      "types": [
+        "Water",
+        "Grass"
+      ],
       "aliases": []
     },
     "gulpin": {
@@ -2405,7 +3139,9 @@
       "name": "Gulpin",
       "image": "316-Gulpin.png",
       "wikilink": "Gulpin",
-      "types": [],
+      "types": [
+        "Poison"
+      ],
       "aliases": []
     },
     "glalie": {
@@ -2413,7 +3149,9 @@
       "name": "Glalie",
       "image": "362-Glalie.png",
       "wikilink": "Glalie",
-      "types": [],
+      "types": [
+        "Ice"
+      ],
       "aliases": []
     },
     "lombre": {
@@ -2421,7 +3159,10 @@
       "name": "Lombre",
       "image": "271-Lombre.png",
       "wikilink": "Lombre",
-      "types": [],
+      "types": [
+        "Water",
+        "Grass"
+      ],
       "aliases": []
     },
     "swalot": {
@@ -2429,7 +3170,9 @@
       "name": "Swalot",
       "image": "317-Swalot.png",
       "wikilink": "Swalot",
-      "types": [],
+      "types": [
+        "Poison"
+      ],
       "aliases": []
     },
     "spheal": {
@@ -2437,7 +3180,10 @@
       "name": "Spheal",
       "image": "363-Spheal.png",
       "wikilink": "Spheal",
-      "types": [],
+      "types": [
+        "Ice",
+        "Water"
+      ],
       "aliases": []
     },
     "ludicolo": {
@@ -2445,7 +3191,10 @@
       "name": "Ludicolo",
       "image": "272-Ludicolo.png",
       "wikilink": "Ludicolo",
-      "types": [],
+      "types": [
+        "Water",
+        "Grass"
+      ],
       "aliases": []
     },
     "carvanha": {
@@ -2453,7 +3202,10 @@
       "name": "Carvanha",
       "image": "318-Carvanha.png",
       "wikilink": "Carvanha",
-      "types": [],
+      "types": [
+        "Water",
+        "Dark"
+      ],
       "aliases": []
     },
     "sealeo": {
@@ -2461,7 +3213,10 @@
       "name": "Sealeo",
       "image": "364-Sealeo.png",
       "wikilink": "Sealeo",
-      "types": [],
+      "types": [
+        "Ice",
+        "Water"
+      ],
       "aliases": []
     },
     "seedot": {
@@ -2469,7 +3224,9 @@
       "name": "Seedot",
       "image": "273-Seedot.png",
       "wikilink": "Seedot",
-      "types": [],
+      "types": [
+        "Grass"
+      ],
       "aliases": []
     },
     "sharpedo": {
@@ -2477,7 +3234,10 @@
       "name": "Sharpedo",
       "image": "319-Sharpedo.png",
       "wikilink": "Sharpedo",
-      "types": [],
+      "types": [
+        "Water",
+        "Dark"
+      ],
       "aliases": []
     },
     "walrein": {
@@ -2485,7 +3245,10 @@
       "name": "Walrein",
       "image": "365-Walrein.png",
       "wikilink": "Walrein",
-      "types": [],
+      "types": [
+        "Ice",
+        "Water"
+      ],
       "aliases": []
     },
     "nuzleaf": {
@@ -2493,7 +3256,10 @@
       "name": "Nuzleaf",
       "image": "274-Nuzleaf.png",
       "wikilink": "Nuzleaf",
-      "types": [],
+      "types": [
+        "Grass",
+        "Dark"
+      ],
       "aliases": []
     },
     "shiftry": {
@@ -2501,7 +3267,10 @@
       "name": "Shiftry",
       "image": "275-Shiftry.png",
       "wikilink": "Shiftry",
-      "types": [],
+      "types": [
+        "Grass",
+        "Dark"
+      ],
       "aliases": []
     },
     "taillow": {
@@ -2509,7 +3278,10 @@
       "name": "Taillow",
       "image": "276-Taillow.png",
       "wikilink": "Taillow",
-      "types": [],
+      "types": [
+        "Normal",
+        "Flying"
+      ],
       "aliases": []
     },
     "numel": {
@@ -2517,7 +3289,10 @@
       "name": "Numel",
       "image": "322-Numel.png",
       "wikilink": "Numel",
-      "types": [],
+      "types": [
+        "Fire",
+        "Ground"
+      ],
       "aliases": []
     },
     "swellow": {
@@ -2525,7 +3300,10 @@
       "name": "Swellow",
       "image": "277-Swellow.png",
       "wikilink": "Swellow",
-      "types": [],
+      "types": [
+        "Normal",
+        "Flying"
+      ],
       "aliases": []
     },
     "camerupt": {
@@ -2533,7 +3311,10 @@
       "name": "Camerupt",
       "image": "323-Camerupt.png",
       "wikilink": "Camerupt",
-      "types": [],
+      "types": [
+        "Fire",
+        "Ground"
+      ],
       "aliases": []
     },
     "wingull": {
@@ -2541,7 +3322,10 @@
       "name": "Wingull",
       "image": "278-Wingull.png",
       "wikilink": "Wingull",
-      "types": [],
+      "types": [
+        "Water",
+        "Flying"
+      ],
       "aliases": []
     },
     "torkoal": {
@@ -2549,7 +3333,9 @@
       "name": "Torkoal",
       "image": "324-Torkoal.png",
       "wikilink": "Torkoal",
-      "types": [],
+      "types": [
+        "Fire"
+      ],
       "aliases": []
     },
     "pelipper": {
@@ -2557,7 +3343,10 @@
       "name": "Pelipper",
       "image": "279-Pelipper.png",
       "wikilink": "Pelipper",
-      "types": [],
+      "types": [
+        "Water",
+        "Flying"
+      ],
       "aliases": []
     },
     "spoink": {
@@ -2565,7 +3354,9 @@
       "name": "Spoink",
       "image": "325-Spoink.png",
       "wikilink": "Spoink",
-      "types": [],
+      "types": [
+        "Psychic"
+      ],
       "aliases": []
     },
     "bagon": {
@@ -2573,7 +3364,9 @@
       "name": "Bagon",
       "image": "371-Bagon.png",
       "wikilink": "Bagon",
-      "types": [],
+      "types": [
+        "Dragon"
+      ],
       "aliases": []
     },
     "ralts": {
@@ -2581,7 +3374,10 @@
       "name": "Ralts",
       "image": "280-Ralts.png",
       "wikilink": "Ralts",
-      "types": [],
+      "types": [
+        "Psychic",
+        "Fairy"
+      ],
       "aliases": []
     },
     "grumpig": {
@@ -2589,7 +3385,9 @@
       "name": "Grumpig",
       "image": "326-Grumpig.png",
       "wikilink": "Grumpig",
-      "types": [],
+      "types": [
+        "Psychic"
+      ],
       "aliases": []
     },
     "shelgon": {
@@ -2597,7 +3395,9 @@
       "name": "Shelgon",
       "image": "372-Shelgon.png",
       "wikilink": "Shelgon",
-      "types": [],
+      "types": [
+        "Dragon"
+      ],
       "aliases": []
     },
     "kirlia": {
@@ -2605,7 +3405,10 @@
       "name": "Kirlia",
       "image": "281-Kirlia.png",
       "wikilink": "Kirlia",
-      "types": [],
+      "types": [
+        "Psychic",
+        "Fairy"
+      ],
       "aliases": []
     },
     "salamence": {
@@ -2613,7 +3416,10 @@
       "name": "Salamence",
       "image": "373-Salamence.png",
       "wikilink": "Salamence",
-      "types": [],
+      "types": [
+        "Dragon",
+        "Flying"
+      ],
       "aliases": []
     },
     "gardevoir": {
@@ -2621,7 +3427,10 @@
       "name": "Gardevoir",
       "image": "282-Gardevoir.png",
       "wikilink": "Gardevoir",
-      "types": [],
+      "types": [
+        "Psychic",
+        "Fairy"
+      ],
       "aliases": []
     },
     "trapinch": {
@@ -2629,7 +3438,9 @@
       "name": "Trapinch",
       "image": "328-Trapinch.png",
       "wikilink": "Trapinch",
-      "types": [],
+      "types": [
+        "Ground"
+      ],
       "aliases": []
     },
     "beldum": {
@@ -2637,7 +3448,10 @@
       "name": "Beldum",
       "image": "374-Beldum.png",
       "wikilink": "Beldum",
-      "types": [],
+      "types": [
+        "Steel",
+        "Psychic"
+      ],
       "aliases": []
     },
     "surskit": {
@@ -2645,7 +3459,10 @@
       "name": "Surskit",
       "image": "283_Surskit_sp.png",
       "wikilink": "Surskit",
-      "types": [],
+      "types": [
+        "Bug",
+        "Water"
+      ],
       "aliases": []
     },
     "vibrava": {
@@ -2653,7 +3470,10 @@
       "name": "Vibrava",
       "image": "329-Vibrava.png",
       "wikilink": "Vibrava",
-      "types": [],
+      "types": [
+        "Ground",
+        "Dragon"
+      ],
       "aliases": []
     },
     "metang": {
@@ -2661,7 +3481,10 @@
       "name": "Metang",
       "image": "375-Metang.png",
       "wikilink": "Metang",
-      "types": [],
+      "types": [
+        "Steel",
+        "Psychic"
+      ],
       "aliases": []
     },
     "masquerain": {
@@ -2669,7 +3492,10 @@
       "name": "Masquerain",
       "image": "284_Masquerain_sp.png",
       "wikilink": "Masquerain",
-      "types": [],
+      "types": [
+        "Bug",
+        "Flying"
+      ],
       "aliases": []
     },
     "flygon": {
@@ -2677,7 +3503,10 @@
       "name": "Flygon",
       "image": "330-Flygon.png",
       "wikilink": "Flygon",
-      "types": [],
+      "types": [
+        "Ground",
+        "Dragon"
+      ],
       "aliases": []
     },
     "metagross": {
@@ -2685,7 +3514,10 @@
       "name": "Metagross",
       "image": "376-Metagross.png",
       "wikilink": "Metagross",
-      "types": [],
+      "types": [
+        "Steel",
+        "Psychic"
+      ],
       "aliases": []
     },
     "shroomish": {
@@ -2693,7 +3525,9 @@
       "name": "Shroomish",
       "image": "285-Shroomish.png",
       "wikilink": "Shroomish",
-      "types": [],
+      "types": [
+        "Grass"
+      ],
       "aliases": []
     },
     "cacnea": {
@@ -2701,7 +3535,9 @@
       "name": "Cacnea",
       "image": "331.Cacnea.png",
       "wikilink": "Cacnea",
-      "types": [],
+      "types": [
+        "Grass"
+      ],
       "aliases": []
     },
     "regirock": {
@@ -2709,7 +3545,9 @@
       "name": "Regirock",
       "image": "377-Regirock.png",
       "wikilink": "Regirock",
-      "types": [],
+      "types": [
+        "Rock"
+      ],
       "aliases": []
     },
     "breloom": {
@@ -2717,7 +3555,10 @@
       "name": "Breloom",
       "image": "286-Breloom.png",
       "wikilink": "Breloom",
-      "types": [],
+      "types": [
+        "Grass",
+        "Fighting"
+      ],
       "aliases": []
     },
     "cacturne": {
@@ -2725,7 +3566,10 @@
       "name": "Cacturne",
       "image": "332.Cacturne.png",
       "wikilink": "Cacturne",
-      "types": [],
+      "types": [
+        "Grass",
+        "Dark"
+      ],
       "aliases": []
     },
     "regice": {
@@ -2733,7 +3577,9 @@
       "name": "Regice",
       "image": "378-Regice.png",
       "wikilink": "Regice",
-      "types": [],
+      "types": [
+        "Ice"
+      ],
       "aliases": []
     },
     "slakoth": {
@@ -2741,7 +3587,9 @@
       "name": "Slakoth",
       "image": "287-Slakoth.png",
       "wikilink": "Slakoth",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "swablu": {
@@ -2749,7 +3597,10 @@
       "name": "Swablu",
       "image": "333-Swablu.png",
       "wikilink": "Swablu",
-      "types": [],
+      "types": [
+        "Normal",
+        "Flying"
+      ],
       "aliases": []
     },
     "registeel": {
@@ -2757,7 +3608,9 @@
       "name": "Registeel",
       "image": "379-Registeel.png",
       "wikilink": "Registeel",
-      "types": [],
+      "types": [
+        "Steel"
+      ],
       "aliases": []
     },
     "vigoroth": {
@@ -2765,7 +3618,9 @@
       "name": "Vigoroth",
       "image": "288-Vigoroth.png",
       "wikilink": "Vigoroth",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "altaria": {
@@ -2773,7 +3628,10 @@
       "name": "Altaria",
       "image": "334-Altaria.png",
       "wikilink": "Altaria",
-      "types": [],
+      "types": [
+        "Dragon",
+        "Flying"
+      ],
       "aliases": []
     },
     "latias": {
@@ -2781,7 +3639,10 @@
       "name": "Latias",
       "image": "380-Latias.png",
       "wikilink": "Latias",
-      "types": [],
+      "types": [
+        "Dragon",
+        "Psychic"
+      ],
       "aliases": []
     },
     "slaking": {
@@ -2789,7 +3650,9 @@
       "name": "Slaking",
       "image": "289-Slaking.png",
       "wikilink": "Slaking",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "zangoose": {
@@ -2797,7 +3660,9 @@
       "name": "Zangoose",
       "image": "335-Zangoose.png",
       "wikilink": "Zangoose",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "latios": {
@@ -2805,7 +3670,10 @@
       "name": "Latios",
       "image": "381-Latios.png",
       "wikilink": "Latios",
-      "types": [],
+      "types": [
+        "Dragon",
+        "Psychic"
+      ],
       "aliases": []
     },
     "nincada": {
@@ -2813,7 +3681,10 @@
       "name": "Nincada",
       "image": "290-Nincada.png",
       "wikilink": "Nincada",
-      "types": [],
+      "types": [
+        "Bug",
+        "Ground"
+      ],
       "aliases": []
     },
     "seviper": {
@@ -2821,7 +3692,9 @@
       "name": "Seviper",
       "image": "336-Seviper.png",
       "wikilink": "Seviper",
-      "types": [],
+      "types": [
+        "Poison"
+      ],
       "aliases": []
     },
     "kyogre": {
@@ -2829,7 +3702,9 @@
       "name": "Kyogre",
       "image": "382-Kyogre.png",
       "wikilink": "Kyogre",
-      "types": [],
+      "types": [
+        "Water"
+      ],
       "aliases": []
     },
     "ninjask": {
@@ -2837,7 +3712,10 @@
       "name": "Ninjask",
       "image": "291-Ninjask.png",
       "wikilink": "Ninjask",
-      "types": [],
+      "types": [
+        "Bug",
+        "Flying"
+      ],
       "aliases": []
     },
     "lunatone": {
@@ -2845,7 +3723,10 @@
       "name": "Lunatone",
       "image": "337-Lunatone.png",
       "wikilink": "Lunatone",
-      "types": [],
+      "types": [
+        "Rock",
+        "Psychic"
+      ],
       "aliases": []
     },
     "groudon": {
@@ -2853,7 +3734,9 @@
       "name": "Groudon",
       "image": "383-Groudon.png",
       "wikilink": "Groudon",
-      "types": [],
+      "types": [
+        "Ground"
+      ],
       "aliases": []
     },
     "shedinja": {
@@ -2861,7 +3744,10 @@
       "name": "Shedinja",
       "image": "292-Shedinja.png",
       "wikilink": "Shedinja",
-      "types": [],
+      "types": [
+        "Bug",
+        "Ghost"
+      ],
       "aliases": []
     },
     "solrock": {
@@ -2869,14 +3755,20 @@
       "name": "Solrock",
       "image": "338-Solrock.png",
       "wikilink": "Solrock",
-      "types": [],
+      "types": [
+        "Rock",
+        "Psychic"
+      ],
       "aliases": []
     },
     "rayquaza": {
       "name": "Rayquaza",
       "image": "Rayquaza.png",
       "wikilink": "Rayquaza",
-      "types": [],
+      "types": [
+        "Dragon",
+        "Flying"
+      ],
       "aliases": []
     },
     "whismur": {
@@ -2884,7 +3776,9 @@
       "name": "Whismur",
       "image": "293-Whismur.png",
       "wikilink": "Whismur",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "barboach": {
@@ -2892,14 +3786,20 @@
       "name": "Barboach",
       "image": "339.png",
       "wikilink": "Barboach",
-      "types": [],
+      "types": [
+        "Water",
+        "Ground"
+      ],
       "aliases": []
     },
     "jirachi": {
       "name": "Jirachi",
       "image": "Jirachi.png",
       "wikilink": "Jirachi",
-      "types": [],
+      "types": [
+        "Steel",
+        "Psychic"
+      ],
       "aliases": []
     },
     "loudred": {
@@ -2907,7 +3807,9 @@
       "name": "Loudred",
       "image": "294-Loudred.png",
       "wikilink": "Loudred",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "whiscash": {
@@ -2915,7 +3817,10 @@
       "name": "Whiscash",
       "image": "340-Whiscash.png",
       "wikilink": "Whiscash",
-      "types": [],
+      "types": [
+        "Water",
+        "Ground"
+      ],
       "aliases": []
     },
     "deoxys": {
@@ -2931,7 +3836,9 @@
       "name": "Exploud",
       "image": "295-Exploud.png",
       "wikilink": "Exploud",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "corphish": {
@@ -2939,7 +3846,9 @@
       "name": "Corphish",
       "image": "341-Corphish.png",
       "wikilink": "Corphish",
-      "types": [],
+      "types": [
+        "Water"
+      ],
       "aliases": []
     },
     "minunandplusle": {
@@ -2955,7 +3864,9 @@
       "name": "Makuhita",
       "image": "296-Makuhita.png",
       "wikilink": "Makuhita",
-      "types": [],
+      "types": [
+        "Fighting"
+      ],
       "aliases": []
     },
     "crawdaunt": {
@@ -2963,7 +3874,10 @@
       "name": "Crawdaunt",
       "image": "342-Crawdaunt.png",
       "wikilink": "Crawdaunt",
-      "types": [],
+      "types": [
+        "Water",
+        "Dark"
+      ],
       "aliases": []
     },
     "hariyama": {
@@ -2971,7 +3885,9 @@
       "name": "Hariyama",
       "image": "297-Hariyama.png",
       "wikilink": "Hariyama",
-      "types": [],
+      "types": [
+        "Fighting"
+      ],
       "aliases": []
     },
     "baltoy": {
@@ -2979,7 +3895,10 @@
       "name": "Baltoy",
       "image": "343-Baltoy.png",
       "wikilink": "Baltoy",
-      "types": [],
+      "types": [
+        "Ground",
+        "Psychic"
+      ],
       "aliases": []
     },
     "turtwig": {
@@ -2987,7 +3906,9 @@
       "name": "Turtwig",
       "image": "387-Turtwig.png",
       "wikilink": "Turtwig",
-      "types": [],
+      "types": [
+        "Grass"
+      ],
       "aliases": []
     },
     "ambipom": {
@@ -2995,7 +3916,9 @@
       "name": "Ambipom",
       "image": "424-Ambipom.png",
       "wikilink": "Ambipom",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "abomasnow": {
@@ -3003,7 +3926,10 @@
       "name": "Abomasnow",
       "image": "460-Abomasnow.png",
       "wikilink": "Abomasnow",
-      "types": [],
+      "types": [
+        "Grass",
+        "Ice"
+      ],
       "aliases": []
     },
     "grotle": {
@@ -3011,7 +3937,9 @@
       "name": "Grotle",
       "image": "388-Grotle.png",
       "wikilink": "Grotle",
-      "types": [],
+      "types": [
+        "Grass"
+      ],
       "aliases": []
     },
     "drifloon": {
@@ -3019,7 +3947,10 @@
       "name": "Drifloon",
       "image": "425-Drifloon.png",
       "wikilink": "Drifloon",
-      "types": [],
+      "types": [
+        "Ghost",
+        "Flying"
+      ],
       "aliases": []
     },
     "weavile": {
@@ -3027,7 +3958,10 @@
       "name": "Weavile",
       "image": "461-Weavile.png",
       "wikilink": "Weavile",
-      "types": [],
+      "types": [
+        "Dark",
+        "Ice"
+      ],
       "aliases": []
     },
     "torterra": {
@@ -3035,7 +3969,10 @@
       "name": "Torterra",
       "image": "389-Torterra.png",
       "wikilink": "Torterra",
-      "types": [],
+      "types": [
+        "Grass",
+        "Ground"
+      ],
       "aliases": []
     },
     "drifblim": {
@@ -3043,7 +3980,10 @@
       "name": "Drifblim",
       "image": "426-Drifblim.png",
       "wikilink": "Drifblim",
-      "types": [],
+      "types": [
+        "Ghost",
+        "Flying"
+      ],
       "aliases": []
     },
     "magnezone": {
@@ -3051,7 +3991,10 @@
       "name": "Magnezone",
       "image": "462-Magnezone.png",
       "wikilink": "Magnezone",
-      "types": [],
+      "types": [
+        "Electric",
+        "Steel"
+      ],
       "aliases": []
     },
     "chimchar": {
@@ -3059,7 +4002,9 @@
       "name": "Chimchar",
       "image": "390-Chimchar.png",
       "wikilink": "Chimchar",
-      "types": [],
+      "types": [
+        "Fire"
+      ],
       "aliases": []
     },
     "buneary": {
@@ -3067,7 +4012,9 @@
       "name": "Buneary",
       "image": "427-Buneary.png",
       "wikilink": "Buneary",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "lickilicky": {
@@ -3075,7 +4022,9 @@
       "name": "Lickilicky",
       "image": "463-Lickilicky.png",
       "wikilink": "Lickilicky",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "monferno": {
@@ -3083,7 +4032,10 @@
       "name": "Monferno",
       "image": "391-Monferno.png",
       "wikilink": "Monferno",
-      "types": [],
+      "types": [
+        "Fire",
+        "Fighting"
+      ],
       "aliases": []
     },
     "lopunny": {
@@ -3091,7 +4043,9 @@
       "name": "Lopunny",
       "image": "428-Lopunny.png",
       "wikilink": "Lopunny",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "rhyperior": {
@@ -3099,7 +4053,10 @@
       "name": "Rhyperior",
       "image": "464-Rhyperior.png",
       "wikilink": "Rhyperior",
-      "types": [],
+      "types": [
+        "Ground",
+        "Rock"
+      ],
       "aliases": []
     },
     "infernape": {
@@ -3107,7 +4064,10 @@
       "name": "Infernape",
       "image": "392-Infernape.png",
       "wikilink": "Infernape",
-      "types": [],
+      "types": [
+        "Fire",
+        "Fighting"
+      ],
       "aliases": []
     },
     "mismagius": {
@@ -3115,14 +4075,18 @@
       "name": "Mismagius",
       "image": "429-Mismagius.png",
       "wikilink": "Mismagius",
-      "types": [],
+      "types": [
+        "Ghost"
+      ],
       "aliases": []
     },
     "tangrowth": {
       "name": "Tangrowth",
       "image": "Tang.png",
       "wikilink": "Tangrowth",
-      "types": [],
+      "types": [
+        "Grass"
+      ],
       "aliases": []
     },
     "piplup": {
@@ -3130,7 +4094,9 @@
       "name": "Piplup",
       "image": "393-Piplup.png",
       "wikilink": "Piplup",
-      "types": [],
+      "types": [
+        "Water"
+      ],
       "aliases": []
     },
     "honchkrow": {
@@ -3138,7 +4104,10 @@
       "name": "Honchkrow",
       "image": "430-Honchkrow.png",
       "wikilink": "Honchkrow",
-      "types": [],
+      "types": [
+        "Dark",
+        "Flying"
+      ],
       "aliases": []
     },
     "electivire": {
@@ -3146,7 +4115,9 @@
       "name": "Electivire",
       "image": "466-Electivire.png",
       "wikilink": "Electivire",
-      "types": [],
+      "types": [
+        "Electric"
+      ],
       "aliases": []
     },
     "prinplup": {
@@ -3154,7 +4125,9 @@
       "name": "Prinplup",
       "image": "394-Prinplup.png",
       "wikilink": "Prinplup",
-      "types": [],
+      "types": [
+        "Water"
+      ],
       "aliases": []
     },
     "glameow": {
@@ -3162,7 +4135,9 @@
       "name": "Glameow",
       "image": "431-Glameow.png",
       "wikilink": "Glameow",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "magmortar": {
@@ -3170,7 +4145,9 @@
       "name": "Magmortar",
       "image": "467-Magmortar.png",
       "wikilink": "Magmortar",
-      "types": [],
+      "types": [
+        "Fire"
+      ],
       "aliases": []
     },
     "empoleon": {
@@ -3178,7 +4155,10 @@
       "name": "Empoleon",
       "image": "395-Empoleon.png",
       "wikilink": "Empoleon",
-      "types": [],
+      "types": [
+        "Water",
+        "Steel"
+      ],
       "aliases": []
     },
     "purugly": {
@@ -3186,7 +4166,9 @@
       "name": "Purugly",
       "image": "432-Purugly.png",
       "wikilink": "Purugly",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "togekiss": {
@@ -3194,7 +4176,10 @@
       "name": "Togekiss",
       "image": "468-Togekiss.png",
       "wikilink": "Togekiss",
-      "types": [],
+      "types": [
+        "Fairy",
+        "Flying"
+      ],
       "aliases": []
     },
     "starly": {
@@ -3202,7 +4187,10 @@
       "name": "Starly",
       "image": "396-Starly.png",
       "wikilink": "Starly",
-      "types": [],
+      "types": [
+        "Normal",
+        "Flying"
+      ],
       "aliases": []
     },
     "yanmega": {
@@ -3210,7 +4198,10 @@
       "name": "Yanmega",
       "image": "469-Yanmega.png",
       "wikilink": "Yanmega",
-      "types": [],
+      "types": [
+        "Bug",
+        "Flying"
+      ],
       "aliases": []
     },
     "staravia": {
@@ -3218,7 +4209,10 @@
       "name": "Staravia",
       "image": "397-Staravia.png",
       "wikilink": "Staravia",
-      "types": [],
+      "types": [
+        "Normal",
+        "Flying"
+      ],
       "aliases": []
     },
     "leafeon": {
@@ -3226,7 +4220,9 @@
       "name": "Leafeon",
       "image": "470-Leafeon.png",
       "wikilink": "Leafeon",
-      "types": [],
+      "types": [
+        "Grass"
+      ],
       "aliases": []
     },
     "staraptor": {
@@ -3234,7 +4230,10 @@
       "name": "Staraptor",
       "image": "398-Staraptor.png",
       "wikilink": "Staraptor",
-      "types": [],
+      "types": [
+        "Normal",
+        "Flying"
+      ],
       "aliases": []
     },
     "glaceon": {
@@ -3242,7 +4241,9 @@
       "name": "Glaceon",
       "image": "471-Glaceon.png",
       "wikilink": "Glaceon",
-      "types": [],
+      "types": [
+        "Ice"
+      ],
       "aliases": []
     },
     "bronzor": {
@@ -3250,7 +4251,10 @@
       "name": "Bronzor",
       "image": "436-Bronzor.png",
       "wikilink": "Bronzor",
-      "types": [],
+      "types": [
+        "Steel",
+        "Psychic"
+      ],
       "aliases": []
     },
     "gliscor": {
@@ -3258,7 +4262,10 @@
       "name": "Gliscor",
       "image": "472-Gliscor.png",
       "wikilink": "Gliscor",
-      "types": [],
+      "types": [
+        "Ground",
+        "Flying"
+      ],
       "aliases": []
     },
     "bronzong": {
@@ -3266,7 +4273,10 @@
       "name": "Bronzong",
       "image": "437-Bronzong.png",
       "wikilink": "Bronzong",
-      "types": [],
+      "types": [
+        "Steel",
+        "Psychic"
+      ],
       "aliases": []
     },
     "mamoswine": {
@@ -3274,7 +4284,10 @@
       "name": "Mamoswine",
       "image": "473-Mamoswine.png",
       "wikilink": "Mamoswine",
-      "types": [],
+      "types": [
+        "Ice",
+        "Ground"
+      ],
       "aliases": []
     },
     "kricketot": {
@@ -3282,7 +4295,9 @@
       "name": "Kricketot",
       "image": "401.Kricketot.png",
       "wikilink": "Kricketot",
-      "types": [],
+      "types": [
+        "Bug"
+      ],
       "aliases": []
     },
     "bonsly": {
@@ -3290,7 +4305,9 @@
       "name": "Bonsly",
       "image": "438 - Bonsly.png",
       "wikilink": "Bonsly",
-      "types": [],
+      "types": [
+        "Rock"
+      ],
       "aliases": []
     },
     "porygonz": {
@@ -3298,7 +4315,9 @@
       "name": "Porygon-Z",
       "image": "474-PorygonZ.png",
       "wikilink": "Porygon-Z",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "kricketune": {
@@ -3306,7 +4325,9 @@
       "name": "Kricketune",
       "image": "402.Kricketune.png",
       "wikilink": "Kricketune",
-      "types": [],
+      "types": [
+        "Bug"
+      ],
       "aliases": []
     },
     "mimejr": {
@@ -3314,7 +4335,10 @@
       "name": "Mime Jr.",
       "image": "439 - Mime Jr.png",
       "wikilink": "Mime Jr.",
-      "types": [],
+      "types": [
+        "Psychic",
+        "Fairy"
+      ],
       "aliases": []
     },
     "gallade": {
@@ -3322,7 +4346,10 @@
       "name": "Gallade",
       "image": "475-Gallade.png",
       "wikilink": "Gallade",
-      "types": [],
+      "types": [
+        "Psychic",
+        "Fighting"
+      ],
       "aliases": []
     },
     "shinx": {
@@ -3330,7 +4357,9 @@
       "name": "Shinx",
       "image": "403-Shinx.png",
       "wikilink": "Shinx",
-      "types": [],
+      "types": [
+        "Electric"
+      ],
       "aliases": []
     },
     "happiny": {
@@ -3338,7 +4367,9 @@
       "name": "Happiny",
       "image": "440 - Happiny.png",
       "wikilink": "Happiny",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "probopass": {
@@ -3346,7 +4377,10 @@
       "name": "Probopass",
       "image": "476-Probopass.png",
       "wikilink": "Probopass",
-      "types": [],
+      "types": [
+        "Rock",
+        "Steel"
+      ],
       "aliases": []
     },
     "luxio": {
@@ -3354,7 +4388,9 @@
       "name": "Luxio",
       "image": "404-Luxio.png",
       "wikilink": "Luxio",
-      "types": [],
+      "types": [
+        "Electric"
+      ],
       "aliases": []
     },
     "dusknoir": {
@@ -3362,7 +4398,9 @@
       "name": "Dusknoir",
       "image": "477-Dusknoir.png",
       "wikilink": "Dusknoir",
-      "types": [],
+      "types": [
+        "Ghost"
+      ],
       "aliases": []
     },
     "luxray": {
@@ -3370,7 +4408,9 @@
       "name": "Luxray",
       "image": "405-Luxray.png",
       "wikilink": "Luxray",
-      "types": [],
+      "types": [
+        "Electric"
+      ],
       "aliases": []
     },
     "spiritomb": {
@@ -3378,7 +4418,10 @@
       "name": "Spiritomb",
       "image": "442-spiritomb.png",
       "wikilink": "Spiritomb",
-      "types": [],
+      "types": [
+        "Ghost",
+        "Dark"
+      ],
       "aliases": []
     },
     "froslass": {
@@ -3386,7 +4429,10 @@
       "name": "Froslass",
       "image": "478-Froslass.png",
       "wikilink": "Froslass",
-      "types": [],
+      "types": [
+        "Ice",
+        "Ghost"
+      ],
       "aliases": []
     },
     "budew": {
@@ -3394,7 +4440,10 @@
       "name": "Budew",
       "image": "406 - Budew.png",
       "wikilink": "Budew",
-      "types": [],
+      "types": [
+        "Grass",
+        "Poison"
+      ],
       "aliases": []
     },
     "gible": {
@@ -3402,7 +4451,10 @@
       "name": "Gible",
       "image": "443-Gible.png",
       "wikilink": "Gible",
-      "types": [],
+      "types": [
+        "Dragon",
+        "Ground"
+      ],
       "aliases": []
     },
     "rotom": {
@@ -3410,7 +4462,10 @@
       "name": "Rotom",
       "image": "479-Rotom.png",
       "wikilink": "Rotom",
-      "types": [],
+      "types": [
+        "Electric",
+        "Ghost"
+      ],
       "aliases": []
     },
     "roserade": {
@@ -3418,7 +4473,10 @@
       "name": "Roserade",
       "image": "407-Roserade.png",
       "wikilink": "Roserade",
-      "types": [],
+      "types": [
+        "Grass",
+        "Poison"
+      ],
       "aliases": []
     },
     "gabite": {
@@ -3426,7 +4484,10 @@
       "name": "Gabite",
       "image": "444-Gabite.png",
       "wikilink": "Gabite",
-      "types": [],
+      "types": [
+        "Dragon",
+        "Ground"
+      ],
       "aliases": []
     },
     "cranidos": {
@@ -3434,7 +4495,9 @@
       "name": "Cranidos",
       "image": "408-Cranidos.png",
       "wikilink": "Cranidos",
-      "types": [],
+      "types": [
+        "Rock"
+      ],
       "aliases": []
     },
     "garchomp": {
@@ -3442,7 +4505,10 @@
       "name": "Garchomp",
       "image": "445-Garchomp(1).png",
       "wikilink": "Garchomp",
-      "types": [],
+      "types": [
+        "Dragon",
+        "Ground"
+      ],
       "aliases": []
     },
     "rampardos": {
@@ -3450,7 +4516,9 @@
       "name": "Rampardos",
       "image": "409-Rampardos(1).png",
       "wikilink": "Rampardos",
-      "types": [],
+      "types": [
+        "Rock"
+      ],
       "aliases": []
     },
     "munchlax": {
@@ -3458,7 +4526,9 @@
       "name": "Munchlax",
       "image": "446-Munchlax(1).png",
       "wikilink": "Munchlax",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "shieldon": {
@@ -3466,7 +4536,10 @@
       "name": "Shieldon",
       "image": "410-Shieldon.png",
       "wikilink": "Shieldon",
-      "types": [],
+      "types": [
+        "Rock",
+        "Steel"
+      ],
       "aliases": []
     },
     "riolu": {
@@ -3474,7 +4547,9 @@
       "name": "Riolu",
       "image": "447-Riolu.png",
       "wikilink": "Riolu",
-      "types": [],
+      "types": [
+        "Fighting"
+      ],
       "aliases": []
     },
     "bastiodon": {
@@ -3482,7 +4557,10 @@
       "name": "Bastiodon",
       "image": "411-Bastiodon.png",
       "wikilink": "Bastiodon",
-      "types": [],
+      "types": [
+        "Rock",
+        "Steel"
+      ],
       "aliases": []
     },
     "lucario": {
@@ -3490,7 +4568,10 @@
       "name": "Lucario",
       "image": "448-Lucario.png",
       "wikilink": "Lucario",
-      "types": [],
+      "types": [
+        "Fighting",
+        "Steel"
+      ],
       "aliases": []
     },
     "burmy": {
@@ -3498,7 +4579,9 @@
       "name": "Burmy",
       "image": "412-Burmy(1).png",
       "wikilink": "Burmy",
-      "types": [],
+      "types": [
+        "Bug"
+      ],
       "aliases": []
     },
     "hippopotas": {
@@ -3506,7 +4589,9 @@
       "name": "Hippopotas",
       "image": "449-Hippopotas.png",
       "wikilink": "Hippopotas",
-      "types": [],
+      "types": [
+        "Ground"
+      ],
       "aliases": []
     },
     "heatran": {
@@ -3514,7 +4599,10 @@
       "name": "Heatran",
       "image": "485-Heatran.png",
       "wikilink": "Heatran",
-      "types": [],
+      "types": [
+        "Fire",
+        "Steel"
+      ],
       "aliases": []
     },
     "wormadam": {
@@ -3530,7 +4618,9 @@
       "name": "Hippowdon",
       "image": "450-Hippowdon.png",
       "wikilink": "Hippowdon",
-      "types": [],
+      "types": [
+        "Ground"
+      ],
       "aliases": []
     },
     "regigigas": {
@@ -3538,7 +4628,9 @@
       "name": "Regigigas",
       "image": "486-Regigigas.png",
       "wikilink": "Regigigas",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "hippowdonfemale": {
@@ -3562,7 +4654,10 @@
       "name": "Combee",
       "image": "415-Combee.png",
       "wikilink": "Combee",
-      "types": [],
+      "types": [
+        "Bug",
+        "Flying"
+      ],
       "aliases": []
     },
     "skorupi": {
@@ -3570,7 +4665,10 @@
       "name": "Skorupi",
       "image": "451-Skorupi.png",
       "wikilink": "Skorupi",
-      "types": [],
+      "types": [
+        "Poison",
+        "Bug"
+      ],
       "aliases": []
     },
     "cresselia": {
@@ -3578,7 +4676,9 @@
       "name": "Cresselia",
       "image": "488-Cresselia.png",
       "wikilink": "Cresselia",
-      "types": [],
+      "types": [
+        "Psychic"
+      ],
       "aliases": []
     },
     "vespiquen": {
@@ -3586,7 +4686,10 @@
       "name": "Vespiquen",
       "image": "416-Vespiquen.png",
       "wikilink": "Vespiquen",
-      "types": [],
+      "types": [
+        "Bug",
+        "Flying"
+      ],
       "aliases": []
     },
     "drapion": {
@@ -3594,7 +4697,10 @@
       "name": "Drapion",
       "image": "452-Drapion.png",
       "wikilink": "Drapion",
-      "types": [],
+      "types": [
+        "Poison",
+        "Dark"
+      ],
       "aliases": []
     },
     "pachirisu": {
@@ -3602,7 +4708,9 @@
       "name": "Pachirisu",
       "image": "417-Pachirisu.png",
       "wikilink": "Pachirisu",
-      "types": [],
+      "types": [
+        "Electric"
+      ],
       "aliases": []
     },
     "croagunk": {
@@ -3610,7 +4718,10 @@
       "name": "Croagunk",
       "image": "453-Croagunk.png",
       "wikilink": "Croagunk",
-      "types": [],
+      "types": [
+        "Poison",
+        "Fighting"
+      ],
       "aliases": []
     },
     "buizel": {
@@ -3618,7 +4729,9 @@
       "name": "Buizel",
       "image": "418-Buizel.png",
       "wikilink": "Buizel",
-      "types": [],
+      "types": [
+        "Water"
+      ],
       "aliases": []
     },
     "toxicroak": {
@@ -3626,7 +4739,10 @@
       "name": "Toxicroak",
       "image": "454-Toxicroak.png",
       "wikilink": "Toxicroak",
-      "types": [],
+      "types": [
+        "Poison",
+        "Fighting"
+      ],
       "aliases": []
     },
     "darkrai": {
@@ -3634,7 +4750,9 @@
       "name": "Darkrai",
       "image": "491-Darkrai.png",
       "wikilink": "Darkrai",
-      "types": [],
+      "types": [
+        "Dark"
+      ],
       "aliases": []
     },
     "floatzel": {
@@ -3642,7 +4760,9 @@
       "name": "Floatzel",
       "image": "419-Floatzel.png",
       "wikilink": "Floatzel",
-      "types": [],
+      "types": [
+        "Water"
+      ],
       "aliases": []
     },
     "mantyke": {
@@ -3650,7 +4770,10 @@
       "name": "Mantyke",
       "image": "458-Mantyke(1).png",
       "wikilink": "Mantyke",
-      "types": [],
+      "types": [
+        "Water",
+        "Flying"
+      ],
       "aliases": []
     },
     "snover": {
@@ -3658,7 +4781,10 @@
       "name": "Snover",
       "image": "459-Snover.png",
       "wikilink": "Snover",
-      "types": [],
+      "types": [
+        "Grass",
+        "Ice"
+      ],
       "aliases": []
     },
     "cottonee": {
@@ -3666,7 +4792,10 @@
       "name": "Cottonee",
       "image": "546-Cottonee.png",
       "wikilink": "Cottonee",
-      "types": [],
+      "types": [
+        "Grass",
+        "Fairy"
+      ],
       "aliases": []
     },
     "ferrothorn": {
@@ -3674,7 +4803,10 @@
       "name": "Ferrothorn",
       "image": "598-Ferrothorn.png",
       "wikilink": "Ferrothorn",
-      "types": [],
+      "types": [
+        "Grass",
+        "Steel"
+      ],
       "aliases": []
     },
     "whimsicott": {
@@ -3682,7 +4814,10 @@
       "name": "Whimsicott",
       "image": "547-Whimsicott.png",
       "wikilink": "Whimsicott",
-      "types": [],
+      "types": [
+        "Grass",
+        "Fairy"
+      ],
       "aliases": []
     },
     "klink": {
@@ -3690,7 +4825,9 @@
       "name": "Klink",
       "image": "599-Klink.png",
       "wikilink": "Klink",
-      "types": [],
+      "types": [
+        "Steel"
+      ],
       "aliases": []
     },
     "petilil": {
@@ -3698,7 +4835,9 @@
       "name": "Petilil",
       "image": "548-Petilil.png",
       "wikilink": "Petilil",
-      "types": [],
+      "types": [
+        "Grass"
+      ],
       "aliases": []
     },
     "klang": {
@@ -3706,7 +4845,9 @@
       "name": "Klang",
       "image": "600-Klang.png",
       "wikilink": "Klang",
-      "types": [],
+      "types": [
+        "Steel"
+      ],
       "aliases": []
     },
     "klinklang": {
@@ -3714,7 +4855,9 @@
       "name": "Klinklang",
       "image": "601-Klinklang.png",
       "wikilink": "Klinklang",
-      "types": [],
+      "types": [
+        "Steel"
+      ],
       "aliases": []
     },
     "tynamo": {
@@ -3722,7 +4865,9 @@
       "name": "Tynamo",
       "image": "602-Tynamo.png",
       "wikilink": "Tynamo",
-      "types": [],
+      "types": [
+        "Electric"
+      ],
       "aliases": []
     },
     "sandile": {
@@ -3730,7 +4875,10 @@
       "name": "Sandile",
       "image": "551-Sandile.png",
       "wikilink": "Sandile",
-      "types": [],
+      "types": [
+        "Ground",
+        "Dark"
+      ],
       "aliases": []
     },
     "eelektrik": {
@@ -3738,7 +4886,9 @@
       "name": "Eelektrik",
       "image": "603-Eelektrik.png",
       "wikilink": "Eelektrik",
-      "types": [],
+      "types": [
+        "Electric"
+      ],
       "aliases": []
     },
     "krokorok": {
@@ -3746,7 +4896,10 @@
       "name": "Krokorok",
       "image": "552-Krokorok.png",
       "wikilink": "Krokorok",
-      "types": [],
+      "types": [
+        "Ground",
+        "Dark"
+      ],
       "aliases": []
     },
     "eelektross": {
@@ -3754,7 +4907,9 @@
       "name": "Eelektross",
       "image": "604-Eelektross.png",
       "wikilink": "Eelektross",
-      "types": [],
+      "types": [
+        "Electric"
+      ],
       "aliases": []
     },
     "krookodile": {
@@ -3762,7 +4917,10 @@
       "name": "Krookodile",
       "image": "553-Krookodile.png",
       "wikilink": "Krookodile",
-      "types": [],
+      "types": [
+        "Ground",
+        "Dark"
+      ],
       "aliases": []
     },
     "darumaka": {
@@ -3770,7 +4928,9 @@
       "name": "Darumaka",
       "image": "554-Darumaka.png",
       "wikilink": "Darumaka",
-      "types": [],
+      "types": [
+        "Fire"
+      ],
       "aliases": []
     },
     "darmanitan": {
@@ -3786,7 +4946,10 @@
       "name": "Litwick",
       "image": "607-Litwick.png",
       "wikilink": "Litwick",
-      "types": [],
+      "types": [
+        "Ghost",
+        "Fire"
+      ],
       "aliases": []
     },
     "lampent": {
@@ -3794,7 +4957,10 @@
       "name": "Lampent",
       "image": "608-Lampent.png",
       "wikilink": "Lampent",
-      "types": [],
+      "types": [
+        "Ghost",
+        "Fire"
+      ],
       "aliases": []
     },
     "dwebble": {
@@ -3802,7 +4968,10 @@
       "name": "Dwebble",
       "image": "557-Dwebble.png",
       "wikilink": "Dwebble",
-      "types": [],
+      "types": [
+        "Bug",
+        "Rock"
+      ],
       "aliases": []
     },
     "chandelure": {
@@ -3810,7 +4979,10 @@
       "name": "Chandelure",
       "image": "609-Chandelure.png",
       "wikilink": "Chandelure",
-      "types": [],
+      "types": [
+        "Ghost",
+        "Fire"
+      ],
       "aliases": []
     },
     "crustle": {
@@ -3818,7 +4990,10 @@
       "name": "Crustle",
       "image": "558-Crustle.png",
       "wikilink": "Crustle",
-      "types": [],
+      "types": [
+        "Bug",
+        "Rock"
+      ],
       "aliases": []
     },
     "axew": {
@@ -3826,7 +5001,9 @@
       "name": "Axew",
       "image": "610-Axew.png",
       "wikilink": "Axew",
-      "types": [],
+      "types": [
+        "Dragon"
+      ],
       "aliases": []
     },
     "scraggy": {
@@ -3834,7 +5011,10 @@
       "name": "Scraggy",
       "image": "559-Scraggy.png",
       "wikilink": "Scraggy",
-      "types": [],
+      "types": [
+        "Dark",
+        "Fighting"
+      ],
       "aliases": []
     },
     "fraxure": {
@@ -3842,7 +5022,9 @@
       "name": "Fraxure",
       "image": "611-Fraxure.png",
       "wikilink": "Fraxure",
-      "types": [],
+      "types": [
+        "Dragon"
+      ],
       "aliases": []
     },
     "scrafty": {
@@ -3850,7 +5032,10 @@
       "name": "Scrafty",
       "image": "560-Scrafty.png",
       "wikilink": "Scrafty",
-      "types": [],
+      "types": [
+        "Dark",
+        "Fighting"
+      ],
       "aliases": []
     },
     "haxorus": {
@@ -3858,7 +5043,9 @@
       "name": "Haxorus",
       "image": "612-Haxorus.png",
       "wikilink": "Haxorus",
-      "types": [],
+      "types": [
+        "Dragon"
+      ],
       "aliases": []
     },
     "cubchoo": {
@@ -3866,7 +5053,9 @@
       "name": "Cubchoo",
       "image": "613-Cubchoo.png",
       "wikilink": "Cubchoo",
-      "types": [],
+      "types": [
+        "Ice"
+      ],
       "aliases": []
     },
     "yamask": {
@@ -3874,7 +5063,9 @@
       "name": "Yamask",
       "image": "562-Yamask.png",
       "wikilink": "Yamask",
-      "types": [],
+      "types": [
+        "Ghost"
+      ],
       "aliases": []
     },
     "beartic": {
@@ -3882,7 +5073,9 @@
       "name": "Beartic",
       "image": "614-Beartic.png",
       "wikilink": "Beartic",
-      "types": [],
+      "types": [
+        "Ice"
+      ],
       "aliases": []
     },
     "cofagrigus": {
@@ -3890,7 +5083,9 @@
       "name": "Cofagrigus",
       "image": "563-Cofagrigus.png",
       "wikilink": "Cofagrigus",
-      "types": [],
+      "types": [
+        "Ghost"
+      ],
       "aliases": []
     },
     "tirtouga": {
@@ -3898,7 +5093,10 @@
       "name": "Tirtouga",
       "image": "564-Tirtouga.png",
       "wikilink": "Tirtouga",
-      "types": [],
+      "types": [
+        "Water",
+        "Rock"
+      ],
       "aliases": []
     },
     "shelmet": {
@@ -3906,7 +5104,9 @@
       "name": "Shelmet",
       "image": "616-Shelmet.png",
       "wikilink": "Shelmet",
-      "types": [],
+      "types": [
+        "Bug"
+      ],
       "aliases": []
     },
     "pansear": {
@@ -3914,7 +5114,9 @@
       "name": "Pansear",
       "image": "513-Pansear.png",
       "wikilink": "Pansear",
-      "types": [],
+      "types": [
+        "Fire"
+      ],
       "aliases": []
     },
     "carracosta": {
@@ -3922,7 +5124,10 @@
       "name": "Carracosta",
       "image": "565-Carracosta.png",
       "wikilink": "Carracosta",
-      "types": [],
+      "types": [
+        "Water",
+        "Rock"
+      ],
       "aliases": []
     },
     "accelgor": {
@@ -3930,7 +5135,9 @@
       "name": "Accelgor",
       "image": "617-Accelgor.png",
       "wikilink": "Accelgor",
-      "types": [],
+      "types": [
+        "Bug"
+      ],
       "aliases": []
     },
     "simisear": {
@@ -3938,7 +5145,9 @@
       "name": "Simisear",
       "image": "514-Simisear(1).png",
       "wikilink": "Simisear",
-      "types": [],
+      "types": [
+        "Fire"
+      ],
       "aliases": []
     },
     "archen": {
@@ -3946,7 +5155,10 @@
       "name": "Archen",
       "image": "566-Archen.png",
       "wikilink": "Archen",
-      "types": [],
+      "types": [
+        "Rock",
+        "Flying"
+      ],
       "aliases": []
     },
     "archeops": {
@@ -3954,7 +5166,10 @@
       "name": "Archeops",
       "image": "567-Archeops.png",
       "wikilink": "Archeops",
-      "types": [],
+      "types": [
+        "Rock",
+        "Flying"
+      ],
       "aliases": []
     },
     "mienfoo": {
@@ -3962,7 +5177,9 @@
       "name": "Mienfoo",
       "image": "619-Mienfoo.png",
       "wikilink": "Mienfoo",
-      "types": [],
+      "types": [
+        "Fighting"
+      ],
       "aliases": []
     },
     "trubbish": {
@@ -3970,7 +5187,9 @@
       "name": "Trubbish",
       "image": "568-Trubbish.png",
       "wikilink": "Trubbish",
-      "types": [],
+      "types": [
+        "Poison"
+      ],
       "aliases": []
     },
     "mienshao": {
@@ -3978,7 +5197,9 @@
       "name": "Mienshao",
       "image": "620-Mienshao.png",
       "wikilink": "Mienshao",
-      "types": [],
+      "types": [
+        "Fighting"
+      ],
       "aliases": []
     },
     "garbodor": {
@@ -3986,7 +5207,9 @@
       "name": "Garbodor",
       "image": "569-Garbodor.png",
       "wikilink": "Garbodor",
-      "types": [],
+      "types": [
+        "Poison"
+      ],
       "aliases": []
     },
     "druddigon": {
@@ -3994,7 +5217,9 @@
       "name": "Druddigon",
       "image": "621-Druddigon.png",
       "wikilink": "Druddigon",
-      "types": [],
+      "types": [
+        "Dragon"
+      ],
       "aliases": []
     },
     "zorua": {
@@ -4002,7 +5227,9 @@
       "name": "Zorua",
       "image": "570-Zorua.png",
       "wikilink": "Zorua",
-      "types": [],
+      "types": [
+        "Dark"
+      ],
       "aliases": []
     },
     "golett": {
@@ -4010,7 +5237,10 @@
       "name": "Golett",
       "image": "622-Golett.png",
       "wikilink": "Golett",
-      "types": [],
+      "types": [
+        "Ground",
+        "Ghost"
+      ],
       "aliases": []
     },
     "zoroark": {
@@ -4018,7 +5248,9 @@
       "name": "Zoroark",
       "image": "571-Zoroark(1).png",
       "wikilink": "Zoroark",
-      "types": [],
+      "types": [
+        "Dark"
+      ],
       "aliases": []
     },
     "pawniard": {
@@ -4026,7 +5258,10 @@
       "name": "Pawniard",
       "image": "624-Pawniard.png",
       "wikilink": "Pawniard",
-      "types": [],
+      "types": [
+        "Dark",
+        "Steel"
+      ],
       "aliases": []
     },
     "bisharp": {
@@ -4034,7 +5269,10 @@
       "name": "Bisharp",
       "image": "625-Bisharp.png",
       "wikilink": "Bisharp",
-      "types": [],
+      "types": [
+        "Dark",
+        "Steel"
+      ],
       "aliases": []
     },
     "blitzle": {
@@ -4042,7 +5280,9 @@
       "name": "Blitzle",
       "image": "522-Blitzle.png",
       "wikilink": "Blitzle",
-      "types": [],
+      "types": [
+        "Electric"
+      ],
       "aliases": []
     },
     "gothita": {
@@ -4050,7 +5290,9 @@
       "name": "Gothita",
       "image": "574-Gothita.png",
       "wikilink": "Gothita",
-      "types": [],
+      "types": [
+        "Psychic"
+      ],
       "aliases": []
     },
     "zebstrika": {
@@ -4058,7 +5300,9 @@
       "name": "Zebstrika",
       "image": "523-Zebstrika.png",
       "wikilink": "Zebstrika",
-      "types": [],
+      "types": [
+        "Electric"
+      ],
       "aliases": []
     },
     "gothorita": {
@@ -4066,7 +5310,9 @@
       "name": "Gothorita",
       "image": "575-Gothorita.png",
       "wikilink": "Gothorita",
-      "types": [],
+      "types": [
+        "Psychic"
+      ],
       "aliases": []
     },
     "rufflet": {
@@ -4074,7 +5320,10 @@
       "name": "Rufflet",
       "image": "627-Rufflet.png",
       "wikilink": "Rufflet",
-      "types": [],
+      "types": [
+        "Normal",
+        "Flying"
+      ],
       "aliases": []
     },
     "gothitelle": {
@@ -4082,7 +5331,9 @@
       "name": "Gothitelle",
       "image": "576-Gothitelle.png",
       "wikilink": "Gothitelle",
-      "types": [],
+      "types": [
+        "Psychic"
+      ],
       "aliases": []
     },
     "braviary": {
@@ -4090,7 +5341,10 @@
       "name": "Braviary",
       "image": "628-Braviary.png",
       "wikilink": "Braviary",
-      "types": [],
+      "types": [
+        "Normal",
+        "Flying"
+      ],
       "aliases": []
     },
     "mandibuzz": {
@@ -4098,7 +5352,10 @@
       "name": "Mandibuzz",
       "image": "630-Mandibuzz.png",
       "wikilink": "Mandibuzz",
-      "types": [],
+      "types": [
+        "Dark",
+        "Flying"
+      ],
       "aliases": []
     },
     "heatmor": {
@@ -4106,7 +5363,9 @@
       "name": "Heatmor",
       "image": "631-Heatmor.png",
       "wikilink": "Heatmor",
-      "types": [],
+      "types": [
+        "Fire"
+      ],
       "aliases": []
     },
     "drilbur": {
@@ -4114,7 +5373,9 @@
       "name": "Drilbur",
       "image": "529-Drillbur.png",
       "wikilink": "Drilbur",
-      "types": [],
+      "types": [
+        "Ground"
+      ],
       "aliases": []
     },
     "deino": {
@@ -4122,7 +5383,10 @@
       "name": "Deino",
       "image": "633-Deino.png",
       "wikilink": "Deino",
-      "types": [],
+      "types": [
+        "Dark",
+        "Dragon"
+      ],
       "aliases": []
     },
     "excadrill": {
@@ -4130,7 +5394,10 @@
       "name": "Excadrill",
       "image": "530-Excadrill.png",
       "wikilink": "Excadrill",
-      "types": [],
+      "types": [
+        "Ground",
+        "Steel"
+      ],
       "aliases": []
     },
     "vanillite": {
@@ -4138,7 +5405,9 @@
       "name": "Vanillite",
       "image": "582-Vanillite.png",
       "wikilink": "Vanillite",
-      "types": [],
+      "types": [
+        "Ice"
+      ],
       "aliases": []
     },
     "zweilous": {
@@ -4146,7 +5415,10 @@
       "name": "Zweilous",
       "image": "634-Zweilous.png",
       "wikilink": "Zweilous",
-      "types": [],
+      "types": [
+        "Dark",
+        "Dragon"
+      ],
       "aliases": []
     },
     "audino": {
@@ -4154,7 +5426,9 @@
       "name": "Audino",
       "image": "531-Audino.png",
       "wikilink": "Audino",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "vanillish": {
@@ -4162,7 +5436,9 @@
       "name": "Vanillish",
       "image": "583-Vanillish.png",
       "wikilink": "Vanillish",
-      "types": [],
+      "types": [
+        "Ice"
+      ],
       "aliases": []
     },
     "hydreigon": {
@@ -4170,7 +5446,10 @@
       "name": "Hydreigon",
       "image": "635-Hydreigon.png",
       "wikilink": "Hydreigon",
-      "types": [],
+      "types": [
+        "Dark",
+        "Dragon"
+      ],
       "aliases": []
     },
     "timburr": {
@@ -4178,7 +5457,9 @@
       "name": "Timburr",
       "image": "532-Timburr.png",
       "wikilink": "Timburr",
-      "types": [],
+      "types": [
+        "Fighting"
+      ],
       "aliases": []
     },
     "vanilluxe": {
@@ -4186,7 +5467,9 @@
       "name": "Vanilluxe",
       "image": "584-Vanilluxe.png",
       "wikilink": "Vanilluxe",
-      "types": [],
+      "types": [
+        "Ice"
+      ],
       "aliases": []
     },
     "larvesta": {
@@ -4194,7 +5477,10 @@
       "name": "Larvesta",
       "image": "636-Larvesta.png",
       "wikilink": "Larvesta",
-      "types": [],
+      "types": [
+        "Bug",
+        "Fire"
+      ],
       "aliases": []
     },
     "gurdurr": {
@@ -4202,7 +5488,9 @@
       "name": "Gurdurr",
       "image": "533-Gurdurr.png",
       "wikilink": "Gurdurr",
-      "types": [],
+      "types": [
+        "Fighting"
+      ],
       "aliases": []
     },
     "volcarona": {
@@ -4210,7 +5498,10 @@
       "name": "Volcarona",
       "image": "637-Volcarona.png",
       "wikilink": "Volcarona",
-      "types": [],
+      "types": [
+        "Bug",
+        "Fire"
+      ],
       "aliases": []
     },
     "conkeldurr": {
@@ -4218,7 +5509,9 @@
       "name": "Conkeldurr",
       "image": "534-Conkeldurr.png",
       "wikilink": "Conkeldurr",
-      "types": [],
+      "types": [
+        "Fighting"
+      ],
       "aliases": []
     },
     "emolga": {
@@ -4226,7 +5519,10 @@
       "name": "Emolga",
       "image": "587-Emolga.png",
       "wikilink": "Emolga",
-      "types": [],
+      "types": [
+        "Electric",
+        "Flying"
+      ],
       "aliases": []
     },
     "karrablast": {
@@ -4234,7 +5530,9 @@
       "name": "Karrablast",
       "image": "588_-_Karrablast.png",
       "wikilink": "Karrablast",
-      "types": [],
+      "types": [
+        "Bug"
+      ],
       "aliases": []
     },
     "escavalier": {
@@ -4242,7 +5540,10 @@
       "name": "Escavalier",
       "image": "589_-_Escavalier.png",
       "wikilink": "Escavalier",
-      "types": [],
+      "types": [
+        "Bug",
+        "Steel"
+      ],
       "aliases": []
     },
     "throh": {
@@ -4250,7 +5551,9 @@
       "name": "Throh",
       "image": "538-Throh.png",
       "wikilink": "Throh",
-      "types": [],
+      "types": [
+        "Fighting"
+      ],
       "aliases": []
     },
     "sawk": {
@@ -4258,7 +5561,9 @@
       "name": "Sawk",
       "image": "539-Sawk.png",
       "wikilink": "Sawk",
-      "types": [],
+      "types": [
+        "Fighting"
+      ],
       "aliases": []
     },
     "alomomola": {
@@ -4266,7 +5571,9 @@
       "name": "Alomomola",
       "image": "594-Alomomola.png",
       "wikilink": "Alomomola",
-      "types": [],
+      "types": [
+        "Water"
+      ],
       "aliases": []
     },
     "venipede": {
@@ -4274,7 +5581,10 @@
       "name": "Venipede",
       "image": "543-Venipede.png",
       "wikilink": "Venipede",
-      "types": [],
+      "types": [
+        "Bug",
+        "Poison"
+      ],
       "aliases": []
     },
     "joltik": {
@@ -4282,7 +5592,10 @@
       "name": "Joltik",
       "image": "595-Joltik.png",
       "wikilink": "Joltik",
-      "types": [],
+      "types": [
+        "Bug",
+        "Electric"
+      ],
       "aliases": []
     },
     "whirlipede": {
@@ -4290,7 +5603,10 @@
       "name": "Whirlipede",
       "image": "544-Whirlipede.png",
       "wikilink": "Whirlipede",
-      "types": [],
+      "types": [
+        "Bug",
+        "Poison"
+      ],
       "aliases": []
     },
     "galvantula": {
@@ -4298,7 +5614,10 @@
       "name": "Galvantula",
       "image": "596-Galvantula.png",
       "wikilink": "Galvantula",
-      "types": [],
+      "types": [
+        "Bug",
+        "Electric"
+      ],
       "aliases": []
     },
     "scolipede": {
@@ -4306,7 +5625,10 @@
       "name": "Scolipede",
       "image": "545-Scolipede.png",
       "wikilink": "Scolipede",
-      "types": [],
+      "types": [
+        "Bug",
+        "Poison"
+      ],
       "aliases": []
     },
     "ferroseed": {
@@ -4314,7 +5636,10 @@
       "name": "Ferroseed",
       "image": "597-Ferroseed.png",
       "wikilink": "Ferroseed",
-      "types": [],
+      "types": [
+        "Grass",
+        "Steel"
+      ],
       "aliases": []
     },
     "pancham": {
@@ -4322,7 +5647,9 @@
       "name": "Pancham",
       "image": "674-Pancham.png",
       "wikilink": "Pancham",
-      "types": [],
+      "types": [
+        "Fighting"
+      ],
       "aliases": []
     },
     "amaura": {
@@ -4330,7 +5657,10 @@
       "name": "Amaura",
       "image": "698 - Amaura.png",
       "wikilink": "Amaura",
-      "types": [],
+      "types": [
+        "Rock",
+        "Ice"
+      ],
       "aliases": []
     },
     "pangoro": {
@@ -4338,7 +5668,10 @@
       "name": "Pangoro",
       "image": "675-Pangoro.png",
       "wikilink": "Pangoro",
-      "types": [],
+      "types": [
+        "Fighting",
+        "Dark"
+      ],
       "aliases": []
     },
     "aurorus": {
@@ -4346,7 +5679,10 @@
       "name": "Aurorus",
       "image": "699 - Aurorus.png",
       "wikilink": "Aurorus",
-      "types": [],
+      "types": [
+        "Rock",
+        "Ice"
+      ],
       "aliases": []
     },
     "sylveon": {
@@ -4354,7 +5690,9 @@
       "name": "Sylveon",
       "image": "700-Sylveon.png",
       "wikilink": "Sylveon",
-      "types": [],
+      "types": [
+        "Fairy"
+      ],
       "aliases": []
     },
     "espurr": {
@@ -4362,7 +5700,9 @@
       "name": "Espurr",
       "image": "677-Espurr.png",
       "wikilink": "Espurr",
-      "types": [],
+      "types": [
+        "Psychic"
+      ],
       "aliases": []
     },
     "hawlucha": {
@@ -4370,7 +5710,10 @@
       "name": "Hawlucha",
       "image": "701-Hawlucha.png",
       "wikilink": "Hawlucha",
-      "types": [],
+      "types": [
+        "Fighting",
+        "Flying"
+      ],
       "aliases": []
     },
     "meowstic": {
@@ -4386,7 +5729,10 @@
       "name": "Dedenne",
       "image": "702-Dedenne.png",
       "wikilink": "Dedenne",
-      "types": [],
+      "types": [
+        "Electric",
+        "Fairy"
+      ],
       "aliases": []
     },
     "honedge": {
@@ -4394,7 +5740,10 @@
       "name": "Honedge",
       "image": "679-Honedge.png",
       "wikilink": "Honedge",
-      "types": [],
+      "types": [
+        "Steel",
+        "Ghost"
+      ],
       "aliases": []
     },
     "carbink": {
@@ -4402,7 +5751,10 @@
       "name": "Carbink",
       "image": "703-Carbink.png",
       "wikilink": "Carbink",
-      "types": [],
+      "types": [
+        "Rock",
+        "Fairy"
+      ],
       "aliases": []
     },
     "doublade": {
@@ -4410,7 +5762,10 @@
       "name": "Doublade",
       "image": "680-Doublade.png",
       "wikilink": "Doublade",
-      "types": [],
+      "types": [
+        "Steel",
+        "Ghost"
+      ],
       "aliases": []
     },
     "goomy": {
@@ -4418,7 +5773,9 @@
       "name": "Goomy",
       "image": "704-Goomy.png",
       "wikilink": "Goomy",
-      "types": [],
+      "types": [
+        "Dragon"
+      ],
       "aliases": []
     },
     "aegislash": {
@@ -4434,7 +5791,9 @@
       "name": "Sliggoo",
       "image": "705-Sliggoo.png",
       "wikilink": "Sliggoo",
-      "types": [],
+      "types": [
+        "Dragon"
+      ],
       "aliases": []
     },
     "spritzee": {
@@ -4442,7 +5801,9 @@
       "name": "Spritzee",
       "image": "682-Spritzee.png",
       "wikilink": "Spritzee",
-      "types": [],
+      "types": [
+        "Fairy"
+      ],
       "aliases": []
     },
     "goodra": {
@@ -4450,7 +5811,9 @@
       "name": "Goodra",
       "image": "706-Goodra.png",
       "wikilink": "Goodra",
-      "types": [],
+      "types": [
+        "Dragon"
+      ],
       "aliases": []
     },
     "bunnelby": {
@@ -4458,7 +5821,9 @@
       "name": "Bunnelby",
       "image": "659-Bunnelby.png",
       "wikilink": "Bunnelby",
-      "types": [],
+      "types": [
+        "Normal"
+      ],
       "aliases": []
     },
     "aromatisse": {
@@ -4466,7 +5831,9 @@
       "name": "Aromatisse",
       "image": "683-Aromatisse.png",
       "wikilink": "Aromatisse",
-      "types": [],
+      "types": [
+        "Fairy"
+      ],
       "aliases": []
     },
     "klefki": {
@@ -4474,7 +5841,10 @@
       "name": "Klefki",
       "image": "707-Klefki.png",
       "wikilink": "Klefki",
-      "types": [],
+      "types": [
+        "Steel",
+        "Fairy"
+      ],
       "aliases": []
     },
     "diggersby": {
@@ -4482,7 +5852,10 @@
       "name": "Diggersby",
       "image": "660-Diggersby.png",
       "wikilink": "Diggersby",
-      "types": [],
+      "types": [
+        "Normal",
+        "Ground"
+      ],
       "aliases": []
     },
     "fletchling": {
@@ -4490,7 +5863,10 @@
       "name": "Fletchling",
       "image": "661-Fletchling.png",
       "wikilink": "Fletchling",
-      "types": [],
+      "types": [
+        "Normal",
+        "Flying"
+      ],
       "aliases": []
     },
     "fletchinder": {
@@ -4498,7 +5874,10 @@
       "name": "Fletchinder",
       "image": "662-Fletchinder.png",
       "wikilink": "Fletchinder",
-      "types": [],
+      "types": [
+        "Fire",
+        "Flying"
+      ],
       "aliases": []
     },
     "talonflame": {
@@ -4506,7 +5885,10 @@
       "name": "Talonflame",
       "image": "663-Talonflame.png",
       "wikilink": "Talonflame",
-      "types": [],
+      "types": [
+        "Fire",
+        "Flying"
+      ],
       "aliases": []
     },
     "binacle": {
@@ -4514,7 +5896,10 @@
       "name": "Binacle",
       "image": "688-Binacle.png",
       "wikilink": "Binacle",
-      "types": [],
+      "types": [
+        "Rock",
+        "Water"
+      ],
       "aliases": []
     },
     "bergmite": {
@@ -4522,7 +5907,9 @@
       "name": "Bergmite",
       "image": "712-Bergmite.png",
       "wikilink": "Bergmite",
-      "types": [],
+      "types": [
+        "Ice"
+      ],
       "aliases": []
     },
     "avalugg": {
@@ -4530,7 +5917,9 @@
       "name": "Avalugg",
       "image": "713-Avalugg.png",
       "wikilink": "Avalugg",
-      "types": [],
+      "types": [
+        "Ice"
+      ],
       "aliases": []
     },
     "skrelp": {
@@ -4538,7 +5927,10 @@
       "name": "Skrelp",
       "image": "690-Skrelp.png",
       "wikilink": "Skrelp",
-      "types": [],
+      "types": [
+        "Poison",
+        "Water"
+      ],
       "aliases": []
     },
     "noibat": {
@@ -4546,7 +5938,10 @@
       "name": "Noibat",
       "image": "714_-_Noibat.png",
       "wikilink": "Noibat",
-      "types": [],
+      "types": [
+        "Flying",
+        "Dragon"
+      ],
       "aliases": []
     },
     "litleo": {
@@ -4554,7 +5949,10 @@
       "name": "Litleo",
       "image": "667-Litleo.png",
       "wikilink": "Litleo",
-      "types": [],
+      "types": [
+        "Fire",
+        "Normal"
+      ],
       "aliases": []
     },
     "dragalge": {
@@ -4562,7 +5960,10 @@
       "name": "Dragalge",
       "image": "691-Dragalge.png",
       "wikilink": "Dragalge",
-      "types": [],
+      "types": [
+        "Poison",
+        "Dragon"
+      ],
       "aliases": []
     },
     "noivern": {
@@ -4570,7 +5971,10 @@
       "name": "Noivern",
       "image": "715_-_Noivern.png",
       "wikilink": "Noivern",
-      "types": [],
+      "types": [
+        "Flying",
+        "Dragon"
+      ],
       "aliases": []
     },
     "pyroar": {
@@ -4602,7 +6006,9 @@
       "name": "Floette",
       "image": "670.Floette.png",
       "wikilink": "Floette",
-      "types": [],
+      "types": [
+        "Fairy"
+      ],
       "aliases": []
     },
     "florges": {
@@ -4610,7 +6016,9 @@
       "name": "Florges",
       "image": "671.Florges.png",
       "wikilink": "Florges",
-      "types": [],
+      "types": [
+        "Fairy"
+      ],
       "aliases": []
     },
     "tyrunt": {
@@ -4618,7 +6026,10 @@
       "name": "Tyrunt",
       "image": "696 - Tyrunt.png",
       "wikilink": "Tyrunt",
-      "types": [],
+      "types": [
+        "Rock",
+        "Dragon"
+      ],
       "aliases": []
     },
     "hoopa": {
@@ -4626,7 +6037,10 @@
       "name": "Hoopa",
       "image": "720-Hoopa.png",
       "wikilink": "Hoopa",
-      "types": [],
+      "types": [
+        "Psychic",
+        "Ghost"
+      ],
       "aliases": []
     },
     "skiddo": {
@@ -4634,7 +6048,9 @@
       "name": "Skiddo",
       "image": "672-Skiddo.png",
       "wikilink": "Skiddo",
-      "types": [],
+      "types": [
+        "Grass"
+      ],
       "aliases": []
     },
     "tyrantrum": {
@@ -4642,7 +6058,10 @@
       "name": "Tyrantrum",
       "image": "697 - Tyrantrum.png",
       "wikilink": "Tyrantrum",
-      "types": [],
+      "types": [
+        "Rock",
+        "Dragon"
+      ],
       "aliases": []
     },
     "gogoat": {
@@ -4650,7 +6069,9 @@
       "name": "Gogoat",
       "image": "673-Gogoat.png",
       "wikilink": "Gogoat",
-      "types": [],
+      "types": [
+        "Grass"
+      ],
       "aliases": []
     },
     "grubbin": {
@@ -4658,7 +6079,9 @@
       "name": "Grubbin",
       "image": "736-Grubbin.png",
       "wikilink": "Grubbin",
-      "types": [],
+      "types": [
+        "Bug"
+      ],
       "aliases": []
     },
     "charjabug": {
@@ -4666,7 +6089,10 @@
       "name": "Charjabug",
       "image": "737-Charjabug.png",
       "wikilink": "Charjabug",
-      "types": [],
+      "types": [
+        "Bug",
+        "Electric"
+      ],
       "aliases": []
     },
     "vikavolt": {
@@ -4674,7 +6100,10 @@
       "name": "Vikavolt",
       "image": "738-Vikavolt.png",
       "wikilink": "Vikavolt",
-      "types": [],
+      "types": [
+        "Bug",
+        "Electric"
+      ],
       "aliases": []
     },
     "sandygast": {
@@ -4682,7 +6111,10 @@
       "name": "Sandygast",
       "image": "769-Sandygast.png",
       "wikilink": "Sandygast",
-      "types": [],
+      "types": [
+        "Ghost",
+        "Ground"
+      ],
       "aliases": []
     },
     "palossand": {
@@ -4690,7 +6122,10 @@
       "name": "Palossand",
       "image": "770-Palossand.png",
       "wikilink": "Palossand",
-      "types": [],
+      "types": [
+        "Ghost",
+        "Ground"
+      ],
       "aliases": []
     },
     "rockruff": {
@@ -4698,7 +6133,9 @@
       "name": "Rockruff",
       "image": "744-Rockruff.png",
       "wikilink": "Rockruff",
-      "types": [],
+      "types": [
+        "Rock"
+      ],
       "aliases": []
     },
     "lycanroc": {
@@ -4714,7 +6151,10 @@
       "name": "Turtonator",
       "image": "776-Turtonator.png",
       "wikilink": "Turtonator",
-      "types": [],
+      "types": [
+        "Fire",
+        "Dragon"
+      ],
       "aliases": []
     },
     "togedemaru": {
@@ -4722,7 +6162,10 @@
       "name": "Togedemaru",
       "image": "777-Togedemaru.png",
       "wikilink": "Togedemaru",
-      "types": [],
+      "types": [
+        "Electric",
+        "Steel"
+      ],
       "aliases": []
     },
     "mimikyu": {
@@ -4738,7 +6181,9 @@
       "name": "Mudbray",
       "image": "749-Mudbray.png",
       "wikilink": "Mudbray",
-      "types": [],
+      "types": [
+        "Ground"
+      ],
       "aliases": []
     },
     "mudsdale": {
@@ -4746,7 +6191,9 @@
       "name": "Mudsdale",
       "image": "750-Mudsdale.png",
       "wikilink": "Mudsdale",
-      "types": [],
+      "types": [
+        "Ground"
+      ],
       "aliases": []
     },
     "drampa": {
@@ -4754,7 +6201,10 @@
       "name": "Drampa",
       "image": "780-Drampa.png",
       "wikilink": "Drampa",
-      "types": [],
+      "types": [
+        "Normal",
+        "Dragon"
+      ],
       "aliases": []
     },
     "cursola": {
@@ -4762,7 +6212,9 @@
       "name": "Cursola",
       "image": "864-Cursola.png",
       "wikilink": "Cursola",
-      "types": [],
+      "types": [
+        "Ghost"
+      ],
       "aliases": []
     },
     "sirfetchd": {
@@ -4770,7 +6222,9 @@
       "name": "Sirfetch'd",
       "image": "865-Sirfetch'd.png",
       "wikilink": "Sirfetch'd",
-      "types": [],
+      "types": [
+        "Fighting"
+      ],
       "aliases": []
     },
     "scorbunny": {
@@ -4778,7 +6232,9 @@
       "name": "Scorbunny",
       "image": "813-Scorbunny.png",
       "wikilink": "Scorbunny",
-      "types": [],
+      "types": [
+        "Fire"
+      ],
       "aliases": []
     },
     "applin": {
@@ -4786,7 +6242,10 @@
       "name": "Applin",
       "image": "840_-_Applin.png",
       "wikilink": "Applin",
-      "types": [],
+      "types": [
+        "Grass",
+        "Dragon"
+      ],
       "aliases": []
     },
     "runerigus": {
@@ -4794,7 +6253,10 @@
       "name": "Runerigus",
       "image": "867 - Runerigus.png",
       "wikilink": "Runerigus",
-      "types": [],
+      "types": [
+        "Ground",
+        "Ghost"
+      ],
       "aliases": []
     },
     "raboot": {
@@ -4802,7 +6264,9 @@
       "name": "Raboot",
       "image": "814-Raboot.png",
       "wikilink": "Raboot",
-      "types": [],
+      "types": [
+        "Fire"
+      ],
       "aliases": []
     },
     "flapple": {
@@ -4810,7 +6274,10 @@
       "name": "Flapple",
       "image": "841_-_Flapple.png",
       "wikilink": "Flapple",
-      "types": [],
+      "types": [
+        "Grass",
+        "Dragon"
+      ],
       "aliases": []
     },
     "milcery": {
@@ -4818,7 +6285,9 @@
       "name": "Milcery",
       "image": "868-Milcery.png",
       "wikilink": "Milcery",
-      "types": [],
+      "types": [
+        "Fairy"
+      ],
       "aliases": []
     },
     "cinderace": {
@@ -4826,7 +6295,9 @@
       "name": "Cinderace",
       "image": "815-Cinderace.png",
       "wikilink": "Cinderace",
-      "types": [],
+      "types": [
+        "Fire"
+      ],
       "aliases": []
     },
     "appletun": {
@@ -4834,7 +6305,10 @@
       "name": "Appletun",
       "image": "842_-_Appletun.png",
       "wikilink": "Appletun",
-      "types": [],
+      "types": [
+        "Grass",
+        "Dragon"
+      ],
       "aliases": []
     },
     "alcremie": {
@@ -4842,7 +6316,9 @@
       "name": "Alcremie",
       "image": "869-Alcremie.png",
       "wikilink": "Alcremie",
-      "types": [],
+      "types": [
+        "Fairy"
+      ],
       "aliases": []
     },
     "silicobra": {
@@ -4850,7 +6326,9 @@
       "name": "Silicobra",
       "image": "843-Silicobra.png",
       "wikilink": "Silicobra",
-      "types": [],
+      "types": [
+        "Ground"
+      ],
       "aliases": []
     },
     "sandaconda": {
@@ -4858,7 +6336,9 @@
       "name": "Sandaconda",
       "image": "844-Sandaconda.png",
       "wikilink": "Sandaconda",
-      "types": [],
+      "types": [
+        "Ground"
+      ],
       "aliases": []
     },
     "snom": {
@@ -4866,7 +6346,10 @@
       "name": "Snom",
       "image": "872 - Snom.png",
       "wikilink": "Snom",
-      "types": [],
+      "types": [
+        "Ice",
+        "Bug"
+      ],
       "aliases": []
     },
     "frosmoth": {
@@ -4874,7 +6357,10 @@
       "name": "Frosmoth",
       "image": "873_-_Frosmoth.png",
       "wikilink": "Frosmoth",
-      "types": [],
+      "types": [
+        "Ice",
+        "Bug"
+      ],
       "aliases": []
     },
     "toxel": {
@@ -4882,7 +6368,10 @@
       "name": "Toxel",
       "image": "848-Toxel.png",
       "wikilink": "Toxel",
-      "types": [],
+      "types": [
+        "Electric",
+        "Poison"
+      ],
       "aliases": []
     },
     "toxtricity": {
@@ -4898,7 +6387,9 @@
       "name": "Cufant",
       "image": "878-Cufant.png",
       "wikilink": "Cufant",
-      "types": [],
+      "types": [
+        "Steel"
+      ],
       "aliases": []
     },
     "copperajah": {
@@ -4906,7 +6397,9 @@
       "name": "Copperajah",
       "image": "879-Copperajah.png",
       "wikilink": "Copperajah",
-      "types": [],
+      "types": [
+        "Steel"
+      ],
       "aliases": []
     },
     "hatenna": {
@@ -4914,7 +6407,9 @@
       "name": "Hatenna",
       "image": "856-Hatenna.png",
       "wikilink": "Hatenna",
-      "types": [],
+      "types": [
+        "Psychic"
+      ],
       "aliases": []
     },
     "hattrem": {
@@ -4922,7 +6417,9 @@
       "name": "Hattrem",
       "image": "857-Hattrem.png",
       "wikilink": "Hattrem",
-      "types": [],
+      "types": [
+        "Psychic"
+      ],
       "aliases": []
     },
     "hatterene": {
@@ -4930,7 +6427,10 @@
       "name": "Hatterene",
       "image": "858-Hatterene.png",
       "wikilink": "Hatterene",
-      "types": [],
+      "types": [
+        "Psychic",
+        "Fairy"
+      ],
       "aliases": []
     },
     "perrserker": {
@@ -4938,7 +6438,9 @@
       "name": "Perrserker",
       "image": "863-Perrserker.png",
       "wikilink": "Perrserker",
-      "types": [],
+      "types": [
+        "Steel"
+      ],
       "aliases": []
     },
     "shinybulbasaur": {
@@ -8262,7 +9764,10 @@
       "name": "Sneasler",
       "image": "903 - Sneasler.png",
       "wikilink": "Sneasler",
-      "types": [],
+      "types": [
+        "Fighting",
+        "Poison"
+      ],
       "aliases": []
     },
     "hisuianarcanine": {
@@ -8294,7 +9799,10 @@
       "name": "Wyrdeer",
       "image": "899 - Wyrdeer.png",
       "wikilink": "Wyrdeer",
-      "types": [],
+      "types": [
+        "Normal",
+        "Psychic"
+      ],
       "aliases": []
     },
     "hisuiantyphlosion": {
@@ -8310,7 +9818,10 @@
       "name": "Kleavor",
       "image": "900 - Kleavor.png",
       "wikilink": "Kleavor",
-      "types": [],
+      "types": [
+        "Bug",
+        "Rock"
+      ],
       "aliases": []
     },
     "hisuianqwilfish": {
@@ -8326,7 +9837,10 @@
       "name": "Ursaluna",
       "image": "901 - Ursaluna.png",
       "wikilink": "Ursaluna",
-      "types": [],
+      "types": [
+        "Ground",
+        "Normal"
+      ],
       "aliases": []
     },
     "overqwil": {
@@ -8334,7 +9848,10 @@
       "name": "Overqwil",
       "image": "904 - Overqwil.png",
       "wikilink": "Overqwil",
-      "types": [],
+      "types": [
+        "Dark",
+        "Poison"
+      ],
       "aliases": []
     },
     "bloodmoonursaluna": {
@@ -8655,7 +10172,9 @@
       "name": "Mew",
       "image": "151-Mew.png",
       "wikilink": "Mew",
-      "types": [],
+      "types": [
+        "Psychic"
+      ],
       "aliases": []
     }
   }

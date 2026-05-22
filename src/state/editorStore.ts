@@ -20,6 +20,7 @@ interface EditorState {
   sidebarPanel: SidebarPanel;
   sidebarWidth: number;
   isLoading: boolean;
+  isTableBuilderOpen: boolean;
 
   // Notifications
   toast: { message: string; type: 'success' | 'error' | 'info' } | null;
@@ -38,48 +39,11 @@ interface EditorState {
   dismissToast: () => void;
   loadPersistedState: () => Promise<void>;
   persistTab: (id: string) => Promise<void>;
+  setTableBuilderOpen: (open: boolean) => void;
 }
 
-const DEFAULT_CONTENT = `= Bem-vindo ao WikiPokexGames Editor =
+const DEFAULT_CONTENT = '';
 
-Este é um editor moderno para páginas da [[WikiPokexGames]].
-
-== Como usar ==
-
-Digite <code>/</code> para abrir o menu de slash commands.
-
-=== Exemplos de Pokémon ===
-
-/pikachu → [[Arquivo:025_-_Pikachu.png|link=Pikachu]] '''[[Pikachu]]'''
-
-/ursaluna → [[Arquivo:901_-_Ursaluna.png|link=Ursaluna]] '''[[Ursaluna]]'''
-
-== Tabela de Exemplo ==
-
-{| class="wikitable"
-! Pokémon
-! Tipo
-! Geração
-|-
-| [[Pikachu]]
-| Elétrico
-| I
-|-
-| [[Charizard]]
-| Fogo/Voador
-| I
-|-
-| [[Lucario]]
-| Luta/Aço
-| IV
-|}
-
-== Links Úteis ==
-
-* [[WikiPokexGames]]
-* [[Pokémon]]
-* [[Categoria:Pokémon]]
-`;
 
 function generateId(): string {
   return `tab-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
@@ -94,6 +58,9 @@ export const useEditorStore = create<EditorState>((set, get) => ({
   sidebarWidth: 280,
   isLoading: true,
   toast: null,
+  isTableBuilderOpen: false,
+
+  setTableBuilderOpen: (open) => set({ isTableBuilderOpen: open }),
 
   createTab: (title = 'Nova Página', content = DEFAULT_CONTENT) => {
     const id = generateId();

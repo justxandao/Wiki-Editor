@@ -138,6 +138,43 @@ export function WikiEditor({ content, onChange, tabId }: WikiEditorProps) {
         darkTheme,
         updateListener,
         keymap.of([
+          {
+            key: 'Enter',
+            run: (view) => {
+              const { from, to } = view.state.selection.main;
+              if (from !== to) return false;
+
+              const line = view.state.doc.lineAt(from);
+              const beforeCursor = line.text.slice(0, from - line.from);
+
+              // 1. Match Icon + Link: e.g. [[Arquivo:025_-_Pikachu.png|link=Pikachu]] [[Pikachu]]
+              const doubleMatch = beforeCursor.match(/\[\[(?:Arquivo|File):([^|\]]+\.(?:png|gif|jpg|jpeg))\|link=([^\]]+)\]\]\s+\[\[([^\]]+)\]\]$/i);
+              if (doubleMatch && doubleMatch[2].toLowerCase() === doubleMatch[3].toLowerCase()) {
+                const pokemonName = doubleMatch[2];
+                const suffix = beforeCursor.slice(beforeCursor.lastIndexOf(' [['));
+                const replaceStart = from - suffix.length;
+                
+                view.dispatch({
+                  changes: { from: replaceStart, to, insert: ` '''[[${pokemonName}]]'''` },
+                  selection: { anchor: replaceStart + ` '''[[${pokemonName}]]'''`.length }
+                });
+                return true;
+              }
+
+              // 2. Match Icon only: e.g. [[Arquivo:025_-_Pikachu.png|link=Pikachu]]
+              const singleMatch = beforeCursor.match(/\[\[(?:Arquivo|File):([^|\]]+\.(?:png|gif|jpg|jpeg))\|link=([^\]]+)\]\]$/i);
+              if (singleMatch) {
+                const pokemonName = singleMatch[2];
+                view.dispatch({
+                  changes: { from, to, insert: ` [[${pokemonName}]]` },
+                  selection: { anchor: from + ` [[${pokemonName}]]`.length }
+                });
+                return true;
+              }
+
+              return false;
+            }
+          },
           ...defaultKeymap,
           ...historyKeymap,
           ...searchKeymap,

@@ -2,296 +2,197 @@ import React, { useState } from 'react';
 import { useEditorStore } from '../../state/editorStore';
 import { searchPokemon, getPokemonSpriteUrl } from '../../pokemon/pokemon-service';
 import { searchBerries, getBerrySpriteUrl, buildBerryWikiText } from '../../pokemon/berry-service';
+import { PanelLeftClose, ArrowLeft, ArrowRight, Plus, History, Clock, Folder, ChevronRight, ChevronDown, FileText } from 'lucide-react';
 
 const LIBRARY_SNIPPETS = [
-  { id: 'wikitable', label: 'Wikitable', icon: '📊', category: 'Estruturas',
-    code: '{| class="wikitable"\n! Col 1\n! Col 2\n|-\n| Dado\n| Dado\n|}' },
-  { id: 'h2', label: 'Título H2', icon: '#️⃣', category: 'Formatação',
-    code: '== Título ==\n' },
-  { id: 'h3', label: 'Sub-título H3', icon: '##', category: 'Formatação',
-    code: '=== Sub-título ===\n' },
-  { id: 'bold', label: 'Negrito', icon: 'B', category: 'Formatação',
-    code: "'''texto'''" },
-  { id: 'italic', label: 'Itálico', icon: 'I', category: 'Formatação',
-    code: "''texto''" },
-  { id: 'link', label: 'Link Wiki', icon: '🔗', category: 'Formatação',
-    code: '[[Página|Texto]]' },
-  { id: 'ref', label: 'Referência', icon: '📌', category: 'Formatação',
-    code: '<ref>Fonte aqui</ref>' },
+  { id: 'wikitable', label: 'Criar Tabela', icon: '📊', category: 'Estruturas', code: '{| class="wikitable"\n! Col 1\n! Col 2\n|-\n| Dado\n| Dado\n|}' },
+  { id: 'h2', label: 'Título H2', icon: '#️⃣', category: 'Formatação', code: '== Título ==\n' },
+  { id: 'h3', label: 'Sub-título H3', icon: '##', category: 'Formatação', code: '=== Sub-título ===\n' },
+  { id: 'bold', label: 'Negrito', icon: 'B', category: 'Formatação', code: "'''texto'''" },
+  { id: 'italic', label: 'Itálico', icon: 'I', category: 'Formatação', code: "''texto''" },
+  { id: 'link', label: 'Link Wiki', icon: '🔗', category: 'Formatação', code: '[[Página|Texto]]' },
+  { id: 'ref', label: 'Referência', icon: '📌', category: 'Formatação', code: '<ref>Fonte aqui</ref>' },
 ];
 
-const TABS = ['Biblioteca', 'Pokémon', 'Berries', 'Outline'] as const;
-type LibTab = typeof TABS[number];
+function SectionHeader({ title, icon: Icon, expanded, onClick }: any) {
+  return (
+    <button onClick={onClick} style={{ display: 'flex', alignItems: 'center', gap: '8px', width: '100%', padding: '10px 16px', background: 'transparent', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontFamily: 'Inter, sans-serif' }}>
+      {expanded ? <ChevronDown size={14} style={{ opacity: 0.5 }} /> : <ChevronRight size={14} style={{ opacity: 0.5 }} />}
+      {Icon && <Icon size={14} style={{ opacity: 0.8 }} />}
+      <span style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.05em' }}>{title}</span>
+    </button>
+  );
+}
+
+function FolderItem({ title, onClick, active }: any) {
+  return (
+    <button onClick={onClick} style={{ display: 'flex', alignItems: 'center', gap: '10px', width: '100%', padding: '6px 16px 6px 36px', background: active ? '#16161f' : 'transparent', border: 'none', color: active ? '#e2e2e8' : 'var(--text-muted)', cursor: 'pointer', fontFamily: 'Inter, sans-serif', fontSize: '13px', textAlign: 'left', transition: 'all 0.15s' }}>
+      <Folder size={14} style={{ opacity: active ? 1 : 0.7, color: active ? '#a78bfa' : 'inherit' }} />
+      <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{title}</span>
+    </button>
+  );
+}
 
 export function LibraryPanel() {
-  const [activeTab, setActiveTab] = useState<LibTab>('Biblioteca');
+  const [sections, setSections] = useState({ history: true, tools: true });
+  const [activeTool, setActiveTool] = useState<string | null>(null);
   const [pokemonQuery, setPokemonQuery] = useState('');
   const [berryQuery, setBerryQuery] = useState('');
-  const activeTabId = useEditorStore(s => s.activeTabId);
-  const tabs = useEditorStore(s => s.tabs);
-  const updateTabContent = useEditorStore(s => s.updateTabContent);
-
+  
+  const { tabs, activeTabId, updateTabContent, setTableBuilderOpen, setSidebarPanel, createTab, setActiveTab } = useEditorStore();
   const activeContent = tabs.find(t => t.id === activeTabId)?.content ?? '';
 
   const insertSnippet = (code: string) => {
     const view = (window as any).activeEditorView;
     if (view) {
       const { from, to } = view.state.selection.main;
-      view.dispatch({
-        changes: { from, to, insert: code },
-        selection: { anchor: from + code.length }
-      });
+      view.dispatch({ changes: { from, to, insert: code }, selection: { anchor: from + code.length } });
       view.focus();
-    } else {
-      if (!activeTabId) return;
+    } else if (activeTabId) {
       updateTabContent(activeTabId, activeContent + '\n' + code);
     }
   };
 
   const handleSnippetClick = (item: typeof LIBRARY_SNIPPETS[number]) => {
+    if (item.id === 'wikitable') { setTableBuilderOpen(true); return; }
     const view = (window as any).activeEditorView;
     if (view) {
       const { from, to } = view.state.selection.main;
       const selectedText = view.state.doc.sliceString(from, to);
       let textToInsert = item.code;
-
       if (selectedText.length > 0) {
-        if (item.id === 'bold') {
-          textToInsert = `'''${selectedText}'''`;
-        } else if (item.id === 'italic') {
-          textToInsert = `''${selectedText}''`;
-        } else if (item.id === 'link') {
-          textToInsert = `[[${selectedText}]]`;
-        } else if (item.id === 'h2') {
-          textToInsert = `== ${selectedText} ==\n`;
-        } else if (item.id === 'h3') {
-          textToInsert = `=== ${selectedText} ===\n`;
-        } else if (item.id === 'ref') {
-          textToInsert = `<ref>${selectedText}</ref>`;
-        }
+        if (item.id === 'bold') textToInsert = `'''${selectedText}'''`;
+        else if (item.id === 'italic') textToInsert = `''${selectedText}''`;
+        else if (item.id === 'link') textToInsert = `[[${selectedText}]]`;
+        else if (item.id === 'h2') textToInsert = `== ${selectedText} ==\n`;
+        else if (item.id === 'h3') textToInsert = `=== ${selectedText} ===\n`;
+        else if (item.id === 'ref') textToInsert = `<ref>${selectedText}</ref>`;
       }
-
-      view.dispatch({
-        changes: { from, to, insert: textToInsert },
-        selection: { anchor: from + textToInsert.length }
-      });
+      view.dispatch({ changes: { from, to, insert: textToInsert }, selection: { anchor: from + textToInsert.length } });
       view.focus();
     } else {
       insertSnippet(item.code);
     }
   };
 
-  const pokeResults = searchPokemon(pokemonQuery, 20);
-  const berryResults = searchBerries(berryQuery, 20);
+  const pokeResults = searchPokemon(pokemonQuery, 10);
+  const berryResults = searchBerries(berryQuery, 10);
 
-  // Build outline from content
   const outline = React.useMemo(() => {
-    const lines = activeContent.split('\n');
-    return lines
+    return activeContent.split('\n')
       .map((line, i) => {
         const m = line.match(/^(={1,6})\s*(.+?)\s*\1\s*$/);
-        if (!m) return null;
-        return { level: m[1].length, text: m[2], line: i };
-      })
-      .filter(Boolean);
+        return m ? { level: m[1].length, text: m[2], line: i } : null;
+      }).filter(Boolean);
   }, [activeContent]);
 
+  const inputStyle = { width: '100%', padding: '7px 10px', background: '#0d0d14', border: '1px solid #2a2a3e', borderRadius: '6px', color: '#e2e2e8', fontSize: '12px', outline: 'none' };
+
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-      {/* Tab bar */}
-      <div style={{
-        display: 'flex',
-        borderBottom: '1px solid var(--border-subtle)',
-        background: 'var(--bg-secondary)',
-        flexShrink: 0,
-      }}>
-        {TABS.map(t => (
-          <button
-            key={t}
-            onClick={() => setActiveTab(t)}
-            style={{
-              flex: 1,
-              padding: '8px 4px',
-              background: 'none',
-              border: 'none',
-              borderBottom: activeTab === t ? '2px solid var(--accent-primary)' : '2px solid transparent',
-              color: activeTab === t ? 'var(--text-primary)' : 'var(--text-muted)',
-              fontSize: 12,
-              fontWeight: activeTab === t ? 600 : 400,
-              cursor: 'pointer',
-              transition: 'all 0.15s',
-              fontFamily: 'Inter, sans-serif',
-            }}
-          >
-            {t}
-          </button>
-        ))}
+    <div style={{ display: 'flex', flexDirection: 'column', height: '100%', background: '#111118', color: '#e2e2e8', fontFamily: 'Inter, sans-serif' }}>
+      
+      {/* Top Header matching Antigravity */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '16px', padding: '12px 16px', borderBottom: '1px solid #1e1e2e' }}>
+        <button onClick={() => setSidebarPanel(null)} title="Esconder Barra Lateral" style={{ background: 'transparent', border: 'none', color: '#a0a0ab', cursor: 'pointer', padding: 0 }}>
+          <PanelLeftClose size={18} />
+        </button>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#a0a0ab' }}>
+          <ArrowLeft size={16} style={{ opacity: 0.3, cursor: 'not-allowed' }} />
+          <ArrowRight size={16} style={{ opacity: 0.3, cursor: 'not-allowed' }} />
+        </div>
       </div>
 
-      <div style={{ flex: 1, overflow: 'auto' }}>
-        {activeTab === 'Biblioteca' && (
-          <div style={{ padding: 8 }}>
-            {Object.entries(
-              LIBRARY_SNIPPETS.reduce((acc, s) => {
-                (acc[s.category] = acc[s.category] ?? []).push(s);
-                return acc;
-              }, {} as Record<string, typeof LIBRARY_SNIPPETS>)
-            ).map(([cat, items]) => (
-              <div key={cat} style={{ marginBottom: 8 }}>
-                <div style={{ fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--text-muted)', padding: '6px 8px 2px' }}>
-                  {cat}
-                </div>
-                {items.map(item => (
-                  <div
-                    key={item.id}
-                    className="library-item"
-                    onClick={() => handleSnippetClick(item)}
-                    title={item.code}
-                  >
-                    <div className="library-item-icon">
-                      <span style={{ fontSize: 14 }}>{item.icon}</span>
-                    </div>
-                    <span>{item.label}</span>
-                    <span style={{ marginLeft: 'auto', fontSize: 10, color: 'var(--text-muted)' }}>⊕</span>
-                  </div>
-                ))}
-              </div>
+      {/* New Conversation equivalent */}
+      <div style={{ padding: '12px 16px' }}>
+        <button onClick={() => createTab()} style={{ display: 'flex', alignItems: 'center', gap: '8px', width: '100%', padding: '8px 12px', borderRadius: '8px', border: '1px solid #2a2a3e', background: '#16161f', color: '#e2e2e8', fontSize: '13px', fontWeight: 500, cursor: 'pointer', transition: 'background 0.2s' }}
+          onMouseEnter={e => (e.currentTarget.style.background = '#1e1e2e')} onMouseLeave={e => (e.currentTarget.style.background = '#16161f')}>
+          <Plus size={16} /> Nova Página
+        </button>
+      </div>
+
+      <div style={{ flex: 1, overflow: 'auto' }} className="custom-scrollbar">
+        {/* History */}
+        <SectionHeader title="Histórico de Páginas" icon={History} expanded={sections.history} onClick={() => setSections(s => ({...s, history: !s.history}))} />
+        {sections.history && (
+          <div style={{ display: 'flex', flexDirection: 'column', paddingBottom: '12px' }}>
+            {tabs.map(tab => (
+              <button key={tab.id} onClick={() => setActiveTab(tab.id)} 
+                style={{ display: 'flex', alignItems: 'center', gap: '10px', width: '100%', padding: '6px 16px 6px 36px', background: activeTabId === tab.id ? 'rgba(124, 58, 237, 0.1)' : 'transparent', border: 'none', color: activeTabId === tab.id ? '#a78bfa' : '#a0a0ab', fontSize: '13px', cursor: 'pointer', textAlign: 'left' }}
+                onMouseEnter={e => { if (activeTabId !== tab.id) { e.currentTarget.style.background = '#16161f'; e.currentTarget.style.color = '#e2e2e8'; } }}
+                onMouseLeave={e => { if (activeTabId !== tab.id) { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#a0a0ab'; } }}>
+                <FileText size={14} style={{ opacity: 0.7 }} />
+                <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', flex: 1 }}>{tab.title}</span>
+                {tab.isDirty && <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#a78bfa', flexShrink: 0 }} />}
+              </button>
             ))}
           </div>
         )}
 
-        {activeTab === 'Pokémon' && (
-          <div style={{ padding: 8, display: 'flex', flexDirection: 'column', gap: 6 }}>
-            <input
-              value={pokemonQuery}
-              onChange={e => setPokemonQuery(e.target.value)}
-              placeholder="Buscar Pokémon..."
-              style={{
-                width: '100%',
-                padding: '7px 10px',
-                background: 'var(--bg-primary)',
-                border: '1px solid var(--border-default)',
-                borderRadius: 'var(--radius-md)',
-                color: 'var(--text-primary)',
-                fontSize: 13,
-                fontFamily: 'Inter, sans-serif',
-                outline: 'none',
-              }}
-            />
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-              {pokeResults.map(({ key, entry }) => (
-                <div
-                  key={key}
-                  className="library-item"
-                  onClick={() => insertSnippet(`[[Arquivo:${entry.image}|link=${entry.wikilink}]] '''[[${entry.wikilink}]]'''`)}
-                  style={{ display: 'flex', alignItems: 'center', gap: 8 }}
-                >
-                  <img
-                    src={getPokemonSpriteUrl(entry)}
-                    alt={entry.name}
-                    style={{ width: 28, height: 28, objectFit: 'contain', imageRendering: 'pixelated', flexShrink: 0 }}
-                  />
-                  <div style={{ minWidth: 0 }}>
-                    <div style={{ fontSize: 13, fontWeight: 500, color: 'var(--text-primary)' }}>{entry.name}</div>
-                    <div style={{ fontSize: 11, color: 'var(--text-muted)' }}>#{String(entry.dex).padStart(3, '0')} · {entry.types.join('/')}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {activeTab === 'Berries' && (
-          <div style={{ padding: 8, display: 'flex', flexDirection: 'column', gap: 6 }}>
-            <input
-              value={berryQuery}
-              onChange={e => setBerryQuery(e.target.value)}
-              placeholder="Buscar Berries..."
-              style={{
-                width: '100%',
-                padding: '7px 10px',
-                background: 'var(--bg-primary)',
-                border: '1px solid var(--border-default)',
-                borderRadius: 'var(--radius-md)',
-                color: 'var(--text-primary)',
-                fontSize: 13,
-                fontFamily: 'Inter, sans-serif',
-                outline: 'none',
-              }}
-            />
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-              {berryResults.map(entry => (
-                <div
-                  key={entry.name}
-                  className="library-item"
-                  onClick={() => insertSnippet(buildBerryWikiText(entry))}
-                  style={{ display: 'flex', alignItems: 'center', gap: 8 }}
-                >
-                  <img
-                    src={getBerrySpriteUrl(entry)}
-                    alt={entry.name}
-                    style={{ width: 28, height: 28, objectFit: 'contain', imageRendering: 'pixelated', flexShrink: 0 }}
-                  />
-                  <div style={{ minWidth: 0 }}>
-                    <div style={{ fontSize: 13, fontWeight: 500, color: 'var(--text-primary)' }}>{entry.name}</div>
-                    <div style={{ fontSize: 11, color: 'var(--text-muted)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                      {entry.category} · {entry.description}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {activeTab === 'Outline' && (
-          <div style={{ padding: 8 }}>
-            {outline.length === 0 ? (
-              <div style={{ color: 'var(--text-muted)', fontSize: 12, padding: '16px 8px', textAlign: 'center' }}>
-                Nenhuma seção encontrada.<br />
-                <span style={{ fontSize: 11 }}>Use == Título == para criar seções.</span>
+        {/* Projects -> Ferramentas */}
+        <SectionHeader title="Ferramentas (Projetos)" expanded={sections.tools} onClick={() => setSections(s => ({...s, tools: !s.tools}))} />
+        {sections.tools && (
+          <div style={{ display: 'flex', flexDirection: 'column', paddingBottom: '12px' }}>
+            
+            <FolderItem title="Biblioteca de Snippets" active={activeTool === 'snippets'} onClick={() => setActiveTool(activeTool === 'snippets' ? null : 'snippets')} />
+            {activeTool === 'snippets' && (
+              <div style={{ padding: '8px 16px 8px 36px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                {LIBRARY_SNIPPETS.map(item => (
+                  <button key={item.id} onClick={() => handleSnippetClick(item)} style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '6px 8px', background: '#0d0d14', border: '1px solid #1e1e2e', borderRadius: '6px', color: '#e2e2e8', fontSize: '12px', cursor: 'pointer', textAlign: 'left' }} title={item.code}>
+                    <span>{item.icon}</span> <span style={{flex: 1}}>{item.label}</span>
+                  </button>
+                ))}
               </div>
-            ) : (
-              outline.map((item, i) => item && (
-                <div
-                  key={i}
-                  style={{
-                    paddingLeft: `${(item.level - 1) * 12 + 8}px`,
-                    paddingTop: 5,
-                    paddingBottom: 5,
-                    fontSize: 12,
-                    color: item.level === 1 ? 'var(--accent-secondary)' : item.level === 2 ? 'var(--text-secondary)' : 'var(--text-muted)',
-                    fontWeight: item.level <= 2 ? 600 : 400,
-                    cursor: 'pointer',
-                    borderRadius: 'var(--radius-sm)',
-                    transition: 'background 0.1s',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 6,
-                  }}
-                  onMouseEnter={e => (e.currentTarget.style.background = 'var(--bg-overlay)')}
-                  onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
-                >
-                  <span style={{ opacity: 0.4, fontSize: 10 }}>{'▸'.repeat(item.level)}</span>
-                  {item.text}
-                </div>
-              ))
             )}
+            
+            <FolderItem title="Busca de Pokémon" active={activeTool === 'pokemon'} onClick={() => setActiveTool(activeTool === 'pokemon' ? null : 'pokemon')} />
+            {activeTool === 'pokemon' && (
+              <div style={{ padding: '8px 16px 8px 36px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                <input value={pokemonQuery} onChange={e => setPokemonQuery(e.target.value)} placeholder="Ex: Arcanine" style={inputStyle} />
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                  {pokeResults.map(({ key, entry }) => (
+                    <button key={key} onClick={() => insertSnippet(`[[Arquivo:${entry.image}|link=${entry.wikilink}]] '''[[${entry.wikilink}]]'''`)} style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '4px 8px', background: 'transparent', border: 'none', color: '#e2e2e8', fontSize: '12px', cursor: 'pointer', textAlign: 'left', borderRadius: '4px' }} onMouseEnter={e=>e.currentTarget.style.background='#1e1e2e'} onMouseLeave={e=>e.currentTarget.style.background='transparent'}>
+                      <img src={getPokemonSpriteUrl(entry)} alt={entry.name} style={{ width: 20, height: 20, imageRendering: 'pixelated' }} />
+                      <span>{entry.name}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+            
+            <FolderItem title="Busca de Berries" active={activeTool === 'berries'} onClick={() => setActiveTool(activeTool === 'berries' ? null : 'berries')} />
+            {activeTool === 'berries' && (
+              <div style={{ padding: '8px 16px 8px 36px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                <input value={berryQuery} onChange={e => setBerryQuery(e.target.value)} placeholder="Ex: Cheri" style={inputStyle} />
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                  {berryResults.map(entry => (
+                    <button key={entry.name} onClick={() => insertSnippet(buildBerryWikiText(entry))} style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '4px 8px', background: 'transparent', border: 'none', color: '#e2e2e8', fontSize: '12px', cursor: 'pointer', textAlign: 'left', borderRadius: '4px' }} onMouseEnter={e=>e.currentTarget.style.background='#1e1e2e'} onMouseLeave={e=>e.currentTarget.style.background='transparent'}>
+                      <img src={getBerrySpriteUrl(entry)} alt={entry.name} style={{ width: 20, height: 20, imageRendering: 'pixelated' }} />
+                      <span>{entry.name}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <FolderItem title="Índice (Outline)" active={activeTool === 'outline'} onClick={() => setActiveTool(activeTool === 'outline' ? null : 'outline')} />
+            {activeTool === 'outline' && (
+              <div style={{ padding: '8px 16px 8px 36px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                {outline.length === 0 ? (
+                  <div style={{ fontSize: '11px', color: '#6b6b80' }}>Nenhuma seção (== Título ==).</div>
+                ) : (
+                  outline.map((item, i) => item && (
+                    <div key={i} onClick={() => {}} style={{ paddingLeft: `${(item.level - 1) * 8}px`, padding: '4px 0', fontSize: '11px', color: item.level === 1 ? '#a78bfa' : '#a0a0ab', cursor: 'pointer' }}>
+                      {'▸'.repeat(item.level)} {item.text}
+                    </div>
+                  ))
+                )}
+              </div>
+            )}
+            
           </div>
         )}
       </div>
 
-      {/* Footer hint */}
-      <div style={{
-        padding: '8px 12px',
-        borderTop: '1px solid var(--border-subtle)',
-        fontSize: 10,
-        color: 'var(--text-muted)',
-        background: 'var(--bg-secondary)',
-        flexShrink: 0,
-      }}>
-        💡 Digite <kbd style={{ background: 'var(--bg-overlay)', padding: '1px 4px', borderRadius: 3, fontSize: 10 }}>/</kbd> no editor para slash commands
-      </div>
     </div>
   );
 }

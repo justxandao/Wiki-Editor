@@ -32,6 +32,7 @@ interface PokedexDomainState {
   addEvolution: () => void;
   updateEvolution: (index: number, field: keyof EvolutionEntry, value: string) => void;
   removeEvolution: (index: number) => void;
+  setEvolutions: (evolutions: EvolutionEntry[]) => void;
 
   // Alt Versions
   addAltVersion: () => void;
@@ -171,6 +172,13 @@ export const usePokedexStore = create<PokedexDomainState>()(persist((set) => ({
     nextEvos.splice(index, 1);
     return { schema: { ...s.schema, evolutions: nextEvos } };
   }),
+
+  setEvolutions: (evolutions) => set((s) => ({
+    schema: {
+      ...s.schema,
+      evolutions
+    }
+  })),
 
   addAltVersion: () => set((s) => ({
     schema: {

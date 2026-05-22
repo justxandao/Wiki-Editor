@@ -8,7 +8,7 @@ import pokemonMovesData from '../data/pokemon-moves.json';
 import typesClansData from '../data/types-clans.json';
 import evolutionStonesData from '../data/evolution-stones.json';
 import { calculateEffectiveness, parseWikitextToSchema } from './utils/helpers';
-import { searchPokemon, getPokemonSpriteUrl } from '../../pokemon/pokemon-service';
+import { searchPokemon, getPokemonSpriteUrl, resolvePokemon } from '../../pokemon/pokemon-service';
 
 const ELEMENTS = typesClansData.elements;
 
@@ -339,9 +339,242 @@ function MoveModal({ idx, onClose }: MoveModalProps) {
   );
 }
 
+interface ParsedData {
+  name?: string;
+  level?: string;
+  abilities?: string;
+  boost?: string;
+  materia?: string;
+  description?: string;
+  evolutions?: Array<{ name: string; level: string }>;
+}
+
+function parsePastedPokemonText(text: string): ParsedData {
+  const lines = text.split('\n');
+  const result: ParsedData = {
+    evolutions: []
+  };
+
+  let inDescription = false;
+  let inEvolutions = false;
+  const descriptionLines: string[] = [];
+
+  for (let line of lines) {
+    const trimmed = line.trim();
+    if (!trimmed) {
+      inEvolutions = false;
+      continue;
+    }
+
+    const nameMatch = trimmed.match(/^(?:Nome|Name)\s*:\s*(.*)$/i);
+    const levelMatch = trimmed.match(/^(?:N[íi]vel|Level)\s*:\s*(.*)$/i);
+    const abilitiesMatch = trimmed.match(/^(?:Habilidades?|Abilities|Ability)\s*:\s*(.*)$/i);
+    const boostMatch = trimmed.match(/^(?:Boost)\s*:\s*(.*)$/i);
+    const materiaMatch = trimmed.match(/^(?:Mat[ée]ria)\s*:\s*(.*)$/i);
+    const descMatch = trimmed.match(/^(?:Descri[çc]ão|Description)\s*:\s*(.*)$/i);
+    const evoBlockMatch = trimmed.match(/^(?:Evolu[çc]ões|Evolutions)\s*:\s*(.*)$/i);
+
+    if (nameMatch) {
+      result.name = nameMatch[1].trim();
+      inDescription = false;
+      inEvolutions = false;
+    } else if (levelMatch) {
+      result.level = levelMatch[1].trim();
+      inDescription = false;
+      inEvolutions = false;
+    } else if (abilitiesMatch) {
+      result.abilities = abilitiesMatch[1].trim();
+      inDescription = false;
+      inEvolutions = false;
+    } else if (boostMatch) {
+      result.boost = boostMatch[1].trim();
+      inDescription = false;
+      inEvolutions = false;
+    } else if (materiaMatch) {
+      result.materia = materiaMatch[1].trim();
+      inDescription = false;
+      inEvolutions = false;
+    } else if (descMatch) {
+      descriptionLines.push(descMatch[1].trim());
+      inDescription = true;
+      inEvolutions = false;
+    } else if (evoBlockMatch) {
+      inEvolutions = true;
+      inDescription = false;
+      const initialEvo = evoBlockMatch[1].trim();
+      if (initialEvo) {
+        const match = initialEvo.match(/^\s*(.+?)\s*\((?:[^)]*?\b)?(\d+)\s*\)/i);
+        if (match) {
+          result.evolutions?.push({ name: match[1].trim(), level: match[2].trim() });
+        }
+      }
+    } else {
+      if (inDescription) {
+        descriptionLines.push(trimmed);
+      } else if (inEvolutions) {
+        const match = trimmed.match(/^\s*(.+?)\s*\((?:[^)]*?\b)?(\d+)\s*\)/i);
+        if (match) {
+          result.evolutions?.push({ name: match[1].trim(), level: match[2].trim() });
+        }
+      }
+    }
+  }
+
+  if (descriptionLines.length > 0) {
+    result.description = descriptionLines.join('\n');
+  }
+
+  return result;
+}
+
+function normalizeAbilities(abilitiesStr: string): string {
+  const MAP_ABILITIES = ["Dig","Rock Smash","Cut","Teleport","Light","Fly","Ride","Surf","Headbutt","Blink","Dark Portal","Strength"];
+  const parts = abilitiesStr.split(/,|\s+e\s+|\s+and\s+/i);
+  const normalized = parts
+    .map(p => p.trim().toLowerCase())
+    .filter(Boolean)
+    .map(p => {
+      const matched = MAP_ABILITIES.find(a => a.toLowerCase() === p);
+      if (matched) return matched;
+      return p.replace(/\b\w/g, c => c.toUpperCase());
+    });
+  return normalized.join(', ');
+}
+
+function getBasePokemonName(fullName: string): string {
+  return fullName
+    .replace(/^(Shiny|Mega|Alolan|Alola)\s+/i, '')
+    .trim();
+}
+
+function inferElementsFromMoves(moves: any[]): string {
+  const ELEMENTS_LIST = [
+    { id: "Normal1", label: "Normal" },
+    { id: "Fire", label: "Fire" },
+    { id: "Water", label: "Water" },
+    { id: "Grass", label: "Grass" },
+    { id: "Electric", label: "Electric" },
+    { id: "Ice", label: "Ice" },
+    { id: "Fighting", label: "Fighting" },
+    { id: "Poison1", label: "Poison" },
+    { id: "Ground", label: "Ground" },
+    { id: "Flying", label: "Flying" },
+    { id: "Psychic", label: "Psychic" },
+    { id: "Bug", label: "Bug" },
+    { id: "Rock", label: "Rock" },
+    { id: "Ghost1", label: "Ghost" },
+    { id: "Dragon", label: "Dragon" },
+    { id: "Dark1", label: "Dark" },
+    { id: "Steel", label: "Steel" },
+    { id: "Fairy", label: "Fairy" },
+    { id: "Crystal", label: "Crystal" }
+  ];
+
+  if (!moves || moves.length === 0) return '';
+  const counts: Record<string, number> = {};
+  for (const m of moves) {
+    const el = m.element;
+    if (!el || el === 'Neutralicon' || el === 'Cl') continue;
+    counts[el] = (counts[el] || 0) + 1;
+  }
+  const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+  if (sorted.length === 0) return '';
+  
+  const getLabel = (id: string) => {
+    const found = ELEMENTS_LIST.find(e => e.id === id);
+    return found ? found.label : id;
+  };
+
+  const top1 = sorted[0][0];
+  const label1 = getLabel(top1);
+
+  if (sorted.length > 1) {
+    const top2 = sorted[1][0];
+    const count2 = sorted[1][1];
+    if (count2 >= 2 && count2 >= moves.length * 0.15) {
+      const label2 = getLabel(top2);
+      return `${label1} and ${label2}`;
+    }
+  }
+
+  return label1;
+}
+
+interface PasteTextModalProps {
+  onClose: () => void;
+  onImport: (text: string) => void;
+}
+
+function PasteTextModal({ onClose, onImport }: PasteTextModalProps) {
+  const [text, setText] = useState('');
+
+  const placeholderText = `Nome: Shiny Ursaring
+Nível: 100
+
+Habilidade: dig, rock smash, cut, headbutt e strength
+
+Evoluções:
+Shiny Teddiursa (requer nível 50)
+Shiny Ursaring (requer nível 100)
+
+Boost: Heart Stone (2)
+Materia: Gardestrike
+
+Descrição: Um Ursaring mais agressivo e territorial, especialmente durante a época de acasalamento. Ele é extremamente protetor com seus filhotes.`;
+
+  return (
+    <div className="pxg-modal-overlay" onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>
+      <div className="pxg-modal" style={{ maxWidth: 500 }}>
+        <div className="pxg-modal-header">
+          <div className="pxg-modal-title">
+            <span>📋 Importar de Texto</span>
+          </div>
+          <button className="pxg-modal-close" onClick={onClose}>✕</button>
+        </div>
+
+        <div className="pxg-modal-body" style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+          <p style={{ fontSize: 13, color: '#9a9ab2', lineHeight: 1.4, margin: 0 }}>
+            Cole as informações do Pokémon abaixo. O construtor irá preencher os campos e buscar os golpes/ícone no banco de dados automaticamente.
+          </p>
+
+          <div className="pxg-form-group">
+            <textarea
+              className="pxg-input"
+              style={{ minHeight: 250, fontFamily: 'monospace', fontSize: 12, lineHeight: 1.5 }}
+              placeholder={placeholderText}
+              value={text}
+              onChange={e => setText(e.target.value)}
+              autoFocus
+            />
+          </div>
+        </div>
+
+        <div className="pxg-modal-footer">
+          <button className="pxg-btn-remove-text" onClick={onClose}>Cancelar</button>
+          <button
+            className="pxg-btn-primary"
+            onClick={() => {
+              if (text.trim()) {
+                onImport(text);
+                onClose();
+              }
+            }}
+            disabled={!text.trim()}
+            style={{ opacity: text.trim() ? 1 : 0.6 }}
+          >
+            Processar e Importar
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ─── General Information Tab ───────────────────────────────────────────────────
 function GeneralTab() {
-  const { schema, updateGeneralInfo, setEffectiveness, setMoves, updateMove } = usePokedexStore();
+  const { schema, updateGeneralInfo, setEffectiveness, setMoves, updateMove, setEvolutions } = usePokedexStore();
+  const [showPasteModal, setShowPasteModal] = useState(false);
+
   const g = schema.generalInfo;
 
   const [pokemonSearch, setPokemonSearch] = useState('');
@@ -434,6 +667,80 @@ function GeneralTab() {
     if (detected.length > 0) setEffectiveness(calculateEffectiveness(detected));
     setShowSugg(false);
     setPokemonSearch(p.name);
+  }
+
+  function handleImportText(text: string) {
+    const parsed = parsePastedPokemonText(text);
+    if (!parsed.name) {
+      alert("Não foi possível identificar o nome do Pokémon no texto.");
+      return;
+    }
+
+    updateGeneralInfo('name', parsed.name);
+    if (parsed.level) {
+      updateGeneralInfo('level', parsed.level);
+    }
+    if (parsed.boost) {
+      updateGeneralInfo('boost', parsed.boost);
+    }
+    if (parsed.materia) {
+      updateGeneralInfo('materia', parsed.materia);
+    }
+    if (parsed.description) {
+      updateGeneralInfo('description', parsed.description);
+    }
+    if (parsed.abilities) {
+      updateGeneralInfo('abilities', normalizeAbilities(parsed.abilities));
+    }
+
+    if (parsed.evolutions && parsed.evolutions.length > 0) {
+      setEvolutions(parsed.evolutions);
+    } else {
+      setEvolutions([]);
+    }
+
+    const exactMatch = (pokemonMovesData as any[]).find(
+      p => p.name?.toLowerCase() === parsed.name!.toLowerCase()
+    );
+    let matchedPokemon = exactMatch;
+
+    if (!matchedPokemon) {
+      const baseName = getBasePokemonName(parsed.name!);
+      matchedPokemon = (pokemonMovesData as any[]).find(
+        p => p.name?.toLowerCase() === baseName.toLowerCase()
+      );
+    }
+
+    if (matchedPokemon) {
+      let movesToSet = matchedPokemon.moves || [];
+      if (parsed.level) {
+        movesToSet = movesToSet.map((m: any) => ({ ...m, level: parsed.level }));
+      }
+      setMoves(movesToSet);
+
+      const inferredElement = inferElementsFromMoves(matchedPokemon.moves);
+      if (inferredElement) {
+        updateGeneralInfo('element', inferredElement);
+        const detected = ELEMENTS.filter(el =>
+          inferredElement.toLowerCase().includes(el.label.toLowerCase())
+        ).map(e => e.label);
+        if (detected.length > 0) {
+          setEffectiveness(calculateEffectiveness(detected));
+        }
+      }
+    }
+
+    const wikiEntry = resolvePokemon(parsed.name) || resolvePokemon(getBasePokemonName(parsed.name));
+    if (wikiEntry && wikiEntry.image) {
+      const iconNameClean = wikiEntry.image.replace(/\.[^.]+$/, '');
+      setIconName(iconNameClean);
+      updateGeneralInfo('number', iconNameClean);
+    } else {
+      setIconName('');
+      updateGeneralInfo('number', '');
+    }
+
+    setPokemonSearch(parsed.name);
   }
 
   function toggleAbility(ab: string) {
@@ -540,6 +847,23 @@ function GeneralTab() {
             onChange={e => handlePokemonSearch(e.target.value)}
             onFocus={() => pokemonSearch && setShowSugg(true)}
           />
+          <button
+            className="pxg-load-btn"
+            style={{
+              borderColor: '#bc8cff',
+              color: '#bc8cff',
+              transition: 'all 0.15s ease-in-out'
+            }}
+            onClick={() => setShowPasteModal(true)}
+            onMouseEnter={e => {
+              e.currentTarget.style.backgroundColor = 'rgba(188, 140, 255, 0.1)';
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.backgroundColor = 'transparent';
+            }}
+          >
+            <span>📋</span> COLAR INFORMAÇÕES
+          </button>
           {showSugg && suggestions.length > 0 && (
             <div className="pxg-suggestions">
               {suggestions.map((p, i) => (
@@ -778,6 +1102,13 @@ function GeneralTab() {
         <textarea className="pxg-input pxg-textarea" placeholder="Pokémon lore description..."
           value={g.description} onChange={e => updateGeneralInfo('description', e.target.value)} />
       </div>
+
+      {showPasteModal && (
+        <PasteTextModal
+          onClose={() => setShowPasteModal(false)}
+          onImport={handleImportText}
+        />
+      )}
     </div>
   );
 }

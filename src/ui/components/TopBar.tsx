@@ -11,6 +11,8 @@ import {
   Plus,
   Settings,
   BookOpen,
+  PanelLeft,
+  PanelLeftClose,
   ListTree,
   Search,
   Zap,
@@ -61,10 +63,10 @@ export function TopBar() {
 
       {/* Sidebar toggles */}
       <IconButton
-        icon={<BookOpen size={15} />}
+        icon={sidebarPanel === 'library' ? <PanelLeftClose size={15} /> : <PanelLeft size={15} />}
         active={sidebarPanel === 'library'}
         onClick={() => setSidebarPanel('library')}
-        title="Biblioteca (snippets)"
+        title="Alternar Barra Lateral"
       />
       <IconButton
         icon={<Search size={15} />}

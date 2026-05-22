@@ -233,7 +233,7 @@ export function searchPokemon(query: string, limit = 10): Array<{ key: string; e
  * Constrói a sintaxe WikiText a partir de um PokemonEntry.
  */
 export function buildPokemonWikiText(entry: PokemonEntry): string {
-  return `[[Arquivo:${entry.image}|link=${entry.wikilink}]] '''[[${entry.wikilink}]]'''`;
+  return `[[Arquivo:${entry.image}|link=${entry.wikilink}]]`;
 }
 
 /**
