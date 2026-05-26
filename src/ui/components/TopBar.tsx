@@ -166,7 +166,7 @@ export function TopBar() {
         onClick={() => {
           if (activeTab) {
             navigator.clipboard.writeText(activeTab.content);
-            showToast('✅ Texto copiado!', 'success');
+            showToast('Texto copiado!', 'success');
           } else {
             showToast('Nenhum texto para copiar.', 'error');
           }

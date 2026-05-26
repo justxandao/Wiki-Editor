@@ -4,7 +4,11 @@ import { FORM_ATTRIBUTES } from '../builder/utils/constants';
 export function renderPokedexWikitext(schema: PokedexSchema): string {
   const { generalInfo, evolutions, moves, effectiveness, altVersions } = schema;
 
-  let code = `<center>[[file:${generalInfo.number} - ${generalInfo.name}.png|link=]]</center>\n\n`;
+  let mainImage = `${generalInfo.number} - ${generalInfo.name}.png`;
+  if (generalInfo.number.toLowerCase().endsWith('.png')) {
+    mainImage = generalInfo.number;
+  }
+  let code = `<center>[[Arquivo:${mainImage}|link=]]</center>\n\n`;
   
   // General Info
   code += `== '''Informações Gerais''' ==\n\n`;
@@ -19,7 +23,7 @@ export function renderPokedexWikitext(schema: PokedexSchema): string {
   code += `== '''Evoluções''' ==\n\n`;
   evolutions.forEach((evo, index) => {
     code += `'''${evo.name}''' precisa de Level ${evo.level}.`;
-    if (index < evolutions.length - 1) code += `</br>\n`;
+    if (index < evolutions.length - 1) code += `<br />\n`;
     else code += `\n\n`;
   });
 
@@ -82,11 +86,20 @@ export function renderPokedexWikitext(schema: PokedexSchema): string {
     return hasDifferentCooldown || move.isDifferentPvE;
   });
 
+  const sortedMoves = [...moves].sort((a, b) => {
+    if (a.slot === 'P' && b.slot !== 'P') return 1;
+    if (a.slot !== 'P' && b.slot === 'P') return -1;
+    if (a.slot === 'P' && b.slot === 'P') return 0;
+    const numA = parseInt(a.slot.replace(/\D/g, '')) || 0;
+    const numB = parseInt(b.slot.replace(/\D/g, '')) || 0;
+    return numA - numB;
+  });
+
   if (hasPvPVariation) {
     // PvP Moves
     code += `==='''Movimentos PvP'''===\n\n`;
     code += `{| border="0" style="border-collapse:collapse"\n`;
-    moves.forEach((move, index) => {
+    sortedMoves.forEach((move, index) => {
       code += generateMoveRow(move, false, index);
     });
     code += `|}\n\n`;
@@ -94,13 +107,13 @@ export function renderPokedexWikitext(schema: PokedexSchema): string {
     // PvE Moves
     code += `==='''Movimentos PvE'''===\n\n`;
     code += `{| border="0" style="border-collapse:collapse"\n`;
-    moves.forEach((move, index) => {
+    sortedMoves.forEach((move, index) => {
       code += generateMoveRow(move, true, index);
     });
     code += `|}\n`;
   } else {
     code += `{| border="0" style="border-collapse:collapse"\n`;
-    moves.forEach((move, index) => {
+    sortedMoves.forEach((move, index) => {
       code += generateMoveRow(move, true, index); // True uses PvE formatting which is the base
     });
     code += `|}\n\n`;
@@ -108,14 +121,12 @@ export function renderPokedexWikitext(schema: PokedexSchema): string {
 
   // Effectiveness
   code += `== '''Efetividades''' ==\n\n`;
-  code += `'''Muito Efetivo:''' ${effectiveness.veryEffective}<br />\n`;
-  code += `'''Efetivo:''' ${effectiveness.effective}<br />\n`;
-  code += `'''Normal:''' ${effectiveness.normal}<br />\n`;
-  code += `'''Inefetivo:''' ${effectiveness.ineffective}<br />\n`;
-  code += `'''Muito Inefetivo:''' ${effectiveness.veryIneffective}<br />\n`;
-  if (effectiveness.nulo) {
-    code += `'''Nulo:''' ${effectiveness.nulo}<br />\n`;
-  }
+  if (effectiveness.veryEffective) code += `'''Muito Efetivo:''' ${effectiveness.veryEffective}<br />\n`;
+  if (effectiveness.effective) code += `'''Efetivo:''' ${effectiveness.effective}<br />\n`;
+  if (effectiveness.normal) code += `'''Normal:''' ${effectiveness.normal}<br />\n`;
+  if (effectiveness.ineffective) code += `'''Inefetivo:''' ${effectiveness.ineffective}<br />\n`;
+  if (effectiveness.veryIneffective) code += `'''Muito Inefetivo:''' ${effectiveness.veryIneffective}<br />\n`;
+  if (effectiveness.nulo) code += `'''Nulo:''' ${effectiveness.nulo}<br />\n`;
   code += `\n`;
 
   // Alternate Versions
@@ -123,16 +134,12 @@ export function renderPokedexWikitext(schema: PokedexSchema): string {
   code += `{| class="wikitable"\n`;
   code += `|- style="vertical-align:top; text-align=center;"\n`;
   
-  // First row (images)
-  altVersions.forEach(alt => {
-    code += `| style="width:50px; text-align:center;" | <b>[[Arquivo:${alt.imagePrefix}${alt.name.replace('Shiny ', '')}.png|link=${alt.name}]]</b>\n`;
+  altVersions.forEach((alt, index) => {
+    if (index > 0) code += `|- style="vertical-align:top; text-align=center;"\n`;
+    code += `| style="width:50px; text-align:center;" | '''[[Arquivo:${alt.imagePrefix || ''}${alt.name.replace('Shiny ', '')}.png|link=]]'''\n`;
+    code += `| style="width:150px; text-align:center;" | '''[[${alt.name}]]'''\n`;
   });
-  code += `|-\n`;
   
-  // Second row (names)
-  altVersions.forEach(alt => {
-    code += `| style="width:150px; text-align:center;" | <b>'''[[${alt.name}]]'''</b>\n`;
-  });
   code += `|}`;
 
   return code;

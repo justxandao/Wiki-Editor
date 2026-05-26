@@ -213,7 +213,7 @@ function MoveModal({ idx, onClose }: MoveModalProps) {
   }
 
   return (
-    <div className="pxg-modal-overlay" onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>
+    <div className="pxg-modal-overlay">
       <div className="pxg-modal" ref={modalRef}>
         <div className="pxg-modal-header">
           <div className="pxg-modal-title">
@@ -226,6 +226,15 @@ function MoveModal({ idx, onClose }: MoveModalProps) {
         <div className="pxg-modal-body">
           {/* Move Name */}
           <div className="pxg-form-row-2">
+            <div className="pxg-form-group" style={{ width: 80, flex: 'none' }}>
+              <label className="pxg-label">Slot</label>
+              <input
+                className="pxg-input"
+                placeholder="M1"
+                value={move.slot}
+                onChange={e => updateMove(idx, 'slot', e.target.value.toUpperCase())}
+              />
+            </div>
             <div className="pxg-form-group" style={{ position: 'relative' }}>
               <label className="pxg-label">Move Name</label>
               <input
@@ -344,6 +353,16 @@ function MoveModal({ idx, onClose }: MoveModalProps) {
         </div>
 
         <div className="pxg-modal-footer">
+          {/* Passive toggle */}
+          <label className="pxg-wild-toggle" title="Habilidade passiva — muda o slot para 'P'">
+            <input
+              type="checkbox"
+              checked={move.slot === 'P'}
+              onChange={e => updateMove(idx, 'slot', e.target.checked ? 'P' : `M${idx + 1}`)}
+            />
+            <span className="pxg-wild-toggle-label">⭐ Passiva</span>
+          </label>
+
           {/* Wild Pokémon toggle */}
           <label className="pxg-wild-toggle" title="Golpe usado apenas por Pokémon selvagem — substitui o nível pelo aviso na wiki">
             <input
@@ -1428,19 +1447,37 @@ function AltVersionsTab() {
     updateAltVersion(i, 'name', val);
     setSearches(s => ({ ...s, [i]: val }));
     setShowSugg(s => ({ ...s, [i]: true }));
+    
+    // Auto-fill if exact match
+    const pSearch = searchPokemon(val, 1);
+    const p = pSearch[0]?.entry;
+    if (p && p.name.toLowerCase() === val.toLowerCase()) {
+      if (p.image) {
+        const baseName = p.name.replace('Shiny ', '');
+        const prefix = p.image.split(baseName)[0] || '';
+        updateAltVersion(i, 'imagePrefix', prefix);
+      }
+    } else {
+       updateAltVersion(i, 'imagePrefix', '');
+    }
   }
 
   function handleSelectPokemon(i: number, p: any) {
     updateAltVersion(i, 'name', p.name || '');
-    // Image prefix: use the number from the pokemon data or just the number field
-    updateAltVersion(i, 'imagePrefix', p.number ? `${p.number} - ` : '');
+    if (p.image) {
+      const baseName = p.name.replace('Shiny ', '');
+      const prefix = p.image.split(baseName)[0] || '';
+      updateAltVersion(i, 'imagePrefix', prefix);
+    } else {
+      updateAltVersion(i, 'imagePrefix', '');
+    }
     setShowSugg(s => ({ ...s, [i]: false }));
   }
 
   function getFilteredPokemon(i: number) {
     const q = searches[i] || '';
     if (!q.trim()) return [];
-    return (pokemonMovesData as any[]).filter(p => p.name?.toLowerCase().includes(q.toLowerCase())).slice(0, 6);
+    return searchPokemon(q, 6).map(r => r.entry);
   }
 
   return (

@@ -13,7 +13,7 @@ export function StatusBar() {
   const handleSave = async () => {
     if (!activeTabId) return;
     await persistTab(activeTabId);
-    showToast('✅ Salvo com sucesso!', 'success');
+    showToast('Salvo com sucesso!', 'success');
   };
 
   return (

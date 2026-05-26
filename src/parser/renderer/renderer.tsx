@@ -61,25 +61,7 @@ function renderNode(node: ASTNode, key: number | string, ctx: RenderContext): Re
     case 'Heading': {
       const tag = `h${node.level ?? 2}` as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
       const id = node.value?.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
-      const isEditable = node.level === 2 || node.level === 3;
-      const editEl = isEditable
-        ? React.createElement(
-            'span',
-            { 
-              style: { 
-                fontSize: '11px', 
-                fontWeight: 'normal', 
-                marginLeft: '8px', 
-                color: 'var(--text-muted)',
-                userSelect: 'none'
-              } 
-            },
-            '[',
-            React.createElement('a', { href: '#', style: { color: 'var(--accent-secondary)', textDecoration: 'none' } }, 'editar'),
-            ']'
-          )
-        : null;
-      return React.createElement(tag, { key, id }, node.value, editEl);
+      return React.createElement(tag, { key, id }, node.value);
     }
 
     case 'Bold':

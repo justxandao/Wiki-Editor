@@ -15,7 +15,7 @@ export function AppShell() {
   const {
     tabs, activeTabId, mode, sidebarPanel, sidebarWidth,
     updateTabContent, createTab, persistTab, showToast, toast, dismissToast,
-    isLoading, loadPersistedState, setTheme, theme,
+    isLoading, loadPersistedState, setTheme, theme, setSidebarPanel,
   } = useEditorStore();
 
   const activeTab = tabs.find(t => t.id === activeTabId);
@@ -32,7 +32,7 @@ export function AppShell() {
       if ((e.ctrlKey || e.metaKey) && e.key === 's') {
         e.preventDefault();
         if (activeTabId) {
-          persistTab(activeTabId).then(() => showToast('✅ Salvo!', 'success'));
+          persistTab(activeTabId).then(() => showToast('Salvo!', 'success'));
         }
       }
       if ((e.ctrlKey || e.metaKey) && e.key === 't') {
