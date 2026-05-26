@@ -497,7 +497,7 @@ function FreeGrid({ cols, rows, onColsChange, onRowsChange }: {
         ))}
         {/* Adicionar Linha (Barra Tracejada) */}
         <div className="flex mt-3 px-3" style={{ width: cols.reduce((a, c) => a + c.width, 0) }}>
-          <button onClick={addRow} className="flex-1 flex items-center justify-center gap-2 py-3 rounded-lg border-2 border-dashed border-[#2a2a3e] text-sm font-semibold text-[#6b6b80] bg-[#16161f]/10 hover:bg-[#2d2048]/20 hover:text-[#a78bfa] hover:border-[#7c3aed]/50 transition-all">
+          <button onClick={addRow} className="pxg-btn-secondary flex-1 flex items-center justify-center gap-2" style={{ padding: '12px', borderStyle: 'dashed', borderWidth: '2px' }}>
             <PlusCircle size={16} /> Adicionar Nova Linha
           </button>
         </div>
@@ -779,11 +779,10 @@ export const TableBuilderModal: React.FC = () => {
                 {/* XP Row toggle */}
                 <button
                   onClick={() => setHasXpRow(v => !v)}
-                  className={`flex items-center gap-2 px-4 py-1.5 rounded-lg text-xs font-bold border transition-all ${
-                    hasXpRow
-                      ? 'bg-[#4a0080]/30 border-[#7c3aed]/60 text-[#c084fc]'
-                      : 'bg-[#16161f] border-[#2a2a3e] text-[#5a5a72] hover:border-[#7c3aed]/40 hover:text-[#a78bfa]'
+                  className={`flex items-center gap-2 transition-all ${
+                    hasXpRow ? 'pxg-btn-primary' : 'pxg-btn-secondary'
                   }`}
+                  style={{ padding: '8px 16px' }}
                 >
                   <span style={{ fontSize: 14 }}>⭐</span>
                   {hasXpRow ? 'Linha de XP Ativa' : 'Adicionar Linha de XP'}
