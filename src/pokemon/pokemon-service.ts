@@ -194,7 +194,7 @@ export async function initializePokemonIndex() {
 /**
  * Resolve a entrada de um comando barra como "ursaluna", "mr mime", "mrmime" para um PokemonEntry.
  */
-export function resolvePokemon(input: string): PokemonEntry | null {
+export function resolvePokemon(input: string, options: { strict?: boolean } = {}): PokemonEntry | null {
   const norm = normalizeName(input);
 
   // Primeiro tenta a correspondência direta normalizada
@@ -204,10 +204,12 @@ export function resolvePokemon(input: string): PokemonEntry | null {
   }
 
   // Busca difusa (aproximada) como alternativa secundária
-  const results = fuse.search(input);
-  if (results.length > 0) {
-    const bestKey = results[0].item.key;
-    return pokemonIndex[bestKey] ?? null;
+  if (!options.strict) {
+    const results = fuse.search(input);
+    if (results.length > 0) {
+      const bestKey = results[0].item.key;
+      return pokemonIndex[bestKey] ?? null;
+    }
   }
 
   return null;

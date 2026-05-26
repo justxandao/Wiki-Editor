@@ -350,15 +350,15 @@
 }
 
 .pxg-element-img {
-  width: 36px;
-  height: 36px;
+  width: 24px;
+  height: 24px;
   object-fit: contain;
   image-rendering: pixelated;
 }
 
 .pxg-elements-grid-sm .pxg-element-img {
-  width: 28px;
-  height: 28px;
+  width: 20px;
+  height: 20px;
 }
 
 .pxg-element-label {
@@ -370,6 +370,55 @@
 }
 
 .pxg-element-btn.active .pxg-element-label {
+  color: #a78bfa;
+}
+
+/* ─── Stones Grid ─────────────────────────────────────────── */
+.pxg-stones-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
+  gap: 8px;
+}
+
+.pxg-stone-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 4px;
+  background: #16161f;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.pxg-stone-btn:hover {
+  background: #1e1e2e;
+  border-color: #3a3a52;
+}
+
+.pxg-stone-btn.active {
+  background: #1e1535;
+  border-color: #7c3aed;
+}
+
+.pxg-stone-img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.pxg-stone-label {
+  font-size: 10px;
+  color: #7a7a92;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1;
+}
+
+.pxg-stone-btn.active .pxg-stone-label {
   color: #a78bfa;
 }
 

@@ -1,4 +1,5 @@
 import { PokedexSchema, MoveEntry } from '../types/schema';
+import { FORM_ATTRIBUTES } from '../builder/utils/constants';
 
 export function renderPokedexWikitext(schema: PokedexSchema): string {
   const { generalInfo, evolutions, moves, effectiveness, altVersions } = schema;
@@ -32,10 +33,10 @@ export function renderPokedexWikitext(schema: PokedexSchema): string {
   // Helper to generate a move row
   const generateMoveRow = (move: MoveEntry, isPvE: boolean, index: number) => {
     const bgColor = index % 2 === 0 ? ' style="background-color: #E6E6FA;"' : '';
-    const cooldown = isPvE ? move.cooldownPvE : move.cooldownPvP;
     
     // Handle bolding for PvE differences if requested
     let moveNameDisplay = move.name;
+    const cooldown = isPvE ? move.cooldownPvE : (move.cooldownPvP || move.cooldownPvE);
     if (cooldown) moveNameDisplay += ` (${cooldown})`;
     if (isPvE && move.isDifferentPvE) {
       moveNameDisplay = `'''${moveNameDisplay}'''`;
@@ -48,7 +49,11 @@ export function renderPokedexWikitext(schema: PokedexSchema): string {
     row += `| width="50px" rowspan="2" |\n`;
     
     // Icons
-    const iconsStr = move.icons.map(icon => `[[Arquivo:${icon}.png|${icon}]]`).join(' ');
+    const iconsStr = move.icons.map(icon => {
+      const attr = FORM_ATTRIBUTES.find(a => a.id === icon);
+      const filename = attr ? attr.file : `${icon}.png`;
+      return `[[Arquivo:${filename}|${icon}]]`;
+    }).join(' ');
     row += `| rowspan="2" align="right" | ${iconsStr} \n`;
     
     // Element/Clan
@@ -70,21 +75,36 @@ export function renderPokedexWikitext(schema: PokedexSchema): string {
     return row;
   };
 
-  // PvP Moves
-  code += `==='''Movimentos PvP'''===\n\n`;
-  code += `{| border="0" style="border-collapse:collapse"\n`;
-  moves.forEach((move, index) => {
-    code += generateMoveRow(move, false, index);
+  const hasPvPVariation = moves.some(move => {
+    const pvpCooldown = (move.cooldownPvP || '').trim();
+    const pveCooldown = (move.cooldownPvE || '').trim();
+    const hasDifferentCooldown = pvpCooldown !== '' && pvpCooldown !== pveCooldown;
+    return hasDifferentCooldown || move.isDifferentPvE;
   });
-  code += `|}\n\n`;
 
-  // PvE Moves
-  code += `==='''Movimentos PvE'''===\n\n`;
-  code += `{| border="0" style="border-collapse:collapse"\n`;
-  moves.forEach((move, index) => {
-    code += generateMoveRow(move, true, index);
-  });
-  code += `|}\n`;
+  if (hasPvPVariation) {
+    // PvP Moves
+    code += `==='''Movimentos PvP'''===\n\n`;
+    code += `{| border="0" style="border-collapse:collapse"\n`;
+    moves.forEach((move, index) => {
+      code += generateMoveRow(move, false, index);
+    });
+    code += `|}\n\n`;
+
+    // PvE Moves
+    code += `==='''Movimentos PvE'''===\n\n`;
+    code += `{| border="0" style="border-collapse:collapse"\n`;
+    moves.forEach((move, index) => {
+      code += generateMoveRow(move, true, index);
+    });
+    code += `|}\n`;
+  } else {
+    code += `{| border="0" style="border-collapse:collapse"\n`;
+    moves.forEach((move, index) => {
+      code += generateMoveRow(move, true, index); // True uses PvE formatting which is the base
+    });
+    code += `|}\n\n`;
+  }
 
   // Effectiveness
   code += `== '''Efetividades''' ==\n\n`;

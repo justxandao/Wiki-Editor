@@ -12,43 +12,43 @@ import { searchPokemon, getPokemonSpriteUrl, resolvePokemon } from '../../pokemo
 
 const ELEMENTS = typesClansData.elements;
 
-const BOOST_TIERS = ['Boost (2)','Boost (3)','Boost (4)','Boost (5)','Boost (6)','Boost (7)','Boost (8)','Boost (9)','Boost (10)','Boost (15)','Boost (20)','Boost (25)','Boost (30)','Boost (50)'];
+const BOOST_TIERS = ['Boost (2)', 'Boost (3)', 'Boost (4)', 'Boost (5)', 'Boost (6)', 'Boost (7)', 'Boost (8)', 'Boost (9)', 'Boost (10)', 'Boost (15)', 'Boost (20)', 'Boost (25)', 'Boost (30)', 'Boost (50)'];
 
 // Status effects — full names, no abbreviations
 const FORM_ATTRIBUTES = [
-  { id: 'AOE',             label: 'AOE',             file: 'AOE.png' },
-  { id: 'Blind',           label: 'Blind',           file: 'Blind.png' },
-  { id: 'Buff',            label: 'Buff',            file: 'Buff.png' },
-  { id: 'Burn',            label: 'Burn',            file: 'Burn.png' },
-  { id: 'Confusion',       label: 'Confusion',       file: 'Confusion.png' },
+  { id: 'AOE', label: 'AOE', file: 'AOE.png' },
+  { id: 'Blind', label: 'Blind', file: 'Blind.png' },
+  { id: 'Buff', label: 'Buff', file: 'Buff.png' },
+  { id: 'Burn', label: 'Burn', file: 'Burn.png' },
+  { id: 'Confusion', label: 'Confusion', file: 'Confusion.png' },
   { id: 'Control Blocked', label: 'Control Blocked', file: 'Control_Blocked.png' },
-  { id: 'Damage',          label: 'Damage',          file: 'Damage.png' },
-  { id: 'Debuff',          label: 'Debuff',          file: 'Debuff.png' },
-  { id: 'Focus Blocked',   label: 'Focus Blocked',   file: 'Focus_Blocked.png' },
-  { id: 'Healing',         label: 'Healing',         file: 'HealingStatus.png' },
-  { id: 'Knockback',       label: 'Knockback',       file: 'Knockback.png' },
-  { id: 'Lifesteal',       label: 'Lifesteal',       file: 'Lifesteal.png' },
-  { id: 'Locked',          label: 'Locked',          file: 'Locked.png' },
-  { id: 'NeverBoost',      label: 'NeverBoost',      file: 'NeverBoost.png' },
-  { id: 'Nevermiss',       label: 'Nevermiss',       file: 'Nevermiss.png' },
-  { id: 'Paralyze',        label: 'Paralyze',        file: 'Paralyze.png' },
-  { id: 'Passive',         label: 'Passive',         file: 'Passive.png' },
-  { id: 'Poison',          label: 'Poison',          file: 'Poison.png' },
-  { id: 'Self',            label: 'Self',            file: 'Self.png' },
-  { id: 'Silence',         label: 'Silence',         file: 'Silence.png' },
-  { id: 'Slow',            label: 'Slow',            file: 'Slow.png' },
-  { id: 'Stun',            label: 'Stun',            file: 'Stun.png' },
-  { id: 'Target',          label: 'Target',          file: 'Target.png' },
+  { id: 'Damage', label: 'Damage', file: 'Damage.png' },
+  { id: 'Debuff', label: 'Debuff', file: 'Debuff.png' },
+  { id: 'Focus Blocked', label: 'Focus Blocked', file: 'Focus_Blocked.png' },
+  { id: 'Healing', label: 'Healing', file: 'HealingStatus.png' },
+  { id: 'Knockback', label: 'Knockback', file: 'Knockback.png' },
+  { id: 'Lifesteal', label: 'Lifesteal', file: 'Lifesteal.png' },
+  { id: 'Locked', label: 'Locked', file: 'Locked.png' },
+  { id: 'NeverBoost', label: 'NeverBoost', file: 'NeverBoost.png' },
+  { id: 'Nevermiss', label: 'Nevermiss', file: 'Nevermiss.png' },
+  { id: 'Paralyze', label: 'Paralyze', file: 'Paralyze.png' },
+  { id: 'Passive', label: 'Passive', file: 'Passive.png' },
+  { id: 'Poison', label: 'Poison', file: 'PoisonStatus.png' },
+  { id: 'Self', label: 'Self', file: 'Self.png' },
+  { id: 'Silence', label: 'Silence', file: 'Silence.png' },
+  { id: 'Slow', label: 'Slow', file: 'Slow.png' },
+  { id: 'Stun', label: 'Stun', file: 'Stun.png' },
+  { id: 'Target', label: 'Target', file: 'Target.png' },
 ];
 
 const CLANS = typesClansData.clans;
 
 const POKEMON_TIERS = [
-  { id: 'T4',       label: 'Tier 4',        level: '',    materiaKey: 'Mastered' },
-  { id: 'T3',       label: 'Tier 3',        level: '80',  materiaKey: 'Enhanced' },
-  { id: 'T2',       label: 'Tier 2',        level: '100', materiaKey: 'Superior' },
-  { id: 'T1',       label: 'Tier 1',        level: '100', materiaKey: 'Mastered' },
-  { id: 'Lendario', label: 'Tier Lendário', level: '100', materiaKey: 'Mastered' },
+  { id: 'T4', label: 'Tier 4', level: '', materiaKey: 'Mastered' },
+  { id: 'T3', label: 'Tier 3', level: '80', materiaKey: 'Enhanced' },
+  { id: 'T2', label: 'Tier 2', level: '100', materiaKey: 'Superior' },
+  { id: 'T1', label: 'Tier 1', level: '100', materiaKey: 'Mastered' },
+  { id: 'Lendario', label: 'Lendário', level: '100', materiaKey: 'Mastered' },
 ];
 
 // materia label map: for each clan, per tier materiaKey -> "Clan Enhanced" etc
@@ -56,20 +56,27 @@ const MATERIA_LABEL: Record<string, string> = {
   Mastered: 'Mastered', Enhanced: 'Enhanced', Superior: 'Superior'
 };
 
-const MAP_ABILITIES = ["Dig","Rock Smash","Cut","Teleport","Light","Fly","Ride","Surf","Headbutt","Blink","Dark Portal","Strength"];
-const SLOTS = ['M1','M2','M3','M4','M5','M6','M7','M8','M9','M10','P'];
+const MAP_ABILITIES = ["Dig", "Rock Smash", "Cut", "Teleport", "Light", "Fly", "Ride", "Surf", "Headbutt", "Blink", "Dark Portal", "Strength"];
+const SLOTS = ['M1', 'M2', 'M3', 'M4', 'M5', 'M6', 'M7', 'M8', 'M9', 'M10', 'P'];
 
 const NAV_ITEMS = [
-  { id: 'general',       label: 'General Information', icon: '◎' },
-  { id: 'evolutions',    label: 'Evolutions',           icon: '⟳' },
-  { id: 'moves',         label: 'Moves',                icon: '⚡' },
-  { id: 'effectiveness', label: 'Effectiveness',        icon: '◈' },
-  { id: 'altVersions',   label: 'Other Versions',       icon: '◧' },
-  { id: 'preview',       label: 'Preview',              icon: '▷' },
+  { id: 'general', label: 'General Information', icon: '◎' },
+  { id: 'evolutions', label: 'Evolutions', icon: '⟳' },
+  { id: 'moves', label: 'Moves', icon: '⚡' },
+  { id: 'effectiveness', label: 'Effectiveness', icon: '◈' },
+  { id: 'altVersions', label: 'Other Versions', icon: '◧' },
+  { id: 'preview', label: 'Preview', icon: '▷' },
 ];
 
 function resolveWikiImg(filename: string) {
-  const enc = encodeURIComponent(filename.replace(/ /g, '_'));
+  let fn = filename;
+  // If the filename has duplicate .png.png, clean it up
+  fn = fn.replace(/\.png\.png$/i, '.png').replace(/\.webp\.png$/i, '.webp').replace(/\.gif\.png$/i, '.gif');
+  // If it still has no extension, append .png
+  if (!/\.(png|gif|webp)$/i.test(fn)) {
+    fn += '.png';
+  }
+  const enc = encodeURIComponent(fn.replace(/ /g, '_'));
   return `https://wiki.pokexgames.com/index.php?title=Special:FilePath/${enc}`;
 }
 
@@ -189,8 +196,8 @@ function MoveModal({ idx, onClose }: MoveModalProps) {
 
   const filteredPresets = moveSearch.trim()
     ? movePresetsData.filter(m =>
-        (m.displayName || m.name).toLowerCase().includes(moveSearch.toLowerCase())
-      ).slice(0, 8)
+      (m.displayName || m.name).toLowerCase().includes(moveSearch.toLowerCase())
+    ).slice(0, 8)
     : [];
 
   function applyPreset(preset: any) {
@@ -259,17 +266,34 @@ function MoveModal({ idx, onClose }: MoveModalProps) {
                 className="pxg-input"
                 placeholder="e.g. 15s"
                 value={move.cooldownPvE}
-                onChange={e => updateMove(idx, 'cooldownPvE', e.target.value)}
+                onChange={e => {
+                  const cleaned = e.target.value.replace(/[^\d.,]/g, '');
+                  updateMove(idx, 'cooldownPvE', cleaned ? `${cleaned}s` : '');
+                }}
               />
             </div>
             <div className="pxg-form-group">
               <label className="pxg-label">PvP Cooldown</label>
-              <input
-                className="pxg-input"
-                placeholder="e.g. 25s (blank = same as PvE)"
-                value={move.cooldownPvP}
-                onChange={e => updateMove(idx, 'cooldownPvP', e.target.value)}
-              />
+              <div style={{ display: 'flex', gap: 6 }}>
+                <input
+                  className="pxg-input"
+                  style={{ flex: 1 }}
+                  placeholder="e.g. 25s (blank = same as PvE)"
+                  value={move.cooldownPvP}
+                  onChange={e => {
+                    const cleaned = e.target.value.replace(/[^\d.,]/g, '');
+                    updateMove(idx, 'cooldownPvP', cleaned ? `${cleaned}s` : '');
+                  }}
+                />
+                <button
+                  className="pxg-btn-secondary"
+                  style={{ padding: '0 8px', fontSize: 12, height: '36px' }}
+                  onClick={() => updateMove(idx, 'cooldownPvP', move.cooldownPvE)}
+                  title="Copiar cooldown do PvE"
+                >
+                  = PvE
+                </button>
+              </div>
             </div>
           </div>
 
@@ -428,7 +452,7 @@ function parsePastedPokemonText(text: string): ParsedData {
 }
 
 function normalizeAbilities(abilitiesStr: string): string {
-  const MAP_ABILITIES = ["Dig","Rock Smash","Cut","Teleport","Light","Fly","Ride","Surf","Headbutt","Blink","Dark Portal","Strength"];
+  const MAP_ABILITIES = ["Dig", "Rock Smash", "Cut", "Teleport", "Light", "Fly", "Ride", "Surf", "Headbutt", "Blink", "Dark Portal", "Strength"];
   const parts = abilitiesStr.split(/,|\s+e\s+|\s+and\s+/i);
   const normalized = parts
     .map(p => p.trim().toLowerCase())
@@ -438,7 +462,10 @@ function normalizeAbilities(abilitiesStr: string): string {
       if (matched) return matched;
       return p.replace(/\b\w/g, c => c.toUpperCase());
     });
-  return normalized.join(', ');
+
+  if (normalized.length === 0) return '';
+  if (normalized.length === 1) return normalized[0];
+  return `${normalized.slice(0, -1).join(', ')} e ${normalized[normalized.length - 1]}`;
 }
 
 function getBasePokemonName(fullName: string): string {
@@ -479,7 +506,7 @@ function inferElementsFromMoves(moves: any[]): string {
   }
   const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]);
   if (sorted.length === 0) return '';
-  
+
   const getLabel = (id: string) => {
     const found = ELEMENTS_LIST.find(e => e.id === id);
     return found ? found.label : id;
@@ -584,7 +611,7 @@ function GeneralTab() {
   const [boostTier, setBoostTier] = useState('');
   const [iconName, setIconName] = useState(g.number || '');
   const [iconSearch, setIconSearch] = useState('');
-  const [iconResults, setIconResults] = useState<Array<{name: string; image: string; spriteUrl: string}>>([]);
+  const [iconResults, setIconResults] = useState<Array<{ name: string; image: string; spriteUrl: string }>>([]);
   const [selectedTier, setSelectedTier] = useState<string | null>(null);
   const [selectedClan, setSelectedClan] = useState<string | null>(null);
   const [selectedMateriaType, setSelectedMateriaType] = useState<string | null>(null);
@@ -593,20 +620,24 @@ function GeneralTab() {
   const [showMateriaTypeDropdown, setShowMateriaTypeDropdown] = useState(false);
   const sugRef = useRef<HTMLDivElement>(null);
 
-  // Derive selected stone from g.boost
   useEffect(() => {
+    setIconName(g.number || '');
     const stone = evolutionStonesData.find(s => g.boost?.includes(s.name));
-    if (stone) setSelectedStone(stone.name);
+    setSelectedStone(stone ? stone.name : null);
     const tierMatch = g.boost?.match(/\((\d+)\)/);
-    if (tierMatch) setBoostTier(`Boost (${tierMatch[1]})`);
+    setBoostTier(tierMatch ? `Boost (${tierMatch[1]})` : '');
+
     // Derive clan from materia
     if (g.materia) {
       const clan = CLANS.find(c => g.materia.startsWith(c.label));
-      if (clan) setSelectedClan(clan.id);
-      const mtype = ['Mastered','Enhanced','Superior'].find(t => g.materia.includes(t));
-      if (mtype) setSelectedMateriaType(mtype);
+      setSelectedClan(clan ? clan.id : null);
+      const mtype = ['Mastered', 'Enhanced', 'Superior'].find(t => g.materia.includes(t));
+      setSelectedMateriaType(mtype || 'Nenhum');
+    } else {
+      setSelectedClan(null);
+      setSelectedMateriaType('Nenhum');
     }
-  }, []);
+  }, [g.boost, g.materia, g.number]);
 
   const selectedElements = ELEMENTS.filter(el =>
     g.element.toLowerCase().includes(el.label.toLowerCase())
@@ -652,53 +683,90 @@ function GeneralTab() {
     }
   }
 
-  function handleSelectPokemon(p: any) {
+  async function handleSelectPokemon(p: any) {
+    setShowSugg(false);
+    setPokemonSearch(p.name);
+
+    try {
+      const url = `https://wiki.pokexgames.com/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&titles=${encodeURIComponent(p.name)}&format=json&origin=*`;
+      const response = await fetch(url);
+      const data = await response.json();
+
+      const pages = data.query.pages;
+      const pageId = Object.keys(pages)[0];
+      if (pageId !== '-1' && pages[pageId].revisions) {
+        const text = pages[pageId].revisions[0].slots.main['*'];
+        const parsed = parseWikitextToSchema(text);
+
+        if (!parsed.generalInfo.name) parsed.generalInfo.name = p.name;
+
+        let iconToSet = parsed.generalInfo.number;
+        if (!iconToSet) {
+          const wikiEntry = resolvePokemon(p.name, { strict: true }) || resolvePokemon(getBasePokemonName(p.name), { strict: true });
+          if (wikiEntry && wikiEntry.image) {
+            iconToSet = wikiEntry.image;
+          }
+        }
+        parsed.generalInfo.number = iconToSet || '';
+
+        importSchema(parsed);
+        setIconName(parsed.generalInfo.number);
+
+        const stone = evolutionStonesData.find(s => parsed.generalInfo.boost?.includes(s.name));
+        setSelectedStone(stone ? stone.name : null);
+        const tierMatch = parsed.generalInfo.boost?.match(/\((\d+)\)/);
+        setBoostTier(tierMatch ? `Boost (${tierMatch[1]})` : '');
+        if (parsed.generalInfo.materia) {
+          const clan = CLANS.find(c => parsed.generalInfo.materia.startsWith(c.label));
+          setSelectedClan(clan ? clan.id : null);
+          const mtype = ['Mastered', 'Enhanced', 'Superior'].find(t => parsed.generalInfo.materia.includes(t));
+          setSelectedMateriaType(mtype || null);
+        } else {
+          setSelectedClan(null);
+          setSelectedMateriaType(null);
+        }
+
+        return;
+      }
+    } catch (e) {
+      console.error("Error fetching from wiki:", e);
+    }
+
+    // Fallback to local DB if wiki fetch fails or page doesn't exist
     updateGeneralInfo('name', p.name || '');
-    updateGeneralInfo('number', p.number || '');
+
+    // Attempt to resolve the best possible image from pokemon-service
+    let fallbackIcon = p.number;
+    if (!fallbackIcon || fallbackIcon.trim() === '') {
+      const entry = resolvePokemon(p.name, { strict: true }) || resolvePokemon(getBasePokemonName(p.name), { strict: true });
+      if (entry && entry.image) {
+        fallbackIcon = entry.image;
+      }
+    }
+
+    updateGeneralInfo('number', fallbackIcon || '');
     updateGeneralInfo('level', p.level || '');
     updateGeneralInfo('element', p.element || '');
     updateGeneralInfo('abilities', p.abilities || '');
     updateGeneralInfo('boost', p.boost || '');
     updateGeneralInfo('materia', p.materia || '');
+    setIconName(fallbackIcon || '');
     if (p.moves) setMoves(p.moves);
     const detected = ELEMENTS.filter(el =>
       (p.element || '').toLowerCase().includes(el.label.toLowerCase())
     ).map(e => e.label);
     if (detected.length > 0) setEffectiveness(calculateEffectiveness(detected));
-    setShowSugg(false);
-    setPokemonSearch(p.name);
   }
 
-  function handleImportText(text: string) {
+  async function handleImportText(text: string) {
     const parsed = parsePastedPokemonText(text);
     if (!parsed.name) {
       alert("Não foi possível identificar o nome do Pokémon no texto.");
       return;
     }
 
-    updateGeneralInfo('name', parsed.name);
-    if (parsed.level) {
-      updateGeneralInfo('level', parsed.level);
-    }
-    if (parsed.boost) {
-      updateGeneralInfo('boost', parsed.boost);
-    }
-    if (parsed.materia) {
-      updateGeneralInfo('materia', parsed.materia);
-    }
-    if (parsed.description) {
-      updateGeneralInfo('description', parsed.description);
-    }
-    if (parsed.abilities) {
-      updateGeneralInfo('abilities', normalizeAbilities(parsed.abilities));
-    }
-
-    if (parsed.evolutions && parsed.evolutions.length > 0) {
-      setEvolutions(parsed.evolutions);
-    } else {
-      setEvolutions([]);
-    }
-
+    // Prepare fallback data from local DB
+    let payload = { name: parsed.name } as any;
     const exactMatch = (pokemonMovesData as any[]).find(
       p => p.name?.toLowerCase() === parsed.name!.toLowerCase()
     );
@@ -712,42 +780,53 @@ function GeneralTab() {
     }
 
     if (matchedPokemon) {
-      let movesToSet = matchedPokemon.moves || [];
-      if (parsed.level) {
-        movesToSet = movesToSet.map((m: any) => ({ ...m, level: parsed.level }));
-      }
-      setMoves(movesToSet);
-
+      payload = { ...matchedPokemon, name: parsed.name };
       const inferredElement = inferElementsFromMoves(matchedPokemon.moves);
-      if (inferredElement) {
-        updateGeneralInfo('element', inferredElement);
-        const detected = ELEMENTS.filter(el =>
-          inferredElement.toLowerCase().includes(el.label.toLowerCase())
-        ).map(e => e.label);
-        if (detected.length > 0) {
-          setEffectiveness(calculateEffectiveness(detected));
-        }
-      }
+      if (inferredElement) payload.element = inferredElement;
     }
 
-    const wikiEntry = resolvePokemon(parsed.name) || resolvePokemon(getBasePokemonName(parsed.name));
-    if (wikiEntry && wikiEntry.image) {
-      const iconNameClean = wikiEntry.image.replace(/\.[^.]+$/, '');
-      setIconName(iconNameClean);
-      updateGeneralInfo('number', iconNameClean);
-    } else {
-      setIconName('');
-      updateGeneralInfo('number', '');
-    }
+    // Tenta carregar informações completas da Wiki (moves, elemento correto, icon)
+    await handleSelectPokemon(payload);
 
-    setPokemonSearch(parsed.name);
+    // Sobrescreve com as informações coladas manualmente
+    updateGeneralInfo('name', parsed.name);
+    if (parsed.level) {
+      updateGeneralInfo('level', parsed.level);
+      // Atualiza o nível dos golpes também
+      schema.moves.forEach((_, idx) => {
+        updateMove(idx, 'level', parsed.level!);
+      });
+    }
+    if (parsed.boost) {
+      updateGeneralInfo('boost', parsed.boost);
+      const stone = evolutionStonesData.find(s => parsed.boost?.includes(s.name));
+      setSelectedStone(stone ? stone.name : null);
+      const tierMatch = parsed.boost?.match(/\((\d+)\)/);
+      setBoostTier(tierMatch ? `Boost (${tierMatch[1]})` : '');
+    }
+    if (parsed.materia) {
+      updateGeneralInfo('materia', parsed.materia);
+      const clan = CLANS.find(c => parsed.materia!.startsWith(c.label));
+      setSelectedClan(clan ? clan.id : null);
+      const mtype = ['Mastered', 'Enhanced', 'Superior'].find(t => parsed.materia!.includes(t));
+      setSelectedMateriaType(mtype || null);
+    }
+    if (parsed.description) {
+      updateGeneralInfo('description', parsed.description);
+    }
+    if (parsed.abilities) {
+      updateGeneralInfo('abilities', normalizeAbilities(parsed.abilities));
+    }
+    if (parsed.evolutions && parsed.evolutions.length > 0) {
+      setEvolutions(parsed.evolutions);
+    }
   }
 
   function toggleAbility(ab: string) {
-    const current = g.abilities ? g.abilities.split(', ').filter(Boolean) : [];
-    const has = current.includes(ab);
-    const next = has ? current.filter(a => a !== ab) : [...current, ab];
-    updateGeneralInfo('abilities', next.join(', '));
+    const current = g.abilities ? g.abilities.split(/,\s*|\s+e\s+|\s+and\s+/i).filter(Boolean).map(a => a.trim()) : [];
+    const has = current.find(a => a.toLowerCase() === ab.toLowerCase());
+    const next = has ? current.filter(a => a.toLowerCase() !== ab.toLowerCase()) : [...current, ab];
+    updateGeneralInfo('abilities', normalizeAbilities(next.join(', ')));
   }
 
   function handleStoneSelect(stone: typeof evolutionStonesData[0]) {
@@ -772,6 +851,12 @@ function GeneralTab() {
   function handleIconSearch(val: string) {
     setIconSearch(val);
     if (!val.trim()) { setIconResults([]); return; }
+
+    if (val.toLowerCase().endsWith('.png') || val.toLowerCase().endsWith('.webp')) {
+      handleIconSelect({ name: val.replace(/\.[^.]+$/, ''), image: val });
+      return;
+    }
+
     // Use the existing pokemon-service index (same as /slash command)
     const results = searchPokemon(val, 12);
     setIconResults(
@@ -785,9 +870,9 @@ function GeneralTab() {
     );
   }
 
-  function handleIconSelect(img: { name: string; image: string }) {
-    // Store filename without extension
-    const name = img.image.replace(/\.[^.]+$/, '');
+  function handleIconSelect(img: any) {
+    // Store full filename including extension
+    const name = img.image;
     setIconName(name);
     updateGeneralInfo('number', name);
     setIconSearch('');
@@ -812,14 +897,15 @@ function GeneralTab() {
     const clan = CLANS.find(c => c.id === clanId);
     const tier = POKEMON_TIERS.find(t => t.id === selectedTier);
     const materiaKey = selectedMateriaType || (tier ? tier.materiaKey : 'Mastered');
-    if (clan) updateGeneralInfo('materia', `${clan.label} ${materiaKey}`);
+    if (clan) updateGeneralInfo('materia', selectedMateriaType === 'Nenhum' ? clan.label : `${clan.label} ${materiaKey}`.trim());
   }
 
   function handleMateriaTypeSelect(mtype: string) {
-    setSelectedMateriaType(mtype);
+    const isNone = mtype === 'Nenhum';
+    setSelectedMateriaType(isNone ? 'Nenhum' : mtype);
     setShowMateriaTypeDropdown(false);
     const clan = CLANS.find(c => c.id === selectedClan);
-    if (clan) updateGeneralInfo('materia', `${clan.label} ${mtype}`);
+    if (clan) updateGeneralInfo('materia', isNone ? clan.label : `${clan.label} ${mtype}`);
   }
 
   useEffect(() => {
@@ -921,7 +1007,7 @@ function GeneralTab() {
           <div className="pxg-icon-selected">
             <div className="pxg-icon-preview">
               <img
-                src={resolveWikiImg(`${iconName}.png`)}
+                src={resolveWikiImg(iconName)}
                 alt={iconName}
                 style={{ width: 48, height: 48, objectFit: 'contain', imageRendering: 'pixelated' }}
                 onError={e => { (e.currentTarget as HTMLImageElement).style.opacity = '0.3'; }}
@@ -987,7 +1073,9 @@ function GeneralTab() {
         <label className="pxg-label">Abilities</label>
         <div className="pxg-abilities-grid">
           {MAP_ABILITIES.map(ab => {
-            const active = g.abilities?.split(', ').includes(ab);
+            const active = g.abilities?.split(/,\s*|\s+e\s+|\s+and\s+/i)
+              .map(a => a.trim().toLowerCase())
+              .includes(ab.toLowerCase());
             return (
               <button key={ab} onClick={() => toggleAbility(ab)} className={`pxg-ability-btn ${active ? 'active' : ''}`}>
                 {ab}
@@ -1009,6 +1097,7 @@ function GeneralTab() {
               <button key={stone.name} onClick={() => handleStoneSelect(stone)}
                 className={`pxg-stone-btn ${active ? 'active' : ''}`} title={stone.name}>
                 <img src={resolveWikiImg(stone.file)} alt={stone.name} className="pxg-stone-img"
+                  style={['Feather', 'Dimensional', 'Mirror'].some(n => stone.name.includes(n)) ? { transform: 'scale(0.7)' } : undefined}
                   onError={e => { (e.currentTarget as HTMLImageElement).style.opacity = '0.3'; }} />
                 <span className="pxg-stone-label">{stone.name.replace(' Stone', '').replace(' Gemstone', '')}</span>
               </button>
@@ -1045,12 +1134,14 @@ function GeneralTab() {
               className={`pxg-dropdown-btn pxg-dropdown-wide ${selectedClan ? 'active' : ''}`}
               onClick={() => { setShowClanDropdown(v => !v); setShowMateriaTypeDropdown(false); }}
             >
-              {selectedClan ? (() => { const c = CLANS.find(cl => cl.id === selectedClan); return c ? (
-                <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                  <img src={resolveWikiImg(c.file)} style={{ width: 18, height: 18, objectFit: 'contain', imageRendering: 'pixelated' }} />
-                  {c.label}
-                </span>
-              ) : selectedClan; })() : 'Select Clan'}
+              {selectedClan ? (() => {
+                const c = CLANS.find(cl => cl.id === selectedClan); return c ? (
+                  <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                    <img src={resolveWikiImg(c.file)} style={{ width: 18, height: 18, objectFit: 'contain', imageRendering: 'pixelated' }} />
+                    {c.label}
+                  </span>
+                ) : selectedClan;
+              })() : 'Select Clan'}
               <span className="pxg-dropdown-arrow">▾</span>
             </button>
             {showClanDropdown && (
@@ -1070,15 +1161,15 @@ function GeneralTab() {
           {/* Materia type dropdown */}
           <div style={{ position: 'relative', flexShrink: 0 }}>
             <button
-              className={`pxg-dropdown-btn ${selectedMateriaType ? 'active' : ''}`}
+              className={`pxg-dropdown-btn ${selectedMateriaType && selectedMateriaType !== 'Nenhum' ? 'active' : ''}`}
               onClick={() => { setShowMateriaTypeDropdown(v => !v); setShowClanDropdown(false); }}
             >
-              {selectedMateriaType || 'Type'}
+              {selectedMateriaType || 'Nenhum'}
               <span className="pxg-dropdown-arrow">▾</span>
             </button>
             {showMateriaTypeDropdown && (
               <div className="pxg-dropdown-list" style={{ right: 0, left: 'auto' }}>
-                {['Mastered','Enhanced','Superior'].map(mtype => (
+                {['Nenhum', 'Mastered', 'Enhanced', 'Superior'].map(mtype => (
                   <button key={mtype} className={`pxg-dropdown-item ${selectedMateriaType === mtype ? 'active' : ''}`}
                     onClick={() => handleMateriaTypeSelect(mtype)}>
                     {mtype}
@@ -1231,31 +1322,97 @@ function MovesTab() {
 }
 
 // ─── Effectiveness Tab ──────────────────────────────────────────────────────────
+function parseEffString(str: string): string[] {
+  if (!str) return [];
+  const cleaned = str.replace(/\.$/, '').trim();
+  if (!cleaned) return [];
+  return cleaned.split(/,\s*|\s+and\s+/i).map(s => s.trim()).filter(Boolean);
+}
+
+function buildEffString(arr: string[]): string {
+  if (arr.length === 0) return '';
+  if (arr.length === 1) return `${arr[0]}.`;
+  return `${arr.slice(0, -1).join(', ')} and ${arr[arr.length - 1]}.`;
+}
+
 function EffectivenessTab() {
-  const { schema, updateEffectiveness } = usePokedexStore();
+  const { schema, setEffectiveness } = usePokedexStore();
   const { effectiveness: eff } = schema;
 
   const rows = [
-    { field: 'veryEffective',   label: 'Very Effective (2x)',       color: '#22c55e' },
-    { field: 'effective',       label: 'Effective (1.75x)',          color: '#86efac' },
-    { field: 'normal',          label: 'Normal (1x)',                color: '#a1a1aa' },
-    { field: 'ineffective',     label: 'Ineffective (0.75x)',        color: '#f59e0b' },
-    { field: 'veryIneffective', label: 'Very Ineffective (0.5x)',    color: '#ef4444' },
-    { field: 'nulo',            label: 'Immune (0x)',                color: '#a78bfa' },
+    { field: 'veryEffective', label: 'Very Effective (2x)', color: '#22c55e' },
+    { field: 'effective', label: 'Effective (1.75x)', color: '#86efac' },
+    { field: 'normal', label: 'Normal (1x)', color: '#a1a1aa' },
+    { field: 'ineffective', label: 'Ineffective (0.75x)', color: '#f59e0b' },
+    { field: 'veryIneffective', label: 'Very Ineffective (0.5x)', color: '#ef4444' },
+    { field: 'nulo', label: 'Immune (0x)', color: '#a78bfa' },
   ];
+
+  function handleToggle(field: keyof typeof eff, elLabel: string) {
+    const newEff = { ...eff };
+    // Remove from all fields
+    (Object.keys(newEff) as (keyof typeof eff)[]).forEach(k => {
+      const current = parseEffString(newEff[k]);
+      if (current.includes(elLabel)) {
+        newEff[k] = buildEffString(current.filter(e => e !== elLabel));
+      }
+    });
+
+    const wasInTarget = parseEffString(eff[field]).includes(elLabel);
+    if (!wasInTarget) {
+      const targetArr = parseEffString(newEff[field]);
+      targetArr.push(elLabel);
+      newEff[field] = buildEffString(targetArr);
+    }
+
+    setEffectiveness(newEff);
+  }
+
+  function handleRecalculate() {
+    const currentElements = ELEMENTS.filter(el =>
+      schema.generalInfo.element.toLowerCase().includes(el.label.toLowerCase())
+    ).map(e => e.label);
+    if (currentElements.length > 0) {
+      setEffectiveness(calculateEffectiveness(currentElements));
+    } else {
+      setEffectiveness({ veryEffective: '', effective: '', normal: '', ineffective: '', veryIneffective: '', nulo: '' });
+    }
+  }
 
   return (
     <div className="pxg-tab-content">
-      <h2 className="pxg-tab-title">Effectiveness</h2>
-      <p className="pxg-tab-desc">Automatically computed from Elements. Override manually if needed.</p>
-      <div className="pxg-eff-list">
-        {rows.map(row => (
-          <div key={row.field} className="pxg-eff-row">
-            <label className="pxg-eff-label" style={{ color: row.color }}>{row.label}</label>
-            <input className="pxg-input" value={eff[row.field as keyof typeof eff]}
-              onChange={e => updateEffectiveness(row.field as any, e.target.value)} placeholder="e.g. Grass and Bug." />
-          </div>
-        ))}
+      <div className="pxg-tab-header">
+        <div>
+          <h2 className="pxg-tab-title">Effectiveness</h2>
+        </div>
+        <button className="pxg-btn-primary" onClick={handleRecalculate} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+          <span style={{ fontSize: 16 }}>↻</span> Recarregar Automaticamente
+        </button>
+      </div>
+
+      <div className="pxg-eff-list" style={{ display: 'flex', flexDirection: 'column', gap: 20, marginTop: 16 }}>
+        {rows.map(row => {
+          const activeElements = parseEffString(eff[row.field as keyof typeof eff]);
+          return (
+            <div key={row.field} className="pxg-form-group">
+              <label className="pxg-eff-label" style={{ color: row.color, marginBottom: 8, display: 'block' }}>{row.label}</label>
+              <div className="pxg-elements-grid" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(90px, 1fr))', gap: 6 }}>
+                {ELEMENTS.map(el => {
+                  const isActive = activeElements.includes(el.label);
+                  return (
+                    <button key={el.id} onClick={() => handleToggle(row.field as keyof typeof eff, el.label)}
+                      className={`pxg-element-btn ${isActive ? 'active' : ''}`} title={el.label}
+                      style={{ padding: '6px 8px', minHeight: '32px', flexDirection: 'row', justifyContent: 'flex-start', gap: 6 }}>
+                      <img src={resolveWikiImg(el.file)} alt={el.label} className="pxg-element-img" style={{ width: 16, height: 16, marginBottom: 0 }}
+                        onError={e => { (e.currentTarget as HTMLImageElement).style.opacity = '0.3'; }} />
+                      <span className="pxg-element-label" style={{ fontSize: 11 }}>{el.label}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
@@ -1326,12 +1483,12 @@ function AltVersionsTab() {
                   {alt.imagePrefix && (
                     <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                       <img
-                        src={resolveWikiImg(`${alt.imagePrefix}${alt.name}.png`)}
+                        src={resolveWikiImg(`${alt.imagePrefix}${alt.name}`)}
                         alt={alt.name}
                         style={{ width: 40, height: 40, objectFit: 'contain', imageRendering: 'pixelated' }}
                         onError={e => { (e.currentTarget as HTMLImageElement).style.opacity = '0.3'; }}
                       />
-                      <span className="pxg-preview-label" style={{ fontSize: 12 }}>{alt.imagePrefix}{alt.name}.png</span>
+                      <span className="pxg-preview-label" style={{ fontSize: 12 }}>{alt.imagePrefix}{alt.name}</span>
                     </div>
                   )}
                 </div>
@@ -1411,12 +1568,12 @@ export function PokedexBuilder() {
     <div className="pxg-root">
       <Sidebar />
       <main className="pxg-main">
-        {activeTab === 'general'       && <GeneralTab />}
-        {activeTab === 'evolutions'    && <EvolutionsTab />}
-        {activeTab === 'moves'         && <MovesTab />}
+        {activeTab === 'general' && <GeneralTab />}
+        {activeTab === 'evolutions' && <EvolutionsTab />}
+        {activeTab === 'moves' && <MovesTab />}
         {activeTab === 'effectiveness' && <EffectivenessTab />}
-        {activeTab === 'altVersions'   && <AltVersionsTab />}
-        {activeTab === 'preview'       && <ExportTab />}
+        {activeTab === 'altVersions' && <AltVersionsTab />}
+        {activeTab === 'preview' && <ExportTab />}
       </main>
       <PreviewPanel />
     </div>

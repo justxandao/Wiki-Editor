@@ -102,7 +102,7 @@ export function parseWikitextToSchema(text: string): PokedexSchema {
   const materiaMatch = text.match(/'''Materia:'''\s*(.*?)(?:<br\s*\/?>|\n)/i);
   if (materiaMatch) schema.generalInfo.materia = materiaMatch[1].trim();
 
-  const imageMatch = text.match(/\[\[(?:file|arquivo):(\d+)\s*-\s*.*?\.png/i);
+  const imageMatch = text.match(/\[\[(?:file|arquivo):([^|\]]+?\.(?:png|gif|webp))/i);
   if (imageMatch) schema.generalInfo.number = imageMatch[1].trim();
 
   const descMatch = text.match(/==\s*'''Descrição:?'''\s*==\s*\n+([\s\S]*?)(?:\n+==|\n+{|\[\[Categoria)/i);
@@ -135,11 +135,11 @@ export function parseWikitextToSchema(text: string): PokedexSchema {
   const tablePart = text.match(/==\s*'''Outras Versões'''\s*==\s*\n+([\s\S]*?)$/i);
   if (tablePart) {
     const tableContent = tablePart[1];
-    const imageLines = tableContent.match(/\| style="width:50px;[^|]*\|\s*<b>\[\[(?:Arquivo|File):(.*?)\.png\|link=(.*?)\]\]<\/b>/gi) || [];
+    const imageLines = tableContent.match(/\| style="width:50px;[^|]*\|\s*<b>\[\[(?:Arquivo|File):(.*?)\.(?:png|gif|webp)\|link=(.*?)\]\]<\/b>/gi) || [];
     const nameLines = tableContent.match(/\| style="width:150px;[^|]*\|\s*<b>'''\[\[(.*?)\]\]'''<\/b>/gi) || [];
     
     imageLines.forEach((imgLine, idx) => {
-      const imgMatch = imgLine.match(/\[\[(?:Arquivo|File):(.*?)\.png\|link=(.*?)\]\]/i);
+      const imgMatch = imgLine.match(/\[\[(?:Arquivo|File):(.*?)\.(?:png|gif|webp)\|link=(.*?)\]\]/i);
       const nameMatch2 = nameLines[idx] ? nameLines[idx].match(/\[\[(.*?)\]\]/i) : null;
       if (imgMatch) {
         const fullImgName = imgMatch[1];
@@ -166,7 +166,7 @@ export function parseWikitextToSchema(text: string): PokedexSchema {
       const slotMatch = row1.match(/!\s*rowspan="2"\s*\|\s*(\w+)/i);
       const nameCdMatch = row1.match(/\|\s*align="left"\s*\|\s*(.*?)(?:\n|\|)/i);
       const iconsMatch = row1.match(/\|\s*rowspan="2"\s*align="right"\s*\|\s*(.*?)(?:\n|\|)/i);
-      const elementMatch = row1.match(/\|\s*rowspan="2"\s*\|\s*\[\[(?:Arquivo|File):(.*?)\.png/i);
+      const elementMatch = row1.match(/\|\s*rowspan="2"\s*\|\s*\[\[(?:Arquivo|File):(.*?)\.(?:png|gif|webp)/i);
       const clanMatch = row1.match(/link=(\w+)/i);
       const levelMatch = row2.match(/\|\s*align="left"\s*\|\s*Level\s*(\d+)/i);
 
@@ -186,7 +186,7 @@ export function parseWikitextToSchema(text: string): PokedexSchema {
 
         const icons: string[] = [];
         if (iconsMatch) {
-          const iconRegex = /\[\[(?:Arquivo|File):(.*?)\.png/gi;
+          const iconRegex = /\[\[(?:Arquivo|File):(.*?)\.(?:png|gif|webp)/gi;
           let im;
           while ((im = iconRegex.exec(iconsMatch[1])) !== null) {
             icons.push(im[1].trim());
