@@ -69,18 +69,36 @@ export function SlashCommandPopup({ view, query, from, to, position, onClose }: 
   // Live File Search
   useEffect(() => {
     const q = query.toLowerCase();
+    let isFileSearch = false;
+    let searchQuery = '';
+
     if (q.startsWith('banner ')) {
-      const searchTerm = query.substring(q.indexOf(' ') + 1).trim();
-      if (searchTerm.length >= 2) {
+      isFileSearch = true;
+      searchQuery = 'banner ' + query.substring(7).trim();
+    } else if (q.startsWith('arquivo ')) {
+      isFileSearch = true;
+      searchQuery = query.substring(8).trim();
+    } else if (q.startsWith('file ')) {
+      isFileSearch = true;
+      searchQuery = query.substring(5).trim();
+    }
+
+    if (isFileSearch) {
+      if (searchQuery.length >= 1) {
         setIsSearchingFiles(true);
-        const url = `https://wiki.pokexgames.com/api.php?action=query&list=search&srsearch=File:${encodeURIComponent('banner ' + searchTerm)}&srnamespace=6&format=json&origin=*`;
+        // Use a broader search: append * for prefix/wildcard matching
+        const apiTerm = searchQuery.length < 3 ? searchQuery + '*' : searchQuery;
+        const url = `https://wiki.pokexgames.com/api.php?action=query&list=search&srsearch=${encodeURIComponent(apiTerm)}&srnamespace=6&srlimit=12&format=json&origin=*`;
         fetch(url)
           .then(r => r.json())
           .then(data => {
             if (data.query?.search) {
               setFileResults(data.query.search.map((s: any) => s.title));
+            } else {
+              setFileResults([]);
             }
           })
+          .catch(() => setFileResults([]))
           .finally(() => setIsSearchingFiles(false));
       } else {
         setFileResults([]);
@@ -102,7 +120,7 @@ export function SlashCommandPopup({ view, query, from, to, position, onClose }: 
       fileItems.push({
         id: `file-${filename}`,
         label: filename,
-        description: `Importar banner da wiki`,
+        description: `Importar arquivo da wiki`,
         spriteUrl: `https://wiki.pokexgames.com/index.php?title=Special:FilePath/${encodeURIComponent(filename)}`,
         category: 'file',
         onSelect: () => {

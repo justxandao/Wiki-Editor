@@ -4,15 +4,7 @@ import { searchPokemon, getPokemonSpriteUrl } from '../../pokemon/pokemon-servic
 import { searchBerries, getBerrySpriteUrl, buildBerryWikiText } from '../../pokemon/berry-service';
 import { PanelLeftClose, ArrowLeft, ArrowRight, Plus, History, Clock, Folder, ChevronRight, ChevronDown, FileText } from 'lucide-react';
 
-const LIBRARY_SNIPPETS = [
-  { id: 'wikitable', label: 'Criar Tabela', icon: '📊', category: 'Estruturas', code: '{| class="wikitable"\n! Col 1\n! Col 2\n|-\n| Dado\n| Dado\n|}' },
-  { id: 'h2', label: 'Título H2', icon: '#️⃣', category: 'Formatação', code: '== Título ==\n' },
-  { id: 'h3', label: 'Sub-título H3', icon: '##', category: 'Formatação', code: '=== Sub-título ===\n' },
-  { id: 'bold', label: 'Negrito', icon: 'B', category: 'Formatação', code: "'''texto'''" },
-  { id: 'italic', label: 'Itálico', icon: 'I', category: 'Formatação', code: "''texto''" },
-  { id: 'link', label: 'Link Wiki', icon: '🔗', category: 'Formatação', code: '[[Página|Texto]]' },
-  { id: 'ref', label: 'Referência', icon: '📌', category: 'Formatação', code: '<ref>Fonte aqui</ref>' },
-];
+const LIBRARY_SNIPPETS = [];
 
 function SectionHeader({ title, icon: Icon, expanded, onClick }: any) {
   return (
@@ -53,27 +45,7 @@ export function LibraryPanel() {
     }
   };
 
-  const handleSnippetClick = (item: typeof LIBRARY_SNIPPETS[number]) => {
-    if (item.id === 'wikitable') { setTableBuilderOpen(true); return; }
-    const view = (window as any).activeEditorView;
-    if (view) {
-      const { from, to } = view.state.selection.main;
-      const selectedText = view.state.doc.sliceString(from, to);
-      let textToInsert = item.code;
-      if (selectedText.length > 0) {
-        if (item.id === 'bold') textToInsert = `'''${selectedText}'''`;
-        else if (item.id === 'italic') textToInsert = `''${selectedText}''`;
-        else if (item.id === 'link') textToInsert = `[[${selectedText}]]`;
-        else if (item.id === 'h2') textToInsert = `== ${selectedText} ==\n`;
-        else if (item.id === 'h3') textToInsert = `=== ${selectedText} ===\n`;
-        else if (item.id === 'ref') textToInsert = `<ref>${selectedText}</ref>`;
-      }
-      view.dispatch({ changes: { from, to, insert: textToInsert }, selection: { anchor: from + textToInsert.length } });
-      view.focus();
-    } else {
-      insertSnippet(item.code);
-    }
-  };
+
 
   const pokeResults = searchPokemon(pokemonQuery, 10);
   const berryResults = searchBerries(berryQuery, 10);
@@ -128,17 +100,7 @@ export function LibraryPanel() {
         {sections.tools && (
           <div style={{ display: 'flex', flexDirection: 'column', paddingBottom: '12px' }}>
             
-            <FolderItem title="Biblioteca de Snippets" active={activeTool === 'snippets'} onClick={() => setActiveTool(activeTool === 'snippets' ? null : 'snippets')} />
-            {activeTool === 'snippets' && (
-              <div style={{ padding: '8px 16px 8px 36px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                {LIBRARY_SNIPPETS.map(item => (
-                  <button key={item.id} onClick={() => handleSnippetClick(item)} style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '6px 8px', background: '#0d0d14', border: '1px solid #1e1e2e', borderRadius: '6px', color: '#e2e2e8', fontSize: '12px', cursor: 'pointer', textAlign: 'left' }} title={item.code}>
-                    <span>{item.icon}</span> <span style={{flex: 1}}>{item.label}</span>
-                  </button>
-                ))}
-              </div>
-            )}
-            
+
             <FolderItem title="Busca de Pokémon" active={activeTool === 'pokemon'} onClick={() => setActiveTool(activeTool === 'pokemon' ? null : 'pokemon')} />
             {activeTool === 'pokemon' && (
               <div style={{ padding: '8px 16px 8px 36px', display: 'flex', flexDirection: 'column', gap: '8px' }}>

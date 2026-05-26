@@ -618,7 +618,7 @@ Descrição: Um Ursaring mais agressivo e territorial, especialmente durante a �
 
 // ─── General Information Tab ───────────────────────────────────────────────────
 function GeneralTab() {
-  const { schema, updateGeneralInfo, setEffectiveness, setMoves, updateMove, setEvolutions } = usePokedexStore();
+  const { schema, updateGeneralInfo, setEffectiveness, setMoves, updateMove, setEvolutions, importSchema } = usePokedexStore();
   const [showPasteModal, setShowPasteModal] = useState(false);
 
   const g = schema.generalInfo;

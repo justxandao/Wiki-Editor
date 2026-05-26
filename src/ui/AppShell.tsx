@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useEditorStore } from '../state/editorStore';
 import { TopBar } from './components/TopBar';
 import { TabBar } from './components/TabBar';
@@ -13,12 +13,13 @@ import { PanelLeft } from 'lucide-react';
 
 export function AppShell() {
   const {
-    tabs, activeTabId, mode, sidebarPanel, sidebarWidth,
+    tabs, activeTabId, mode, sidebarPanel, sidebarWidth, setSidebarWidth,
     updateTabContent, createTab, persistTab, showToast, toast, dismissToast,
     isLoading, loadPersistedState, setTheme, theme, setSidebarPanel,
   } = useEditorStore();
 
   const activeTab = tabs.find(t => t.id === activeTabId);
+  const [splitRatio, setSplitRatio] = useState(50);
 
   // Load persisted state on mount
   useEffect(() => {
@@ -146,13 +147,47 @@ export function AppShell() {
 
         {/* Sidebar */}
         {showSidebar && (
-          <div
-            className="sidebar-panel"
-            style={{ width: sidebarWidth, minWidth: 200, maxWidth: 400, display: 'flex', flexDirection: 'column', background: '#111118', borderRight: '1px solid #1e1e2e' }}
-          >
-            {sidebarPanel === 'library' && <LibraryPanel />}
-            {sidebarPanel === 'search' && <SearchPanel />}
-          </div>
+          <>
+            <div
+              className="sidebar-panel"
+              style={{ width: sidebarWidth, minWidth: 200, maxWidth: 600, display: 'flex', flexDirection: 'column', background: '#111118' }}
+            >
+              {sidebarPanel === 'library' && <LibraryPanel />}
+              {sidebarPanel === 'search' && <SearchPanel />}
+            </div>
+            <div
+              className="resizer"
+              style={{
+                width: 4,
+                cursor: 'col-resize',
+                zIndex: 50,
+                borderRight: '1px solid #1e1e2e',
+                background: 'transparent',
+                transition: 'background 0.2s',
+              }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLDivElement).style.background = 'var(--accent-primary)';
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLDivElement).style.background = 'transparent';
+              }}
+              onMouseDown={e => {
+                e.preventDefault();
+                const startX = e.clientX;
+                const startWidth = sidebarWidth;
+                const onMouseMove = (moveEvent: MouseEvent) => {
+                  const newWidth = Math.min(Math.max(200, startWidth + moveEvent.clientX - startX), 600);
+                  setSidebarWidth(newWidth);
+                };
+                const onMouseUp = () => {
+                  document.removeEventListener('mousemove', onMouseMove);
+                  document.removeEventListener('mouseup', onMouseUp);
+                };
+                document.addEventListener('mousemove', onMouseMove);
+                document.addEventListener('mouseup', onMouseUp);
+              }}
+            />
+          </>
         )}
 
         {/* Editor + Preview area */}
@@ -160,9 +195,8 @@ export function AppShell() {
           {/* Code Editor */}
           {(mode === 'code' || mode === 'split') && (
             <div style={{
-              flex: mode === 'split' ? '1 1 50%' : 1,
+              flex: mode === 'split' ? `0 0 ${splitRatio}%` : 1,
               overflow: 'hidden',
-              borderRight: mode === 'split' ? '1px solid var(--border-subtle)' : 'none',
             }}>
               {activeTab ? (
                 <WikiEditor
@@ -177,9 +211,49 @@ export function AppShell() {
             </div>
           )}
 
+          {/* Split Resizer */}
+          {mode === 'split' && (
+            <div
+              className="resizer"
+              style={{
+                width: 4,
+                cursor: 'col-resize',
+                zIndex: 50,
+                borderRight: '1px solid var(--border-subtle)',
+                background: 'transparent',
+                transition: 'background 0.2s',
+              }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLDivElement).style.background = 'var(--accent-primary)';
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLDivElement).style.background = 'transparent';
+              }}
+              onMouseDown={e => {
+                e.preventDefault();
+                const startX = e.clientX;
+                const startRatio = splitRatio;
+                const parentWidth = e.currentTarget.parentElement?.clientWidth || window.innerWidth;
+                
+                const onMouseMove = (moveEvent: MouseEvent) => {
+                  const deltaX = moveEvent.clientX - startX;
+                  const deltaRatio = (deltaX / parentWidth) * 100;
+                  const newRatio = Math.min(Math.max(10, startRatio + deltaRatio), 90);
+                  setSplitRatio(newRatio);
+                };
+                const onMouseUp = () => {
+                  document.removeEventListener('mousemove', onMouseMove);
+                  document.removeEventListener('mouseup', onMouseUp);
+                };
+                document.addEventListener('mousemove', onMouseMove);
+                document.addEventListener('mouseup', onMouseUp);
+              }}
+            />
+          )}
+
           {/* Preview */}
           {(mode === 'preview' || mode === 'split') && (
-            <div style={{ flex: mode === 'split' ? '1 1 50%' : 1, overflow: 'hidden' }}>
+            <div style={{ flex: 1, overflow: 'hidden' }}>
               <WikiPreview content={activeTab?.content ?? ''} />
             </div>
           )}

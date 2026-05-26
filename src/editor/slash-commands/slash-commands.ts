@@ -161,7 +161,7 @@ export function detectSlashCommand(state: EditorState): { from: number; to: numb
   // If there are spaces, only allow it if it starts with a command that accepts arguments
   if (spaceCount > 0) {
     const qLower = query.toLowerCase();
-    if (!qLower.startsWith('banner ')) {
+    if (!qLower.startsWith('banner ') && !qLower.startsWith('arquivo ') && !qLower.startsWith('file ')) {
       return null;
     }
   }

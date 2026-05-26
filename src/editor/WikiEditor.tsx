@@ -87,6 +87,10 @@ export function WikiEditor({ content, onChange, tabId }: WikiEditorProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const viewRef = useRef<EditorView | null>(null);
   const [slashState, setSlashState] = useState<SlashState | null>(null);
+  const slashStateRef = useRef<SlashState | null>(null);
+
+  // Keep ref in sync with state for use inside keymaps
+  useEffect(() => { slashStateRef.current = slashState; }, [slashState]);
 
   const getSlashPopupPosition = useCallback((view: EditorView, pos: number): { x: number; y: number } => {
     try {
@@ -207,13 +211,60 @@ export function WikiEditor({ content, onChange, tabId }: WikiEditorProps) {
               return true;
             }
           },
-          // Escape closes slash popup
           {
             key: 'Escape',
             run: () => {
-              if (slashState) { closeSlash(); return true; }
+              if (slashStateRef.current) { closeSlash(); return true; }
               return false;
             },
+          },
+          // Block ArrowDown/ArrowUp/Enter/Tab so popup can navigate when open
+          {
+            key: 'ArrowDown',
+            run: () => !!slashStateRef.current,
+          },
+          {
+            key: 'ArrowUp',
+            run: () => !!slashStateRef.current,
+          },
+          {
+            key: 'Enter',
+            run: (view) => {
+              if (slashStateRef.current) return true;
+              const { from, to } = view.state.selection.main;
+              if (from !== to) return false;
+
+              const line = view.state.doc.lineAt(from);
+              const beforeCursor = line.text.slice(0, from - line.from);
+
+              const doubleMatch = beforeCursor.match(/\[\[(?:Arquivo|File):([^|\]]+\.(?:png|gif|jpg|jpeg))\|link=([^\]]+)\]\]\s+\[\[([^\]]+)\]\]$/i);
+              if (doubleMatch && doubleMatch[2].toLowerCase() === doubleMatch[3].toLowerCase()) {
+                const pokemonName = doubleMatch[2];
+                const suffix = beforeCursor.slice(beforeCursor.lastIndexOf(' [['));
+                const replaceStart = from - suffix.length;
+                view.dispatch({
+                  changes: { from: replaceStart, to, insert: ` '''[[${pokemonName}]]'''` },
+                  selection: { anchor: replaceStart + ` '''[[${pokemonName}]]'''`.length }
+                });
+                return true;
+              }
+
+              const singleMatch = beforeCursor.match(/\[\[(?:Arquivo|File):([^|\]]+\.(?:png|gif|jpg|jpeg))\|link=([^\]]+)\]\]$/i);
+              if (singleMatch) {
+                const pokemonName = singleMatch[2];
+                view.dispatch({
+                  changes: { from, to, insert: ` [[${pokemonName}]]` },
+                  selection: { anchor: from + ` [[${pokemonName}]]`.length }
+                });
+                return true;
+              }
+
+              return false;
+            }
+          },
+          {
+            key: 'Tab',
+            run: () => !!slashStateRef.current,
           },
         ]),
         EditorView.lineWrapping,

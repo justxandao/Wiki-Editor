@@ -2,29 +2,30 @@
 @import "tailwindcss";
 
 :root {
-  /* Colors - Dark Theme (default) */
-  --bg-primary: #0d1117;
-  --bg-secondary: #161b22;
-  --bg-tertiary: #1c2128;
-  --bg-elevated: #21262d;
-  --bg-overlay: #2d333b;
+  /* Colors - Dark Theme (VSCode Default) */
+  --bg-primary: #1e1e1e;
+  --bg-secondary: #252526;
+  --bg-tertiary: #37373d;
+  --bg-elevated: #2d2d30;
+  --bg-overlay: #2d2d30;
 
-  --border-subtle: #30363d;
-  --border-default: #444c56;
-  --border-emphasis: #768390;
+  --border-subtle: #333333;
+  --border-default: #454545;
+  --border-emphasis: #858585;
 
-  --text-primary: #e6edf3;
-  --text-secondary: #8b949e;
-  --text-muted: #6e7681;
-  --text-inverse: #0d1117;
+  --text-primary: #cccccc;
+  --text-secondary: #999999;
+  --text-muted: #666666;
+  --text-inverse: #1e1e1e;
 
-  --accent-primary: #f78166;
-  --accent-secondary: #79c0ff;
-  --accent-success: #56d364;
-  --accent-warning: #e3b341;
-  --accent-danger: #f85149;
-  --accent-purple: #bc8cff;
-  --accent-teal: #39d353;
+  /* Accent: Purple */
+  --accent-primary: #a855f7;
+  --accent-secondary: #d946ef;
+  --accent-success: #89d185;
+  --accent-warning: #cca700;
+  --accent-danger: #f14c4c;
+  --accent-purple: #c586c0;
+  --accent-teal: #4ec9b0;
 
   /* Pokemon Brand */
   --pokemon-red: #ff3b30;
@@ -32,15 +33,15 @@
   --pokemon-blue: #1a73e8;
 
   /* Gradients */
-  --gradient-accent: linear-gradient(135deg, #f78166 0%, #bc8cff 100%);
+  --gradient-accent: linear-gradient(135deg, #a855f7 0%, #d946ef 100%);
   --gradient-pokemon: linear-gradient(135deg, #ff3b30 0%, #ffcc02 50%, #1a73e8 100%);
-  --gradient-dark: linear-gradient(180deg, #161b22 0%, #0d1117 100%);
+  --gradient-dark: linear-gradient(180deg, #252526 0%, #1e1e1e 100%);
 
   /* Shadows */
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
   --shadow-md: 0 4px 12px rgba(0,0,0,0.5);
   --shadow-lg: 0 8px 32px rgba(0,0,0,0.6);
-  --shadow-glow-accent: 0 0 20px rgba(247, 129, 102, 0.3);
+  --shadow-glow-accent: 0 0 20px rgba(168, 85, 247, 0.3);
   --shadow-glow-blue: 0 0 20px rgba(121, 192, 255, 0.3);
 
   /* Spacing & Radius */
@@ -57,24 +58,30 @@
 }
 
 [data-theme="light"] {
+  /* Colors - Light Theme (Wiki PxG style) */
   --bg-primary: #ffffff;
-  --bg-secondary: #f6f8fa;
-  --bg-tertiary: #eaeef2;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #eaecf0;
   --bg-elevated: #ffffff;
-  --bg-overlay: #f0f3f6;
+  --bg-overlay: #f8f9fa;
 
-  --border-subtle: #d0d7de;
-  --border-default: #afb8c1;
-  --border-emphasis: #57606a;
+  --border-subtle: #eaecf0;
+  --border-default: #c8ccd1;
+  --border-emphasis: #a2a9b1;
 
-  --text-primary: #1f2328;
-  --text-secondary: #57606a;
-  --text-muted: #6e7781;
+  --text-primary: #202122;
+  --text-secondary: #54595d;
+  --text-muted: #72777d;
   --text-inverse: #ffffff;
 
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
-  --shadow-md: 0 4px 12px rgba(0,0,0,0.15);
-  --shadow-lg: 0 8px 32px rgba(0,0,0,0.2);
+  /* Accent: Purple */
+  --accent-primary: #9333ea;
+  --accent-secondary: #c026d3;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.15);
+  --shadow-glow-accent: 0 0 20px rgba(147, 51, 234, 0.2);
 }
 
 * {
@@ -116,7 +123,7 @@ body {
 
 /* Selection */
 ::selection {
-  background: rgba(247, 129, 102, 0.3);
+  background: rgba(168, 85, 247, 0.3);
   color: var(--text-primary);
 }
 
@@ -143,8 +150,8 @@ body {
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 8px rgba(247, 129, 102, 0.4); }
-  50% { box-shadow: 0 0 20px rgba(247, 129, 102, 0.8); }
+  0%, 100% { box-shadow: 0 0 8px rgba(168, 85, 247, 0.4); }
+  50% { box-shadow: 0 0 20px rgba(168, 85, 247, 0.8); }
 }
 
 @keyframes shimmer {
@@ -196,7 +203,7 @@ body {
 }
 
 .cm-selectionBackground {
-  background: rgba(247, 129, 102, 0.2) !important;
+  background: rgba(168, 85, 247, 0.2) !important;
 }
 
 .cm-cursor {
@@ -654,18 +661,18 @@ body {
 
 /* Search highlight */
 .cm-searchMatch {
-  background: rgba(247, 129, 102, 0.25) !important;
+  background: rgba(168, 85, 247, 0.25) !important;
   border-radius: 2px;
 }
 .cm-searchMatch.cm-searchMatch-selected {
-  background: rgba(247, 129, 102, 0.5) !important;
+  background: rgba(168, 85, 247, 0.5) !important;
 }
 
 /* Drag and drop overlay */
 .drag-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(247, 129, 102, 0.1);
+  background: rgba(168, 85, 247, 0.1);
   border: 2px dashed var(--accent-primary);
   border-radius: var(--radius-lg);
   display: flex;
