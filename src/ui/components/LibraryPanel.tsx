@@ -103,12 +103,7 @@ export function LibraryPanel() {
       </div>
 
       {/* New Conversation equivalent */}
-      <div style={{ padding: '12px 16px' }}>
-        <button onClick={() => createTab()} style={{ display: 'flex', alignItems: 'center', gap: '8px', width: '100%', padding: '8px 12px', borderRadius: '8px', border: '1px solid #2a2a3e', background: '#16161f', color: '#e2e2e8', fontSize: '13px', fontWeight: 500, cursor: 'pointer', transition: 'background 0.2s' }}
-          onMouseEnter={e => (e.currentTarget.style.background = '#1e1e2e')} onMouseLeave={e => (e.currentTarget.style.background = '#16161f')}>
-          <Plus size={16} /> Nova Página
-        </button>
-      </div>
+
 
       <div style={{ flex: 1, overflow: 'auto' }} className="custom-scrollbar">
         {/* History */}

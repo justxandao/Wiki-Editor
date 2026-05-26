@@ -16,10 +16,11 @@ import {
   ListTree,
   Search,
   Zap,
+  Copy,
 } from 'lucide-react';
 
 export function TopBar() {
-  const { mode, setMode, theme, setTheme, createTab, sidebarPanel, setSidebarPanel } = useEditorStore();
+  const { mode, setMode, theme, setTheme, createTab, sidebarPanel, setSidebarPanel, showToast } = useEditorStore();
   const tabs = useEditorStore(s => s.tabs);
   const activeTabId = useEditorStore(s => s.activeTabId);
   const activeTab = tabs.find(t => t.id === activeTabId);
@@ -159,12 +160,18 @@ export function TopBar() {
         title={`Tema ${theme === 'dark' ? 'claro' : 'escuro'}`}
       />
 
-      {/* New tab */}
+      {/* Copy text */}
       <IconButton
-        icon={<Plus size={15} />}
-        onClick={() => createTab()}
-        title="Nova aba (Ctrl+T)"
-        accent
+        icon={<Copy size={15} />}
+        onClick={() => {
+          if (activeTab) {
+            navigator.clipboard.writeText(activeTab.content);
+            showToast('✅ Texto copiado!', 'success');
+          } else {
+            showToast('Nenhum texto para copiar.', 'error');
+          }
+        }}
+        title="Copiar Texto"
       />
     </header>
   );

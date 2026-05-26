@@ -9,6 +9,7 @@ import { WikiPreview } from '../preview/components/WikiPreview';
 import { initializePokemonIndex } from '../pokemon/pokemon-service';
 import { PokedexBuilder } from '../pokedex/builder/PokedexBuilder';
 import { TableBuilderModal } from '../saas-table/components/TableBuilderModal';
+import { PanelLeft } from 'lucide-react';
 
 export function AppShell() {
   const {
@@ -76,7 +77,73 @@ export function AppShell() {
       <TabBar />
 
       {/* Main area */}
-      <div style={{ flex: 1, display: 'flex', overflow: 'hidden' }}>
+      <div style={{ flex: 1, display: 'flex', overflow: 'hidden', position: 'relative' }}>
+        {/* Edge hover for sidebar */}
+        {!showSidebar && (
+          <div
+            style={{
+              position: 'absolute',
+              left: 0,
+              top: 0,
+              bottom: 0,
+              width: 16,
+              zIndex: 40,
+            }}
+            onMouseEnter={e => {
+              const btn = e.currentTarget.querySelector('button');
+              if (btn) btn.style.opacity = '1';
+            }}
+            onMouseLeave={e => {
+              const btn = e.currentTarget.querySelector('button');
+              if (btn) btn.style.opacity = '0';
+            }}
+            onMouseMove={e => {
+              const btn = e.currentTarget.querySelector('button');
+              if (btn) {
+                const rect = e.currentTarget.getBoundingClientRect();
+                const y = e.clientY - rect.top;
+                const halfBtn = 16;
+                let top = y - halfBtn;
+                if (top < 0) top = 0;
+                if (top > rect.height - 32) top = rect.height - 32;
+                btn.style.top = top + 'px';
+              }
+            }}
+          >
+            <button
+              onClick={() => setSidebarPanel('library')}
+              style={{
+                position: 'absolute',
+                left: 4,
+                top: '50%',
+                width: 32,
+                height: 32,
+                borderRadius: 'var(--radius-md)',
+                background: 'var(--bg-secondary)',
+                border: '1px solid var(--border-subtle)',
+                color: 'var(--text-muted)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                opacity: 0,
+                transition: 'opacity 0.2s, background 0.2s, color 0.2s',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
+              }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLButtonElement).style.color = 'var(--text-primary)';
+                (e.currentTarget as HTMLButtonElement).style.background = 'var(--bg-overlay)';
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLButtonElement).style.color = 'var(--text-muted)';
+                (e.currentTarget as HTMLButtonElement).style.background = 'var(--bg-secondary)';
+              }}
+            >
+              <PanelLeft size={16} />
+            </button>
+          </div>
+        )}
+
         {/* Sidebar */}
         {showSidebar && (
           <div
@@ -160,24 +227,8 @@ function EmptyState({ onCreate }: { onCreate: () => void }) {
         WikiPokexGames Editor
       </div>
       <div style={{ fontSize: 13, textAlign: 'center', maxWidth: 320 }}>
-        Nenhuma aba aberta. Crie uma nova página para começar a editar WikiText.
+        Nenhuma aba aberta. Use o atalho Ctrl+T ou a barra de abas para começar a editar WikiText.
       </div>
-      <button
-        onClick={onCreate}
-        style={{
-          padding: '10px 24px',
-          background: 'var(--accent-primary)',
-          border: 'none',
-          borderRadius: 'var(--radius-md)',
-          color: '#fff',
-          fontSize: 14,
-          fontWeight: 600,
-          cursor: 'pointer',
-          fontFamily: 'Inter, sans-serif',
-        }}
-      >
-        + Nova Página
-      </button>
     </div>
   );
 }
