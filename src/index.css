@@ -2,16 +2,16 @@
 @import "tailwindcss";
 
 :root {
-  /* Colors - Dark Theme (VSCode Default) */
-  --bg-primary: #1e1e1e;
-  --bg-secondary: #252526;
-  --bg-tertiary: #37373d;
-  --bg-elevated: #2d2d30;
-  --bg-overlay: #2d2d30;
+  /* Colors - Dark Theme (Wiki PxG style) */
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #141414;
+  --bg-tertiary: #1f1f1f;
+  --bg-elevated: #1a1a1a;
+  --bg-overlay: #1a1a1a;
 
-  --border-subtle: #333333;
-  --border-default: #454545;
-  --border-emphasis: #858585;
+  --border-subtle: #262626;
+  --border-default: #333333;
+  --border-emphasis: #525252;
 
   --text-primary: #cccccc;
   --text-secondary: #999999;
@@ -59,11 +59,11 @@
 
 [data-theme="light"] {
   /* Colors - Light Theme (Wiki PxG style) */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --bg-tertiary: #eaecf0;
-  --bg-elevated: #ffffff;
-  --bg-overlay: #f8f9fa;
+  --bg-primary: #f4f5f7;
+  --bg-secondary: #ebedf0;
+  --bg-tertiary: #dfe1e5;
+  --bg-elevated: #fcfcfc;
+  --bg-overlay: #ebedf0;
 
   --border-subtle: #eaecf0;
   --border-default: #c8ccd1;

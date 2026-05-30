@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { useEditorStore } from '../../state/editorStore';
+import { useEditorViewStore } from '../../state/editorViewStore';
 import { searchPokemon, getPokemonSpriteUrl } from '../../pokemon/pokemon-service';
 import { searchBerries, getBerrySpriteUrl, buildBerryWikiText } from '../../pokemon/berry-service';
 import { PanelLeftClose, ArrowLeft, ArrowRight, Plus, History, Clock, Folder, ChevronRight, ChevronDown, FileText } from 'lucide-react';
-
-const LIBRARY_SNIPPETS = [];
 
 function SectionHeader({ title, icon: Icon, expanded, onClick }: any) {
   return (
@@ -18,8 +17,8 @@ function SectionHeader({ title, icon: Icon, expanded, onClick }: any) {
 
 function FolderItem({ title, onClick, active }: any) {
   return (
-    <button onClick={onClick} style={{ display: 'flex', alignItems: 'center', gap: '10px', width: '100%', padding: '6px 16px 6px 36px', background: active ? '#16161f' : 'transparent', border: 'none', color: active ? '#e2e2e8' : 'var(--text-muted)', cursor: 'pointer', fontFamily: 'Inter, sans-serif', fontSize: '13px', textAlign: 'left', transition: 'all 0.15s' }}>
-      <Folder size={14} style={{ opacity: active ? 1 : 0.7, color: active ? '#a78bfa' : 'inherit' }} />
+    <button onClick={onClick} style={{ display: 'flex', alignItems: 'center', gap: '10px', width: '100%', padding: '6px 16px 6px 36px', background: active ? 'var(--bg-tertiary)' : 'transparent', border: 'none', color: active ? 'var(--text-primary)' : 'var(--text-muted)', cursor: 'pointer', fontFamily: 'Inter, sans-serif', fontSize: '13px', textAlign: 'left', transition: 'all 0.15s' }}>
+      <Folder size={14} style={{ opacity: active ? 1 : 0.7, color: active ? 'var(--accent-primary)' : 'inherit' }} />
       <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{title}</span>
     </button>
   );
@@ -32,14 +31,14 @@ export function LibraryPanel() {
   const [berryQuery, setBerryQuery] = useState('');
   
   const { tabs, activeTabId, updateTabContent, setTableBuilderOpen, setSidebarPanel, createTab, setActiveTab } = useEditorStore();
+  const activeView = useEditorViewStore((s) => s.activeView);
   const activeContent = tabs.find(t => t.id === activeTabId)?.content ?? '';
 
   const insertSnippet = (code: string) => {
-    const view = (window as any).activeEditorView;
-    if (view) {
-      const { from, to } = view.state.selection.main;
-      view.dispatch({ changes: { from, to, insert: code }, selection: { anchor: from + code.length } });
-      view.focus();
+    if (activeView) {
+      const { from, to } = activeView.state.selection.main;
+      activeView.dispatch({ changes: { from, to, insert: code }, selection: { anchor: from + code.length } });
+      activeView.focus();
     } else if (activeTabId) {
       updateTabContent(activeTabId, activeContent + '\n' + code);
     }
@@ -61,11 +60,11 @@ export function LibraryPanel() {
   const inputStyle = { width: '100%', padding: '7px 10px', background: '#0d0d14', border: '1px solid #2a2a3e', borderRadius: '6px', color: '#e2e2e8', fontSize: '12px', outline: 'none' };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100%', background: '#111118', color: '#e2e2e8', fontFamily: 'Inter, sans-serif' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', height: '100%', background: 'var(--bg-secondary)', color: 'var(--text-primary)', fontFamily: 'Inter, sans-serif' }}>
       
       {/* Top Header matching Antigravity */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '16px', padding: '12px 16px', borderBottom: '1px solid #1e1e2e' }}>
-        <button onClick={() => setSidebarPanel(null)} title="Esconder Barra Lateral" style={{ background: 'transparent', border: 'none', color: '#a0a0ab', cursor: 'pointer', padding: 0 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '16px', padding: '12px 16px', borderBottom: '1px solid var(--border-subtle)' }}>
+        <button onClick={() => setSidebarPanel(null)} title="Esconder Barra Lateral" style={{ background: 'transparent', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', padding: 0 }}>
           <PanelLeftClose size={18} />
         </button>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#a0a0ab' }}>
@@ -84,12 +83,12 @@ export function LibraryPanel() {
           <div style={{ display: 'flex', flexDirection: 'column', paddingBottom: '12px' }}>
             {tabs.map(tab => (
               <button key={tab.id} onClick={() => setActiveTab(tab.id)} 
-                style={{ display: 'flex', alignItems: 'center', gap: '10px', width: '100%', padding: '6px 16px 6px 36px', background: activeTabId === tab.id ? 'rgba(124, 58, 237, 0.1)' : 'transparent', border: 'none', color: activeTabId === tab.id ? '#a78bfa' : '#a0a0ab', fontSize: '13px', cursor: 'pointer', textAlign: 'left' }}
-                onMouseEnter={e => { if (activeTabId !== tab.id) { e.currentTarget.style.background = '#16161f'; e.currentTarget.style.color = '#e2e2e8'; } }}
-                onMouseLeave={e => { if (activeTabId !== tab.id) { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#a0a0ab'; } }}>
+                style={{ display: 'flex', alignItems: 'center', gap: '10px', width: '100%', padding: '6px 16px 6px 36px', background: activeTabId === tab.id ? 'var(--bg-tertiary)' : 'transparent', border: 'none', color: activeTabId === tab.id ? 'var(--accent-primary)' : 'var(--text-muted)', fontSize: '13px', cursor: 'pointer', textAlign: 'left' }}
+                onMouseEnter={e => { if (activeTabId !== tab.id) { e.currentTarget.style.background = 'var(--bg-overlay)'; e.currentTarget.style.color = 'var(--text-primary)'; } }}
+                onMouseLeave={e => { if (activeTabId !== tab.id) { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--text-muted)'; } }}>
                 <FileText size={14} style={{ opacity: 0.7 }} />
                 <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', flex: 1 }}>{tab.title}</span>
-                {tab.isDirty && <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#a78bfa', flexShrink: 0 }} />}
+                {tab.isDirty && <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--accent-primary)', flexShrink: 0 }} />}
               </button>
             ))}
           </div>

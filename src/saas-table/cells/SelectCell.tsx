@@ -35,7 +35,7 @@ export const SelectCell: React.FC<SelectCellProps> = ({ value, type }) => {
   // Regular select (Notion style, slightly less pronounced than a tag)
   return (
     <div className="w-full h-full px-3 flex items-center overflow-hidden">
-      <span className="px-2 py-0.5 rounded text-xs whitespace-nowrap bg-[#1e1e2e] text-[#e2e2e8]">
+      <span className="px-2 py-0.5 rounded text-xs whitespace-nowrap bg-[var(--border-subtle)] text-[var(--text-primary)]">
         {stringValue}
       </span>
     </div>

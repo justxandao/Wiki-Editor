@@ -29,6 +29,7 @@ import {
 import { wikitextLanguage, wikitextHighlighting } from './syntax/wikitext-language';
 import { detectSlashCommand } from './slash-commands/slash-commands';
 import { SlashCommandPopup } from '../ui/components/SlashCommandPopup';
+import { useEditorViewStore } from '../state/editorViewStore';
 
 interface WikiEditorProps {
   content: string;
@@ -86,6 +87,7 @@ const darkTheme = EditorView.theme({
 export function WikiEditor({ content, onChange, tabId }: WikiEditorProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const viewRef = useRef<EditorView | null>(null);
+  const setActiveView = useEditorViewStore((s) => s.setActiveView);
   const [slashState, setSlashState] = useState<SlashState | null>(null);
   const slashStateRef = useRef<SlashState | null>(null);
 
@@ -273,14 +275,12 @@ export function WikiEditor({ content, onChange, tabId }: WikiEditorProps) {
 
     const view = new EditorView({ state, parent: containerRef.current });
     viewRef.current = view;
-    (window as any).activeEditorView = view;
+    setActiveView(view);
 
     return () => {
       view.destroy();
       viewRef.current = null;
-      if ((window as any).activeEditorView === view) {
-        (window as any).activeEditorView = null;
-      }
+      setActiveView(null);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tabId]); // Recreate editor when tab changes

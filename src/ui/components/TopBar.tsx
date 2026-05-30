@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useEditorStore } from '../../state/editorStore';
 import { usePokedexUIStore } from '../../pokedex/store/pokedexStore';
+import { useEditorViewStore } from '../../state/editorViewStore';
 import {
   LayoutTemplate,
   Moon,
@@ -21,30 +22,21 @@ import {
   Italic,
 } from 'lucide-react';
 import wikiLogo from '../../assets/wiki.png';
-
-const LIBRARY_SNIPPETS = [
-  { id: 'wikitable', label: 'Tabela', icon: '📊', code: '{| class="wikitable"\n! Col 1\n! Col 2\n|-\n| Dado\n| Dado\n|}' },
-  { id: 'h2', label: 'H2', icon: '#️⃣', code: '== Título ==\n' },
-  { id: 'h3', label: 'H3', icon: '##', code: '=== Sub-título ===\n' },
-  { id: 'bold', label: 'Negrito', icon: <Bold size={13} />, code: "'''texto'''" },
-  { id: 'italic', label: 'Itálico', icon: <Italic size={13} />, code: "''texto''" },
-  { id: 'link', label: 'Link', icon: '🔗', code: '[[Página|Texto]]' },
-  { id: 'ref', label: 'Ref', icon: '📌', code: '<ref>Fonte aqui</ref>' },
-];
+import { LIBRARY_SNIPPETS } from '../../editor/snippets';
 
 export function TopBar() {
-  const { mode, setMode, theme, setTheme, createTab, sidebarPanel, setSidebarPanel, showToast, updateTabContent, setTableBuilderOpen } = useEditorStore();
+  const { mode, setMode, theme, setTheme, createTab, sidebarPanel, setSidebarPanel, showToast, setTableBuilderOpen } = useEditorStore();
   const tabs = useEditorStore(s => s.tabs);
   const activeTabId = useEditorStore(s => s.activeTabId);
   const activeTab = tabs.find(t => t.id === activeTabId);
+  const activeView = useEditorViewStore(s => s.activeView);
   const { setOpen: openPokedexBuilder } = usePokedexUIStore();
 
   const handleSnippetClick = (item: typeof LIBRARY_SNIPPETS[number]) => {
     if (item.id === 'wikitable') { setTableBuilderOpen(true); return; }
-    const view = (window as any).activeEditorView;
-    if (view) {
-      const { from, to } = view.state.selection.main;
-      const selectedText = view.state.doc.sliceString(from, to);
+    if (activeView) {
+      const { from, to } = activeView.state.selection.main;
+      const selectedText = activeView.state.doc.sliceString(from, to);
       let textToInsert = item.code;
       if (selectedText.length > 0) {
         if (item.id === 'bold') textToInsert = `'''${selectedText}'''`;
@@ -54,13 +46,11 @@ export function TopBar() {
         else if (item.id === 'h3') textToInsert = `=== ${selectedText} ===\n`;
         else if (item.id === 'ref') textToInsert = `<ref>${selectedText}</ref>`;
       }
-      view.dispatch({ changes: { from, to, insert: textToInsert }, selection: { anchor: from + textToInsert.length } });
-      view.focus();
-    } else {
-      if (activeTabId) {
-        const activeContent = tabs.find(t => t.id === activeTabId)?.content ?? '';
-        updateTabContent(activeTabId, activeContent + '\n' + item.code);
-      }
+      activeView.dispatch({ changes: { from, to, insert: textToInsert }, selection: { anchor: from + textToInsert.length } });
+      activeView.focus();
+    } else if (activeTabId) {
+      const activeContent = tabs.find(t => t.id === activeTabId)?.content ?? '';
+      useEditorStore.getState().updateTabContent(activeTabId, activeContent + '\n' + item.code);
     }
   };
 
@@ -79,12 +69,18 @@ export function TopBar() {
     }}>
       {/* Logo */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginRight: 8 }}>
-        <div style={{
-          width: 32, height: 32, flexShrink: 0,
-          display: 'flex', alignItems: 'center', justifyContent: 'center'
-        }}>
-          <img src={wikiLogo} alt="WikiPxG Logo" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
-        </div>
+        <img 
+          src={wikiLogo} 
+          alt="WikiPxG Logo" 
+          style={{ 
+            width: 32, 
+            height: 32, 
+            objectFit: 'contain', 
+            backgroundColor: '#353671',
+            borderRadius: 8,
+            boxShadow: '0 0 12px rgba(168, 85, 247, 0.25)'
+          }} 
+        />
         <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1 }}>
           <span style={{ fontSize: 12, fontWeight: 700, color: 'var(--text-primary)', fontFamily: 'Outfit, sans-serif' }}>
             WikiPxG
@@ -215,7 +211,18 @@ export function TopBar() {
         padding: '4px 10px',
         fontSize: 11, color: 'var(--text-muted)',
       }}>
-        <Zap size={11} style={{ color: 'var(--pokemon-yellow)' }} />
+        <img 
+          src={wikiLogo} 
+          alt="Wiki" 
+          style={{ 
+            width: 14, 
+            height: 14, 
+            objectFit: 'contain', 
+            backgroundColor: '#353671',
+            borderRadius: 4,
+            boxShadow: '0 0 8px rgba(168, 85, 247, 0.25)'
+          }} 
+        />
         <span>WikiPokexGames</span>
       </div>
 

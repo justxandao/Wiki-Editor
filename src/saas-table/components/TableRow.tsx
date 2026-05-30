@@ -19,8 +19,8 @@ const TableRowBase: React.FC<TableRowProps> = ({ row, virtualRow }) => {
 
   return (
     <div
-      className={`absolute top-0 left-0 w-full flex border-b border-[#1e1e2e] hover:bg-[#16161f]/50 transition-colors ${
-        isRowFocused ? 'bg-[#2d2048]/20' : ''
+      className={`absolute top-0 left-0 w-full flex border-b border-[var(--border-subtle)] hover:bg-[var(--bg-tertiary)]/50 transition-colors ${
+        isRowFocused ? 'bg-[var(--bg-tertiary)]/20' : ''
       }`}
       style={{
         height: `${virtualRow.size}px`,
@@ -35,8 +35,8 @@ const TableRowBase: React.FC<TableRowProps> = ({ row, virtualRow }) => {
           <div
             key={cell.id}
             tabIndex={isCellFocused ? 0 : -1}
-            className={`flex items-center relative border-r border-[#1e1e2e] outline-none ${
-              isCellFocused ? 'ring-2 ring-violet-500 z-10 bg-[#16161f]' : ''
+            className={`flex items-center relative border-r border-[var(--border-subtle)] outline-none ${
+              isCellFocused ? 'ring-2 ring-violet-500 z-10 bg-[var(--bg-tertiary)]' : ''
             }`}
             style={{ width: cell.column.getSize() }}
             onClick={() => {

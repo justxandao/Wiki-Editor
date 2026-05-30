@@ -45,7 +45,7 @@ export const TableRoot: React.FC<TableRootProps> = ({ initialColumns, initialDat
 
   return (
     <TableEngineContext.Provider value={table}>
-      <div className="flex flex-col w-full h-full bg-[#111118] text-[#e2e2e8] overflow-hidden font-sans border border-[#1e1e2e]">
+      <div className="flex flex-col w-full h-full bg-[var(--bg-primary)] text-[var(--text-primary)] overflow-hidden font-sans border border-[var(--border-subtle)]">
         {children}
       </div>
     </TableEngineContext.Provider>

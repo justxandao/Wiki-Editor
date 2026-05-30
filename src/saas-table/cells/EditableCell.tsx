@@ -53,15 +53,15 @@ export const EditableCell: React.FC<EditableCellProps> = ({
     return (
       <select
         ref={inputRef as any}
-        className="w-full h-full px-2 py-1 bg-[#16161f] border-2 border-violet-500 rounded outline-none text-[#e2e2e8]"
+        className="w-full h-full px-2 py-1 bg-[var(--bg-tertiary)] border-2 border-violet-500 rounded outline-none text-[var(--text-primary)]"
         value={localValue}
         onChange={(e) => setLocalValue(e.target.value)}
         onBlur={handleCommit}
         onKeyDown={handleKeyDown}
       >
-        <option value="" className="bg-[#111118]">Select...</option>
+        <option value="" className="bg-[var(--bg-primary)]">Select...</option>
         {column.options?.map((opt) => (
-          <option key={opt} value={opt} className="bg-[#111118]">
+          <option key={opt} value={opt} className="bg-[var(--bg-primary)]">
             {opt}
           </option>
         ))}
@@ -73,7 +73,7 @@ export const EditableCell: React.FC<EditableCellProps> = ({
     <input
       ref={inputRef}
       type={column.type === 'number' ? 'number' : 'text'}
-      className="w-full h-full px-2 py-1 bg-[#16161f] border-2 border-violet-500 rounded outline-none text-sm text-[#e2e2e8]"
+      className="w-full h-full px-2 py-1 bg-[var(--bg-tertiary)] border-2 border-violet-500 rounded outline-none text-sm text-[var(--text-primary)]"
       value={localValue}
       onChange={(e) => setLocalValue(e.target.value)}
       onBlur={handleCommit}

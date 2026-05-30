@@ -35,7 +35,7 @@ export const TableViewport: React.FC = () => {
         style={{ height: `${totalSize + 36}px`, position: 'relative' }} 
       >
         {/* Sticky Header */}
-        <div className="sticky top-0 z-10 bg-[#0d0d14] border-b border-[#1e1e2e]" style={{ height: 36 }}>
+        <div className="sticky top-0 z-10 bg-[var(--bg-secondary)] border-b border-[var(--border-subtle)]" style={{ height: 36 }}>
           {table.getHeaderGroups().map((headerGroup: any) => (
             <div key={headerGroup.id} className="flex absolute top-0 w-full">
               {headerGroup.headers.map((header: any) => (

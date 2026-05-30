@@ -1,15 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useEditorStore } from '../state/editorStore';
+import { useEditorViewStore } from '../state/editorViewStore';
 import { TopBar } from './components/TopBar';
+import wikiLogo from '../assets/wiki.png';
 import { TabBar } from './components/TabBar';
 import { StatusBar } from './components/StatusBar';
 import { LibraryPanel } from './components/LibraryPanel';
+import { SearchPanel } from './components/SearchPanel';
+import { EmptyState } from './components/EmptyState';
 import { WikiEditor } from '../editor/WikiEditor';
 import { WikiPreview } from '../preview/components/WikiPreview';
 import { initializePokemonIndex } from '../pokemon/pokemon-service';
 import { PokedexBuilder } from '../pokedex/builder/PokedexBuilder';
 import { TableBuilderModal } from '../saas-table/components/TableBuilderModal';
 import { PanelLeft } from 'lucide-react';
+import { useResizer } from '../hooks/useResizer';
 
 export function AppShell() {
   const {
@@ -18,7 +23,7 @@ export function AppShell() {
     isLoading, loadPersistedState, setTheme, theme, setSidebarPanel,
   } = useEditorStore();
 
-  const activeTab = tabs.find(t => t.id === activeTabId);
+  const activeTab = tabs.find((t) => t.id === activeTabId);
   const [splitRatio, setSplitRatio] = useState(50);
 
   // Load persisted state on mount
@@ -50,21 +55,42 @@ export function AppShell() {
     document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
 
+  // Resizers via hook
+  const sidebarResizer = useResizer({
+    value: sidebarWidth,
+    onChange: setSidebarWidth,
+    min: 200,
+    max: 600,
+    mode: 'pixels',
+  });
+
+  const splitResizer = useResizer({
+    value: splitRatio,
+    onChange: setSplitRatio,
+    min: 10,
+    max: 90,
+    mode: 'ratio',
+  });
+
   if (isLoading) {
     return (
       <div style={{
         height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center',
         background: 'var(--bg-primary)', flexDirection: 'column', gap: 16,
       }}>
-        <div style={{
-          width: 48, height: 48, borderRadius: 12,
-          background: 'linear-gradient(135deg, #f78166, #bc8cff)',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          fontSize: 24,
-          animation: 'pulse-glow 2s ease-in-out infinite',
-        }}>
-          ⚡
-        </div>
+        <img 
+          src={wikiLogo} 
+          alt="Wiki" 
+          style={{ 
+            width: 48, 
+            height: 48, 
+            objectFit: 'contain', 
+            backgroundColor: '#353671',
+            borderRadius: 12,
+            boxShadow: '0 8px 32px rgba(168, 85, 247, 0.3)',
+            animation: 'pulse-glow 2s ease-in-out infinite'
+          }} 
+        />
         <div style={{ color: 'var(--text-muted)', fontSize: 13 }}>Carregando WikiPokexGames Editor...</div>
       </div>
     );
@@ -90,16 +116,16 @@ export function AppShell() {
               width: 16,
               zIndex: 40,
             }}
-            onMouseEnter={e => {
-              const btn = e.currentTarget.querySelector('button');
+            onMouseEnter={(e) => {
+              const btn = e.currentTarget.querySelector('button') as HTMLButtonElement | null;
               if (btn) btn.style.opacity = '1';
             }}
-            onMouseLeave={e => {
-              const btn = e.currentTarget.querySelector('button');
+            onMouseLeave={(e) => {
+              const btn = e.currentTarget.querySelector('button') as HTMLButtonElement | null;
               if (btn) btn.style.opacity = '0';
             }}
-            onMouseMove={e => {
-              const btn = e.currentTarget.querySelector('button');
+            onMouseMove={(e) => {
+              const btn = e.currentTarget.querySelector('button') as HTMLButtonElement | null;
               if (btn) {
                 const rect = e.currentTarget.getBoundingClientRect();
                 const y = e.clientY - rect.top;
@@ -131,11 +157,11 @@ export function AppShell() {
                 transition: 'opacity 0.2s, background 0.2s, color 0.2s',
                 boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
               }}
-              onMouseEnter={e => {
+              onMouseEnter={(e) => {
                 (e.currentTarget as HTMLButtonElement).style.color = 'var(--text-primary)';
                 (e.currentTarget as HTMLButtonElement).style.background = 'var(--bg-overlay)';
               }}
-              onMouseLeave={e => {
+              onMouseLeave={(e) => {
                 (e.currentTarget as HTMLButtonElement).style.color = 'var(--text-muted)';
                 (e.currentTarget as HTMLButtonElement).style.background = 'var(--bg-secondary)';
               }}
@@ -165,27 +191,9 @@ export function AppShell() {
                 background: 'transparent',
                 transition: 'background 0.2s',
               }}
-              onMouseEnter={e => {
-                (e.currentTarget as HTMLDivElement).style.background = 'var(--accent-primary)';
-              }}
-              onMouseLeave={e => {
-                (e.currentTarget as HTMLDivElement).style.background = 'transparent';
-              }}
-              onMouseDown={e => {
-                e.preventDefault();
-                const startX = e.clientX;
-                const startWidth = sidebarWidth;
-                const onMouseMove = (moveEvent: MouseEvent) => {
-                  const newWidth = Math.min(Math.max(200, startWidth + moveEvent.clientX - startX), 600);
-                  setSidebarWidth(newWidth);
-                };
-                const onMouseUp = () => {
-                  document.removeEventListener('mousemove', onMouseMove);
-                  document.removeEventListener('mouseup', onMouseUp);
-                };
-                document.addEventListener('mousemove', onMouseMove);
-                document.addEventListener('mouseup', onMouseUp);
-              }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.background = 'var(--accent-primary)'; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.background = 'transparent'; }}
+              onMouseDown={sidebarResizer.onMouseDown}
             />
           </>
         )}
@@ -203,7 +211,7 @@ export function AppShell() {
                   key={activeTab.id}
                   tabId={activeTab.id}
                   content={activeTab.content}
-                  onChange={val => updateTabContent(activeTab.id, val)}
+                  onChange={(val) => updateTabContent(activeTab.id, val)}
                 />
               ) : (
                 <EmptyState onCreate={() => createTab()} />
@@ -223,31 +231,9 @@ export function AppShell() {
                 background: 'transparent',
                 transition: 'background 0.2s',
               }}
-              onMouseEnter={e => {
-                (e.currentTarget as HTMLDivElement).style.background = 'var(--accent-primary)';
-              }}
-              onMouseLeave={e => {
-                (e.currentTarget as HTMLDivElement).style.background = 'transparent';
-              }}
-              onMouseDown={e => {
-                e.preventDefault();
-                const startX = e.clientX;
-                const startRatio = splitRatio;
-                const parentWidth = e.currentTarget.parentElement?.clientWidth || window.innerWidth;
-                
-                const onMouseMove = (moveEvent: MouseEvent) => {
-                  const deltaX = moveEvent.clientX - startX;
-                  const deltaRatio = (deltaX / parentWidth) * 100;
-                  const newRatio = Math.min(Math.max(10, startRatio + deltaRatio), 90);
-                  setSplitRatio(newRatio);
-                };
-                const onMouseUp = () => {
-                  document.removeEventListener('mousemove', onMouseMove);
-                  document.removeEventListener('mouseup', onMouseUp);
-                };
-                document.addEventListener('mousemove', onMouseMove);
-                document.addEventListener('mouseup', onMouseUp);
-              }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.background = 'var(--accent-primary)'; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.background = 'transparent'; }}
+              onMouseDown={splitResizer.onMouseDown}
             />
           )}
 
@@ -285,76 +271,6 @@ export function AppShell() {
       {/* Pokédex Builder Modal */}
       <PokedexBuilder />
       <TableBuilderModal />
-    </div>
-  );
-}
-
-function EmptyState({ onCreate }: { onCreate: () => void }) {
-  return (
-    <div style={{
-      height: '100%', display: 'flex', flexDirection: 'column',
-      alignItems: 'center', justifyContent: 'center', gap: 16,
-      color: 'var(--text-muted)',
-    }}>
-      <div style={{ fontSize: 48 }}>⚡</div>
-      <div style={{ fontSize: 20, fontWeight: 700, color: 'var(--text-secondary)', fontFamily: 'Outfit, sans-serif' }}>
-        WikiPokexGames Editor
-      </div>
-      <div style={{ fontSize: 13, textAlign: 'center', maxWidth: 320 }}>
-        Nenhuma aba aberta. Use o atalho Ctrl+T ou a barra de abas para começar a editar WikiText.
-      </div>
-    </div>
-  );
-}
-
-function SearchPanel() {
-  const [query, setQuery] = React.useState('');
-  const tabs = useEditorStore(s => s.tabs);
-  const activeTabId = useEditorStore(s => s.activeTabId);
-  const activeTab = tabs.find(t => t.id === activeTabId);
-
-  const results = React.useMemo(() => {
-    if (!query.trim() || !activeTab) return [];
-    const lines = activeTab.content.split('\n');
-    return lines
-      .map((line, i) => ({ line: i + 1, text: line, match: line.toLowerCase().includes(query.toLowerCase()) }))
-      .filter(r => r.match)
-      .slice(0, 50);
-  }, [query, activeTab]);
-
-  return (
-    <div style={{ padding: 8, display: 'flex', flexDirection: 'column', gap: 8, height: '100%' }}>
-      <input
-        value={query}
-        onChange={e => setQuery(e.target.value)}
-        placeholder="Buscar no documento..."
-        autoFocus
-        style={{
-          width: '100%', padding: '7px 10px',
-          background: 'var(--bg-primary)', border: '1px solid var(--border-default)',
-          borderRadius: 'var(--radius-md)', color: 'var(--text-primary)',
-          fontSize: 13, fontFamily: 'Inter, sans-serif', outline: 'none',
-        }}
-      />
-      <div style={{ overflow: 'auto', flex: 1 }}>
-        {results.length === 0 && query && (
-          <div style={{ color: 'var(--text-muted)', fontSize: 12, padding: '8px 4px' }}>Nenhum resultado.</div>
-        )}
-        {results.map(r => (
-          <div key={r.line} style={{
-            padding: '6px 8px', fontSize: 12, cursor: 'pointer', borderRadius: 'var(--radius-sm)',
-            display: 'flex', gap: 8, alignItems: 'baseline',
-          }}
-            onMouseEnter={e => (e.currentTarget.style.background = 'var(--bg-overlay)')}
-            onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
-          >
-            <span style={{ color: 'var(--text-muted)', fontFamily: 'JetBrains Mono, monospace', minWidth: 28 }}>{r.line}</span>
-            <span style={{ color: 'var(--text-secondary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-              {r.text}
-            </span>
-          </div>
-        ))}
-      </div>
     </div>
   );
 }

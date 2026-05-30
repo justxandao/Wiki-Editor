@@ -232,3 +232,123 @@ export function parseWikitextToSchema(text: string): PokedexSchema {
   schema.moves = Array.from(movesMap.values());
   return schema;
 }
+
+// ─── Utility functions previously inlined in PokedexBuilder.tsx ────────────────
+
+/**
+ * Resolves a wiki image filename to its full CDN URL.
+ * Also handles duplicate extensions (.png.png) produced by older code.
+ */
+export function resolveWikiImg(filename: string): string {
+  let fn = filename;
+  fn = fn.replace(/\.png\.png$/i, '.png').replace(/\.webp\.png$/i, '.webp').replace(/\.gif\.png$/i, '.gif');
+  if (!/\.(png|gif|webp)$/i.test(fn)) fn += '.png';
+  const enc = encodeURIComponent(fn.replace(/ /g, '_'));
+  return `https://wiki.pokexgames.com/index.php?title=Special:FilePath/${enc}`;
+}
+
+interface ParsedPokemonData {
+  name?: string;
+  level?: string;
+  abilities?: string;
+  boost?: string;
+  materia?: string;
+  description?: string;
+  evolutions?: Array<{ name: string; level: string }>;
+}
+
+/** Parses free-form pasted Pokemon text into structured data. */
+export function parsePastedPokemonText(text: string): ParsedPokemonData {
+  const lines = text.split('\n');
+  const result: ParsedPokemonData = { evolutions: [] };
+  let inDescription = false;
+  let inEvolutions = false;
+  const descriptionLines: string[] = [];
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (!trimmed) { inEvolutions = false; continue; }
+
+    const nameMatch = trimmed.match(/^(?:Nome|Name)\s*:\s*(.*)$/i);
+    const levelMatch = trimmed.match(/^(?:N[íi]vel|Level)\s*:\s*(.*)$/i);
+    const abilitiesMatch = trimmed.match(/^(?:Habilidades?|Abilities|Ability)\s*:\s*(.*)$/i);
+    const boostMatch = trimmed.match(/^(?:Boost)\s*:\s*(.*)$/i);
+    const materiaMatch = trimmed.match(/^(?:Mat[ée]ria)\s*:\s*(.*)$/i);
+    const descMatch = trimmed.match(/^(?:Descri[çc]ão|Description)\s*:\s*(.*)$/i);
+    const evoBlockMatch = trimmed.match(/^(?:Evolu[çc]ões|Evolutions)\s*:\s*(.*)$/i);
+
+    if (nameMatch) {
+      result.name = nameMatch[1].trim(); inDescription = false; inEvolutions = false;
+    } else if (levelMatch) {
+      result.level = levelMatch[1].trim(); inDescription = false; inEvolutions = false;
+    } else if (abilitiesMatch) {
+      result.abilities = abilitiesMatch[1].trim(); inDescription = false; inEvolutions = false;
+    } else if (boostMatch) {
+      result.boost = boostMatch[1].trim(); inDescription = false; inEvolutions = false;
+    } else if (materiaMatch) {
+      result.materia = materiaMatch[1].trim(); inDescription = false; inEvolutions = false;
+    } else if (descMatch) {
+      descriptionLines.push(descMatch[1].trim()); inDescription = true; inEvolutions = false;
+    } else if (evoBlockMatch) {
+      inEvolutions = true; inDescription = false;
+      const initialEvo = evoBlockMatch[1].trim();
+      if (initialEvo) {
+        const m = initialEvo.match(/^\s*(.+?)\s*\((?:[^)]*?\b)?(\d+)\s*\)/i);
+        if (m) result.evolutions?.push({ name: m[1].trim(), level: m[2].trim() });
+      }
+    } else {
+      if (inDescription) { descriptionLines.push(trimmed); }
+      else if (inEvolutions) {
+        const m = trimmed.match(/^\s*(.+?)\s*\((?:[^)]*?\b)?(\d+)\s*\)/i);
+        if (m) result.evolutions?.push({ name: m[1].trim(), level: m[2].trim() });
+      }
+    }
+  }
+
+  if (descriptionLines.length > 0) result.description = descriptionLines.join('\n');
+  return result;
+}
+
+const MAP_ABILITIES_NORM = ["Dig", "Rock Smash", "Cut", "Teleport", "Light", "Fly", "Ride", "Surf", "Headbutt", "Blink", "Dark Portal", "Strength"];
+
+/** Normalizes a comma/and-separated abilities string to canonical casing. */
+export function normalizeAbilities(abilitiesStr: string): string {
+  const parts = abilitiesStr.split(/,|\s+e\s+|\s+and\s+/i);
+  const normalized = parts
+    .map((p) => p.trim().toLowerCase())
+    .filter(Boolean)
+    .map((p) => {
+      const matched = MAP_ABILITIES_NORM.find((a) => a.toLowerCase() === p);
+      return matched ?? p.replace(/\b\w/g, (c) => c.toUpperCase());
+    });
+  if (normalized.length === 0) return '';
+  if (normalized.length === 1) return normalized[0];
+  return `${normalized.slice(0, -1).join(', ')} e ${normalized[normalized.length - 1]}`;
+}
+
+/** Strips common prefixes (Shiny, Mega, Alolan) to get the base Pokemon name. */
+export function getBasePokemonName(fullName: string): string {
+  return fullName.replace(/^(Shiny|Mega|Alolan|Alola)\s+/i, '').trim();
+}
+
+/** Infers likely element(s) from a move list by frequency. */
+export function inferElementsFromMoves(moves: Array<{ element?: string }>): string {
+  if (!moves || moves.length === 0) return '';
+  const counts: Record<string, number> = {};
+  for (const m of moves) {
+    const el = m.element;
+    if (!el || el === 'Neutralicon' || el === 'Cl') continue;
+    counts[el] = (counts[el] || 0) + 1;
+  }
+  const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+  if (sorted.length === 0) return '';
+  const LABEL_MAP: Record<string, string> = { Normal1: 'Normal', Poison1: 'Poison', Ghost1: 'Ghost', Dark1: 'Dark' };
+  const getLabel = (id: string) => LABEL_MAP[id] ?? id;
+  const label1 = getLabel(sorted[0][0]);
+  if (sorted.length > 1) {
+    const count2 = sorted[1][1];
+    if (count2 >= 2 && count2 >= moves.length * 0.15) return `${label1} and ${getLabel(sorted[1][0])}`;
+  }
+  return label1;
+}
+

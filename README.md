@@ -40,8 +40,14 @@ Basta digitar `/` no editor para abrir um menu de contexto inteligente que permi
 ### ✨ Inline Widgets no Code Editor
 Mesmo olhando apenas para o código-fonte, a experiência é rica. A engine do CodeMirror identifica links de imagens, Pokémon, Elementos ou Clãs e injeta um "Widget Visual" inline, permitindo que você enxergue o Sprite/Ícone bem ao lado do seu texto bruto sem escondê-lo.
 
-### 💾 Persistência de Dados
-Desenvolvido com Zustand, o sistema de abas e conteúdos é persistido diretamente no `localStorage` do navegador, garantindo que você nunca perca o seu progresso caso feche a aba acidentalmente.
+### 💾 Persistência de Dados (IndexedDB)
+O sistema de abas, conteúdos, configurações de tema (Dark/Light Mode) e estado da UI (tamanho da barra lateral) são persistidos localmente utilizando **IndexedDB**, garantindo alta capacidade e que você nunca perca o seu progresso caso feche a aba acidentalmente.
+
+### 📊 SaaS Table Builder (Construtor de Tabelas)
+Além do gerador de Pokédex, a aplicação possui um construtor visual flexível para tabelas e marcações genéricas da wiki, inspirado na experiência fluida de editores SaaS modernos. Permite editar grades livres, NPCs de Duelo e mais, exportando tudo automaticamente para WikiText puro.
+
+### 🌓 Temas Dinâmicos (Dark / Light Mode)
+Sistema de temas globais altamente polido com design responsivo. O editor se ajusta perfeitamente entre um modo escuro profundo e um modo claro amigável para leitura, com ícones brilhantes e componentes premium integrados.
 
 ---
 
@@ -93,3 +99,4 @@ A stack foi cuidadosamente escolhida para maximizar performance e modularidade:
 *   `/src/ui/`: Layout da aplicação, painéis (Sidebar, Library) e sistema de abas.
 *   `/src/state/`: Stores (Zustand) que controlam o estado atual do editor.
 *   `/src/pokedex/`: Componentes, tipos, renderizadores e estilos específicos do Pokédex Builder visual.
+*   `/src/saas-table/`: Lógica e UI do Construtor de Tabelas genéricas estilo SaaS (NPCs, grids, etc.).

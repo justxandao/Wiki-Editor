@@ -44,6 +44,8 @@ interface EditorState {
 
 const DEFAULT_CONTENT = '';
 
+// Module-level map for auto-save debounce timers (replaces window-based hack)
+const autosaveTimers = new Map<string, ReturnType<typeof setTimeout>>();
 
 function generateId(): string {
   return `tab-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
@@ -121,10 +123,11 @@ export const useEditorStore = create<EditorState>((set, get) => ({
     }));
 
     // Auto-save debounced
-    clearTimeout((window as unknown as Record<string, unknown>)[`autosave-${id}`] as ReturnType<typeof setTimeout>);
-    (window as unknown as Record<string, unknown>)[`autosave-${id}`] = setTimeout(() => {
+    clearTimeout(autosaveTimers.get(id));
+    autosaveTimers.set(id, setTimeout(() => {
+      autosaveTimers.delete(id);
       get().persistTab(id);
-    }, 1500);
+    }, 1500));
   },
 
   renameTab: (id, title) => {
@@ -146,7 +149,10 @@ export const useEditorStore = create<EditorState>((set, get) => ({
 
   setSidebarPanel: (panel) => set(s => ({ sidebarPanel: s.sidebarPanel === panel ? null : panel })),
 
-  setSidebarWidth: (w) => set({ sidebarWidth: w }),
+  setSidebarWidth: (w) => {
+    set({ sidebarWidth: w });
+    saveSetting('sidebarWidth', w).catch(console.error);
+  },
 
   showToast: (message, type = 'info') => {
     set({ toast: { message, type } });
@@ -166,10 +172,11 @@ export const useEditorStore = create<EditorState>((set, get) => ({
 
   loadPersistedState: async () => {
     try {
-      const [storedTabs, storedTheme, storedMode] = await Promise.all([
+      const [storedTabs, storedTheme, storedMode, storedSidebarWidth] = await Promise.all([
         loadAllTabs(),
         loadSetting<Theme>('theme'),
         loadSetting<EditorMode>('mode'),
+        loadSetting<number>('sidebarWidth'),
       ]);
 
       const tabs: EditorTab[] = storedTabs.map(t => ({ ...t, isDirty: false }));
@@ -183,6 +190,7 @@ export const useEditorStore = create<EditorState>((set, get) => ({
         activeTabId: tabs.length > 0 ? tabs[0].id : null,
         theme: storedTheme ?? 'dark',
         mode: storedMode ?? 'split',
+        sidebarWidth: storedSidebarWidth ?? 280,
         isLoading: false,
       });
 

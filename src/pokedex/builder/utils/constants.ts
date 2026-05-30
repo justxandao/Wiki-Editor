@@ -36,30 +36,48 @@ export const MAP_ABILITIES_LIST = ["Dig", "Rock Smash", "Cut", "Teleport", "Ligh
 
 export const ELEMENTS = Object.keys(ELEMENT_COLORS);
 
+export const ELEMENTS_LIST = [
+  { id: "Normal1", label: "Normal" },
+  { id: "Fire", label: "Fire" },
+  { id: "Water", label: "Water" },
+  { id: "Grass", label: "Grass" },
+  { id: "Electric", label: "Electric" },
+  { id: "Ice", label: "Ice" },
+  { id: "Fighting", label: "Fighting" },
+  { id: "Poison1", label: "Poison" },
+  { id: "Ground", label: "Ground" },
+  { id: "Flying", label: "Flying" },
+  { id: "Psychic", label: "Psychic" },
+  { id: "Bug", label: "Bug" },
+  { id: "Rock", label: "Rock" },
+  { id: "Ghost1", label: "Ghost" },
+  { id: "Dragon", label: "Dragon" },
+  { id: "Dark1", label: "Dark" },
+  { id: "Steel", label: "Steel" },
+  { id: "Fairy", label: "Fairy" },
+  { id: "Crystal", label: "Crystal" }
+];
+
 export const FORM_ATTRIBUTES = [
-  { id: 'AOE', label: 'Aoe', file: 'AOE.png' },
+  { id: 'AOE', label: 'AOE', file: 'AOE.png' },
   { id: 'Blind', label: 'Blind', file: 'Blind.png' },
   { id: 'Buff', label: 'Buff', file: 'Buff.png' },
   { id: 'Burn', label: 'Burn', file: 'Burn.png' },
   { id: 'Confusion', label: 'Confusion', file: 'Confusion.png' },
-  { id: 'Control Blocked', label: 'Ctrl Block', file: 'Control_Blocked.png' },
   { id: 'Damage', label: 'Damage', file: 'Damage.png' },
   { id: 'Debuff', label: 'Debuff', file: 'Debuff.png' },
-  { id: 'Focus Blocked', label: 'Foc. Block', file: 'Focus_Blocked.png' },
-  { id: 'Healing', label: 'Healing', file: 'Healing.png' },
+  { id: 'Focus Blocked', label: 'Focus Blocked', file: 'Focus_Blocked.png' },
+  { id: 'Healing', label: 'Healing', file: 'HealingStatus.png' },
   { id: 'Knockback', label: 'Knockback', file: 'Knockback.png' },
   { id: 'Lifesteal', label: 'Lifesteal', file: 'Lifesteal.png' },
   { id: 'Locked', label: 'Locked', file: 'Locked.png' },
-  { id: 'Mirror Coat Blocked', label: 'Mirror Blk', file: 'Mirror_Coat_Blocked.png' },
-  { id: 'NeverBoost', label: 'NvrBoost', file: 'NeverBoost.png' },
+  { id: 'NeverBoost', label: 'NeverBoost', file: 'NeverBoost.png' },
   { id: 'Nevermiss', label: 'Nevermiss', file: 'Nevermiss.png' },
   { id: 'Paralyze', label: 'Paralyze', file: 'Paralyze.png' },
   { id: 'Passive', label: 'Passive', file: 'Passive.png' },
-  { id: 'Poison', label: 'Poison', file: 'Poison.png' },
-  { id: 'Reflect Blocked', label: 'Refl. Blk', file: 'Reflect_Blocked.png' },
+  { id: 'Poison', label: 'Poison', file: 'PoisonStatus.png' },
   { id: 'Self', label: 'Self', file: 'Self.png' },
   { id: 'Silence', label: 'Silence', file: 'Silence.png' },
-  { id: 'Sketch Blocked', label: 'Sketch Blk', file: 'Sketch_Blocked.png' },
   { id: 'Slow', label: 'Slow', file: 'Slow.png' },
   { id: 'Stun', label: 'Stun', file: 'Stun.png' },
   { id: 'Target', label: 'Target', file: 'Target.png' }
@@ -85,3 +103,25 @@ export const TIER_LEVELS: Record<string, string> = {
   T1: '100',
   Lendario: '100',
 };
+
+export const POKEMON_TIERS = [
+  { id: 'T4', label: 'Tier 4', level: '', materiaKey: 'Mastered' },
+  { id: 'T3', label: 'Tier 3', level: '80', materiaKey: 'Enhanced' },
+  { id: 'T2', label: 'Tier 2', level: '100', materiaKey: 'Superior' },
+  { id: 'T1', label: 'Tier 1', level: '100', materiaKey: 'Mastered' },
+  { id: 'Lendario', label: 'Lendário', level: '100', materiaKey: 'Mastered' },
+];
+
+// materia label map
+export const MATERIA_LABEL: Record<string, string> = {
+  Mastered: 'Mastered', Enhanced: 'Enhanced', Superior: 'Superior'
+};
+
+export const NAV_ITEMS = [
+  { id: 'general', label: 'General Information', icon: '◎' },
+  { id: 'evolutions', label: 'Evolutions', icon: '⟳' },
+  { id: 'moves', label: 'Moves', icon: '⚡' },
+  { id: 'effectiveness', label: 'Effectiveness', icon: '◈' },
+  { id: 'altVersions', label: 'Other Versions', icon: '▧' },
+  { id: 'preview', label: 'Preview', icon: '▷' },
+];

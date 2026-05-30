@@ -8,7 +8,7 @@ interface TableHeaderProps {
 export const TableHeader: React.FC<TableHeaderProps> = ({ header }) => {
   return (
     <div
-      className="flex items-center px-3 text-xs font-semibold text-[#6b6b80] hover:text-[#e2e2e8] select-none group border-r border-[#1e1e2e] transition-colors"
+      className="flex items-center px-3 text-xs font-semibold text-[var(--text-muted)] hover:text-[var(--text-primary)] select-none group border-r border-[var(--border-subtle)] transition-colors"
       style={{
         width: header.getSize(),
         height: '100%',

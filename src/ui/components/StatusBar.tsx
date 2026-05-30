@@ -1,4 +1,5 @@
 import React from 'react';
+import wikiLogo from '../../assets/wiki.png';
 import { useEditorStore } from '../../state/editorStore';
 import { Save, FileCode } from 'lucide-react';
 
@@ -47,7 +48,21 @@ export function StatusBar() {
         color: 'var(--accent-primary)',
         fontWeight: 600,
       }}>
-        <span>⚡ WikiPokexGames Editor</span>
+        <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+          <img 
+            src={wikiLogo} 
+            alt="Wiki" 
+            style={{ 
+              width: 12, 
+              height: 12, 
+              objectFit: 'contain', 
+              backgroundColor: '#353671',
+              borderRadius: 3,
+              boxShadow: '0 0 8px rgba(168, 85, 247, 0.25)'
+            }} 
+          />
+          WikiPokexGames Editor
+        </span>
       </div>
     </div>
   );
