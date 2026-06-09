@@ -251,8 +251,17 @@ interface ParsedPokemonData {
   name?: string;
   level?: string;
   abilities?: string;
+  /** Raw boost string as pasted (e.g. "Heart Stone (2)" or "Heart Stone Boost (2)") */
   boost?: string;
+  /** Parsed stone name extracted from boost field */
+  boostStoneName?: string;
+  /** Parsed tier number extracted from boost field (e.g. "2") */
+  boostTierNumber?: string;
   materia?: string;
+  /** The clan portion of the materia string (e.g. "Gardestrike") */
+  materiaClan?: string;
+  /** The type portion of the materia ("Mastered", "Enhanced", "Superior"), or undefined */
+  materiaType?: string;
   description?: string;
   evolutions?: Array<{ name: string; level: string }>;
 }
@@ -267,39 +276,77 @@ export function parsePastedPokemonText(text: string): ParsedPokemonData {
 
   for (const line of lines) {
     const trimmed = line.trim();
-    if (!trimmed) { inEvolutions = false; continue; }
+
+    // Blank lines: only reset if we are NOT in a multi-line block.
+    // Description and evolutions both survive blank lines so paragraphs/lists work.
+    if (!trimmed) {
+      // An unknown key-value line after blank resets context — handled below.
+      continue;
+    }
 
     const nameMatch = trimmed.match(/^(?:Nome|Name)\s*:\s*(.*)$/i);
     const levelMatch = trimmed.match(/^(?:N[íi]vel|Level)\s*:\s*(.*)$/i);
     const abilitiesMatch = trimmed.match(/^(?:Habilidades?|Abilities|Ability)\s*:\s*(.*)$/i);
     const boostMatch = trimmed.match(/^(?:Boost)\s*:\s*(.*)$/i);
     const materiaMatch = trimmed.match(/^(?:Mat[ée]ria)\s*:\s*(.*)$/i);
-    const descMatch = trimmed.match(/^(?:Descri[çc]ão|Description)\s*:\s*(.*)$/i);
-    const evoBlockMatch = trimmed.match(/^(?:Evolu[çc]ões|Evolutions)\s*:\s*(.*)$/i);
+    const descMatch = trimmed.match(/^(?:Descri[çc][aã]o|Description)\s*:\s*(.*)$/i);
+    const evoBlockMatch = trimmed.match(/^(?:Evolu[çc][oõ]es|Evolutions?)\s*:\s*(.*)$/i);
+
+    // Detect if this line looks like a top-level key — if so, exit any active block.
+    const isKeyLine = !!(nameMatch || levelMatch || abilitiesMatch || boostMatch ||
+      materiaMatch || descMatch || evoBlockMatch);
+    if (isKeyLine) {
+      if (!descMatch) inDescription = false;
+      if (!evoBlockMatch) inEvolutions = false;
+    }
 
     if (nameMatch) {
-      result.name = nameMatch[1].trim(); inDescription = false; inEvolutions = false;
+      result.name = nameMatch[1].trim();
     } else if (levelMatch) {
-      result.level = levelMatch[1].trim(); inDescription = false; inEvolutions = false;
+      result.level = levelMatch[1].trim();
     } else if (abilitiesMatch) {
-      result.abilities = abilitiesMatch[1].trim(); inDescription = false; inEvolutions = false;
+      result.abilities = abilitiesMatch[1].trim();
     } else if (boostMatch) {
-      result.boost = boostMatch[1].trim(); inDescription = false; inEvolutions = false;
+      const raw = boostMatch[1].trim();
+      result.boost = raw;
+      // Parse "Stone Name (N)" or "Stone Name Boost (N)"
+      const boostParsed = raw.match(/^(.+?)(?:\s+Boost)?\s*\((\d+)\)\s*$/i);
+      if (boostParsed) {
+        result.boostStoneName = boostParsed[1].trim();
+        result.boostTierNumber = boostParsed[2].trim();
+      } else {
+        // No tier — just a stone name
+        result.boostStoneName = raw;
+        result.boostTierNumber = undefined;
+      }
     } else if (materiaMatch) {
-      result.materia = materiaMatch[1].trim(); inDescription = false; inEvolutions = false;
+      const raw = materiaMatch[1].trim();
+      result.materia = raw;
+      // Split into clan + optional type (e.g. "Gardestrike", "Gardestrike Mastered")
+      const typeKeywords = ['Mastered', 'Enhanced', 'Superior'];
+      const foundType = typeKeywords.find(t => raw.endsWith(t));
+      if (foundType) {
+        result.materiaType = foundType;
+        result.materiaClan = raw.slice(0, raw.lastIndexOf(foundType)).trim();
+      } else {
+        result.materiaClan = raw;
+        result.materiaType = undefined; // caller decides default
+      }
     } else if (descMatch) {
-      descriptionLines.push(descMatch[1].trim()); inDescription = true; inEvolutions = false;
+      descriptionLines.push(descMatch[1].trim());
+      inDescription = true;
     } else if (evoBlockMatch) {
-      inEvolutions = true; inDescription = false;
+      inEvolutions = true;
       const initialEvo = evoBlockMatch[1].trim();
       if (initialEvo) {
-        const m = initialEvo.match(/^\s*(.+?)\s*\((?:[^)]*?\b)?(\d+)\s*\)/i);
+        const m = initialEvo.match(/^(.+?)\s*\([^)]*?(\d+)[^)]*\)\s*$/i);
         if (m) result.evolutions?.push({ name: m[1].trim(), level: m[2].trim() });
       }
     } else {
-      if (inDescription) { descriptionLines.push(trimmed); }
-      else if (inEvolutions) {
-        const m = trimmed.match(/^\s*(.+?)\s*\((?:[^)]*?\b)?(\d+)\s*\)/i);
+      if (inDescription) {
+        descriptionLines.push(trimmed);
+      } else if (inEvolutions) {
+        const m = trimmed.match(/^(.+?)\s*\([^)]*?(\d+)[^)]*\)\s*$/i);
         if (m) result.evolutions?.push({ name: m[1].trim(), level: m[2].trim() });
       }
     }

@@ -212,27 +212,48 @@ export function GeneralFlow() {
 
     // Sobrescreve com as informações coladas manualmente
     updateGeneralInfo('name', parsed.name);
+
     if (parsed.level) {
       updateGeneralInfo('level', parsed.level);
-      // Atualiza o nível dos golpes também
-      schema.moves.forEach((_, idx) => {
+      // Atualiza o nível dos golpes usando o store atualizado
+      usePokedexStore.getState().schema.moves.forEach((_, idx) => {
         updateMove(idx, 'level', parsed.level!);
       });
     }
-    if (parsed.boost) {
-      updateGeneralInfo('boost', parsed.boost);
-      const stone = evolutionStonesData.find(s => parsed.boost?.includes(s.name));
+
+    // ── Boost ────────────────────────────────────────────────────────────────────
+    if (parsed.boostStoneName || parsed.boost) {
+      // Reconstruct canonical format: "<Stone> Boost (<N>)" or just "<Stone>"
+      const stoneName = parsed.boostStoneName ?? '';
+      const tierNum = parsed.boostTierNumber;
+      const canonicalBoost = stoneName
+        ? tierNum ? `${stoneName} Boost (${tierNum})` : stoneName
+        : parsed.boost ?? '';
+
+      updateGeneralInfo('boost', canonicalBoost);
+
+      // Sync visual state: find matching stone and boost tier
+      const stone = evolutionStonesData.find(s => canonicalBoost.includes(s.name));
       setSelectedStone(stone ? stone.name : null);
-      const tierMatch = parsed.boost?.match(/\((\d+)\)/);
-      setBoostTier(tierMatch ? `Boost (${tierMatch[1]})` : '');
+      setBoostTier(tierNum ? `Boost (${tierNum})` : '');
     }
-    if (parsed.materia) {
-      updateGeneralInfo('materia', parsed.materia);
-      const clan = CLANS.find(c => parsed.materia!.startsWith(c.label));
+
+    // ── Materia ──────────────────────────────────────────────────────────────────
+    if (parsed.materiaClan || parsed.materia) {
+      const clanLabel = parsed.materiaClan ?? parsed.materia ?? '';
+      // Default to 'Mastered' when no type keyword was found
+      const materiaTypeStr = parsed.materiaType ?? 'Mastered';
+      const canonicalMateria = materiaTypeStr !== 'Nenhum'
+        ? `${clanLabel} ${materiaTypeStr}`.trim()
+        : clanLabel;
+
+      updateGeneralInfo('materia', canonicalMateria);
+
+      const clan = CLANS.find(c => clanLabel.startsWith(c.label) || c.label === clanLabel);
       setSelectedClan(clan ? clan.id : null);
-      const mtype = ['Mastered', 'Enhanced', 'Superior'].find(t => parsed.materia!.includes(t));
-      setSelectedMateriaType(mtype || null);
+      setSelectedMateriaType(materiaTypeStr);
     }
+
     if (parsed.description) {
       updateGeneralInfo('description', parsed.description);
     }
