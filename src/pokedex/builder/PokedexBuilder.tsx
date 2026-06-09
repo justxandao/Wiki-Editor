@@ -438,7 +438,7 @@ export function PokedexBuilder() {
   if (!isOpen) return null;
 
   return (
-    <div className="pxg-root">
+    <div className="pxg-root wiki-container" style={{ margin: '2.2rem 1rem', height: 'calc(100vh - 4.4rem)', position: 'fixed', inset: 0, zIndex: 9999 }}>
       <Sidebar />
       <main className="pxg-main">
         {activeTab === 'general' && <GeneralFlow />}

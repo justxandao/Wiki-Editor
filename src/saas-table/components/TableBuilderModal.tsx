@@ -70,7 +70,7 @@ export const TableBuilderModal: React.FC = () => {
   return (
     <div className="pxg-modal-overlay" style={{ zIndex: 9999 }}>
       <div
-        className="pxg-modal"
+        className="pxg-modal wiki-container"
         style={{ width: '92vw', maxWidth: '1400px', height: '88vh', fontFamily: 'Inter, Segoe UI, sans-serif' }}
       >
         {/* Header */}

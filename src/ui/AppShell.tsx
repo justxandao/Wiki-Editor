@@ -99,7 +99,7 @@ export function AppShell() {
   const showSidebar = sidebarPanel !== null;
 
   return (
-    <div style={{ height: '100vh', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+    <div style={{ height: '100vh', display: 'flex', flexDirection: 'column', overflow: 'hidden', background: 'transparent' }}>
       <TopBar />
       <TabBar />
 
@@ -175,8 +175,8 @@ export function AppShell() {
         {showSidebar && (
           <>
             <div
-              className="sidebar-panel"
-              style={{ width: sidebarWidth, minWidth: 200, maxWidth: 600, display: 'flex', flexDirection: 'column', background: '#111118' }}
+              className="sidebar-panel wiki-container"
+              style={{ width: sidebarWidth, minWidth: 200, maxWidth: 600, display: 'flex', flexDirection: 'column', marginTop: '2.2rem', marginLeft: '1rem', marginRight: '0.4rem' }}
             >
               {sidebarPanel === 'library' && <LibraryPanel />}
               {sidebarPanel === 'search' && <SearchPanel />}
@@ -199,7 +199,7 @@ export function AppShell() {
         )}
 
         {/* Editor + Preview area */}
-        <div style={{ flex: 1, display: 'flex', overflow: 'hidden', minWidth: 0 }}>
+        <div className="wiki-container" style={{ flex: 1, display: 'flex', overflow: 'hidden', minWidth: 0, marginTop: '2.2rem', marginRight: '1rem' }}>
           {/* Code Editor */}
           {(mode === 'code' || mode === 'split') && (
             <div style={{

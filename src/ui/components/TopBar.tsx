@@ -202,29 +202,46 @@ export function TopBar() {
         Pokédex Builder
       </button>
 
-      {/* Pokémon badge */}
-      <div style={{
-        display: 'flex', alignItems: 'center', gap: 6,
-        background: 'var(--bg-primary)',
-        border: '1px solid var(--border-subtle)',
-        borderRadius: 'var(--radius-full)',
-        padding: '4px 10px',
-        fontSize: 11, color: 'var(--text-muted)',
-      }}>
+      {/* Pokémon badge (Official Wiki Link) */}
+      <a 
+        href="https://wiki.pokexgames.com/" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        title="Acessar a Wiki Oficial"
+        style={{
+          display: 'flex', alignItems: 'center', gap: 6,
+          background: 'var(--bg-primary)',
+          border: '1px solid var(--border-subtle)',
+          borderRadius: 'var(--radius-full)',
+          padding: '4px 10px',
+          fontSize: 11, color: 'var(--text-primary)',
+          textDecoration: 'none',
+          cursor: 'pointer',
+          transition: 'all 0.15s',
+          fontWeight: 600,
+        }}
+        onMouseEnter={e => {
+          e.currentTarget.style.background = 'var(--bg-overlay)';
+          e.currentTarget.style.borderColor = 'var(--accent-primary)';
+          e.currentTarget.style.transform = 'scale(1.02)';
+        }}
+        onMouseLeave={e => {
+          e.currentTarget.style.background = 'var(--bg-primary)';
+          e.currentTarget.style.borderColor = 'var(--border-subtle)';
+          e.currentTarget.style.transform = 'scale(1)';
+        }}
+      >
         <img 
-          src={wikiLogo} 
+          src="https://wiki.pokexgames.com/favicon.ico" 
           alt="Wiki" 
           style={{ 
-            width: 14, 
-            height: 14, 
-            objectFit: 'contain', 
-            backgroundColor: '#353671',
-            borderRadius: 4,
-            boxShadow: '0 0 8px rgba(168, 85, 247, 0.25)'
+            width: 16, 
+            height: 16, 
+            objectFit: 'contain'
           }} 
         />
-        <span>WikiPokexGames</span>
-      </div>
+        <span>Wiki PokexGames</span>
+      </a>
 
       {/* Theme toggle */}
       <IconButton
